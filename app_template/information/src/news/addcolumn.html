@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/ui-icon.css">
+    <link rel="stylesheet" href="css/ui-control.css">
+    <link rel="stylesheet" href="addcolumn/css/index.css">
+</head>
+<body>
+    <div class="bc-bg"  id="Page">
+        <div  class="uh bc-head  ubb bc-border">
+            <co-header title="添加栏目">
+                <co-button icon="back" slot="left" @click="location(-1)"></co-button>
+            </co-header>
+        </div>
+
+        <div class="addcolumn-wrap">
+            <co-checklist
+                    align="right"
+                    v-model="value"
+                    :options="['社会','历史','军事','国内','国际','探索','深度','讨论','娱乐','环保','时尚']">
+            </co-checklist>
+        </div>
+
+
+
+    </div>
+
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/addcolumn.js"></script>
+</body>
+</html>

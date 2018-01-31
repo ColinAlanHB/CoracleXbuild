@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>pull</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+    .pubu{width:33.3%;float: left;overflow: auto}
+  </style>
+</head>
+<body id="body">
+  <div id="app">
+    <co-header fixed title="三列列表" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top">
+      <div>
+        <div class="pubu">
+          <div id="left" class="co-mg-l02"></div>
+        </div>
+        <div class="pubu">
+          <div id="center" class="co-mg-lr02"></div>
+        </div>
+        <div class="pubu">
+          <div id="right" class="co-mg-r02"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var dataList = [
+    {
+      url:"img/01.jpg",
+      title:"第一张图片"
+    },
+    {
+      url:"img/02.jpg",
+      title:"第二张图片"
+    },
+    {
+      url:"img/03.jpg",
+      title:"第三张图片"
+    },{
+      url:"img/04.jpg",
+      title:"第四张图片"
+    },{
+      url:"img/05.jpg",
+      title:"第五张图片"
+    },{
+      url:"img/06.jpg",
+      title:"第六张图片"
+    },{
+      url:"img/03.jpg",
+      title:"第七张图片"
+    },{
+      url:"img/01.jpg",
+      title:"第八张图片"
+    },{
+      url:"img/02.jpg",
+      title:"第九张图片"
+    }
+  ]
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    },
+    created:function(){
+      for(var i=0;i<dataList.length;i++){
+        (function(i){
+            var html ="<div class='co-mg-t02 co-bd-a1 co-br-a0 co-of'>"
+                  +"<img src='"+dataList[i].url+"' style='width:100%;height:auto;display:block' />"
+                  +"<div class='co-bg-2 co-pd-a02'>"+dataList[i].title+"</div>"
+                  +"</div>";
+            var left = corJS.offset("left").h;
+            var center = corJS.offset("center").h;
+            var right = corJS.offset("right").h;
+            var newD = document.createElement("div");
+            newD.innerHTML = html;
+            if(left<=right&&left<=center){
+              corJS.getDom("left").appendChild(newD);
+            }else if(center<=left&&center<=right){
+              corJS.getDom("center").appendChild(newD);
+            }else if(right<=left&&right<=center){
+              corJS.getDom("right").appendChild(newD);
+            }
+        })(i)                                                
+      }
+    },
+    mounted:function(){
+	}
+  })
+</script>
+</html>

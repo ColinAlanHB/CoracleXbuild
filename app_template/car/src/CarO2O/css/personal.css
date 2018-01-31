@@ -1,0 +1,97 @@
+.personal-main-info {
+  overflow: hidden;
+  padding: 30px;
+  /* hide box-shadow of co-header */
+  position: relative;
+  z-index: 1;
+  box-shadow:  0 -1px 3px #165DAB;
+}
+.personal-main-info--avatar {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 15px;
+}
+.personal-main-info--user {
+  margin-top: 20px;
+}
+.personal-main-info--tel {
+  margin-top: 5px;
+}
+.personal-main-card {
+  box-sizing: border-box;
+  height: 110px;
+  padding-bottom: 21px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.personal-main-card .card-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  border-right: 2px solid #F7F7F7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.personal-main-card .card-item:last-child {
+  border-right-width: 0;
+}
+.personal-main-list, .personal-main-edit {
+  padding-left: 20px;
+  border: 1px solid #DDDDDD;
+  border-left-width: 0;
+  border-right-width: 0;
+  margin-bottom: 21px;
+}
+.personal-main-list .list-link, .personal-main-edit .list-link {
+  display: block;
+  width: 100%;
+  line-height: 60px;
+  vertical-align: middle;
+  border-bottom: 1px solid #EEEEEE;
+  position: relative;
+}
+.personal-main-list .list-link .iconfont:not(.icon-right), .personal-main-edit .list-link .iconfont:not(.icon-right) {
+  font-size: 28px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 4px;
+  margin-right: 5px;
+}
+.personal-main-list .icon-right, .personal-main-edit .icon-right {
+  position: absolute;
+  right: 20px;
+  font-size: 22px;
+}
+.personal-main-logout {
+  line-height: 60px;
+  text-align: center;
+  border: 1px solid #DDDDDD;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+#app .personal-main-info--login {
+  font-size: 18px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}

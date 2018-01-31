@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A111移动签到</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/checkin.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+</head>
+<body class="theme-default">
+<div id="checkin">
+	<co-header title="移动签到">
+		<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>	
+	</co-header>		
+	<section class="location">
+		<header class="title">
+			<i class="icon iconfont icon-location">签到地址</i>			
+			<span class="remarks">（地址如果显示为乱码，也能正常签到）</span>
+		</header>
+		<section>
+			<input type="text" readonly v-model='address' class="address">
+			<i class="icon iconfont icon-map"></i>			
+		</section>
+	</section>
+	<section class="check">
+		<header class="title">外勤</header>
+		<section>		
+			<co-radio v-model='checkType' :options='checkOpts'>				
+			</co-radio>	
+			<co-button class="btn-check" size="normal">签到</co-button>
+		</section>
+	</section>
+</div>
+<script>		
+	new Vue({
+		el: '#checkin',
+		data: {
+			checkOpts: [
+				{label: "上班", value: "0"},
+				{label: "下班", value: "1"}
+			],
+			checkType: "0",
+			address: "联想研发中心"
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/ui-icon.css">
+    <link rel="stylesheet" href="css/ui-control.css">
+    <link rel="stylesheet" href="news_comment/css/index.css">
+</head>
+<body>
+    <div class="bc-bg"  id="Page">
+            <co-header title="评论">
+                <co-button icon="back" slot="left" @click="location('news_articlecommon.html')"></co-button>
+            </co-header>
+
+
+        <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+            <co-loadmore :top-method="loadTop" @top-status-change="handleTopChange" ref="loadmore">
+
+                <ul  class="ubb ub bc-border lis" v-for="item in comment">
+                    <li class="uh-app3 uw-app3 uc-a-app2 ub-img mar-ar1" :style="{backgroundImage: 'url('+item.avator+')'}"></li>
+                    <li class="ub-f1 ub ub-ver">
+                        <div class="ub ub-f1 ub-ac">
+                            <div class="ut-s ulev-4 t-blu " v-text="item.username"></div>
+                        </div>
+                        <div class="ub umar-t">
+                            <div class="ub-f1 ub t-gra-comm ulev-2">
+                                <div class="umar-r-comm" v-text="item.time"></div>
+                                <div v-text="item.city"></div>
+                            </div>
+                            <div class="ub ub-pe tx-r">
+                                <div class="t-gra-comm ufm1 ulev-2 umar-r" v-text="item.praise"></div>
+                                <div class="ub-img praise uh-comm2 uw-comm2"></div>
+                            </div>
+                        </div>
+                        <div class="t-bla ulev-4 ub-f1 umar-t" v-text="item.content"></div>
+                        <div  v-for="reply in item.followReply">
+                            <div class="uba bc-border c-gra-comm uc-a1 umar-at1">
+                                <div class="uinn-comm ulev-4">
+                                    <div class="t-blu line-hei-com" v-text="reply.replyName"></div>
+                                    <div class="t-gra2-comm line-hei-com" v-text="reply.replyContent"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div style="height: 3em;"></div>
+            </co-loadmore>
+        </div>
+
+
+        <div class="uf sc-bg ub ub-pc ub-ac" id="Footer" v-show="!isShowReply">
+            <div class="ub-f1 ub ub-ac umar-a uinn3 uc-a1" id="Box_footer" @click="isShowReply=true">
+                写评论
+            </div>
+        </div>
+        <div id="Mask" v-if="isShowReply" @click="isShowReply=!isShowReply"></div>
+        <div id="Box_footer_maskout" v-show="isShowReply">
+            <div class="ub ub-ver ub-fh bc-bg" style="bottom: 0;left: 0;position: absolute;">
+                <div class="ub ub-ac c-wh">
+                    <div class="umw3 ub ub-ac ub-pc uinn" @click="isShowReply=!isShowReply">
+                        <div class="ub-img quxiao umw1 umh1"></div>
+                    </div>
+                    <div class=" tx-c t-bla ub-f1">
+                        写评论
+                    </div>
+                    <div class="umw3 ub ub-ac ub-pc uinn" >
+                        <div class="ub-img queding  umw1 umh1" @click="submitComment"></div>
+                    </div>
+                </div>
+                <div class="uba bc-border uinput ub ub-f1">
+                    <textarea placeholder="" type="text" v-model="addComment" class="ub ub-f1" id="common_area"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/news_comment.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>table</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+    .menu{
+      height:2rem;
+      line-height: 2rem;
+      width:100%;
+      background-color:#ccc;
+    }
+    .menu div{
+      font-size: .75rem;
+      color:#333;
+    }
+    .co-content-top1 {
+      padding-top:4.2rem;
+    }
+    .co-menu{
+          width:100%;
+          position: fixed;
+          left: 0;
+          top:2.2rem;
+          z-index:999;
+      }
+    .tableList>div:nth-child(2n){
+      background-color:#f5f5f5;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <co-header fixed title="表格" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div  class="co-tabContent co-menu co-flex ">
+      <div class="menu co-flex co-ac">
+        <div class="co-f1 co-tx-c">部门</div>
+        <div class="co-f1 co-tx-c">预测</div>
+        <div class="co-f1 co-tx-c">预算</div>
+        <div class="co-f1 co-tx-c">全年累计</div>
+        <div class="co-f1 co-tx-c">完成率</div>
+      </div>
+    </div>
+    <div id="co-content" class="co-content-top1 tableList">
+      <div class="co-flex co-ac co-fs-01 co-bd-b co-pd-tb05">
+        <div class="co-f1 co-tx-c">信息部</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">50</div>
+        <div class="co-f1 co-tx-c">90%</div>
+      </div>
+      <div class="co-flex co-ac co-fs-01 co-bd-b co-pd-tb05">
+        <div class="co-f1 co-tx-c">财务部</div>
+        <div class="co-f1 co-tx-c">80</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">50</div>
+        <div class="co-f1 co-tx-c">60%</div>
+      </div>
+      <div class="co-flex co-ac co-fs-01 co-bd-b co-pd-tb05">
+        <div class="co-f1 co-tx-c">统计部</div>
+        <div class="co-f1 co-tx-c">50</div>
+        <div class="co-f1 co-tx-c">40</div>
+        <div class="co-f1 co-tx-c">50</div>
+        <div class="co-f1 co-tx-c">90%</div>
+      </div>
+      <div class="co-flex co-ac co-fs-01 co-bd-b co-pd-tb05">
+        <div class="co-f1 co-tx-c">销售部</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">100%</div>
+      </div>
+      <div class="co-flex co-ac co-fs-01 co-bd-b co-pd-tb05">
+        <div class="co-f1 co-tx-c">研发部</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">50</div>
+        <div class="co-f1 co-tx-c">90%</div>
+      </div>
+      <div class="co-flex co-ac co-fs-01 co-bd-b co-pd-tb05">
+        <div class="co-f1 co-tx-c">服务部</div>
+        <div class="co-f1 co-tx-c">70</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">50</div>
+        <div class="co-f1 co-tx-c">90%</div>
+      </div>
+      <div class="co-flex co-ac co-fs-01 co-bd-b co-pd-tb05">
+        <div class="co-f1 co-tx-c">质量部</div>
+        <div class="co-f1 co-tx-c">90</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">50</div>
+        <div class="co-f1 co-tx-c">60%</div>
+      </div>
+      <div class="co-flex co-ac co-fs-01 co-bd-b co-pd-tb05">
+        <div class="co-f1 co-tx-c">人力资源</div>
+        <div class="co-f1 co-tx-c">90</div>
+        <div class="co-f1 co-tx-c">60</div>
+        <div class="co-f1 co-tx-c">50</div>
+        <div class="co-f1 co-tx-c">90%</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+   corJS.ready(function(){
+
+    })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }
+  })
+</script>
+</html>

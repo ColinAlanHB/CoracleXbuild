@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+  <style>
+    .bgPage{background:rgba(0,0,0,.8);}
+    .co-swipe{min-height:10rem;}
+  </style>
+</head>
+<body class="co-body">
+  <div id="app" class="co-Page co-flex co-ver bgPage" v-cloak>
+    <div class="co-flex co-f1 co-ac">
+      <co-swipe @change="changePic" class="co-f1" :auto="0" :show-indicators="false" :continuous="false">
+        <co-swipe-item>
+        <img src="images/img0.jpg" class="loadImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+        <img src="images/pic2.jpg" class="loadImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+        <img src="images/pic5.jpg" class="loadImg" />
+        </co-swipe-item>
+      </co-swipe>
+      <div class="dialogT">
+        <p v-if="picTag==0">4G手机网络飞速发展</p>
+        <p v-else-if="picTag==1">企业过年集体吃晚宴</p>
+        <p v-else-if="picTag==2">我的前半生热播</p>
+      </div>
+    </div>
+    <div class="co-pd-a04 co-bg-0 co-bd-t1 co-jsb co-ac co-flex">
+      <div @click="back"><i class="coicon coicon-undo co-fs-4 co-cl-4"></i></div>
+      <div class="co-bg-3 co-pd-a04 co-br-a0 co-cl-0">
+        {{indexPic+1}} / 3
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      picTag:0,
+      indexPic:0
+    },
+    methods:{
+      back:function(){
+          corNative.closeWindow({
+          animID:-1
+        });
+     },
+      changePic:function(index){
+        this.indexPic = this.picTag = index;
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

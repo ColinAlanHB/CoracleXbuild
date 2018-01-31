@@ -1,0 +1,186 @@
+#app .co-header {
+  background-color: #165DAB;
+
+  color: #FFFFFF;
+}
+
+#app .login-main-form--btn,
+#app .forget-main-form--btn,
+#app .forget-main-form--get,
+#app .register-main-form--btn,
+#app .register-main-form--get{
+  background-color: #165DAB;
+}
+#app .login-main-form .iconfont,
+#app .forget-main-form .iconfont,
+#app .register-main-form .iconfont {
+  color: #32466b;
+}
+#app .login-main-link a {
+  color: #32466b;
+}
+
+#app .app-win {
+  background-color: #F7F7F7;
+}
+
+#app  .co-tabbar > .co-tab-item.is-selected {
+  color: #f8a629;
+}
+#app  .co-tabbar > .co-tab-item {
+  color: #818489;
+}
+#app .home-main-banner .banner-pager .pager-item {
+  background-color: #f6f2f3;
+}
+#app .home-main-banner .banner-pager .pager-item.active {
+  background-color: #165DAB;
+}
+#app .home-main-cate,
+#app .home-main-ad,
+#app .home-main-order,
+#app .home-main-location,
+#app .home-main-info {
+  background: #FFF;
+}
+#app .home-main-location .location-title {
+  background-color: #FFF;
+}
+#app .home-main-info .info-hot .hot-title {
+  color: #9C9C9E;
+}
+#app .home-main-info .info-news .news-time {
+  color: #9C9C9E;
+}
+#app .buy-main-filter {
+  background-color: #FFF;
+}
+#app .buy-main-filter .iconfont {
+  color: #9C9C9E;
+}
+#app .buy-main-list .list-item {
+  background-color: #FFF;
+}
+#app .buy-main-list .list-item .item--price {
+  background-color: rgba(255, 158, 50, 0.9);
+  color: #FFF;
+}
+#app .buy-main-list .list-item .item--info {
+  color: #9C9C9E;
+}
+#app .sell-main-contact,
+#app .sell-main-step,
+#app .sell-main-qa {
+  background: #FFF;
+}
+#app .sell-main-contact .contact-btn {
+  background-color: #E64E39;
+  color: #FFF;
+}
+#app .sell-main-contact .book-btn {
+  background-color: #FE9808;
+  color: #FFF;
+}
+#app .sell-main-step .right-title {
+  color: #FE9808;
+}
+#app .sell-main-step .right-detail {
+  color: #8C8C8C;
+}
+#app .sell-main-qa .qa-title {
+  color: #FE9808;
+}
+#app .sell-main-qa .qa-collapse .item-question.active {
+  background-color: #F7F7F7;
+}
+#app .sell-main-qa .qa-collapse .question-indexer {
+  color: #FE9808;
+}
+#app .sell-main-qa .qa-collapse .item-answer {
+  color: #656565;
+}
+#app .personal-main-info {
+  background-color: #165DAB;
+  color: #FFF;
+}
+#app .personal-main-card {
+  background-color: #F7F7F7;
+}
+#app .personal-main-card .card-item {
+  background-color: #FFF;
+}
+#app .personal-main-card .card-collect {
+  color: #ec4b50;
+}
+#app .personal-main-card .card-subscribe {
+  color: #e1c55a;
+}
+#app .personal-main-card .card-view {
+  color: #3bc682;
+}
+#app .personal-main-card .item-title {
+  color: #8e8e90;
+}
+#app .personal-main-list,
+#app .personal-main-edit {
+  background-color: #FFF;
+}
+#app .personal-main-list .iconfont:not(.icon-right),
+#app .personal-main-edit .iconfont:not(.icon-right){
+  color: #FFF;
+}
+#app .personal-main-list .icon-star {
+  background-color: #ec4b50;
+}
+#app .personal-main-list .icon-subscribe {
+  background-color: #e1c55a;
+}
+#app .personal-main-list .icon-record {
+  background-color: #3bc682;
+}
+#app .personal-main-edit .icon-lock {
+  background-color: #EC4C36;
+}
+#app .personal-main-logout {
+  background-color: #FFF;
+}
+#app .personal-main-logout a {
+  color: #ee4660;
+}
+
+#app .info-main,
+#app .detail-main {
+  background-color: #FFF;
+}
+#app .info-intime {
+  color: #8e8e90;
+}
+
+#app .detail-main-info .info-price {
+  color: #f65505;
+}
+
+#app .detail-main-table .table-item .item-value {
+  color: #8f8e93;
+}
+
+#app .detail-main-check .iconfont::before {
+  color: #fe0000;
+}
+
+#app .detail-bar .bar-item {
+  color: #FFF;
+}
+#app .detail-bar .item--favo {
+  color: #DFDFDF;
+  background-color: #FFF;
+}
+.detail-bar .item--favo .icon-heart-fill {
+  color: #fe0000;
+}
+#app .detail-bar .item--cut {
+  background-color: #fe9900;
+}
+#app .detail-bar .item--book {
+  background-color: #fe0000;
+}

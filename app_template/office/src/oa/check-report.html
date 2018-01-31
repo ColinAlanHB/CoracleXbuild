@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A114签到报表</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/check-report.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+<!-- 时间库 moment.js @zh-cn 版本CDN地址 -->
+<!-- https://momentjs.com/ -->
+<script src="./js/moment.min.js"></script>
+<script src="./js/zh-CN.js"></script>
+</head>
+<body>
+<div id="checkReport">
+	<co-header title="签到报表">
+		<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>			
+	</co-header>
+	<section class="report-win">		
+		<table class="report-list">
+			<caption class="report-timeline">
+				<p>起始：{{ listSpan[0] }}</p>
+				<p>结束：{{ listSpan[1] }}</p>
+			</caption>
+			<thead>
+				<th class="haed-date">日期</th>
+				<th class="haed-name">人员</th>
+				<th class="haed-start">首次</th>
+				<th class="haed-end">末次</th>
+			</thead>						
+			<tbody>
+				<tr v-for='item in listReport'>
+					<td class="list-date" :class=' item.date | isWeekend '>{{ item.date | dateFormat(yearMonth) }}</td>				
+					<td class="list-name">{{ name }}</td>
+					<td class="list-start">{{ item.startTime }}</td>
+					<td class="list-end">{{ item.endTime }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#checkReport',
+		data: {
+			name: '杨日旺',
+			yearMonth: "2017-5",
+			checkList: [
+				{date: 1, startTime: "08:59", endTime: "19:01"},
+				{date: 2, startTime: "08:59", endTime: "19:01"},
+				{date: 3, startTime: "08:59", endTime: "19:01"},
+				{date: 4, startTime: "08:59", endTime: "19:01"},
+				{date: 5, startTime: "08:59", endTime: "19:01"},
+				{date: 6, startTime: "08:59", endTime: "19:01"},
+				{date: 7, startTime: "08:59", endTime: "19:01"},
+				{date: 8, startTime: "09:59", endTime: "16:01"},
+				{date: 9, startTime: "08:59", endTime: "19:01"},
+				{date: 11, startTime: "08:59", endTime: "19:01"},
+				{date: 12, startTime: "08:59", endTime: "19:01"},
+				{date: 13, startTime: "08:59", endTime: "19:01"},
+				{date: 16, startTime: "08:59", endTime: "19:01"},
+				{date: 17, startTime: "08:59", endTime: "19:01"}
+			]
+		},
+		computed: {
+			listSpan: function () {
+				if (this.checkList && this.checkList.length > 0) {
+					var pattern = "YYYY年MM月DD日",
+							list = this.checkList,
+							length = list.length;				
+
+					var startDate = list[0].date,
+							endDate = list[length-1].date;
+
+					return [moment(this.yearMonth, "YYYY-M").date(startDate).format(pattern), moment(this.yearMonth, "YYYY-M").date(endDate).format(pattern)];
+				}				
+			},
+			listReport: function () {
+				var list = [], 
+						lostDate = 1;
+				this.checkList.forEach(function (item, index) {					
+					while(item.date != lostDate) {												
+						list.push({date: lostDate++});			
+					}													
+					list.push(item);
+					lostDate++;																
+				});				
+				return list;
+			}
+		},
+		filters: {
+			dateFormat: function (dayOfMonth, yearMonth) {								
+				return moment(yearMonth, 'YYYY-M').date(dayOfMonth).format("MM月DD日  ddd");
+			},
+			isWeekend:　function (dateOfMonth) {
+				var dayOfWeek = moment().date(dateOfMonth).day();								
+				if(dayOfWeek > 5 || dayOfWeek < 1) {
+					return {weekend: true};
+				}
+			}
+		}
+	});
+</script>
+</body>
+</html>

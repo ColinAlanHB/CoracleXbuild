@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="图片" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-content-bottom">
+      <div class="">
+        <div @click="goDetial('showPic')" v-for="item in dataList" class="co-bd-b1 co-bg-0 co-mg-t04">
+          <div>
+            <img :src="item.img" style="width:100%;height:auto;display: block;" alt="" />
+          </div>
+          <div class="co-flex co-jsb co-ac co-pd-a04 co-fs-01">
+            <div class="co-cl-1 co-te co-mg-r05">{{item.title}}</div>
+            <div class="co-flex co-ac co-cl-2">
+              <i class="coicon coicon-message"></i>{{item.tip}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+      <div  @click="tabMenu('index')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-homepage co-fs-4"></i>
+        <div class="co-fs-02">首页</div>
+      </div>
+      <div @click="tabMenu('topNew')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-tasklist co-fs-4"></i>
+        <div class="co-fs-02">要闻</div>
+      </div>
+      <div class="co-f1 co-flex co-ver co-ac co-jc co-cl-4">
+        <i class="coicon coicon-manage co-fs-4"></i>
+        <div class="co-fs-02">图片</div>
+      </div>
+      <div @click="tabMenu('mine')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-mine co-fs-4"></i>
+        <div class="co-fs-02">我的</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var dataList = [
+    {
+      img:"images/pic1.jpg",
+      title:"田园风光",
+      tip:"886"
+    },
+    {
+      img:"images/pic2.jpg",
+      title:"武汉风景",
+      tip:"666"
+    },
+    {
+      img:"images/pic3.jpg",
+      title:"蓝天大海",
+      tip:"234"
+    },
+    {
+      img:"images/pic4.jpg",
+      title:"大梅沙",
+      tip:"234"
+    },
+    {
+      img:"images/pic5.jpg",
+      title:"大亚湾",
+      tip:"234"
+    }
+  ]
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:dataList
+    },
+    methods:{
+      back:function(){
+          corNative.closeWindow({
+          animID:-1
+        });
+      },
+      tabMenu:function(name){
+                 corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:0,
+            flag:0
+         });
+      },
+      goDetial:function(name){
+         corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:10,
+            flag:1024
+         });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

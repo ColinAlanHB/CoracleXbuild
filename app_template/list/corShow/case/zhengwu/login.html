@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="登录" fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-close1 co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-1">
+      <div class="co-bg-0 co-bd-b1 co-bd-t1 co-mg-t08">
+        <div class="co-pd-tb06 co-mg-l05 co-bd-b1">
+          <input v-model="userName" placeholder="请输入手机号" type="text" class="co-input co-f1">
+        </div>
+        <div class="co-pd-tb06 co-mg-l05">
+          <input v-model="userPass" placeholder="请输入密码" type="passWord" class="co-input co-f1">
+        </div>
+      </div>
+      <div @click="login" class="co-bg-6 co-cl-0 co-tx-c co-br-a0 co-pd-tb05 co-mg-lr06 co-mg-t1">登录</div>
+      <div class="co-flex co-jsb co-ac co-mg-t1 co-pd-lr06">
+        <div @click="goHtml('register')" class="co-cl-7">注册</div>
+        <div @click="goHtml('forget')" class="co-cl-2">忘记密码</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在ready里面,等所有原生组件加载完毕后执行
+  corJS.ready(function(){
+    
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      userPass:"123456",
+      userName:"Admin"
+    },
+    methods:{
+      back:function(){
+          corNative.closeWindow({
+            animID:-1
+          });
+      },
+      goHtml:function(name){
+                 corNative.openWindow({
+          name:name,
+          data: name+".html",
+          animID:10,
+          flag:1024
+        })
+      },
+      login:function(){
+        var params = {
+          name:"loginTag"
+        }
+        params = corJS.checkParams(params);
+        corNative.sendNotification(params);
+        this.$indicator.open('登陆中...');
+        setTimeout(function(){
+          vm.$indicator.close();
+          vm.$toast({
+            message: '登陆成功',
+            position: 'bottom', 
+            duration: 800
+          })
+          setTimeout(function(){
+            corNative.closeWindow({
+              animID:-1
+            });
+          },800)
+        },1500)
+        
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

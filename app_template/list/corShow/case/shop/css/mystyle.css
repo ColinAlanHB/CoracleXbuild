@@ -1,0 +1,14 @@
+.co-swipe{height:8rem;}
+.bannerImg{height:8rem;width:100%;display: block}
+.bgList1{background:url(../images/elecSort1.png) no-repeat;height:6rem;background-size:100% 6rem;}
+.bgList2{background:url(../images/elecSort2.png) no-repeat;height:6rem;background-size:100% 6rem;}
+.bgList3{background:url(../images/elecSort3.png) no-repeat;height:6rem;background-size:100% 6rem;}
+.listTab{width:25%;float: left;}
+.listC{width:2.5rem;height:2.5rem;background: #fff;-webkit-border-radius:2.5rem;border-radius: 2.5rem}
+#co-header{
+    position: fixed;z-index: 99;left: 0;top:0;width: 100%
+   } 
+
+.typeImg{width:3rem;height:3rem;display: block;}
+.shopImg{width:4rem;height:4rem;display: block;}
+.mineBg{height:4.5rem;background: url(../images/perBg.png) no-repeat;background-size: 100% 4.5rem;}

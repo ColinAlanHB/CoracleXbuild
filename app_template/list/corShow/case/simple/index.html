@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>app Demo</title>
+  <link rel="stylesheet" href="public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="public/css/style.css" />
+  <link rel="stylesheet" href="public/css/flex.css" />
+  <link rel="stylesheet" href="public/css/base.css" />
+  <style type="text/css">
+    .welcome{
+      background: url(public/images/welcome.png) no-repeat;
+    }
+    .login{
+      background: url(public/images/login.png) no-repeat;
+    }
+    .register{
+      background: url(public/images/register.png) no-repeat;
+    }
+    .zhuye{
+      background: url(public/images/zhuye.png) no-repeat;
+    }
+    .list{
+      background: url(public/images/list.png) no-repeat;
+    }
+    .column{
+      background: url(public/images/column.png) no-repeat;
+    }
+    .detail{
+      background: url(public/images/detail.png) no-repeat;
+    }
+    .gongge{
+      background: url(public/images/gongge.png) no-repeat;
+    }
+    .form{
+      background: url(public/images/form.png) no-repeat;
+    }
+    .table{
+      background: url(public/images/table.png) no-repeat;
+    }
+    .search{
+      background: url(public/images/search.png) no-repeat;
+    }
+    .dialog{
+      background: url(public/images/dialog.png) no-repeat;
+    }
+    .chouti{
+      background: url(public/images/chouti.png) no-repeat;
+    }
+    .zhankai{
+      background: url(public/images/zhankai.png) no-repeat;
+    }
+    .pubu{
+      background: url(public/images/pubu.png) no-repeat;
+    }
+    .BI{
+      background: url(public/images/BI.png) no-repeat;
+    }
+    .form{
+      background: url(public/images/form.png) no-repeat;
+    }
+    .appIcon{
+      width:1.8rem;
+      height:1.8rem;
+      background-size:100% 100%;
+    }
+    .divB>div{
+      border-right:1px #eee solid;
+      border-bottom:1px #eee solid;
+      padding:.5rem;
+    }
+    .divB{
+      padding:0;
+    }
+    .btnA{
+      display: block;
+      height:2.5rem;
+      color:#fff;
+      line-height: 2.5rem
+    }
+    .dialogDiv {
+      width: 100%;
+      height: 100%;
+      background:rgba(0,0,0,.8);
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <co-header id="co-header"  title="界面模板" fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-f1 co-flex co-ver">
+      <div class="co-f1 co-bg-0">
+          <div class="co-flex divB">
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('welcome')">
+              <div class="appIcon welcome">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">引导页</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('login')">
+              <div class="appIcon login">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">登录页</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('register')">
+              <div class="appIcon register">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">注册</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('home')">
+              <div class="appIcon zhuye">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">主页</div>
+            </div>
+          </div>
+          <div class="co-flex divB">
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('list')">
+              <div class="appIcon list">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">列表</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('column')">
+              <div class="appIcon column">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">多列</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('gongge')">
+              <div class="appIcon gongge">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">宫格</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('table')">
+              <div class="appIcon table">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">表格</div>
+            </div>
+          </div>
+          <div class="co-flex divB">
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('search')">
+              <div class="appIcon search">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">搜索</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('dialog')">
+              <div class="appIcon dialog">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">弹出窗</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('drawer')">
+              <div class="appIcon chouti">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">抽屉</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('zhedie')">
+              <div class="appIcon zhankai">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">折叠</div>
+            </div>
+          </div>
+          <div class="co-flex divB">
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('mine')">
+              <div class="appIcon login">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">个人中心</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('pubu')">
+              <div class="appIcon pubu">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">瀑布流</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('BI')">
+              <div class="appIcon BI">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">图表</div>
+            </div>
+            <div class="co-f1 co-flex co-ver co-ac co-jc" @click="openHtml('form')">
+              <div class="appIcon form">
+              </div>
+              <div class="co-fs-01 co-mg-t02 co-cl-2">表单</div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <co-popup v-model="welcome" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('welcome','welcome1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('welcome','welcome2')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="welcome = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="login" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('login','login')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('login','login1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+        <div @click="goHtml('login','login2')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板三</div>
+        <div @click="goHtml('login','login3')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板四</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="login = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="register" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('register','register')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('register','register1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="register = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="home" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('home','home')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('home','home1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+        <div @click="goHtml('home','home2')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板三</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="home = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="list" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('list','list')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('list','list1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+        <div @click="goHtml('list','list2')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板三</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="list = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="column" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('column','column')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('column','column1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+        <div @click="goHtml('column','column2')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板三</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="column = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="gongge" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('gongge','gongge')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('gongge','gongge1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+        <div @click="goHtml('gongge','gongge2')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板三</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="gongge = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="table" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('table','table')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('table','table1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="table = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="search" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('search','search')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('search','search1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+        <div @click="goHtml('search','search2')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板三</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="search = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="dialog" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('dialog','dialog')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('dialog','dialog1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="dialog = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="drawer" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('drawer','drawer')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('drawer','drawer1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="drawer = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="zhedie" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('zhedie','zhedie')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="zhedie = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="mine" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('mine','mine')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('mine','mine1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+        <div @click="goHtml('mine','mine2')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板三</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="mine = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="pubu" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('pubu','pubu')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+        <div @click="goHtml('pubu','pubu1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板二</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="pubu = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="BI" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('BI','BI')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">饼状图一</div>
+        <div @click="goHtml('BI','BI1')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">饼状图二</div>
+        <div @click="goHtml('BI','BI2')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">柱状图一</div>
+        <div @click="goHtml('BI','BI3')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">柱状图二</div>
+        <div @click="goHtml('BI','BI4')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">折线图一</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="BI = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+    <co-popup v-model="form" position="bottom" class="dialogDiv co-flex co-ver" :modal="false">
+    <div class="co-f1 co-ae co-flex">
+      <div class="co-flex co-ver co-f1">
+        <div @click="goHtml('form','form')" class="co-bg-6 co-pd-a06 co-cl-0 co-f1 co-mg-a04 co-br-a0 co-tx-c">模板一</div>
+      </div>
+    </div>
+    <div class="co-flex co-jc co-pd-tb08">
+      <img @click="form = false" src="public/images/close.png" style="width:2.6rem;height:2.6rem;display: block;" />
+    </div>
+    </co-popup>
+  </div>
+</body>
+<script src="public/js/vue.js"></script>
+<script src="public/js/index.js"></script>
+<script src="public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      login:false,
+      welcome:false,
+      register:false,
+      home:false,
+      list:false,
+      column:false,
+      gongge:false,
+      table:false,
+      search:false,
+      dialog:false,
+      drawer:false,
+      zhedie:false,
+      mine:false,
+      pubu:false,
+      BI:false,
+      form:false
+    },
+    methods:{
+      openHtml:function(name){
+        console.log(name);
+        this[name] = true;
+      },
+      goHtml:function(name,url){
+                 corNative.openWindow({
+            name:name,
+            data: name+"/"+url+".html",
+            animID:10,
+            flag:1024,
+        });
+      },
+      back:function(){
+         corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      }
+    }
+  })
+</script>
+</html>

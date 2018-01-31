@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>form</title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style type="text/css">
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header fixed title="表单" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top">
+      <div class="co-flex co-ac co-pd-a06 co-bd-b">
+        <div>申请人：</div>
+        <div class="co-f1 co-mg-l06">
+          <input  placeholder="请输入姓名" type="text" class="co-field-core co-input co-cl-2">
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-a06 co-bd-b">
+        <div>身份证：</div>
+        <div class="co-f1 co-mg-l06">
+          <input  placeholder="请输入证件号" type="text" class="co-field-core co-input co-cl-2">
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-a06 co-bd-b">
+        <div>性别：</div>
+        <div class="co-f1 co-flex co-mg-l06">
+          <div class="co-flex co-ac">
+            <div class="radiobox co-flex">
+              <input v-model="sex" value="男" name="sex1" type="radio" />
+            </div>
+            <div class="co-mg-l04">男</div>
+          </div>
+          <div class="co-flex co-ac co-mg-l1">
+            <div class="radiobox  co-flex">
+              <input v-model="sex" value="女" name="sex1" type="radio" />
+            </div>
+            <div class="co-mg-l04">女</div>
+          </div>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-a06 co-bd-b">
+        <div>户口类型：</div>
+        <div class="co-f1 co-flex co-mg-l06">
+          <div class="co-flex co-f1 co-ac">
+            <div class="co-f1 co-cl-2">{{selected.text}}</div>
+            <div class="icon coicon coicon-unfold1"></div>
+            <select v-model="selected" class="co-select" selectedindex="0">
+              <option :value="option" v-for="option in options">{{option.text}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-a06 co-bd-b">
+        <div>银行卡：</div>
+        <div class="co-f1 co-flex co-mg-l06">
+          <div class="co-flex">
+            <div class="checkbox co-flex">
+              <input v-model="tag" value="工行" type="checkbox" />
+            </div>
+            <div class="co-mg-l04">工行</div>
+          </div>
+          <div class="co-flex co-mg-l04">
+            <div class="checkbox co-flex">
+              <input v-model="tag" value="农行" type="checkbox" />
+            </div>
+            <div class="co-mg-l04">农行</div>
+          </div>
+          <div class="co-flex co-mg-l04">
+            <div class="checkbox co-flex ">
+              <input v-model="tag" value="招行" type="checkbox" />
+            </div>
+            <div class="co-mg-l04">招行</div>
+          </div>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-a06 co-bd-b">
+        <div>是否保密：</div>
+        <div class="co-f1 co-mg-l06 co-flex co-je">
+          <co-switch v-model="bmTag">
+          </co-switch>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-a06 co-bd-b">
+        <div>备注：</div>
+        <div class="co-f1 co-flex co-mg-l06 co-flex co-je">
+          <textarea class="co-f1 co-textarea" name=""></textarea>
+        </div>
+      </div>
+      <div class="co-mg-a08 co-bg-6 co-cl-0 co-br-a0 co-pd-a04 co-tx-c">提交</div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      bmTag:false,
+      sex:"",
+      tag:[],
+      selected:{ text: '请选择', value: '-1'},
+      options:[
+        {text:"农村户口",value:"1"},
+        {text:"城镇户口",value:"2"},
+        {text:"农村城镇双户口",value:"3"},
+      ]
+    },
+    methods:{
+      back:function(){
+        corNative.prevPage();
+      },
+    }
+  })
+</script>
+</html>

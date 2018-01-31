@@ -1,0 +1,28 @@
+body {
+  background-color: #eeeeee;
+}
+.theme-bgcolor{background-color: #D33233;}
+.theme-color{color: #D33233;}
+.theme-bordercolor{ border-color: #D33233;}
+.co-header {
+  background-color: #D33233;
+  color: #fff;
+}
+#setting .logout {
+  color: #D33233;
+}
+
+.co-checkbox-input:checked + .co-checkbox-core {
+  background-color: #D33233;
+  border-color: #D33233;
+}
+.co-searchbar-inner .coui-search,.co-searchbar-placeholder {  color: #D33233;  }
+
+.theme-red{ color: #d33233;}
+.theme-green{ color: #49b768;}
+.theme-grey{ color: #a6a6a6;}
+
+.co-navbar .co-tab-item.is-selected{ border-bottom-color:#D33233; color: #D33233; }
+
+
+

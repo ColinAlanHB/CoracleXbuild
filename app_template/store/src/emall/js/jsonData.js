@@ -1,0 +1,65 @@
+var typeList = [
+	{
+		img:"images/g6.png",
+		typeName:"服饰内衣",
+		typeList:"女装/男装/内衣"
+	},
+	{
+		img:"images/g1.png",
+		typeName:"鞋靴",
+		typeList:"女装/男装/内衣"
+	},
+	{
+		img:"images/g2.png",
+		typeName:"服饰内衣",
+		typeList:"女装/男装/内衣"
+	},
+	{
+		img:"images/g3.png",
+		typeName:"服饰内衣",
+		typeList:"女装/男装/内衣"
+	},
+	{
+		img:"images/g4.png",
+		typeName:"服饰内衣",
+		typeList:"女装/男装/内衣"
+	},
+	{
+		img:"images/g5.png",
+		typeName:"服饰内衣",
+		typeList:"女装/男装/内衣"
+	},
+
+]
+var shopList = [
+	{
+		img:"images/scImg1.png",
+		topTitle:"已购满198.00，已减60.00",
+		title:"情人节礼物礼物礼物怡吻手工松露巧克力情人节情人节礼物礼物礼物怡吻手工松露巧克力情人节",
+		zl:".5kg",
+		money:"78.00",
+		num:1,
+		yh:"满2件送一件",
+		zp:"玩具娃娃"
+	},
+	{
+		img:"images/scImg2.png",
+		topTitle:"已购满198.00，已减60.00",
+		title:"情人节礼物礼物礼物怡吻手工松露巧克力情人节情人节礼物礼物礼物怡吻手工松露巧克力情人节",
+		zl:".5kg",
+		money:"78.00",
+		num:1,
+		yh:"满2件送一件",
+		zp:"玩具娃娃"
+	},
+	{
+		img:"images/scImg3.png",
+		topTitle:"已购满198.00，已减60.00",
+		title:"情人节礼物礼物礼物怡吻手工松露巧克力情人节情人节礼物礼物礼物怡吻手工松露巧克力情人节",
+		zl:".5kg",
+		money:"78.00",
+		num:1,
+		yh:"满2件送一件",
+		zp:"玩具娃娃"
+	}
+]

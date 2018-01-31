@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body class="co-body">
+  <div id="app" v-cloak class="co-Page loginBg co-flex co-ver">
+  	<div><img src="images/loginBg.png" style="width:100%;height:auto;display: block;" /></div>
+  	<div class="co-mg-lr1 co-pd-t05">
+		<div class="co-flex co-ac co-bd-a co-br-a3 co-bg-0 co-pd-a02 co-mg-t1">
+			<div class="coicon coicon-people co-fs-4 co-cl-7 co-mg-l05"></div>
+			<div class="co-f1 co-flex co-mg-lr04">
+				<input v-model="userName" placeholder="请输入账号" type="text" class="co-input co-f1 co-cl-3">
+			</div>
+			<div class="coicon coicon-unfold1 co-cl-2 co-cl-7 co-mg-r02"></div>
+		</div>
+		<div class="co-flex co-ac co-bd-a co-br-a3 co-bg-0 co-pd-a02 co-mg-t1">
+			<div class="coicon coicon-unlock co-fs-4 co-cl-7 co-mg-l05"></div>
+			<div class="co-f1 co-flex co-mg-lr04">
+				<input v-model="userPass" placeholder="请输入密码" type="password" class="co-input co-f1 co-cl-3">
+			</div>
+			<div class="coicon coicon-browse co-cl-2 co-cl-7 co-mg-r02"></div>
+		</div>
+		<div class="co-flex co-ac co-pd-a08">
+			<div class="co-flex co-ac co-f1">
+				<div class="" style="width:1.5rem">
+					<div class="checkbox1">
+			          <input v-model="checkTag" value="checked" type="checkbox" />
+			        </div>
+				</div>
+				<div class="co-fs-01 co-cl-2">记住密码</div>
+			</div>
+			<div class="co-fs-01 co-cl-2">
+				忘记密码?
+			</div>
+		</div>
+		<div  @click="login" class="co-h-2 co-tx-c co-bg-6 co-tx-c co-cl-0 co-mg-t06 co-br-a3">登 录</div>
+    <div  @click="back" class="co-h-2 co-tx-c co-bg-6 co-tx-c co-cl-0 co-mg-t06 co-br-a3">返回</div>
+		<div class="co-mg-a08 co-fs-01 co-cl-2 co-flex co-je">体验模式</div>
+  	</div>
+    <div class="co-pd-tb02 co-tx-c co-cl-2 co-fs-02 logoBottom">深圳前海圆舟网络科技股份有限公司</div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      userName:"Admin",
+      userPass:"123456",
+      checkTag:true
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+      login:function(){
+        if(this.userName==""){
+          this.$toast("请输入账号");
+          return;
+        }
+        if(this.userPass==""){
+          this.$toast("请输入密码");
+          return;
+        }
+        this.$indicator.open('登陆中...');
+        setTimeout(function(){
+          vm.$indicator.close();
+          vm.$toast({
+            message: '登陆成功',
+            position: 'bottom', 
+            duration: 800
+          })
+          corNative.openWindow({
+            name:"app",
+            data:"app.html",
+            animID:10,
+            flag:1024
+         });
+        },1500)
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

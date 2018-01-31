@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="购物车" fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-undo co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-content-bottom">
+      <div class="co-bg-0 co-bd-b1 co-pd-a02 co-fs-01 co-cl-2">全场商品满200减40</div>
+      <div v-for="item in dataList" class="co-mg-t04 co-bg-0 co-pd-a05 co-bd-b1 co-bd-t1">
+        <div class="co-fs-02 co-cl-1">{{item.topTitle}}</div>
+        <div class="co-flex co-ac co-mg-t05">
+          <div style="width:2rem">
+            <div class="checkbox1 co-flex co-ac">
+              <input v-model="item.num" value="checked" type="checkbox" />
+            </div>
+          </div>
+          <div class="co-f1">
+            <div class="co-flex">
+              <div>
+                <img :src="item.img" class="shopImg" />
+              </div>
+              <div class="co-f1 co-flex co-ver co-jsb co-mg-l04">
+                <div class="co-fs-01">
+                  <div class="co-te2">
+                    {{item.title}}
+                  </div>
+                  <div class="co-cl-3 co-mg-t02 co-fs-02">重量：{{item.zl}}</div>
+                </div>
+                <div class="co-flex co-jsb co-ac">
+                  <div class="co-f1 co-cl-4">￥{{item.money}}</div>
+                  <div class="co-flex co-ac">
+                    <div @click="jian" class="co-bd-a1 co-tx-c" style="width:1rem;height:1rem;line-height: 1rem">-</div>
+                    <div><input v-model="num" type="text" :value="item.num" style="width:1rem;border:none;text-align: center;background: #ccc;height:1rem;" /></div>
+                    <div @click="add" class="co-bd-a1 co-tx-c" style="width:1rem;height:1rem;line-height: 1rem">+</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="co-mg-t02 co-fs-02 co-cl-3">赠品：{{item.zp}}</div>
+            <div class="co-mg-t02 co-fs-02 co-cl-3">优惠：{{item.yh}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+      <div @click="tabMenu('index')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-homepage co-fs-4"></i>
+        <div class="co-fs-02">首页</div>
+      </div>
+      <div @click="tabMenu('type')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-marketing_fill co-fs-4"></i>
+        <div class="co-fs-02">分类</div>
+      </div>
+      <div @click="tabMenu('mine')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-mine co-fs-4"></i>
+        <div class="co-fs-02">我的</div>
+      </div>
+      <div  class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-publishgoods_fill co-fs-4  co-cl-7"></i>
+        <div class="co-fs-02">购物车</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corJS.js"></script>
+<script src="js/jsonData.js"></script>
+<script>
+  corReady = function(){
+  }
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:shopList,
+      checkShop:true,
+      num:"1"
+    },
+    methods:{
+      back:function(){
+       // corJS.closeWin();
+        corNative.closeWeb();
+      },
+      add:function(){
+        this.num++;
+      },
+      jian:function(){
+        if(this.num==1){
+          return
+        }
+        this.num--;
+      },
+      goDetial:function(name){
+        corJS.openWin(name);
+      },
+      tabMenu:function(name){
+        corJS.openWin(name,0);
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

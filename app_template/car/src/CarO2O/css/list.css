@@ -1,0 +1,33 @@
+.list-record .record-item {
+	border-bottom: 1px solid #DDD;
+}
+.list-record .record-item a {
+	display: block;	
+	overflow: hidden;
+	padding: 20px;	
+}
+.list-record .record-item .item--image {
+	float: left;
+	object-fit: cover;
+	width: 160px;
+	height: 90px;
+
+	margin-right: 20px;
+}
+.list-record .record-item .item--title {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	line-height: 1.5
+}
+.list-record .record-item .item--price {
+	color: #fe0300;
+	font-size: 20px;
+	line-height: 3;
+}
+
+.list-record .empty-image {
+	object-fit: cover;
+	width: 100%;
+}

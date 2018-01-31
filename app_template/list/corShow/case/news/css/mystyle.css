@@ -1,0 +1,11 @@
+.co-swipe{height:8rem;}
+.bannerImg{height:8rem;width:100%;display: block}
+.iconImg{width:2.2rem;height:2.2rem;display: block;}
+.serviceD{float: left;width:50%;}
+#menu{position: fixed;top:2.2rem;left:0;z-index: 1;width:100%;}
+.menu{height:2.2rem;}
+.co-content-top1{padding-top:4.4rem;}
+.menuB{border-bottom: 2px #d81e06 solid;color:#d81e06;}
+.picW{width:100%;height:auto;display: block;}
+.loadImg{width:100%;height:auto;display: block;}
+.dialogT{width:100%;position: absolute;z-index: 999;bottom: 0rem;left: 0;background:rgba(0,0,0,.5);color:#fff;font-size:.75rem;line-height: 1.2rem;padding:.5rem}

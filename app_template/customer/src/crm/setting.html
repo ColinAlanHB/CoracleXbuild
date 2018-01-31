@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="setting/css/index.css">
+
+</head>
+<body>
+    <div id="Page">
+        <div id="setting">
+            <co-header title="设置">
+                <a slot="left" class="iconfont icon-arr" @click="location(-1)"></a>
+            </co-header>
+            <section class="main-cells">
+                <co-cell title="检测更新" is-link class="no-link-icon" :value='version | vPrefix'></co-cell>
+                <co-cell title="关于软件" is-link></co-cell>
+                <co-cell title="扫描登录" is-link></co-cell>
+                <co-cell title="修改密码" is-link></co-cell>
+                <co-cell title="服务与支持" is-link></co-cell>
+                <co-cell title="意见反馈" is-link></co-cell>
+            </section>
+            <footer class="logout">
+                <co-cell title="退出登录" class="no-link-icon"  @click="location('login.html')"></co-cell>
+            </footer>
+        </div>
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/setting.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

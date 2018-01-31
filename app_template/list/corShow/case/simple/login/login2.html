@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+	<title>登陆页</title>
+	<link rel="stylesheet" href="../public/css/style.css" />
+	<link rel="stylesheet" href="../public/css/flex.css" />
+	<link rel="stylesheet" href="../public/css/base.css" />
+	<style>
+		#app{
+			background:url(img/loginBg.png) no-repeat;
+			background-size:cover;
+		}
+		.logoF{font-size: 1.8rem}
+	</style>
+</head>
+<body  class="co-body"> 
+	<div id="app" class="co-Page co-flex co-ac co-jc" v-cloak>
+		<div id="co-content" class="co-f1 co-mg-lr1">
+			<div class="co-tx-c logoF co-cl-2">WELCOME</div>
+			<div class="co-fs-01  co-tx-c co-pd-tb05 co-cl-0">
+				Welcome to the login screen, please enter your account password
+			</div>
+			<div class="co-pd-a04 co-bd-a co-flex co-br-a2 co-of co-bg-0">
+				<input v-model="userName" placeholder="Email Address" type="text" class="co-field-core co-input co-f1 co-tx-c co-cl-1">
+			</div>
+			<div class="co-pd-a04 co-bd-a co-flex co-br-a2 co-of co-bg-0 co-mg-tb1">
+				<input v-model="userPass" placeholder="userPass" type="passWord" class="co-field-core co-input co-f1 co-tx-c co-cl-1">
+			</div>
+			<div class="co-flex">
+				<co-button @click="login" class="co-f1 co-br-a2 co-bg-5 co-cl-1 co-h-1" type="default">Login</co-button>
+			</div>
+			<div class="co-tx-c co-pd-tb1 co-fs-02 co-cl-0">
+				<span @click="passWord">Password</span><span class="co-pd-lr06">|</span><span @click="register">Register</span>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+	corJS.ready(function(){
+
+  	})
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			userName:"",
+			userPass:"",
+			checked:""
+		},
+		methods:{
+			login:function(){
+				corNative.closeWindow({
+		          animID:-1,
+		          animDuration:300
+		        });
+				return;
+				if(this.userName==""){
+					this.$toast({
+				        message: 'Please enter Email',
+				        position: 'bottom', 
+				        duration: 2000
+			        })
+					return;
+				}else if(this.userPass==""){
+					this.$toast({
+				        message: 'Please enter userPass',
+				        position: 'bottom', 
+				        duration: 2000
+			        })
+			        return;
+				}
+				vm.$indicator.open('登录中...');
+				setTimeout(function(){
+					vm.$indicator.close();
+					vm.$toast({
+				        message: 'Login OK',
+				        position: 'bottom', 
+				        duration: 2000
+				      })
+				}, 2000);
+			},
+			passWord:function(){
+				this.$toast({
+				        message: 'click passWord',
+				        position: 'bottom', 
+				        duration: 2000
+			    })
+			},
+			register:function(){
+				this.$toast({
+				        message: 'click register',
+				        position: 'bottom', 
+				        duration: 2000
+			    })
+			}
+		},
+		created:function(){
+			//实例创建成功
+		},
+		mounted:function(){
+			//DOM模块渲染成功
+		}
+	})
+</script>
+</html>

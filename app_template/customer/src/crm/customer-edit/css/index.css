@@ -1,0 +1,12 @@
+body{ background-color: #fff;}
+
+.co-field-core{ text-align: right;color: #888888;}
+.customer-edit-wrap{ padding-bottom: 50px;}
+
+
+input:disabled, textarea:disabled{
+    color: #888;
+    -webkit-text-fill-color:#888;
+    -webkit-opacity:1;
+    opacity: 1;
+}

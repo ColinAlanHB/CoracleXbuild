@@ -1,0 +1,18 @@
+#checkRecord .no-check-list {
+  margin-top: 2.37333333rem;
+  text-align: center;
+}
+#checkRecord .no-check-list img {
+  width: 1.97333333rem;
+  height: 2.13333333rem;
+}
+#checkRecord .no-check-list p {
+  margin-top: .64rem;
+  font-size: 18px;
+}
+[data-dpr="2"] #checkRecord .no-check-list p {
+  font-size: 36px;
+}
+[data-dpr="3"] #checkRecord .no-check-list p {
+  font-size: 54px;
+}

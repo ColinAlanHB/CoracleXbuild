@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .tipD {
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg)
+    }
+    .tipD1 {
+      transform: rotate(-90deg);
+      -webkit-transform: rotate(-90deg)
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak class="co-cl-1">
+    <div class="co-pd-a05 co-bg-1">窗口控件</div>
+    <div class="co-bg-0 co-bd-t1 co-bd-b1">
+      <div @click="alertU()" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+        <div class="icon iconfont icon-alert co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div class="co-cl-1 co-fs-01">Alert弹出框</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-1 co-mg-r05"></div>
+      </div>
+      <div @click="confirmU()" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+        <div class="icon iconfont icon-confirm co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div class="co-cl-1 co-fs-01 co-te2">confirm确认框</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-1 co-mg-r05"></div>
+      </div>
+      <div @click="promptU()" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+        <div class="icon iconfont icon-field co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div class="co-cl-1 co-fs-01 co-te2">prompt弹出输入框</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-1 co-mg-r05"></div>
+      </div>
+      <div @click="toastU()" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+        <div class="icon iconfont icon-gongnengxingtishikuang co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div class="co-cl-1 co-fs-01 co-te2">toast提示框</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-1 co-mg-r05"></div>
+      </div>
+      <div @click="toastU1()" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+        <div class="icon iconfont icon-indicator co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div class="co-cl-1 co-fs-01 co-te2">toast加载框</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-1 co-mg-r05"></div>
+      </div>
+      <div @click="closeToastU()" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+        <div class="icon iconfont icon-indicator co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div class="co-cl-1 co-fs-01 co-te2">关闭toast加载框</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-1 co-mg-r05"></div>
+      </div>
+      <div @click="actionSheetU()" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+        <div class="icon iconfont icon-dibumokuai co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div class="co-cl-1 co-fs-01 co-te2">actionSheet底部弹出框</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-1 co-mg-r05"></div>
+      </div>
+    </div>
+    <div class="co-pd-a05 co-bg-1">界面控件</div>
+    <div class="co-bg-0 co-bd-t1 co-bd-b1">
+      <div @click="callWheelPicker" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+        <div class="icon iconfont icon-xuanzeqi co-fs-3"></div>
+        <div class="co-f1 co-mg-l04">
+          <div class="co-cl-1 co-fs-01 co-te2">选择器</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-1 co-mg-r05"></div>
+      </div>
+    </div>
+    <div class="co-pd-a05" v-show="tag">地址：{{msg}}</div>
+
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+    corWheelPickView.onConfirmClick = function(result){
+      vm.tag = true;
+      vm.msg = result.data[0]+result.data[1]+result.data[2];
+    }
+  })
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      msg:"",
+      tag:false
+    },
+    methods: {
+      alertU: function () {
+        corNative.alertDlg({
+          "title": "提示",
+          message: "删除成功",
+          buttonLabel: "确定"
+        })
+      },
+      confirmU: function () {
+        corNative.confirmDlg({
+          title: "警告",
+          message: "确认退出吗?",
+          buttonLabels: "取消,确定"
+        }, function (index) {
+          if(index==1){
+            corNative.alertDlg({
+              "title": "提示",
+              message: "您点击了：确定",
+              buttonLabel: "确定"
+            })
+          }
+        })
+      },
+      promptU: function () {
+        corNative.promptDlg({
+          message: "请输入内容:",
+          buttonLabels: "取消,确定"
+        }, function (index, data) {
+          if (index == 1) {
+            corNative.alertDlg({
+              "title": "提示",
+              message: "您输入的内容是：" + data,
+              buttonLabel: "确定"
+            })
+          }
+        });
+      },
+      toastU: function () {
+        corNative.toastDlg({
+          type: 0,
+          location: 5,
+          msg: "操作完成",
+          duration: 1500
+        })
+      },
+      toastU1: function () {
+        corNative.toastDlg({
+          type: 1,
+          location: 5,
+          msg: "正在加载...",
+          duration: 0
+        })
+      },
+      closeToastU: function () {
+        corNative.closeToastDlg();
+      },
+      actionSheetU: function () {
+        corNative.actionSheetDlg({
+          title: "请上传照片",
+          cancel: "取消",
+          buttons: "拍照,从相册获取"
+        }, function (index) {
+          if (index == 0) {
+            corNative.alertDlg({
+              "title": "提示",
+              message: "您点击了拍照",
+              buttonLabel: "确定"
+            })
+          } else if (index == 1) {
+            corNative.alertDlg({
+              "title": "提示",
+              message: "您点击了相册",
+              buttonLabel: "确定"
+            })
+          }
+        });
+      },
+      callWheelPicker: function () {        
+        var h = 300;
+        var params = {
+          x: 0,
+          y: window.screen.height - h,
+          width: window.screen.width,
+          height: h,
+          src: "res://picker.json",
+          select: [1, 0, 2]
+        };
+      
+        params = JSON.stringify(params);
+        corWheelPickView.open(params);
+      }
+    }
+  })
+</script>
+
+</html>

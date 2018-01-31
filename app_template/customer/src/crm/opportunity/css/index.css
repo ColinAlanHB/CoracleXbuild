@@ -1,0 +1,81 @@
+.business-wrapper{ margin-top: 10px;}
+.business-list {
+    /* height: 85px; */
+    overflow: hidden;
+    posistion: relative;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-top: 1px solid #cecece;
+    border-bottom: 1px solid #cecece;
+}
+.business-list .mainInfo{ position: relative;}
+.business-list .price {
+    font-size: 14px; padding-right: 36px; line-height: 1.5;
+    float: right;
+}
+.business-list .name {
+    font-weight: 700; line-height: 1.5;
+}
+.business-list .address{ font-size: 14px; line-height: 1.5;color: #999;}
+.business-list .additional {
+    margin-top: 5px;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #999;
+    border-top: 1px solid #cecece;
+}
+.business-list .additional div {
+    border-right: 1px #cecece solid;
+    text-align: center;
+}
+.business-list .additional div:last-child {
+    border-right: none;
+}
+
+.page-customer-manager .select {
+    width: 100%;
+    /* top: 160px; */
+    max-height: 150px;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+.co-popup {
+    position: fixed;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: .2s ease-out;
+}
+
+.page-customer-manager .select .type {
+    overflow: auto;
+    border-right: 1px #cccccc solid;
+}
+
+.page-customer-manager .select .co-cell {
+    min-height: 38px;
+}
+
+.page-customer-manager .select .sub-type {
+    -webkit-box-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    overflow: auto;
+}
+
+.page-customer-manager .indexicon {
+    font-family: "indexicon" !important;
+    font-style: normal;
+    font-size: 18px;
+    display: inline-block;
+    width: 30px;
+    vertical-align: middle;
+    padding-right: 5px;
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="工时" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+        <div class="co-pd-lr05" @click="open('picker4')">
+          <i class="coicon coicon-activity"></i>
+        </div>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-2">
+      <co-datebar yearMonth="" day="" @click="clickDayFun"></co-datebar>
+      <div v-for="item in hourList" class="co-flex co-ac co-bg-0 co-pd-a04 co-mg-t05">
+        <div class="coicon coicon-clock co-fs-6"></div>
+        <div class="co-f1 co-mg-l06 co-fs-01">
+          <div>研发项目：{{item.project.text}}</div>
+          <div>项目阶段：{{item.step.text}}</div>
+          <div>工时：{{item.date}} {{item.startTime}}~{{item.endTime}}</div>
+        </div>
+      </div>
+      <div v-show="hourTag" class="co-flex co-ver co-ac co-jc co-mg-t1">
+        <img src="images/empty-cry.png" class="cryImg" />
+        <i class="co-fs-01 co-pd-tb05">暂无工时记录</i>
+      </div>
+      <co-datetime-picker ref="picker4" type="date" v-model="dateTime" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleChange">
+      </co-datetime-picker>
+    </div>
+    <div id="co-footer" class="co-bg-0 co-bd-t1">
+      <div @click="addHour" class="co-bg-3 co-pd-a04 co-tx-c co-cl-0 co-mg-a05 co-br-a0">新增工时</div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    var backMethod = "backMethod_"+new Date().getTime();
+    window[backMethod] = function(result){
+      //通过result.data获取json值
+      vm.hourList.push(result.data);
+    }
+    var params = {
+        name:"addList",
+        __callback:backMethod
+    };
+    corNative.addNotification(params);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dateTime: '',
+      hourTag:false,
+      hourList:[
+        {
+          date:"2017-07-10",
+          startTime:"10:00",
+          endTime:"18:00",
+          project:{text:"广州地铁"},
+          step:{text:"设计"}
+        }
+      ]
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+      open:function(picker) {
+        this.$refs[picker].open();
+      },
+      handleChange:function(value) {
+        var date = this.$children[1];
+        var yearMonth = value.getFullYear() + '-' + (value.getMonth() + 1);
+        date.rows = date.init({// 刷新组件日期
+          componentData: {
+            yearMonth: yearMonth,
+            day: value.getDate()
+          }
+        });
+        date.repos();// 定位到当天
+        var $container = this.$children[1].$el;
+        setTimeout(function() {// 刷新组件选中位置
+          $container.childNodes[0].scrollLeft = (value.getDate() - 3) * 64;
+        }, 50);
+      },
+      clickDayFun: function(e) {
+        //this.$toast(e.$this.year + '/' + e.$this.data);// 获取当前点击的日期信息
+      },
+      addHour:function(){
+                 corNative.openWindow({
+            name:"addHour",
+            data:"addHour.html",
+            animID:10,
+            flag:1024
+         });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+      var now = new Date();
+      this.dateTime = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+    }
+  })
+</script>
+</html>

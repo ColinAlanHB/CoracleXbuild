@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/ui-icon.css">
+    <link rel="stylesheet" href="css/ui-control.css">
+    <link rel="stylesheet" href="news_set/css/index.css">
+</head>
+<body>
+    <div class="bc-bg"  id="Page">
+            <co-header title="设置">
+                    <co-button icon="back" slot="left" @click="location('index.html')"></co-button>
+            </co-header>
+        <div class="news-set-wrap">
+            <div class="news-set-box">
+                <co-cell title="推送设置" is-link></co-cell>
+                <co-cell title="字体设置" value="系统字体" is-link></co-cell>
+                <co-cell title="正文字号" value="中" is-link></co-cell>
+                <co-cell title="正文全屏"><co-switch v-model="value"></co-switch></co-cell>
+            </div>
+
+            <div class="news-set-box">
+                <co-cell title="离线设置" is-link></co-cell>
+                <co-cell title="仅WIFI网络下在图片"><co-switch v-model="value"></co-switch></co-cell>
+                <co-cell title="重要消息气泡提醒"><co-switch v-model="value"></co-switch></co-cell>
+            </div>
+
+            <div class="news-set-box">
+                <co-cell title="清理缓存" value="1.2MB"></co-cell>
+            </div>
+
+            <div class="news-set-box">
+                <co-cell title="应用推荐" is-link></co-cell>
+                <co-cell title="意见反馈" is-link></co-cell>
+                <co-cell title="关于" is-link></co-cell>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/news_set.js"></script>
+</body>
+</html>

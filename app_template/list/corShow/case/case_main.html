@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .tipD{transform: rotate(90deg);-webkit-transform:rotate(90deg)}
+    .tipD1{transform: rotate(-90deg);-webkit-transform:rotate(-90deg)}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div class="co-pd-tb1 co-tx-c co-cl-1">更多经典案例请扫描二维码安装</div>
+    <div class="co-flex co-ac co-jc co-pd-tb1 co-bg-0">
+      <img src="../images/ewm.png" style="width:8rem;height:8rem;display: block;" alt="">
+    </div>
+    <div class="co-pd-tb1 co-tx-c co-cl-2 co-fs-01" id="version"></div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    corJS.getDom("version").innerHTML =  "V"+corNative.getAppVersion();
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      tag:false,
+      reTag:false
+    },
+    methods:{
+      goBack:function(){
+        corJS.closeWin();
+      },
+      goHtml:function(name,url,anim){
+        corJS.openWin(name,url,anim);
+      },
+      change:function(){
+        this.tag = !this.tag;
+      },
+      change1:function(){
+        this.reTag = !this.reTag;
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .co-swipe {
+      height: 200px;
+      color: #fff;
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .co-swipe-item {
+      line-height: 200px;
+    }
+
+    .slide1 {
+      background-color: #0089dc;
+      color: #fff;
+    }
+
+    .slide2 {
+      background-color: #ffd705;
+      color: #000;
+    }
+
+    .slide3 {
+      background-color: #ff2d4b;
+      color: #fff;
+    }
+
+    .main-list .list-example {
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="滑动" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <section class="page-rate-container page-content-main">
+      <dl class="main-list">
+        <dt class="list-title"><span>基础用法</span></dt>
+        <dd class="list-example">
+          <co-swipe :auto="4000">
+            <co-swipe-item class="slide1">1</co-swipe-item>
+            <co-swipe-item class="slide2">2</co-swipe-item>
+            <co-swipe-item class="slide3">3</co-swipe-item>
+          </co-swipe>
+        </dd>
+
+        <dt class="list-title"><span>隐藏 indicators</span></dt>
+        <dd class="list-example">
+          <co-swipe :show-indicators="false">
+            <co-swipe-item class="slide1">1</co-swipe-item>
+            <co-swipe-item class="slide2">2</co-swipe-item>
+            <co-swipe-item class="slide3">3</co-swipe-item>
+          </co-swipe>
+        </dd>
+
+        <dt class="list-title"><span>取消自动播放</span></dt>
+        <dd class="list-example">
+          <co-swipe :auto="0">
+            <co-swipe-item class="slide1">1</co-swipe-item>
+            <co-swipe-item class="slide2">2</co-swipe-item>
+            <co-swipe-item class="slide3">3</co-swipe-item>
+          </co-swipe>
+        </dd>
+
+        <dt class="list-title"><span>设置默认显示页</span></dt>
+        <dd class="list-example">
+          <co-swipe :auto="0" :default-index="1">
+            <co-swipe-item class="slide1">1</co-swipe-item>
+            <co-swipe-item class="slide2">2</co-swipe-item>
+            <co-swipe-item class="slide3">3</co-swipe-item>
+          </co-swipe>
+        </dd>
+
+        <dt class="list-title"><span>单个幻灯片</span></dt>
+        <dd class="list-example">
+          <co-swipe :show-indicators="false">
+            <co-swipe-item class="slide1">SINGLE SLIDE</co-swipe-item>
+          </co-swipe>
+        </dd>
+      </dl>
+    </section>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {      
+      corNative.setWindowScrollbarVisibility(false);
+    });
+    var vm = new Vue({
+      el: "#app"
+    });
+  </script>
+</body>
+</html>

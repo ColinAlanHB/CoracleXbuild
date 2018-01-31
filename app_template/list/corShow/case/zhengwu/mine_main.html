@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div @click="goHtml('login')" class="co-flex co-ac co-bg-6 co-cl-0 co-pd-tb1">
+      <div class="co-pd-l1"><img src="images/avtar.png" style="width:3rem;height:3rem;display: block;" /></div>
+      <div class="co-pd-l1">{{loginStatus}}</div>
+    </div>
+    <div class="co-mg-t05 co-bg-0 co-bd-t1 co-bd-b1">
+      <div @click="goHtml('changeInfo')" class="co-flex co-ac co-mg-l04 co-bd-b1 co-pd-tb06">
+        <div><i class="coicon coicon-edit co-fs-4 co-cl-7"></i></div>
+        <div class="co-f1 co-pd-l05">资料修改</div>
+        <div class="coicon coicon-enter co-cl-2"></div>
+      </div>
+      <div @click="goHtml('forget')" class="co-flex co-ac co-mg-l04 co-bd-b1 co-pd-tb06">
+        <div><i class="coicon coicon-lock_fill co-fs-4 co-cl-7"></i></div>
+        <div class="co-f1 co-pd-l05">修改密码</div>
+        <div class="coicon coicon-enter co-cl-2"></div>
+      </div>
+      <div @click="goHtml('card')" class="co-flex co-ac co-mg-l04 co-bd-b1 co-pd-tb06">
+        <div><i class="coicon coicon-people_fill co-fs-4 co-cl-7"></i></div>
+        <div class="co-f1 co-pd-l05">实名认证</div>
+        <div class="coicon coicon-enter co-cl-2"></div>
+      </div>
+      <div @click="goHtml('myMessage')" class="co-flex co-ac co-mg-l04 co-pd-tb06">
+        <div><i class="coicon coicon-customerservice co-fs-4 co-cl-7"></i></div>
+        <div class="co-f1 co-pd-l05">我的咨询/投诉</div>
+        <div class="coicon coicon-enter co-cl-2"></div>
+      </div>
+    </div>
+    <div v-show="loginTag" class="co-bg-6 co-cl-0 co-tx-c co-br-a0 co-pd-tb05 co-mg-lr06" style="margin-top:2.5rem">退出登陆</div>
+</div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script src="js/common.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      loginTag:false,
+      loginStatus:"点击登陆"
+    },
+    methods:{
+      goHtml:function(name){
+                 corNative.openWindow({
+          name:name,
+          data: name+".html",
+          animID:10,
+          flag:1024
+        })
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

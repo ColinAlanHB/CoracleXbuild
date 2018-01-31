@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>云智家控账号登录</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/smart.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <!-- ToDo: 替换为本地 font 资源 -->
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_qsmw9mnt83fh6w29.css">  
+  <link rel="stylesheet" href="./css/login.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>
+</head>
+<body>
+<div id="app">
+  <co-header title='云智家控账号登录'></co-header>
+  <main class="login-main">
+    <section class="login-main-form">
+      <div class="form--field form--phone">
+        <input type="tel" class="field--ipt" placeholder="请输入手机号" v-model='user'>
+        <i class="icon iconfont icon-phone field--left"></i>
+      </div>
+      <div class="form--field form--pwd">
+        <input type="text" class="field--ipt" placeholder="请输入登录密码" v-model='pwd'>
+        <input type="password" class="field--ipt field--secret" placeholder="请输入登录密码" v-model='pwd' :style='{display: hasShowPwd?"none":""}'>
+        <i class="icon iconfont icon-lock field--left"></i>
+        <i class="icon iconfont icon-eye field--right" 
+        @click='hasShowPwd=!hasShowPwd' :style='{color: hasShowPwd?"black":""}'></i>
+      </div>
+    </section>
+    <p class="login-main-link">
+      <a href="register.html" class="link--register">注册新用户</a>
+      <a href="forget.html" class="link--forget">忘记密码？</ins></a>
+    </p>
+    <co-button class="login-main-submit">登录</co-button>
+    <a href='index.html' class="login-main-skip">
+      跳过>>
+    </a>
+  </main>	  
+  <footer class="login-third">
+    <ul class="login-third-list">
+      <li class="list--btn">
+        <a>
+          <i class="icon iconfont icon-qq btn--icon"></i>
+          <p class="btn--meta">QQ登录</p>
+        </a>        
+      </li>      
+    </ul>    
+  </footer>  
+</div>
+<script>
+	new Vue({
+		el: '#app',
+    data: {
+      user: '',
+      pwd: '',
+      hasShowPwd: false
+    }
+	})
+</script>
+</body>
+</html>

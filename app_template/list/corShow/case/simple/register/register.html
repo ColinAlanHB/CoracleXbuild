@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>register</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+    .userName{width:1.2rem;height:1.2rem;background: url(img/userName.png) no-repeat;background-size:100%;}
+    .passWord{width:1.2rem;height:1.2rem;background: url(img/userPass.png) no-repeat;background-size:100% 100%;}
+    .passWord1{width:1.2rem;height:1.2rem;background: url(img/password1.png) no-repeat;background-size:100% 100%;}
+    .yzm{width:1.2rem;height:1.2rem;background: url(img/yzm.png) no-repeat;background-size:100% 100%;}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header fixed title="注册" class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top  co-bg-0 co-pd-b05">
+      <div class="co-flex co-ac co-bd-a1 co-mg-lr08 co-br-a0 co-pd-a02 co-mg-t1">
+        <div class="userName co-mg-r05"></div>
+        <div class="co-bd-l1 co-pd-lr06">
+          <input v-model="userName" placeholder="账号" type="text" class="co-field-core co-input co-cl-2">
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bd-a1 co-mg-lr08 co-mg-t06 co-br-a0 co-pd-a02">
+        <div class="yzm co-mg-r05"></div>
+        <div class="co-bd-l1 co-pd-lr06 co-f1">
+          <input v-model="passWord" placeholder="验证码" type="text" class="co-field-core co-input co-cl-2">
+        </div>
+        <div @click="getYzm" :class="['co-pd-a02','co-br-a0','co-bg-3','co-cl-0']">{{yzm}}</div>
+      </div>
+      <div class="co-flex co-ac co-bd-a1 co-mg-lr08 co-mg-t06 co-br-a0 co-pd-a02">
+        <div class="passWord co-mg-r05"></div>
+        <div class="co-bd-l1 co-pd-lr06">
+          <input v-model="passWord" placeholder="密码" type="passWord" class="co-field-core co-input co-cl-2">
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bd-a1 co-mg-lr08 co-mg-t06 co-br-a0 co-pd-a02">
+        <div class="passWord1 co-mg-r05"></div>
+        <div class="co-bd-l1 co-pd-lr06">
+          <input v-model="passWord" placeholder="确认密码" type="passWord" class="co-field-core co-input co-cl-2">
+        </div>
+      </div>
+      <div  class="co-flex co-jc co-cl-0 co-mg-lr08 co-br-a0 co-bg-3 co-pd-a05 co-bd-a1 co-mg-t1">注册</div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      userName:"",
+      passWord:"",
+      yzm:"获取验证码"
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+      getYzm:function(){
+        var times = 60;
+        var self = this;
+        var time = setInterval(function(){
+          times--;
+          if(times==0){
+            self.yzm = "获取验证码";
+            clearInterval(time);
+            return;
+          }
+          self.yzm = times+"s后重新发送";
+        },1000)
+      }
+    }
+  })
+</script>
+</html>

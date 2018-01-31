@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body class="">
+  <div id="app" v-cloak>
+    <co-header @click.native="goH" id="co-header" :title=title fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+        <div class="coicon coicon-add co-fs-4 co-cl-0" v-show="appTag==0"></div>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-content-bottom">
+    </div>
+    <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+      <div  @click="tabMenu('会话',0)" :class="['co-f1','co-flex','co-ver','co-ac','co-jc',{'co-cl-7':appTag==0}]">
+        <i class="coicon coicon-interactive co-fs-4"></i>
+        <div class="co-fs-02">会话</div>
+      </div>
+      <div @click="tabMenu('通讯录',1)" :class="['co-f1','co-flex','co-ver','co-ac','co-jc',{'co-cl-7':appTag==1}]">
+        <i class="coicon coicon-createtask co-fs-4"></i>
+        <div class="co-fs-02">通讯录</div>
+      </div>
+      <div @click="tabMenu('工作区',2)" :class="['co-f1','co-flex','co-ver','co-ac','co-jc',{'co-cl-7':appTag==2}]">
+        <i class="coicon coicon-manage co-fs-4"></i>
+        <div class="co-fs-02">工作区</div>
+      </div>
+      <div @click="tabMenu('个人中心',3)"  :class="['co-f1','co-flex','co-ver','co-ac','co-jc',{'co-cl-7':appTag==3}]">
+        <i class="coicon coicon-mine co-fs-4"></i>
+        <div class="co-fs-02">个人中心</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+corJS.ready(function(){
+    var top = corJS.offset("co-header").h;
+    var bottom = corJS.offset("co-footer").h;
+    var h = corJS.getHeight() - top - bottom;
+    corNative.openMultiFloatWindow({
+          content: {
+              content: [{
+                  inPageName: "chart-frame", 
+                  inUrl: "chart_main.html",
+                  },                                  
+                  {
+                  inPageName: "contact-frame", 
+                  inUrl: "contact_main.html",
+                  },
+                  {
+                  inPageName: "app-frame", 
+                  inUrl: "app_main.html",
+                  },  
+                  {
+                  inPageName: "mine-frame", 
+                  inUrl: "mine_main.html",
+                  }
+                  ]
+          },
+          name: "more-frame",
+          dataType: 0,
+          x: 0,
+          y: top,
+          h:h,
+          indexSelected: 2,
+      });
+    corNative.setMultiFWindowFlippingEnbaled(1);
+    corNative.onchangeInMultiFWindow(function(index){
+      vm.appTag = index;
+    })
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      searchValue:"",
+      loginTag:false,
+      loginStatus:"点击登陆",
+      appTag:2,
+      title:"工作区"
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+      tabMenu:function(name,index){
+        vm.title = name;
+        vm.appTag = index;
+        corNative.setSelectedInMultiFWindow({
+          name:'more-frame', 
+          index:index
+        });
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

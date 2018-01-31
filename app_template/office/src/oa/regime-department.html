@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A1311部门制度</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/regime-department.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+</head>
+<body>
+<div id="departmentRegime">
+	<co-header :title="department">
+		<a href="regime-company.html" slot="left" class="icon iconfont icon-back"></a>
+	</co-header>
+	<section>
+		<header><co-search v-model="schStr" placeholder="搜索"></co-search></header>
+		<section class="main-cells">
+			<co-cell :title='item.title' :label='labelFactory(item.ext, item.updateTime, item.byteSize)' v-for='(item, index) in pdfs' :key='"item"+index'>						
+				<i class="icon iconfont" :class='item.ext | ext2icon' slot="icon"></i>
+				<i class="icon iconfont icon-eye">{{ item.readCnt }}</i>
+			</co-cell>			
+		</section>
+	</section>	
+</div>
+<script>
+	new Vue({
+		el: '#departmentRegime',
+		data: {
+			department: "人力资源",
+			schStr: '',
+			pdfs: [
+				{
+					title: "内部推荐奖励制度",					
+					ext: '.pdf',
+					updateTime: '2015-10-16 13:48',
+					byteSize: '314153',
+					readCnt: 54
+				},
+				{
+					title: "内部推荐奖励制度",					
+					ext: '.pdf',
+					updateTime: '2015-10-16 13:48',
+					byteSize: '314153',
+					readCnt: 54
+				},
+				{
+					title: "内部推荐奖励制度",					
+					ext: '.pdf',
+					updateTime: '2015-10-16 13:48',
+					byteSize: '314153',
+					readCnt: 54
+				},
+				{
+					title: "内部推荐奖励制度",					
+					ext: '.pdf',
+					updateTime: '2015-10-16 13:48',
+					byteSize: '314153',
+					readCnt: 54
+				}
+			]			
+		},
+		filters: {
+			ext2icon: function (ext) {
+				return "icon-" + ext.substring(ext.lastIndexOf('.')+1);
+			}
+		},
+		methods: {
+			labelFactory: function (ext, time, byte) {
+				var EXT = ext.substring(ext.lastIndexOf('.')+1).toUpperCase(),
+						upTime = time,
+						byte = parseFloat(byte / 1024).toFixed(2);
+				return EXT + " " + upTime + " " + byte + "KB"
+			}
+		}
+	});
+</script>
+</body>
+</html>

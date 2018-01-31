@@ -1,0 +1,141 @@
+html,
+body,
+#newsComment {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#newsComment .co-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+#newsComment .comment-win {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 2rem;
+  padding-bottom: 1.17333333rem;
+  overflow: scroll;
+}
+#newsComment .comment-write {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  height: 1.17333333rem;
+}
+#newsComment .comment-write input {
+  box-sizing: border-box;
+  width: 9.38666667rem;
+  height: 60px;
+  padding: .2rem .24rem;
+  border: 1px solid;
+  font-size: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: .08rem;
+}
+[data-dpr="2"] #newsComment .comment-write input {
+  font-size: 20px;
+}
+[data-dpr="3"] #newsComment .comment-write input {
+  font-size: 30px;
+}
+#newsComment ul.comment-list {
+  padding-left: .72rem;
+}
+#newsComment ul.comment-list > li {
+  border-bottom: 1px solid;
+  position: relative;
+  padding: .6rem .28rem .6rem 1.52rem;
+}
+#newsComment .avatar-left {
+  position: absolute;
+  left: 0;
+  top: .6rem;
+}
+#newsComment .avatar-left .iconfont {
+  font-size: 50px;
+}
+[data-dpr="2"] #newsComment .avatar-left .iconfont {
+  font-size: 100px;
+}
+[data-dpr="3"] #newsComment .avatar-left .iconfont {
+  font-size: 150px;
+}
+#newsComment .comment-main {
+  position: relative;
+}
+#newsComment .comment-main p {
+  margin-bottom: .28rem;
+}
+#newsComment .comt-name {
+  font-size: 15px;
+}
+[data-dpr="2"] #newsComment .comt-name {
+  font-size: 30px;
+}
+[data-dpr="3"] #newsComment .comt-name {
+  font-size: 45px;
+}
+#newsComment .comt-profile {
+  font-size: 10px;
+  height: .28rem;
+}
+[data-dpr="2"] #newsComment .comt-profile {
+  font-size: 20px;
+}
+[data-dpr="3"] #newsComment .comt-profile {
+  font-size: 30px;
+}
+#newsComment .comt-text {
+  font-size: 12px;
+  line-height: 1.5;
+}
+[data-dpr="2"] #newsComment .comt-text {
+  font-size: 24px;
+}
+[data-dpr="3"] #newsComment .comt-text {
+  font-size: 36px;
+}
+#newsComment .comt-time {
+  position: absolute;
+  top: 0;
+  right: .6rem;
+  font-size: 10px;
+}
+[data-dpr="2"] #newsComment .comt-time {
+  font-size: 20px;
+}
+[data-dpr="3"] #newsComment .comt-time {
+  font-size: 30px;
+}
+#newsComment .comment-reply {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: .24rem;
+}
+#newsComment .reply-title {
+  margin-bottom: .24rem;
+}
+#newsComment .reply-title span {
+  margin-right: .28rem;
+}
+#newsComment .reply-text {
+  font-size: 12px;
+  line-height: 1.5;
+}
+[data-dpr="2"] #newsComment .reply-text {
+  font-size: 24px;
+}
+[data-dpr="3"] #newsComment .reply-text {
+  font-size: 36px;
+}

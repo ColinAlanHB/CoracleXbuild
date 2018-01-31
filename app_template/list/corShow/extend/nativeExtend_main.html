@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css">
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .tipD {
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg)
+    }
+
+    .tipD1 {
+      transform: rotate(-90deg);
+      -webkit-transform: rotate(-90deg)
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak class="co-cl-1">
+    <div class="co-bg-0 co-bd-t1 co-bd-b1">
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('camera', '../plugin/camera.html',0)">
+        <div class="icon iconfont icon-paizhao co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corCamera</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装系统相机、自定义相机View</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('corScanner', '../plugin/corScanner.html',0)">
+        <div class="icon iconfont icon-erweimazhuanhuan co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corScanner</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">二维码插件，此插件提供可以自定义扫描界面UI设置接口,用户传入资源文件,使其效果更能满足应用的需求和ui设计</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('corVideo', '../plugin/corVideo.html',0)">
+        <div class="icon iconfont icon-shipinx co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corVideo</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">视频播放插件，封装视频播放和录制相关操作</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('corJsonXmlTrans', '../plugin/jsonToxml.html',0)">
+        <div class="icon iconfont icon-zhuanhuan co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corJsonXmlTrans</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">JSON, XML转换工具，该插件封装了JSON, XML格式数据相互转换的功能</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('corScrollPicture', '../plugin/corScrollPicture.html',0)">
+        <div class="icon iconfont icon-lunbotu co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corScrollPicture</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">轮播图插件,该插件实现图片自动滚动联播。</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('corLocation', '../plugin/corLocation.html',0)">
+        <div class="icon iconfont icon-dingwei1 co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corLocation</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">定位插件，定位功能.同时使用GPS,GPRS,WIFI三种方式联合定位,取最先返回值.</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('corMobSMS', '../plugin/corMobSMS.html',0)">
+        <div class="icon iconfont icon-duanxin co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corMobSMS</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">Mob短信验证插件封装Mob短信验证相关操作</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('camera', '../plugin/audio.html',0)">
+        <div class="icon iconfont icon-yinpin co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corAudio</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装音频操作接口</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      <div @click="collapse('image')" class="co-flex co-ac co-pd-tb05 co-bd-b1" :class="getCollapseStyle('image')">
+        <div class="icon iconfont icon-icontupianguanli co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">图片管理插件</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05" :class='getEnterStyle("image")'></div>
+      </div>
+      <div v-show="unfolded.indexOf('image') > -1" class="co-mg-l1">
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="openImagePicker">
+          <div class="co-f1 co-pd-l04 co-cl-2">打开照片选择器</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="openImageViewer">
+          <div class="co-f1 co-pd-l04 co-cl-2">打开图片浏览器</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="openImageCropper">
+          <div class="co-f1 co-pd-l04 co-cl-2">打开图片裁剪器</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="save2Album">
+          <div class="co-f1 co-pd-l04 co-cl-2">储存到相册</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="clearOutput">
+          <div class="co-f1 co-pd-l04 co-cl-2">清理插件导出的图片</div>
+        </div>
+      </div>
+
+      <div @click="collapse('file')" class="co-flex co-ac co-pd-tb05 co-bd-b1" :class="getCollapseStyle('file')">
+        <div class="icon iconfont icon-wenjianguanli co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">文件管理插件</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05" :class='getEnterStyle("file")'></div>
+      </div>
+    </div>
+    <div v-show="unfolded.indexOf('file') > -1" class="co-mg-l1">
+      <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="openExplorer">
+        <div class="co-f1 co-pd-l04 co-cl-2">打开文件管理器（单选）</div>
+      </div>
+      <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="openMultiExplorer">
+        <div class="co-f1 co-pd-l04 co-cl-2">打开复选...</div>
+      </div>
+      <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="createFile">
+        <div class="co-f1 co-pd-l04 co-cl-2">新建文件</div>
+      </div>
+      <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="createFloder">
+        <div class="co-f1 co-pd-l04 co-cl-2">新建目录</div>
+      </div>
+      <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click="deleteCreated">
+        <div class="co-f1 co-pd-l04 co-cl-2">删除新建（文件&目录）</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+    // corImage.onLabelClicked = function (id) {
+    //   alert('点击标签ID为：' + id);
+    // }
+
+    // corImage.onImageLongClicked = function (info) {
+    //   alert(info);
+    // }
+  });
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      tag: false,
+      reTag: false,
+      unfolded: [],
+      isIPadFullScreen: false,
+      fileCnt: 0,
+      dirCnt: 0
+    },
+    methods: {
+      call: function () {
+        var jsonData = {
+          numbers: [
+            "13813813800",
+            "15012772690"
+          ],
+          content: "测试短信内容"
+        }
+        corNative.sms(jsonData);
+      },
+      msm: function () {
+        var jsonData = {
+          numbers: [
+            "13813813800",
+            "15012772690"
+          ],
+          content: "测试短信内容"
+        }
+        corNative.sms(jsonData);
+      },
+      collapse: function (key) {
+        var curIndex = this.unfolded.indexOf(key);
+        curIndex > -1 ? this.unfolded.splice(curIndex, 1) : this.unfolded.push(key);
+      },
+      getCollapseStyle: function (key) {
+        var isUnfolded = this.unfolded.indexOf(key) > -1;
+        return {
+          "co-mg-l05": !isUnfolded,
+          "co-bg-2 co-pd-l05": isUnfolded
+        }
+      },
+      getEnterStyle: function (key) {
+        var isUnfolded = this.unfolded.indexOf(key) > -1;
+        return isUnfolded ? ["tipD1"] : ["tipD"];
+      },
+      openImagePicker: function () {
+        var params = {
+          quality: 1,
+          style: 1
+        };
+
+        corImage.openPicker(params, function (error, info) {
+          if (error == -1) {
+            alert("中止选择图片！");
+          } else if (error == 0) {
+            corImage.openBrowser({
+              data: info.data
+            });
+          } else {
+            alert("选择图片出错！");
+          }
+        });
+      },
+      openImageViewer: function () {
+        var data = {
+          displayActionButton: true,
+          displayNavArrows: true,
+          enableGrid: true,
+          //startOnGrid:true,
+          startIndex: 2,
+          data: ["res://photo1.jpg",
+            {
+              src: "res://photo2.jpg",
+              thumb: "res://photo2t.jpg",
+              showBigPic: true
+            },
+            {
+              src: "res://photo3.jpg",
+              thumb: "res://photo3t.jpg",
+              desc: "22222222222222"
+            },
+            {
+              src: "http://it-eproducts.com/images/3-1347760443.jpg",
+              thumb: "res://photo4t.jpg",
+              desc: "22222222222222"
+            }
+          ],
+          style: 1,
+          gridBackgroundColor: "#4A88C1", // style为1时生效
+          gridBrowserTitle: "图片浏览",
+          viewFramePicPreview: { //位置、大小
+            x: 0,
+            y: 0,
+            w: 1080,
+            h: 1767,
+          },
+          viewFramePicGrid: { //位置、大小
+            x: 0,
+            y: 0,
+            w: 200,
+            h: 1767,
+          }
+        }
+        corImage.openBrowser(data, function () {
+          alert("关闭图片浏览器！");
+        });
+
+      },
+      openImageCropper: function () {
+        var data = {
+          src: "res://photo5.jpg",
+          mode: 2
+        }
+        corImage.openCropper(data, function (error, info) {
+          if (error == -1) {
+            alert("中止图片裁剪！");
+          } else if (error == 0) {
+            corImage.openBrowser({
+              data: [info.data]
+            });
+          }
+        });
+      },
+      save2Album: function () {
+        var data = {
+          localPath: "res://image.jpg",
+        }
+        corImage.saveToPhotoAlbum(data, function (err, errStr) {
+          if (!err) {
+            alert("储存成功!");
+            vm.openImagePicker();
+          } else {
+            alert("储存失败:" + errStr);
+          }
+        });
+      },
+      clearOutput: function () {
+        var isClean = corImage.clearOutputImages();
+        if (!isClean) {
+          alert('清除失败！');
+          return;
+        }
+        alert("清除成功!");
+        vm.openImagePicker();
+      },
+      toggleIPadFullScreen: function () {
+        var isFull = this.isIPadFullScreen ? 0 : 1;
+        corImage.setIpadPopEnable(isFull);
+
+        this.isIPadFullScreen = !!isFull;
+        alert((this.isIPadFullScreen ? "打开" : "关闭") + "iPad下插件全屏模式");
+      },
+      openImageLabelViewer: function () {
+        var openParam = {
+          "width": 600,
+          "height": 333,
+          "image": "res://photo2.jpg",
+          "x": 50,
+          "y": 500,
+        }
+        corImage.openLabelViewContainer(JSON.stringify(openParam));
+        var labelParam = [{
+            "id": 1,
+            "content": "标签1",
+            x: 20,
+            y: 40
+          },
+          {
+            "id": 2,
+            "content": "标签2",
+            x: 50,
+            y: 100
+          },
+          {
+            "id": 3,
+            "content": "标签3",
+            x: 100,
+            y: 200
+          }
+        ]
+        corImage.addLabelView(labelParam);
+        var info = corImage.getPicInfoWithLabelViews();
+        corImage.showLabelViewPic(info);
+      },
+      openExplorer() {
+        corFileMgr.explorer("wgt://data", function (err, path) {
+          if (!err) {
+            alert('选择的文件为：' + path.slice(-5));
+            return; 
+          }
+          if (path === null) {
+            alert(`没有选择文件`);
+            return;
+          }
+        });
+      },
+      openMultiExplorer() {
+        corFileMgr.multiExplorer("wgt://data", function (err, paths) {
+          if (!err) {
+            var picks = paths.map(function(path) {
+              var i = path.lastIndexOf('/');
+              return path.slice(i+1);
+            });
+
+            alert('选择的文件为：\r\n' + picks.join(";") + '"')
+            return;
+          }
+          if (paths === null) {
+            alert('取消了文件管理器');
+            return;
+          } else if (paths.length === 0) {
+            alert('没有选择文件');
+            return;
+          }
+        });
+      },
+      createFile() {
+        var file = corFileMgr.create({
+          path: 'wgt://data/' + (++this.fileCnt) + '.txt'
+        });
+
+        if (file) {
+          alert('成功创建文件'+ this.fileCnt +'.txt"');
+        } else {
+          this.fileCnt--;
+          alert('文件'+ this.fileCnt +'.txt"不存在');
+        }
+      },
+      createFloder() {
+        var hasDir = corFileMgr.mkdir({
+          path: 'wgt://data/test'+ (++this.dirCnt) +'/'
+        });
+
+        if (hasDir) {
+          alert('成功创建目录"test'+ this.dirCnt +'"');
+        } else {
+          this.dirCnt--;
+          alert('目录"test"不存在');
+        }
+      },
+      deleteCreated() {
+        var errFiles = [];
+        var errDirs = [];
+        var isDeleted;
+        for (var i = this.fileCnt; i > 0; i--) {
+          isDeleted = corFileMgr.deleteFileByPath('wgt://data/'+ i +'.txt');
+          if (!isDeleted) {
+            errFiles.push(i);
+          }
+        }
+        for (var j = this.dirCnt; j > 0; j--) {
+          isDeleted = corFileMgr.deleteFileByPath('wgt://data/test' + j + '/');
+          if (!isDeleted) {
+            errDirs.push(j);
+          }
+        }
+        if (errFiles.length === 0 && errDirs.length === 0) {
+          alert('所有新建文件和文件夹已删除');
+          return;
+        }
+        if (errFiles.length > 0) {
+          var fMsg = '删除：\r\n';
+          for (let k = errFiles.length; k >0; k--) {
+            fMsg += errFiles[k-1] + '.txt\r\n';
+          }
+          fMsg += '失败';
+          alert(fMsg);
+        }
+        if (errDirs.length > 0) {
+          var dMsg = '删除：\r\n';
+          for (let k = errDirs.length; k >0; k--) {
+            dMsg += 'test' + errDirs[k-1];
+          }
+          dMsg += '失败';
+          alert(dMsg);
+        }
+      },
+      goHtml: function (name, url, anim) {
+        corNative.openWindow({
+          name: name,
+          data: url,
+          animID: 2,
+          flag: 1024,
+        });
+      }
+    }
+  });
+</script>
+
+</html>

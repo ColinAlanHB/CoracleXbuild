@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div><img src="images/kv-guide.jpg" class="bannerImg" /></div>
+    <div class="co-bd-b1 co-bd-t1 co-bg-0 co-mg-t05">
+      <div class="co-pd-a04 co-flex co-ac co-cl-7"><i class="coicon coicon-group co-fs-4"></i>办事指南</div>
+      <div  @click="goDetial('search')" class="co-flex co-ac co-bd-t1 co-pd-tb08 co-cl-2 ">
+        <div class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+          <i class="coicon coicon-qianniu co-fs-5"></i>
+          <div class="co-fs-02 co-mg-t02">婚育收养</div>
+        </div>
+        <div class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+          <i class="coicon coicon-headlines_fill co-fs-5"></i>
+          <div class="co-fs-02 co-mg-t02">户籍身份</div>
+        </div>
+        <div class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+          <i class="coicon coicon-group co-fs-5"></i>
+          <div class="co-fs-02 co-mg-t02">教育培训</div>
+        </div>
+        <div class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+          <i class="coicon coicon-homepage co-fs-5"></i>
+          <div class="co-fs-02 co-mg-t02">住房保障</div>
+        </div>
+      </div>
+      <div  @click="goDetial('search')" class="co-flex co-ac co-bd-t1 co-pd-tb08 co-cl-2 ">
+        <div class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+          <i class="coicon coicon-field-success co-fs-5"></i>
+          <div class="co-fs-02 co-mg-t02">执业资格</div>
+        </div>
+        <div class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+          <i class="coicon coicon-decoration-fill co-fs-5"></i>
+          <div class="co-fs-02 co-mg-t02">证件办理</div>
+        </div>
+        <div class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+          <i class="coicon coicon-financial_fill co-fs-5"></i>
+          <div class="co-fs-02 co-mg-t02">纳税缴费</div>
+        </div>
+        <div class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+          <i class="coicon coicon-tasklist co-fs-5"></i>
+          <div class="co-fs-02 co-mg-t02">劳动就业</div>
+        </div>
+      </div>
+    </div>
+    <div class="co-bg-0 co-pd-a04 co-bd-b1 co-cl-7 co-mg-t05 co-flex co-jsb">
+    最新动态<i class="coicon coicon-more co-cl-7 co-fs-3"></i>
+    </div>
+    <div class="co-of co-bg-0">
+        <div @click="goDetial('newsDetail')" class="co-flex co-pd-a04 co-bd-b1">
+          <div><img src="images/news.jpg" style="width:4.5rem;height:3rem;display: block;" /></div>
+          <div class="co-f1 co-flex co-ver co-jsb co-pd-l04">
+            <div class="co-te2 co-cl-1">海通证券王开国卸任在即 券业将别最后一位“大佬”</div>
+            <div class="co-cl-2 co-fs-02 co-flex co-jsb">
+              <span>来源：头条</span>
+              <span>2017-07-13</span>
+            </div>
+          </div>
+        </div>
+        <div @click="goDetial('newsDetail')" class="co-flex co-pd-a04 co-bd-b1">
+          <div class="co-f1 co-flex co-ver co-jsb">
+            <div class="co-te2 co-cl-1">海通证券王开国卸任在即 券业将别最后一位“大佬”</div>
+            <div class="co-cl-2 co-fs-02 co-flex co-jsb">
+              <span>来源：头条</span>
+              <span>2017-07-13</span>
+            </div>
+          </div>
+        </div>
+        <div @click="goDetial('newsDetail')" class="co-flex co-pd-a04 co-bd-b1">
+          <div class="co-f1 co-flex co-ver co-jsb">
+            <div class="co-te2 co-cl-1">海通证券王开国卸任在即 券业将别最后一位“大佬”</div>
+            <div class="co-cl-2 co-fs-02 co-flex co-jsb">
+              <span>来源：头条</span>
+              <span>2017-07-13</span>
+            </div>
+          </div>
+          <div class="co-pd-l04"><img src="images/news.jpg" style="width:4.5rem;height:3rem;display: block;" /></div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      goDetial:function(name){
+                corNative.openWindow({
+          name:name,
+          data: name+".html",
+          animID:10,
+          flag:1024
+        })
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

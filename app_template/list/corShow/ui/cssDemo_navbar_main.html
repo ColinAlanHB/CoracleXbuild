@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-navbar v-model="selected">
+      <co-tab-item id="1">选项一</co-tab-item>
+      <co-tab-item id="2">选项二</co-tab-item>
+      <co-tab-item id="3">选项三</co-tab-item>
+    </co-navbar>
+
+    <div>
+      <co-cell class="page-part" title="当前选中">{{ selected }}</co-cell>
+    </div>
+
+    <co-tab-container v-model="selected">
+      <co-tab-container-item id="1">
+        <co-cell v-for="n in 10" :title="'内容 ' + n" :key='n'></co-cell>
+      </co-tab-container-item>
+      <co-tab-container-item id="2">
+        <co-cell v-for="n in 4" :title="'测试 ' + n" :key='n'></co-cell>
+      </co-tab-container-item>
+      <co-tab-container-item id="3">
+        <co-cell v-for="n in 6" :title="'选项 ' + n" :key='n'></co-cell>
+      </co-tab-container-item>
+    </co-tab-container>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setBounceEnabled(1);
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        selected: '1'
+      }
+    });
+  </script>
+</body>
+
+</html>

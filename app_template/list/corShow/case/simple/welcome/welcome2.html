@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+	<title>欢迎引导页</title>
+	<link rel="stylesheet" href="../public/css/font/iconfont.css" />
+	<link rel="stylesheet" href="../public/css/style.css" />
+	<link rel="stylesheet" href="../public/css/flex.css" />
+	<link rel="stylesheet" href="../public/css/base.css" />
+	<style>
+		.loadImg{width:100%;height:100%;display: block;}
+		.nextBtn{
+			width:9rem;
+			height:2.5rem;
+			background-color:#7fc2f9;
+			position: absolute;
+			z-index: 99;
+			bottom: 2rem;
+			left:50%;
+			margin-left:-4.5rem;
+			-webkit-border-radius:.3rem;
+			border-radius:.3rem;
+			line-height: 2.5rem;
+			text-align: center;
+			color:#fff;
+		}
+		.backH{
+			width:2rem;
+			height:2rem;
+			position: absolute;
+			z-index: 99;
+			top:1rem;
+			line-height: 2rem;
+			text-align: center;
+			color:#fff;
+		}
+	</style>
+</head>
+<body  class="co-body">
+	<!--auto：是否自动滑动 0为不滑动  show-indicators：是否显示底部圆点  continuous：是否可以循环播放-->
+	<div id="app" class="co-Page" v-cloak>
+		<co-swipe :auto="0" :continuous="false">
+		  <co-swipe-item>
+			<img src="img/load11.png" class="loadImg" />
+			<div @click="goApp" class="backH">
+				<i class="coicon coicon-return co-fs-6 co-cl-2"></i>
+			</div>
+		  </co-swipe-item>
+		  <co-swipe-item>
+			<img src="img/load22.png" class="loadImg" />
+		  </co-swipe-item>
+		  <co-swipe-item>
+			<img src="img/load33.png" class="loadImg" />
+			<div class="nextBtn" @click="goApp">立即体验</div>
+		  </co-swipe-item>
+		</co-swipe>
+	</div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+    corJS.ready(function(){
+
+    })
+	var vm = new Vue({
+		el:"#app",
+		data:{
+		},
+		methods:{
+			goApp:function(){
+				corNative.closeWindow({
+	              animID:-1,
+	              animDuration:300
+	            });
+			}
+		},
+		created:function(){
+		},
+		mounted:function(){
+		}
+	})
+</script>
+</html>

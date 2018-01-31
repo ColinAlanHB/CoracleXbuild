@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+  <style>
+    .foodBtn{padding:.3rem .5rem;}      
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+      <div class="co-bg-0">
+        <div v-show="type=='order'">
+          <div @click="goDetial('orderDetail')" v-for="item in data.concat(data)" class="co-flex co-pd-a04 co-bd-b1 co-ac">
+            <div><img :src="item.img" style="width:3.6rem;height:3.4rem;display: block;" alt=""></div>
+            <div class="co-f1 co-mg-l04 co-fs-02 co-cl-2 co-flex co-ver co-jsa">
+              <div class="co-fs-01 co-cl-1">{{item.title}}</div>
+              <div>订单号：{{item.num}}</div>
+              <div>支付方式：{{item.pay}}</div>
+              <div>餐厅电话：{{item.tel}}</div>
+            </div>
+            <div class="co-fs-02 coicon coicon-enter co-cl-3">
+            </div>
+          </div>
+        </div>
+        <div v-show="type=='pingjia'">
+          <div  v-for="item in data.slice(0,3)" class="co-flex co-ac co-pd-a04 co-bd-b1">
+            <div><img :src="item.img" style="width:3.6rem;height:3.4rem;display: block;" alt=""></div>
+            <div class="co-f1 co-mg-l04 co-fs-02 co-cl-2 co-flex co-ver co-jsa">
+              <div class="co-fs-01 co-cl-1">{{item.title}}</div>
+              <div>订单号：{{item.num}}</div>
+              <div>支付方式：{{item.pay}}</div>
+              <div>餐厅电话：{{item.tel}}</div>
+            </div>
+            <div class="co-fs-02 co-flex co-ver co-jsa">
+              <div class="co-bg-6 foodBtn co-br-a0 co-cl-0">我要评价</div>
+            </div>
+          </div>
+        </div>
+        <div v-show="type=='money'">
+          <div v-for="item in data.slice(0,2)" class="co-flex co-ac co-pd-a04 co-bd-b1">
+            <div><img :src="item.img" style="width:3.6rem;height:3.4rem;display: block;" alt=""></div>
+            <div class="co-f1 co-mg-l04 co-fs-02 co-cl-2 co-flex co-ver co-jsa">
+              <div class="co-fs-01 co-cl-1">{{item.title}}</div>
+              <div>订单号：{{item.num}}</div>
+              <div>支付方式：{{item.pay}}</div>
+              <div>餐厅电话：{{item.tel}}</div>
+            </div>
+            <div class="co-fs-02 co-flex co-ver co-jsa">
+              <div class="co-bg-6 foodBtn co-br-a0 co-cl-0">退款中</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var dataList = [
+    {
+      img:"images/s1.png",
+      title:"如意混沌",
+      tel:"027-87653765",
+      num:"20170731091018",
+      pay:"在线支付",
+      status:0
+    },
+    {
+      img:"images/s2.png",
+      title:"襄阳邓家卤肉面",
+      tel:"027-8764578",
+      num:"20170725081018",
+      pay:"在线支付",
+      status:1
+    },
+    {
+      img:"images/s3.png",
+      title:"哈尔滨饺子馆",
+      tel:"027-87343765",
+      num:"20170731091418",
+      pay:"到付",
+      status:0
+    },
+    {
+      img:"images/s4.png",
+      title:"烤肉拌饭",
+      tel:"027-87343565",
+      num:"20170731101418",
+      pay:"在线支付",
+      status:1
+    },
+    {
+      img:"images/s5.png",
+      title:"我家小厨",
+      tel:"027-85643465",
+      num:"20170731121418",
+      pay:"在线支付",
+      status:1
+    }
+  ]
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  function tabList(t){
+    console.log(t)
+      vm.type = t;
+  }
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      type:"order",
+      data:dataList
+    },
+    methods:{
+      goDetial:function(name){
+                 corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:10,
+            flag:1024
+         });
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <style>
+    #testTable {
+      width: 100%;
+    }
+
+    #testTable tbody {
+      background-color: black;
+    }
+
+    #testTable thead th {
+      background-color: #d81e06;
+      border-bottom-width: 0;
+
+      font-size: 20px;
+      color: #fff;      
+    }
+
+    #testTable thead th:first-of-type {
+      width: 5%;
+    }
+    /* Column Style */
+
+    #testTable td {
+      text-align: center;
+      font-size: 18px;
+      color: #fff;
+    }
+    /* Heading and Column Style */
+
+    #testTable tr,
+    #testTable th {
+      border-width: 1px;
+      border-style: solid;
+      border-color: #d81e06;
+      ;
+    }
+    /* Padding and font style */
+
+    #testTable td,
+    #testTable th {
+      padding: 5px 10px;      
+      font-family: Verdana;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <co-cell title='连接DEMO数据库'>
+      <co-switch v-model="isOpen" @change='toggleConnect'></co-switch>
+    </co-cell>
+    <co-cell title='执行SQL语句（CREATE TABLE）' v-show='isOpen'>
+      <co-button :disabled='hasTable' type="primary" @click='createTable'>建表</co-button>
+    </co-cell>
+    <co-cell title='执行数据库事务（Transaction）' v-show='isOpen'>
+      <co-button :disabled='!isOpen' type="primary" @click='runTransaction'>事务</co-button>
+    </co-cell>
+
+    <table id='testTable' v-show='hasTable'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Field</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for='item in list'>
+          <td>{{ item._id }}</td>
+          <td>{{ item.name }}</td>
+        </tr>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setBounceEnabled(1);
+    });
+
+    vm = new Vue({
+      el: '#app',
+      data: {
+        isOpen: false,
+        db: null,
+        hasTable: false,
+        list: []
+      },
+      methods: {
+        toggleConnect: function () {             
+          if (this.db) {
+            corDataBaseMgr.sql(this.db, "DROP TABLE testTable", (err) => {
+              if (!err) {
+                this.hasTable = false;
+                this.list = [];
+
+                var hasClosed = corDataBaseMgr.close(this.db);  
+                if (hasClosed) {
+                  this.db = null;                  
+                  alert('数据库连接已关闭（测试数据库"testTable"已删除）');
+                };
+              }
+            });             
+            return;
+          }
+
+          this.db = corDataBaseMgr.open("demo");          
+        },
+        createTable: function () {
+          var sql = "CREATE TABLE testTable (_id INTEGER PRIMARY KEY,name TEXT)";
+          corDataBaseMgr.sql(this.db, sql, function (error) {
+            if (!error) {
+              vm.hasTable = true;
+            } else {
+              alert('"testTable 已存在"');
+            }
+          });
+        },
+        runTransaction: function () {
+          var sqls = [
+            "DROP TABLE testTable",
+            "CREATE TABLE testTable (_id INTEGER PRIMARY KEY,name TEXT)",
+            "INSERT INTO testTable (name) VALUES ('this is a case')",
+            "INSERT INTO testTable (name) VALUES ('第二条被插入的数据')",
+            "UPDATE testTable SET name='此条数据通过事务新增并更改' WHERE _id = 1"
+          ];
+          corDataBaseMgr.transactionEx(this.db, JSON.stringify(sqls), (error) => {
+            if (!error) {
+              var sql = "SELECT * FROM testTable";
+              corDataBaseMgr.select(this.db, sql, function (error, data) {
+                vm.hasTable = true;
+                if (!error) {
+                  vm.list = data;
+                  alert(JSON.stringify(data));
+                } else {
+                  alert("事务查询失败：" + sql)
+                }
+              });
+            }
+          });
+        }
+      }
+    });
+  </script>
+</body>

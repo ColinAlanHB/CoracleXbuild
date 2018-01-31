@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    .feature-list {
+      text-align: center;
+    }
+
+    .feature--btn {
+      display: inline-block;
+      margin-top: 2rem;
+
+      width: 90%;
+      height: 2rem;
+
+      font-size: 18px;
+    }
+
+    .feature--btn .coicon {
+      margin-right: .5rem;
+
+      font-size: 22px;
+    }
+
+    .controls {
+      position: fixed;
+      bottom: 0;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 100%;
+
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: space-around;
+      justify-content: space-around;
+
+      background: black;
+    }
+
+    .control {
+      flex: 1 0 auto;
+
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .control .iconfont {
+      font-size: 60px;
+
+      color: #fff;
+    }
+
+    .control .icon-power {
+      font-size: 77px;
+    }
+
+    .control .iconfont__active {
+      color: #4cd964;
+    }
+
+    .control .iconfont__power {
+      color: #d81e06;
+    }
+    .control .iconfont__autoFlash {
+      color: #ff6600;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul class="feature-list">
+      <co-button icon='camera_fill' size='large' type='primary' class='feature--btn' @click='takePhoto'>打开系统相机</co-button>
+      <co-button icon='browse_fill' size='large' type='warning' class='feature--btn' @click='openPhotoView'>打开自定义相机</co-button>
+    </ul>
+    <ul class="controls" id='controls' >
+      <li class="control" @click='toggleCameraFlash'>
+        <i class="iconfont icon-flash" :class='iconFlashStyle'></i>
+      </li>
+      <li class="control" @click='closeCamera'>
+        <i class="iconfont icon-power" :class='{"iconfont__power": hasView}'></i>
+      </li>
+      <li class="control" @click='toggleCameraPosition'>
+        <i class="iconfont icon-camera-reverse" :class='{"iconfont__active": isFront}'></i>
+      </li>
+    </ul>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    vm = new Vue({
+      el: '#app',
+      data: {        
+        hasView: false,
+        flashMode: 2,
+        isFront: false
+      },
+      computed: {
+        iconFlashStyle() {
+          return {
+            'iconfont__autoFlash': this.flashMode === 0,
+            'iconfont__active': this.flashMode === 1
+          }
+        }
+      },
+      methods: {
+        takePhoto: function () {          
+          this.flashMode = 2;
+
+          var comtextareass = '0';
+          var quality = '100';
+          corCamera.open(comtextareass, quality, function (savePath) {
+            corImage.openBrowser({
+              data: [{
+                src: savePath,
+                desc: "刚拍的照片"
+              }]
+            });
+          });
+        },
+        openPhotoView: function () {
+          var w = corJS.getWidth();
+          var h = corJS.offset('controls').t + 44;
+
+          corCamera.openViewCamera(0, 0, w, h, "自定义相机View", 100, function (savePath) {
+            this.isFront = false;
+          });
+
+          this.hasView = true;
+        },
+        toggleCameraFlash: function () {
+          mode = (++this.flashMode) % 3;
+
+          // this.flashMode = mode;                              
+          this.flashMode = corCamera.changeFlashMode(mode);
+        },
+        toggleCameraPosition: function () {
+          if (!this.hasView) return;
+
+          var pos = this.isFront ? 0 : 1;
+
+          // this.isFront = !!pos;
+          this.isFront = !!corCamera.changeCameraPosition(pos);          
+        },
+        closeCamera: function () {
+          this.hasView = false;
+          this.isFront = false;
+          corCamera.removeViewCameraFromWindow();
+        }
+      }
+    });
+  </script>
+</body>

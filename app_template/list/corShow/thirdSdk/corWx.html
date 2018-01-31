@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../css/plugin-helper.css">
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="微信分享">
+      <div slot="left">
+        <i class="coicon coicon-return co-fs-4" @click="goBack"></i>
+      </div>
+    </co-header>
+    <div id="co-content">
+      <div @click="loginWx" class="co-bg-3 co-pd-a05 co-br-a0 co-tx-c co-cl-0 co-mg-a1">
+        微信登陆
+      </div>
+      <div class="co-f1 co-cl-2 co-mg-t04 co-bg-0 co-flex" style="height:2rem">
+        <input v-model = "info"  placeholder="请输入分享内容"  class="co-field-core co-f1 co-mg-lr05" />
+      </div>
+      <div @click="share" :class='["co-pd-a05 co-br-a0 co-tx-c co-cl-0 co-mg-a1",{"co-bg-2":!tag},,{"co-bg-3":tag}]'>
+        微信分享
+      </div>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script src="../js/plugin-helper.js"></script>
+  <script>
+    corJS.ready(function () {
+      var appId = "wx5429ecb3139879b1";
+      var result = corWeiXin.registerApp(appId);
+    })
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        tag:false,
+        info:""
+      },
+      methods:{
+        goBack:function(){
+          corNative.closeWindow({
+            animID:-1,
+            animDuration:300
+          });
+        },
+        loginWx:function(){
+          var params = {
+              scope:"snsapi_userinfo,snsapi_base",
+              state:"0902"
+          };
+          corWeiXin.login(params,function(data){
+              if(!data.errCode){
+                vm.tag = true;
+                code = data.code;
+                corNative.alertDlg({
+                  "title": "提示",
+                  message: "登录成功",
+                  buttonLabel: "确定"
+                })
+              }else{
+                corNative.alertDlg({
+                  "title": "提示",
+                  message: "登录失败",
+                  buttonLabel: "确定"
+                })
+              }
+          })
+        },
+        share:function(){
+          if(!vm.tag)return;
+          var json = {
+              text:vm.info,
+              scene:1
+          }
+          corWeiXin.shareTextContent(json,function(error){
+              if(!error){
+                corNative.alertDlg({
+                  "title": "提示",
+                  message: "分享成功",
+                  buttonLabel: "确定"
+                })
+              }else{
+                corNative.alertDlg({
+                  "title": "提示",
+                  message: "分享失败",
+                  buttonLabel: "确定"
+                })
+              }
+          })
+        }
+      },
+      created:function(){
+      },
+      mounted:function(){
+      }
+    })
+  </script>
+</body>
+</html>

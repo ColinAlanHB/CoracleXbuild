@@ -1,0 +1,103 @@
+
+.sell-main {
+}
+.sell-main-banner .banner-image {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.sell-main-contact {
+  padding: 20px 15px;
+}
+.sell-main-contact .contact-btn {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 0;
+}
+.sell-main-contact .iconfont::before {
+  margin-right: 15px;
+}
+.sell-main-contact .contact-book {
+  margin-top: 15px;
+  border: 1px solid #DEDEDE;
+}
+.sell-main-contact .book-btn {
+  width: 70px;
+  height: 100%;
+  border-radius: 0;
+  padding: 0;
+}
+.sell-main-step {
+  margin-top: 20px;
+  border-bottom: 1px solid #DDD;
+}
+.sell-main-step .step-item {
+  padding: 20px;
+  padding-left: 30px;
+  overflow: hidden;
+}
+.sell-main-step .step-item .item-image {
+  float: left;
+  width: 20%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.sell-main-step .step-item .item-right {
+  float: left;
+  box-sizing: border-box;
+  width: 80%;
+  padding-left: 20px;
+}
+.sell-main-step .step-item .right-title {
+  font-size: 18px;
+  margin: 10px 0;
+}
+.sell-main-step .step-item .right-detail {
+  font-size: 16px;
+}
+.sell-main-step .step-item .right-image {
+  margin-top: 20px;
+  width: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.sell-main-step .step-item:last-child .right-image {
+  width: 50%;
+}
+.sell-main-qa {
+  margin-top: 20px;
+  padding: 20px;
+}
+.sell-main-qa .qa-title {
+  font-size: 30px;
+  text-align: center;
+}
+.sell-main-qa .qa-collapse {
+  margin-top: 20px;
+  border: 1px solid #DDD;
+}
+.sell-main-qa .collapse-item {
+  border-bottom: 2px solid #DDD;
+}
+.sell-main-qa .collapse-item:last-child {
+  border-bottom-width: 0;
+}
+.sell-main-qa .item-question {
+  padding: 20px;
+  position: relative;
+}
+.sell-main-qa .item-question .iconfont {
+  position: absolute;
+  right: 20px;
+}
+.sell-main-qa .item-answer {
+  padding: 20px;
+  line-height: 1.5;
+}
+#app .sell-main-contact .co-cell, #app .sell-main-contact .co-cell-wrapper{
+  background: none;
+}
+#app .sell-main-contact .co-field-other {
+  height: 100%;
+}

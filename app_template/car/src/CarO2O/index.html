@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>首页</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/car.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./font/iconfont.css">  
+  <link rel="stylesheet" href="./css/home.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>  
+</head>
+<body>
+  <div id="app">  
+    <co-header title='首页' fixed></co-header>
+    <div class="app-win">
+      <section class="home-main" v-cloak>
+    <header class="home-main-banner">
+      <ul class="banner-list"  :style='{marginLeft: activeBanner * -100 + "vw"}'>
+        <li class="banner-item">
+          <a href="info.html">
+            <img class="item--image" src="./images/1.png">
+          </a>
+        </li>
+        <li class="banner-item">
+          <a href="info.html">
+            <img class="item--image" src="./images/2.png">
+          </a>
+        </li>
+        <li class="banner-item">
+          <a href="info.html">
+            <img class="item--image" src="./images/3.png">
+          </a>
+        </li>
+      </ul>
+      <ul class="banner-pager">
+        <li v-for="i in 3">
+          <a @click='activeBanner=i-1' class="pager-item"
+             :class='[activeBanner===i-1 ? "active" : ""]'></a>
+        </li>
+      </ul>
+    </header>
+    <section class="home-main-cate">
+      <a to='buy' class="cate-link">轿车</a>
+      <a to='buy' class="cate-link">SUV</a>
+      <a to='buy' class="cate-link">3万以下</a>
+      <a to='buy' class="cate-link">3-5万</a>
+      <a to='buy' class="cate-link">5-8万</a>
+      <a to='buy' class="cate-link">8-12万</a>
+      <a to='buy' class="cate-link">12-20万</a>
+      <a to='buy' class="cate-link">20万以上</a>
+      <a to='buy' class="cate-link">大众</a>
+      <a to='buy' class="cate-link">丰田</a>
+      <a to='buy' class="cate-link">奔驰</a>
+      <a to='buy' class="cate-link">奥迪</a>
+    </section>
+    <section class="home-main-ad">
+      <img src="./images/b1.png" alt="优质" class="ad-item">
+      <img src="./images/b2.png" alt="展厅" class="ad-item">
+    </section>
+    <section class="home-main-order">
+      <a class="order-item">
+        <img src="./images/c-white-1.png" class="item-image">
+        <p class="item-title">预约评估</p>
+      </a>
+      <a class="order-item">
+        <img src="./images/c-white-2.png" class="item-image">
+        <p class="item-title">预约保养</p>
+      </a>
+      <a class="order-item">
+        <img src="./images/c-white-3.png" class="item-image">
+        <p class="item-title">预约维修</p>
+      </a>
+    </section>
+    <section class="home-main-location">
+      <span class="location-title">展厅地址</span>
+      <span class="location-address">{{ showAddress }}</span>
+    </section>
+    <section class="home-main-info">
+      <header class="info-title">
+        <p class="title-name">汽车资讯</p>
+        <a to="detail" class="title-more">查看更多>></a>
+      </header>
+      <section class="info-hot">
+        <a @click='linkDetail(item.id)' v-for="item in hot">
+          <img :src='item.thumb' class="hot-image">
+          <p class="hot-title">{{ item.title }}</p>
+        </a>
+      </section>
+      <section class="info-news">
+        <a @click='linkDetail(item.id)' v-for='item in news'>
+          <img :src='item.thumb' class="news-image">
+          <p class="news-title">{{ item.title }}</p>
+          <span class="news-time">{{ item.intime }}</span>
+        </a>
+      </section>
+    </section>
+  </section>
+    </div>
+    <co-tabbar v-model='tabID' class="app-tabbar">
+      <co-tab-item id="home">
+        <i class="icon iconfont icon-home-fill" slot="icon"></i>
+        <p class="app-tabbar--label">首页</p>
+      </co-tab-item>
+      <co-tab-item id="buy">
+        <i class="icon iconfont icon-car" slot="icon"></i>
+        <p class="app-tabbar--label">买车</p>
+      </co-tab-item>
+      <co-tab-item id="sell">
+        <i class="icon iconfont icon-sell" slot="icon"></i>
+        <p class="app-tabbar--label">卖车</p>
+      </co-tab-item>
+      <co-tab-item id="personal">
+        <i class="icon iconfont icon-account-fill" slot="icon"></i>
+        <p class="app-tabbar--label">我的</p>
+      </co-tab-item>
+    </co-tabbar>  
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {  
+        tabID: 'home',
+        activeBanner: 0,
+        showAddress: '安定路安里苑1号',
+        hot: [
+          {
+            id: 19,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-30/thumb_320_180_57c528ee3be27.jpg',
+            title: '扩大产品线应对竞争 宝马或推7系双门版'
+          },
+          {
+            id: 20,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-30/thumb_320_180_57c5297fc08c5.jpg',
+            title: '自动泊车谁更强 迈腾VS君越对比测试'
+          }
+        ],
+        news: [
+          {
+            id: 22,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-30/thumb_320_180_57c52b902bba7.jpg',
+            intime: '09-19',
+            title: '2016成都车展探馆：C 200 4MATIC轿跑'
+          },
+          {
+            id: 23,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-30/thumb_320_180_57c52bc8e30d4.jpg',
+            intime: '09-19',
+            title: 'Galibier领头 布加迪4款新车或陆续投产'
+          },
+          {
+            id: 26,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-09-13/thumb_320_180_57d7d5898f617.jpg',
+            intime: '09-19',
+            title: '宝马全新7系个性化定制品鉴会在京举行'
+          },
+          {
+            id: 21,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-30/thumb_320_180_57c529ee31f20.jpg',
+            intime: '08-30',
+            title: '号称比悍马还坚固的美国“总统”座驾'
+          }
+        ]
+      },
+      created() {
+        setInterval(() => {
+          this.activeBanner = ++this.activeBanner % 3;
+        }, 2000);
+      },
+      methods: {
+        linkDetail(id) {
+          window.location.href = './info.html?id=' + id;
+        }
+      },
+      watch: {
+        tabID: function (val, oldVal) {
+          window.location.href = './' + val + '.html';
+        }
+      }    
+    });   
+  </script>
+</body>
+</html>

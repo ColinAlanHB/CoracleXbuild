@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+	<title>list</title>
+	<link rel="stylesheet" href="../public/css/font/iconfont.css" />
+	<link rel="stylesheet" href="../public/css/style.css" />
+	<link rel="stylesheet" href="../public/css/flex.css" />
+	<link rel="stylesheet" href="../public/css/base.css" />
+	<link rel="stylesheet" href="css/swipe.min.css" />
+	<style>
+		.header{border-bottom: 1px #ccc solid;background-color:#eee;position: fixed;z-index:999;top: 0;left:0;}
+		.umh3{height:2.8em}
+        .umh2{height:2.8em;padding-left:1em}
+        .t_red{color:red;border-bottom:1px red solid;height:auto;}
+        .add{width:1.1rem;height:1.1rem;background:url(img/jia.png) no-repeat;background-size:1.1rem;}
+        .searchIcon{width:1.1rem;height:1.1rem;background:url(img/searchIcon.png) no-repeat;background-size:1.1rem;}
+	</style>
+</head>
+<body id="body" class="">
+	<div id="app">
+		<div id="co-header" class="co-tabContent co-flex co-ac header co-bg-2">
+			<div id="logo" class="co-mg-lr05 co-cl-2" @click="back">
+			  <i class="coicon-return coicon co-fs-4"></i>
+			</div>
+			<div class="co-f1 co-flex co-mg-r05" >
+				<div class="swiper-container co-flex co-cl-1"   id="sliderType">
+		            <div class="swiper-wrapper moveList" >
+		                <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active t_red" >
+		                    <div class="co-flex co-f1 co-ac co-jc umh3 ">
+		                            体育
+		                    </div>
+		                 </div>
+		                 <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+		                    <div class="co-flex co-f1 co-ac co-jc umh3 ">
+		                    娱乐
+		                    </div>
+		                 </div>
+		                 <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+		                    <div class="co-flex co-f1 co-ac co-jc umh3 ">
+		                            新闻
+		                    </div>
+		                 </div>
+		                 <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+		                    <div class="co-flex co-f1 co-ac co-jc umh3 ">
+		                            社会
+		                    </div>
+		                 </div>
+		                 <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+		                    <div class="co-flex co-f1 co-ac co-jc umh3 ">
+		                            汽车
+		                    </div>
+		                 </div>
+		                 <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+		                    <div class="co-flex co-f1 co-ac co-jc umh3 ">
+		                            社区
+		                   	</div>
+		                 </div>
+		            </div>
+		        </div>
+			</div>
+			<div id="rigBtn"  class="co-flex" style="width:5rem">
+				<div class="add co-mg-l02"></div>
+				<div class="searchIcon co-mg-l06"></div>
+			</div>
+		</div>
+		<div id="co-content" class="co-content-top">
+			<div class="swiper-container" id="tabcontent">
+	            <div class="swiper-wrapper">
+	                <div class="swiper-slide">
+	                    <div class="co-flex co-ver">
+	                    	<div class="co-flex co-mg-t06">
+								<div class="co-mg-l06">
+									<img src="img/ms2.jpg" style="width:5rem;height:4rem;display: block;" />
+								</div>
+								<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+									<div class="co-te">大开眼界,世界上还有这么好世界上还有这么好</div>
+									<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+									<div class="co-flex co-jsb">
+										<div class="co-cl-4"><i class="fa fa-star"></i>123</div>
+										<div>
+											<i class="fa fa-commenting-o"></i>
+										</div>
+									</div>
+								</div>
+	                    	</div>
+	                    	<div class="co-flex co-mg-t06">
+								<div class="co-mg-l06">
+									<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+								</div>
+								<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+									<div class="co-te" style="">大开眼界,世界上还有这么好世界上还有这么好</div>
+									<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+									<div class="co-flex co-jsb">
+										<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+										<div>
+											<i class="fa fa-commenting-o"></i>
+										</div>
+									</div>
+								</div>
+	                    	</div>
+	                    	<div class="co-flex co-mg-t06">
+								<div class="co-mg-l06">
+									<img src="img/ms4.jpg" style="width:5rem;height:4rem;display: block;" />
+								</div>
+								<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+									<div class="co-te" style="">大开眼界,世界上还有这么好世界上还有这么好</div>
+									<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+									<div class="co-flex co-jsb">
+										<div class="co-cl-4"><i class="fa fa-star"></i>32</div>
+										<div>
+											<i class="fa fa-commenting-o"></i>
+										</div>
+									</div>
+								</div>
+	                    	</div>
+	                    	<div class="co-flex co-mg-t06">
+								<div class="co-mg-l06">
+									<img src="img/ms5.jpg" style="width:5rem;height:4rem;display: block;" />
+								</div>
+								<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+									<div class="co-te" style="">大开眼界,世界上还有这么好世界上还有这么好</div>
+									<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+									<div class="co-flex co-jsb">
+										<div><i class="fa fa-star"></i>32</div>
+										<div>
+											<i class="fa fa-commenting-o"></i>
+										</div>
+									</div>
+								</div>
+	                    	</div>
+	                    	<div class="co-flex co-mg-t06">
+								<div class="co-mg-l06">
+									<img src="img/ms7.jpg" style="width:5rem;height:4rem;display: block;" />
+								</div>
+								<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+									<div class="co-te" style="">大开眼界,世界上还有这么好世界上还有这么好</div>
+									<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+									<div class="co-flex co-jsb">
+										<div><i class="fa fa-star"></i>32</div>
+										<div>
+											<i class="fa fa-commenting-o"></i>
+										</div>
+									</div>
+								</div>
+	                    	</div>
+	                    	<div class="co-flex co-mg-t06">
+								<div class="co-mg-l06">
+									<img src="img/ms2.jpg" style="width:5rem;height:4rem;display: block;" />
+								</div>
+								<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+									<div class="co-te" style="">大开眼界,世界上还有这么好世界上还有这么好</div>
+									<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+									<div class="co-flex co-jsb">
+										<div><i class="fa fa-star"></i>32</div>
+										<div>
+											<i class="fa fa-commenting-o"></i>
+										</div>
+									</div>
+								</div>
+	                    	</div>
+	                    	<div class="co-flex co-mg-t06">
+								<div class="co-mg-l06">
+									<img src="img/ms3.jpg" style="width:5rem;height:4rem;display: block;" />
+								</div>
+								<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+									<div class="co-te" style="">大开眼界,世界上还有这么好世界上还有这么好</div>
+									<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+									<div class="co-flex co-jsb">
+										<div><i class="fa fa-star"></i>32</div>
+										<div>
+											<i class="fa fa-commenting-o"></i>
+										</div>
+									</div>
+								</div>
+	                    	</div>
+	                    </div>
+	                </div>
+	                <div class="swiper-slide bg_fff" style="min-height: 360px">
+	                    <div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">娱乐新闻</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">娱乐新闻</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">娱乐新闻</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+	                </div>
+	                <div class="swiper-slide bg_fff" style="min-height: 360px">
+	                    <div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">大新闻</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">大新闻</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">大新闻</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">大新闻</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+	                </div>
+	                <div class="swiper-slide bg_fff" style="min-height: 360px">
+	                    <div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">社会事实</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+	                </div>
+	                <div class="swiper-slide bg_fff" style="min-height: 360px">
+	                    <div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+	                </div>
+	                <div class="swiper-slide bg_fff" style="min-height: 360px">
+	                    <div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">社区新鲜事报道</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+                    	<div class="co-flex co-mg-t06">
+							<div class="co-mg-l06">
+								<img src="img/ms1.jpg" style="width:5rem;height:4rem;display: block;" />
+							</div>
+							<div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+								<div class="co-te" style="">二手车大市场</div>
+								<div class="co-fs-01 co-cl-3">大开眼界,世界上还有这么好</div>
+								<div class="co-flex co-jsb">
+									<div class="co-cl-4"><i class="fa fa-star"></i>45</div>
+									<div>
+										<i class="fa fa-commenting-o"></i>
+									</div>
+								</div>
+							</div>
+                    	</div>
+	                </div>
+	            </div>
+	        </div>
+		</div>
+	</div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script src="js/swipe.min.js"></script>
+<script src="js/zepto.min.js"></script>
+<script>
+	var w = document.getElementById("body").clientWidth;
+	var w1 = document.getElementById("logo").clientWidth;
+	var w2 = document.getElementById("rigBtn").clientWidth;
+	var w3 = w-w1-w2;
+	document.getElementById("sliderType").style.width = w3+"px"
+	corJS.ready(function(){
+
+    })
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			selected:"工作"
+		},
+		methods:{
+	      back:function(){
+	        corNative.closeWindow({
+	          animID:-1,
+	          animDuration:300
+	        });
+	      },
+	    },
+		created:function(){
+
+		},
+		mounted:function(){
+
+		}
+	})
+	var moveList = new Swiper('#sliderType', {
+        slidesPerView: 4.5,
+        freeMode: true,
+        onTap:function(swiper,ele){ 
+            var clickedSlide = swiper.clickedSlide;
+            var index = $(clickedSlide).index();
+            console.log(index)
+            swiper2.slideTo(index, 200, true);
+            $('.moveList>div').eq(index).addClass("t_red").siblings().removeClass("t_red");
+        },
+        onSliderMove:function(swiper){
+        },
+        onTouchEnd: function(swiper){
+        }
+    });
+    var swiper2 = new Swiper('#tabcontent', {
+            autoHeight: true,
+            onSliderMove:function(swiper, event){
+            },
+            onSlideChangeEnd: function(swiper){
+                var activeIndex = swiper.activeIndex;
+                moveList.slideTo(activeIndex,200, false);
+                $('.moveList>div').eq(activeIndex).addClass("t_red").siblings().removeClass("t_red");
+            }
+          });
+</script>
+</html>

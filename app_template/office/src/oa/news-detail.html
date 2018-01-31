@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A1211 新闻详情</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/news-detail.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+</head>
+<body>
+<div id="newsDetail">
+	<co-header title="新闻详情">
+		<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>
+		<a slot="right" href='news-comment.html' class="icon iconfont icon-reply-fill"></a>	
+	</co-header>
+	<section class="article-win">
+		<article class="article-detail">
+			<h2 class="detail-title">{{ detail.title }}</h2>
+			<p class="detail-info">
+				<span class='info-date'>{{ detail.date }}</span>
+				<i class="icon iconfont icon-eye">{{ detail.viewCnt }}</i>
+			</p>
+			<img class="detail-image" :src="detail.imgSrc" alt="详情图片">
+			<div class="detail-text" v-html='detail.textHtml'></div>
+		</article>
+	</section>
+</div>
+<script>
+	new Vue({
+		el: '#newsDetail',
+		data: {
+			detail: {
+				title: "埃尔多安致电土执政党主席 祝贺公投获得通过",
+				viewCnt: 54,
+				date: '2017-04-17',
+				imgSrc: './images/news-illustration.jpg',
+				textHtml: `<p>上午9时，习近平在热烈的掌声中步入会场。张高丽宣布“一带一路”国际合作高峰论坛开幕。习近平走上主席台发表演讲。习近平指出，古丝绸之路打开了各国友好交往的新窗口，书写了人类发展进步的新篇章，积淀了以和平合作、开放包容、互学互鉴、互利共赢为核心的丝路精神，这是人类文明的宝贵遗产。</p>
+				<p>习近平强调，人类社会正处在一个大发展大变革大调整时代。世界多极化、经济全球化、社会信息化、文化多样化深入发展，和平发展的大势依然强劲，变革创新的步伐继续向前。同时，和平赤字、发展赤字、治理赤字，是摆在全人类面前的严峻挑战。2013年，我在哈萨克斯坦和印度尼西亚提出共建丝绸之路经济带和21世纪海上丝绸之路，即“一带一路”倡议。4年来，全球100多个国家和国际组织积极支持和参与“一带一路”建设，联合国大会、联合国安理会等重要决议也纳入“一带一路”建设内容。“一带一路”建设逐渐从理念转化为行动，从愿景转变为现实，建设成果丰硕。</p>`
+			}
+		}
+	});
+</script>
+</body>
+</html>

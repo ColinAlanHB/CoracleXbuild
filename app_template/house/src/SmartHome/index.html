@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>我的设备</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/smart.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">  
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_8wb1b2yn9vz5xw29.css">  
+  <link rel="stylesheet" href="./css/device.css">
+  <!-- 先引入 Vue --> 
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>
+</head>
+<body>
+<div id="app">
+	<co-header title='我的设备' class="device-header">
+    <i @click='refresh' :class='{active: loading}' 
+       class="icon iconfont icon-refresh" slot='left'>
+    </i>     
+    <i @click='sheetVisible=true' class="icon iconfont icon-more" slot='right'></i>  
+  </co-header>
+  <section class="device-win">
+    <main class="device-main">
+      <section class="device-main-nodevice" v-if='bindList.length === 0 && newList.length === 0 && offList.length === 0'>
+        <a href="wifi.html" class="nodevice--add">
+          <img src="./images/bg-add.png" alt="暂无设备" class="add--image">
+          <co-button class="add--btn" :plain='true'>暂无设备，请添加</co-button>        
+        </a>
+      </section>
+      <template v-else>
+        <dl class="device-main-list">
+          <dt class="list--title">已绑定设备</dt>
+          <dd class="list--item" v-for='item in bindList'>
+            <a href="controller.html">
+              <img src="./images/ic-device-ok.png" alt="在线设备" class="item--image">
+              <p class="item--name">{{ item.name }}</p>
+              <p class="item--info">{{ item.info }}</p>
+              <p class="item--link">
+                {{ item.net | showNetType }}
+                <i class="icon iconfont icon-right"></i>
+              </p>  
+            </a>            
+          </dd>
+          <dt class="list--title">发现新设备</dt>
+          <dd class="list--item" v-for='item in newList'>            
+            <a href="controller.html">
+              <img src="./images/ic-device-ok.png" alt="待绑定设备" class="item--image">
+              <p class="item--name">{{ item.name }}</p>
+              <p class="item--info">{{ item.info }}</p>
+              <p class="item--link">
+                {{ item.net | showNetType }}
+                <i class="icon iconfont icon-right"></i>
+              </p>  
+            </a>
+          </dd>
+          <dt class="list--title">离线设备</dt>
+          <dd class="list--item" v-for='item in offList'>            
+            <a href="controller.html">
+              <img src="./images/ic-device-no.png" alt="离线设备" class="item--image">
+              <p class="item--name">{{ item.name }}</p>
+              <p class="item--info">{{ item.info }}</p>
+              <p class="item--link">
+                {{ item.net | showNetType }}
+                <i class="icon iconfont icon-right"></i>
+              </p>  
+            </a>
+          </dd>  
+        </dl>        
+      </template>      
+      <footer class="device-attention">提示 暂不支持 5G 频道的 Wi-Fi 网络</footer>  
+    </main>          
+  </section>  
+  <co-actionsheet v-model='sheetVisible' :actions='actions'></co-actionsheet>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#app',
+    data: {      
+      bindList: [],
+      newList: [],
+      offList: [],
+      sheetVisible: false,
+      actions: [],
+      loading: false
+    },
+    mounted: function () {
+      // Have to Set action at this hook
+      this.actions = [
+        {
+          name: '扫码绑定设备',
+          method: this.search
+        },
+        {
+          name: '添加设备',
+          method: this.addDevice
+        },
+        {
+          name: '设置',
+          method: this.goSet
+        },
+        {
+          name: '登录/注销',
+          method: this.logout
+        }
+      ];
+    },
+    filters: {
+      showNetType: function (netCode) {
+        switch (netCode) {
+          case -1: return '离线';
+          case 0: return '未绑定';
+          case 1: return '局域网';
+          case 2: return '远程';
+        }
+      }
+    },
+    methods: {
+      refresh: function () {
+        if (this.loading) {
+          return false;
+        }
+        this.loading = true;
+        this.$indicator.open({
+          text: '加载中...',
+          spinnerType: 'fading-circle'
+        });
+
+        setTimeout(function () {
+          vm.bindList = [
+            {
+              name: '机智云空气净化器2代',
+              info: 'VIRTUAL SITE',
+              net: 1
+            },
+            {
+              name: '机智云空气净化器2代',
+              info: 'VIRTUAL SITE',
+              net: 2
+            }
+          ];
+          vm.newList = [
+            {
+              name: '机智云空气净化器1代',
+              info: 'FIRST SITE',
+              net: 0
+            }
+          ];
+          vm.offList = [
+            {
+              name: '机智云空气净化器0代',
+              info: 'ZERO SITE',
+              net: -1
+            }
+          ];
+          vm.loading = false;  
+          vm.$indicator.close();
+        }, 2500);                
+        
+        return true;
+      },
+      search: function () {
+        return;
+      },
+      addDevice: function () {
+        window.location.href = './wifi.html';
+      },
+      goSet: function () {
+        return;
+      },
+      logout: function () {        
+        window.location.href = './login.html';
+      }
+    }
+	})
+</script>
+</body>
+</html>

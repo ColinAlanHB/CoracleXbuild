@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<widget appId="ea87b9af-aaf3-49af-90ce-2fc24f7c604c" version="1.0.0">
+	<name>corMobi</name>
+	<description/>
+	<content encoding="utf-8" src="corShow/index.html" />
+	<obfuscation>true</obfuscation>
+	<bgcolor>#fefefe</bgcolor>
+	<orientation>5</orientation>
+	<debug enable="true" verbose="true">true</debug>
+	<webapp/>
+	<config desc="corWeiXin" type="URLSCHEME">
+		<urlScheme name="corWeiXin" schemes="['wx5429ecb3139879b1','kakatour']" />
+	</config>
+	<config desc="corQQ" type="URLSCHEME">
+		<urlScheme name="corQQ" schemes="['tencent1105924409','QQ41eb1139','mqzone']" />
+	</config>
+	<config desc="corSina" type="URLSCHEME">
+		<urlScheme name="corSina" schemes="['wb2843228045']" />
+	</config>
+
+	<config desc="privacyConfig" type="AUTHORITY">
+		<permission info="privacy" platform="iOS" type="camera">
+			<string>咔咔兔拍照需要使用摄像头</string>
+		</permission>
+		<permission info="privacy" platform="iOS" type="photoLibrary">
+			<string>咔咔兔选取图片需要访问相册</string>
+		</permission>
+		<permission info="privacy" platform="iOS" type="microphone">
+			<string>咔咔兔录制语音需要使用麦克风</string>
+		</permission>
+		<permission info="privacy" platform="iOS" type="contact">
+			<string>咔咔兔查找好友需要访问通讯录</string>
+		</permission>
+		<permission info="privacy" platform="iOS" type="locationWhenInUse">
+			<string>咔咔兔需要访问你的位置信息</string>
+		</permission>
+		<permission info="privacy" platform="iOS" type="camera">
+			<string>咔咔兔需要访问你的相机</string>
+		</permission>
+
+	</config>
+
+	<config desc="corGaode" type="KEY">
+		<param name="$corGaodeMap_APIKey$" platform="iOS" value="dbe43013f28fcbca51aa2c6c17fa6db0" />
+	</config>
+	<config desc="corBaidu" type="KEY">
+		<param name="$corBaiduMap_APIKey$" platform="iOS" value="kOLZyAbxtbe3cE5tbsGNC1TNZvhRYCIu" />
+	</config>
+	<config desc="corGaodeNavi" type="KEY">
+		<param name="$corGaodeNavi_appKey$" platform="iOS" value="dbe43013f28fcbca51aa2c6c17fa6db0" />
+	</config>
+
+	<config desc="whiteList" type="AUTHORITY">
+		<permission platform="iOS" info="urlSchemeWhiteList">
+			<string>weixin</string>
+			<string>mqq</string>
+			<string>iosamap</string>
+			<string>baidumap</string>
+			<string>wechat</string>
+			<string>weixin</string>
+			<string>sinaweibohd</string>
+			<string>sinaweibo</string>
+			<string>sinaweibosso</string>
+			<string>weibosdk</string>
+			<string>weibosdk2.5</string>
+			<string>mqqapi</string>
+			<string>mqq</string>
+			<string>mqqOpensdkSSoLogin</string>
+			<string>mqqconnect</string>
+			<string>mqqopensdkdataline</string>
+			<string>mqqopensdkgrouptribeshare</string>
+			<string>mqqopensdkfriend</string>
+			<string>mqqopensdkapi</string>
+			<string>mqqopensdkapiV2</string>
+			<string>mqqopensdkapiV3</string>
+			<string>mqqopensdkapiV4</string>
+			<string>mqzoneopensdk</string>
+			<string>wtloginmqq</string>
+			<string>wtloginmqq2</string>
+			<string>mqqwpa</string>
+			<string>mqzone</string>
+			<string>mqzonev2</string>
+			<string>mqzoneshare</string>
+			<string>wtloginqzone</string>
+			<string>mqzonewx</string>
+			<string>mqzoneopensdkapiV2</string>
+			<string>mqzoneopensdkapi19</string>
+			<string>mqzoneopensdkapi</string>
+			<string>mqqbrowser</string>
+			<string>mttbrowser</string>
+			<string>alipay</string>
+			<string>alipayshare</string>
+		</permission>
+	</config>
+
+	<config desc="backgroundConfig" type="AUTHORITY">
+		<permission platform="iOS" info="backgroundMode" flag="16" />
+	</config>
+	<config desc="statusBar" type="STATUSBARSTYLE">
+		<permission platform="iOS" info="statusBarStyle" value="Light" />
+		<permission platform="iOS" info="statusBarStyleIOS7" value="1" />
+	</config>
+	<config desc="privacyConfig" type="AUTHORITY">
+		<permission platform="iOS" info="privacy" type="camera">
+			<string>照相机</string>
+		</permission>
+		<permission platform="iOS" info="privacy" type="microphone">
+			<string>录制视频需要使用麦克风</string>
+		</permission>
+		<permission platform="iOS" info="privacy" type="locationWhenInUse">
+			<string>App使用中时进行gps定位的权限</string>
+		</permission>
+		<permission platform="iOS" info="privacy" type="locationAlways">
+			<string>App总是使用gps定位的权限</string>
+		</permission>
+		<permission platform="iOS" info="privacy" type="photoLibrary">
+			<string>访问相册</string>
+		</permission>
+	</config>
+</widget>

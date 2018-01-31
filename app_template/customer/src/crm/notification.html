@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="notification/css/index.css">
+
+</head>
+<body>
+    <div id="Page">
+        <div id="topbar">
+            <co-header>
+                <a class="iconfont icon-arr" slot="left" @click="location(-1)"></a>
+                <a class="iconfont icon-loudou" slot="right"></a>
+            </co-header>
+            <div class="topbar-sch">
+                <co-search v-model="searchval" cancel-text=""></co-search>
+            </div>
+        </div>
+
+        <div class="message-wrap">
+            <div class="message-count theme-grey">
+                未读消息<span class="theme-red">(30)</span>
+            </div>
+            <div class="message-box">
+                <div class="message-date"><span>2016-05-15</span></div>
+                <div class="message-list">
+                <div class="message-one">
+                    <div class="message-icon">
+                        <img src="notification/images/icon1.jpg"><br>消息
+                    </div>
+                    <div class="message-msg">
+                        <p class="title">您收到一条新的线索</p>
+                        <p class="msg">您收到一条新的线索：欣欣公司-移动化需求，请至我的线索中查看和处理</p>
+                        <span class="message-time">12:00</span>
+                    </div>
+                </div>
+                <div class="message-one">
+                    <div class="message-icon">
+                        <img src="notification/images/icon2.jpg"><br>审批
+                    </div>
+                    <div class="message-msg">
+                        <p class="title">汪峰提交申请</p>
+                        <p class="msg">汪峰提交报价申请，等待你的审批</p>
+                        <span class="message-time">10:00</span>
+                    </div>
+                </div>
+                <div class="message-one">
+                    <div class="message-icon">
+                        <img src="notification/images/icon3.jpg"><br>审批
+                    </div>
+                    <div class="message-msg">
+                        <p class="title">李爽发起了任务</p>
+                        <p class="msg">解决方案汇报，需要领导的帮助</p>
+                        <span class="message-time">08:00</span>
+                    </div>
+                </div>
+                </div>
+                <div class="message-date"><span>2016-05-15</span></div>
+                <div class="message-list">
+                    <div class="message-one">
+                        <div class="message-icon">
+                            <img src="notification/images/icon4.jpg"><br>公告
+                        </div>
+                        <div class="message-msg">
+                            <p class="title">销售会议公告</p>
+                            <p class="msg">部门将于2016-05-15 08:00 召开销售总结会议，地点：一楼会议室，请全员务必参与</p>
+                            <span class="message-time">08:00</span>
+                        </div>
+                    </div>
+                    <div class="message-one">
+                        <div class="message-icon">
+                            <img src="notification/images/icon5.jpg"><br>工作报告
+                        </div>
+                        <div class="message-msg">
+                            <p class="title">范冰冰的日报</p>
+                            <p class="msg">范冰冰提交了工作日报20160513</p>
+                            <span class="message-time">08:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/notification.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+body{background-color: #fff;}
+body,html{height: 100%;}
+#index{ width: 100%; overflow-y: auto;  position: relative; }
+#index-funs-wrap{ width: 100%; padding: 15px 10px; }
+#index-funs-wrap div{ background-color: #fff; border-radius: 10px; padding:0 0 10px;}
+#index-funs-wrap div h5{ text-align: center; padding: 14px 0; font-size:16px; color:#999999; font-weight: normal; }
+#index-funs-wrap div ul{
+    padding: 0 2%;
+   }
+#index-funs-wrap div ul li{
+    text-align: center;
+    }
+#index-funs-wrap div ul li img{ width: 48px; margin: auto; display: block;}
+#index-funs-wrap div ul li span{ color:#999999; font-size:14px; padding-top: 10px; display: inline-block; }
+
+#index-todo-wrap{ padding-bottom: 80px;}
+#index-todo-wrap header{  border-top:#d5d8dd 1px solid; border-bottom:#d5d8dd 1px solid; padding: 10px 20px; background-color: #fff;}
+#index-todo-wrap header .time{ font-size: 16px; color: #999;}
+#index-todo-wrap header .iconfont{ float: right; font-size: 18px;}
+.index-todo-box-title{  float: left; width: 65px; padding: 12px 0; text-align: center;}
+.index-todo-box-info{ margin-left: 65px; border-bottom: #d5d8dd 1px solid; padding: 12px 0;}
+.index-todo-box{ overflow: hidden;}
+.index-todo-box-title .icon{ line-height: 1.2; font-size: 18px;}
+.index-todo-box-title .title{ display: block; font-size: 14px; color: #999;}
+
+.index-todo-box-info .title{ color: #000; font-size: 18px;}
+.index-todo-box-info .time{ color: #999; font-size: 14px;}
+
+
+
+

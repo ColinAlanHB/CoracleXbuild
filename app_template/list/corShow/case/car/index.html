@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" :title=title fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-undo co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-content-bottom">
+
+    </div>
+    <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+      <div @click="tabMenu('首页',0)" :class='["co-f1 co-flex co-ver co-ac co-jc",{"co-cl-7":tabIndex==0}]'>
+        <i class="coicon coicon-homepage co-fs-4"></i>
+        <div class="co-fs-02">首页</div>
+      </div>
+      <div @click="tabMenu('买车',1)" :class='["co-f1 co-flex co-ver co-ac co-jc",{"co-cl-7":tabIndex==1}]'>
+        <i class="coicon coicon-taxi co-fs-4"></i>
+        <div class="co-fs-02">买车</div>
+      </div>
+      <div @click="tabMenu('卖车',2)" :class='["co-f1 co-flex co-ver co-ac co-jc",{"co-cl-7":tabIndex==2}]'>
+        <i class="coicon coicon-taxi co-fs-4"></i>
+        <div class="co-fs-02">卖车</div>
+      </div>
+      <div @click="tabMenu('我的',3)" :class='["co-f1 co-flex co-ver co-ac co-jc",{"co-cl-7":tabIndex==3}]'>
+        <i class="coicon coicon-mine co-fs-4"></i>
+        <div class="co-fs-02">我的</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+corJS.ready(function(){
+    var top = corJS.offset("co-header").h;
+    var bottom = corJS.offset("co-footer").h;
+    var h = corJS.getHeight() - top - bottom;
+    corNative.openMultiFloatWindow({
+          content: {
+              content: [{
+                  inPageName: "index-frame", 
+                  inUrl: "index_main.html",
+                  inData:""
+                  },                                  
+                  {
+                  inPageName: "buy-frame", 
+                  inUrl: "buy_main.html",
+                  inData:""
+                  },
+                  {
+                  inPageName: "sell-frame", 
+                  inUrl: "sell_main.html",
+                  inData:""
+                  },
+                  {
+                  inPageName: "mine-frame", 
+                  inUrl: "mine_main.html",
+                  inData:""
+                  },  
+                  ]
+          },
+          name: "more-frame",
+          dataType: 0,
+          flag:0,
+          x: 0,
+          y: top,
+          h:h,
+          indexSelected: 0,
+      });
+    corNative.setMultiFWindowFlippingEnbaled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      title:"首页",
+      tabIndex:0
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+      tabMenu:function(name,index){
+        vm.title = name;
+        vm.tabIndex = index;
+        corNative.setSelectedInMultiFWindow({
+          name:'more-frame', 
+          index:index
+        });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

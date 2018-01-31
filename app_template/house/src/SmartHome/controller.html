@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>我的设备</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/smart.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_ivlzwr7ghaug14i.css">
+  <link rel="stylesheet" href="./css/controller.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>
+</head>
+
+<body>
+  <div id="app" :style='{ backgroundColor: mode===2 ? "#25c3cf" : ""}'>
+    <co-header :title='device' class="controller-header">
+      <a href='device.html' class="icon iconfont icon-left" slot='left'>返回</a>
+      <a href='controller-more.html' class="icon iconfont icon-more" slot='right'></a>
+    </co-header>
+    <p class="controller-title">{{ mode | showMode }}</p>
+    <section class="controller-win">
+      <main class="controller-main">
+        <section class="controller-main-panel">
+          <canvas id="panelBg" class="panel--bg"></canvas>
+          <div class="panel--chart">
+            <div class="chart--opacity"></div>
+            <p class="chart--pm2p5">PM2.5</p>
+            <p class="chart--value">
+              <span class="value--zero">{{ info.pm2p5 | zeroFill }}</span>
+              <span>{{ info.pm2p5 }}</span>
+            </p>
+            <p class="chart--in_air">{{ info.inAirLevel || "--" }}</p>
+            <p class="chart--filter_rest">滤网还剩 {{ info.filterRest || "--" }}%</p>
+          </div>
+          <p class="panel--pulldown">
+            <i class="icon iconfont icon-pulldown"></i>
+          </p>
+        </section>
+        <section class="controller-main-table">
+          <div class="table--item">
+            <p class="item--title">甲醛(mg/m<sup>2</sup>)</p>
+            <p class="item--value">{{ info.hcho || "--" }}</p>
+          </div>
+          <div class="table--item">
+            <p class="item--title">运行风速</p>
+            <p class="item--value">{{ info.windSpeed | showSpeed }}</p>
+          </div>
+          <div class="table--item">
+            <p class="item--title">室外温度</p>
+            <p class="item--value">{{ info.outTemperature || '--' }}℃</p>
+          </div>
+          <div class="table--item">
+            <p class="item--title">舒适度</p>
+            <p class="item--value">{{ info.comfortLevel || "--" }}</p>
+          </div>
+          <div class="table--item">
+            <p class="item--title">定位</p>
+            <p class="item--value">{{ info.location || "--" }}</p>
+          </div>
+          <div class="table--item">
+            <p class="item--title">室外空气质量</p>
+            <p class="item--value">{{ info.outAirLevel || "--" }}</p>
+          </div>
+          <div class="table--item">
+            <p class="item--title">滤网剩余</p>
+            <p class="item--value">{{ info.filterRest || 0 }} 天</p>
+          </div>
+          <div class="table--item">
+            <p class="item--title">累计净化空气量</p>
+            <p class="item--value">{{ info.cleanTotal || 0 }} m<sup>3</sup></p>
+          </div>
+        </section>
+      </main>
+    </section>
+    <footer class="controller-tabbar">
+      <a class="tabbar--item tabbar--shutdown" @click='shutdown' :class='{active: mode===0}'>
+        <p class="item--icon"></p>
+        <p class="item--name">{{ mode===0 ? "开机" : "关机"}}</p>
+      </a>
+      <div class="shutdown--layout"></div>
+      <a class="tabbar--item tabbar--auto" @click='mode=1' :class='{active: mode===1}'>
+        <p class="item--icon"></p>
+        <p class="item--name">自动</p>
+      </a>
+      <a class="tabbar--item tabbar--sleep" @click='mode=2' :class='{active: mode===2}'>
+        <p class="item--icon"></p>
+        <p class="item--name">睡眠</p>
+      </a>
+      <a class="tabbar--item tabbar--prefer" @click='preferVisible=!preferVisible' :class='{active: preferVisible}'>
+        <p class="item--icon"></p>
+        <p class="item--name">喜好</p>
+      </a>
+      <div class="prefer--menu">
+        <section class="menu--setting">
+          <a class="setting--wind setting--item">
+          <img src="./images/ic-like-speed.png" class="item--image">
+          <span class="item--name">风速调节</span>
+          <div class="item--right">
+            <i class="icon iconfont icon-right"></i>
+          </div>
+        </a>
+          <a class="setting--timing setting--item">
+          <img src="./images/ic-like-time.png" class="item--image">
+          <span class="item--name">定时预约</span>
+          <div class="item--right">
+            <i class="icon iconfont icon-right"></i>
+          </div>
+        </a>
+          <a class="setting--delay setting--item">
+          <img src="./images/ic-like-delayed.png" class="item--image">
+          <span class="item--name">延时关机</span>
+          <div class="item--right">
+            <co-switch></co-switch>
+            <i class="icon iconfont icon-right"></i>
+          </div>
+        </a>
+          <a class="setting--lamp setting--item">
+          <img src="./images/ic-like-lamp.png" class="item--image">
+          <span class="item--name">净化器LED灯</span>
+          <div class="item--right">
+            <co-switch></co-switch>
+            <i class="icon iconfont icon-right"></i>
+          </div>          
+        </a>
+        </section>
+        <footer class="menu--layout"></footer>
+      </div>
+    </footer>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        device: '机智云空气净化器2代',
+        info: {
+          pm2p5: 39,
+          hcho: 124,
+          windSpeed: 3,
+          outTemperature: 22,
+          comfortLevel: '较不舒适',
+          location: '北京',
+          inAirLevel: '室内空气优',
+          outAirLevel: '室外空气良好',
+          filterRest: 14,
+          cleanTotal: 9999
+        },
+        mode: 1,
+        shutdownVisble: false,
+        preferVisible: false,
+        bgAnimateID: 0,
+        bgAnimateRotate: 0
+      },
+      watch: {
+        mode: function (val) {
+          window.cancelAnimationFrame(this.bgAnimateID);
+          if (this.mode > 0) {
+            this.bgAnimateID = window.requestAnimationFrame(this.printBg);
+          }
+        }
+      },
+      filters: {
+        zeroFill: function (val) {
+          var cnt = val ? 3 - val.toString().length : 3;
+          var zeros = '';
+          for (var i = 0; i < cnt; i++) {
+            zeros += '0';
+          }
+          return zeros;
+        },
+        showMode: function (mode) {
+          if (mode === 2) {
+            return '睡眠模式';
+          }
+          return '自动模式';
+        },
+        showSpeed: function (level) {
+          if (1 === level) {
+            return '低速';
+          } else if (2 === level) {
+            return '中速';
+          } else if (3 === level) {
+            return '高速';
+          } else if (level > 0) {
+            return '自动';
+          }
+          return '--';
+        }
+      },
+      methods: {
+        shutdown: function () {
+          if (this.mode === 0) {
+            this.shutdownVisble = true;
+
+            this.mode = 1;
+            return true;
+          }
+          this.shutdownVisble = false;
+          this.preferVisible = false;
+          this.mode = 0;
+        },
+        printBg: function () {
+          var canvas = document.getElementById('panelBg');
+          var ctx = canvas.getContext('2d');
+          var rand = function (min, max) {
+            return ~~((Math.random() * (max - min + 1)) + min);
+          };
+          var deg2Rotate = function (deg) {
+            return deg * (Math.PI / 180);
+          };
+
+          var cw = canvas.width = parseInt(getComputedStyle(canvas).width);
+          var ch = canvas.height = parseInt(getComputedStyle(canvas).height);
+
+          var circle = {
+            x: cw / 2,
+            y: ch / 2 - 15,
+            r: 96,
+            rotateSpeed: 2,
+            angleStart: -90,
+            angleEnd: 120,
+            thickness: 3,
+            blur: 2
+          };
+          // 设定原点          
+          ctx.translate(circle.x, circle.y);
+          ctx.globalCompositeOperation = 'destination-out';
+          ctx.globalCompositeOperation = 'lighter';
+
+          function updateSnake() {
+            if (this.bgAnimateRotate < 360) {
+              this.bgAnimateRotate += circle.rotateSpeed;
+            } else {
+              this.bgAnimateRotate = 0;
+            }
+          }
+
+          function renderSnake() {            
+            ctx.save();
+            ctx.rotate(deg2Rotate(this.bgAnimateRotate));
+            ctx.lineWidth = circle.thickness;
+            ctx.shadowBlur = circle.blur;
+            ctx.lineCap = 'round';
+            ctx.beginPath();            
+            ctx.arc(0, 0, circle.r + 10, deg2Rotate(circle.angleStart), deg2Rotate(circle.angleEnd), true);                        
+            
+            // var snakeGrad = ctx.createRadialGradient(0, 0, circle.r + 10 - circle.blur, 0, 0, circle.r + 10 + circle.blur);
+            // snakeGrad.addColorStop(0, 'white');
+            // snakeGrad.addColorStop(1, 'rgba(255, 255, 255, .1');
+            // ctx.rotate(deg2Rotate(circle.angleEnd-circle.angleStart), true);            
+            var tailGrad = ctx.createLinearGradient(-0.7 * circle.r/2, circle.r/2, -circle.r/2, 0.87 * circle.r/2);            
+            tailGrad.addColorStop(1, 'white');                     
+            tailGrad.addColorStop(0, 'rgba(255, 255, 255, .1');        
+            ctx.strokeStyle = tailGrad;
+            ctx.stroke();  
+                                          
+
+            ctx.restore();
+          }
+
+          function renderSnakeFlare() {
+            ctx.save();
+            ctx.rotate(deg2Rotate(this.bgAnimateRotate + 2 + 180));
+            ctx.beginPath();
+            ctx.translate(0, circle.r + 10);
+            ctx.arc(0, 0, 10, 0, Math.PI * 2, false);
+            var flareGrad = ctx.createRadialGradient(0, 0, 10 - circle.blur, 0, 0, 2);
+            flareGrad.addColorStop(0, 'rgba(255, 255, 255, .1');
+            flareGrad.addColorStop(1, 'white');
+            ctx.fillStyle = flareGrad;
+            ctx.fill();
+            ctx.closePath();
+            ctx.restore();
+          }
+
+          function renderStar() {
+            var position = [
+              
+            ]
+          }
+
+          function loop() {
+            ctx.beginPath();
+            updateSnake();
+            renderSnake();
+            renderSnakeFlare();
+            renderStar();
+            ctx.closePath();
+          }
+
+          loop();
+
+          ctx.beginPath();
+          // 背景圆形
+          ctx.arc(0, 0, circle.r, 0, deg2Rotate(360), true);
+          ctx.fillStyle = 'rgba(255, 255, 255, .3)';
+          ctx.fill();
+          ctx.arc(0, 0, circle.r + 10, 0, deg2Rotate(360), true);
+          ctx.fillStyle = 'rgba(255, 255, 255, .1)';
+          ctx.fill("evenodd");
+          ctx.arc(0, 0, circle.r + 20, 0, deg2Rotate(360), true);
+          ctx.fillStyle = 'rgba(255, 255, 255, .05)';
+          ctx.fill("evenodd");
+          ctx.closePath();        
+
+
+
+          this.bgAnimateID = window.requestAnimationFrame(this.printBg);
+        }
+      },
+      mounted: function () {
+        this.bgAnimateID = window.requestAnimationFrame(this.printBg);
+      }
+    });
+
+  </script>
+</body>
+
+</html>

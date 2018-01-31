@@ -1,0 +1,110 @@
+#checkin > section header {
+  padding: .26666667rem 0;
+  padding-left: .4rem;
+}
+#checkin > section section {
+  box-sizing: border-box;
+  height: 1.44rem;
+  padding: .18666667rem 0;
+  border: 1px solid #777;
+  border-left: none;
+  border-right: none;
+  background-color: #fff;
+}
+#checkin .location .icon-location {
+  font-size: 16px;
+}
+[data-dpr="2"] #checkin .location .icon-location {
+  font-size: 32px;
+}
+[data-dpr="3"] #checkin .location .icon-location {
+  font-size: 48px;
+}
+#checkin .location .icon-location::before {
+  margin-right: .08rem;
+}
+#checkin .location .remarks {
+  margin-left: .12rem;
+}
+#checkin .location input.address {
+  box-sizing: border-box;
+  width: 84%;
+  height: 100%;
+  padding: .32rem .42666667rem;
+  font-size: 15px;
+  border: none;
+  border-right: 1px solid #777;
+}
+[data-dpr="2"] #checkin .location input.address {
+  font-size: 30px;
+}
+[data-dpr="3"] #checkin .location input.address {
+  font-size: 45px;
+}
+#checkin .location .icon-map {
+  font-size: 24px;
+  display: inline-block;
+  width: 14%;
+  text-align: center;
+}
+[data-dpr="2"] #checkin .location .icon-map {
+  font-size: 48px;
+}
+[data-dpr="3"] #checkin .location .icon-map {
+  font-size: 72px;
+}
+#checkin .check header.title {
+  font-size: 16px;
+}
+[data-dpr="2"] #checkin .check header.title {
+  font-size: 32px;
+}
+[data-dpr="3"] #checkin .check header.title {
+  font-size: 48px;
+}
+#checkin .check > section {
+  padding-left: .4rem;
+  position: relative;
+}
+#checkin .check .co-radiolist {
+  height: 100%;
+}
+#checkin .check .co-radiolist .co-radiolist-title {
+  display: none;
+}
+#checkin .check .co-radiolist .co-radio-label {
+  margin-left: .08rem;
+  font-size: 14px;
+}
+[data-dpr="2"] #checkin .check .co-radiolist .co-radio-label {
+  font-size: 28px;
+}
+[data-dpr="3"] #checkin .check .co-radiolist .co-radio-label {
+  font-size: 42px;
+}
+#checkin .check .co-radiolist a.co-cell {
+  display: inline-block;
+  height: 100%;
+  background-image: none;
+}
+#checkin .check .co-radiolist .co-cell-wrapper {
+  height: 100%;
+  background-image: none;
+}
+#checkin .check .btn-check {
+  width: 2.06666667rem;
+  height: .85333333rem;
+  border-radius: .08rem;
+  font-size: 16px;
+  position: absolute;
+  right: .32rem;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+[data-dpr="2"] #checkin .check .btn-check {
+  font-size: 32px;
+}
+[data-dpr="3"] #checkin .check .btn-check {
+  font-size: 48px;
+}

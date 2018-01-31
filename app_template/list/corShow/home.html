@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+  <style>
+      .fh{height:20rem;}
+      .tipDialog{width:5rem;height:1.2rem;line-height: 1.2rem;text-align: center;background-color:#eee;transform: rotate(-45deg);-webkit-transform:rotate(-45deg);position: absolute;z-index: 99;top:.6rem;left:-1.3rem;font-size:.65rem;}
+  </style>
+</head>
+<body id="body" class="co-body">
+  <div id="app" :class='["co-Page co-flex co-ver co-bg-0",{"move2":tag=="close"},{"move1":tag=="open"}]'>
+    <co-header id="co-header" title="CorMobi"  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex" >
+        <!--头部左边内容区域-->
+        <div class="coicon coicon-other co-fs-5 co-cl-0 co-hide" @click="slideWin">
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+        <div @click="changeType" :class='["coicon co-fs-4 co-cl-0 co-pd-l08",{"coicon-createtask":!mystyle}, {"coicon-workbench":mystyle}]'></div>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-f1 co-flex co-ver co-cl-2" style="margin-top:0">
+      <div v-show="mystyle" class="co-f1 co-flex co-ver co-mg-a02">
+          <div class="co-f1 co-flex fh co-of">
+              <div class="tipDialog">UI框架</div>
+              <div @click="goHtml('window','ui/window.html',10)" class="co-f3 bg1 co-flex co-ac co-jc co-ver">
+                  <div class="appD windowIcon1"></div>
+                  <div class="co-fs-01 co-cl-0 co-mg-t02">窗口管理</div>
+              </div>
+              <div class="co-f2 co-flex co-ver co-mg-l02">
+                  <div @click="goHtml('jsDemo','ui/jsDemo.html',10)" class="co-f1 bg2 co-flex co-ac co-jc">
+                      <div class="appD jsIcon1"></div>
+                      <div class="co-fs-01 co-cl-0 " style="width:2.8rem">JS组件</div>
+                  </div>
+                  <div @click="goHtml('cssDemo','ui/cssDemo.html',10)" class="co-f1 bg3 co-mg-t02 co-flex co-ac co-jc">
+                      <div class="appD cssIcon1"></div>
+                      <div class="co-fs-01 co-cl-0" style="width:2.8rem">CSS组件</div>
+                  </div>
+              </div>
+          </div>
+          <div class="co-f1 co-flex co-mg-t02 fh co-of">
+              <div class="tipDialog">原生能力</div>
+              <div class="co-f3 co-flex co-ver ">
+                  <div @click="goHtml('nativeUi','native/nativeUi.html',10)" class="co-f1 bg2 co-flex co-ac co-jc">
+                      <div class="appD nativeUiIcon1"></div>
+                      <div class="co-fs-01 co-cl-0 co-mg-l02">原生控件</div>
+                  </div>
+                  <div @click="goHtml('network','native/network.html',10)" class="co-f1 bg3 co-mg-t02 co-flex co-ac co-jc">
+                      <div class="appD ajaxIcon1"></div>
+                      <div class="co-fs-01 co-cl-0 co-mg-l02">网络通讯</div>
+                  </div>
+              </div>
+              <div @click="goHtml('system','native/system.html',10)" class="co-f2 bg6 co-flex co-ac co-jc co-ver co-mg-l02">
+                  <div class="appD systemIcon1"></div>
+                  <div class="co-fs-01 co-cl-0 co-mg-t02">系统功能</div>
+              </div>
+          </div>
+          <div class="co-f1 co-flex co-mg-t02 fh co-of">
+              <div class="tipDialog">功能扩展</div>
+              <div @click="goHtml('nativeExtend','extend/nativeExtend.html',10)" class="co-f3 bg6 co-flex co-ac co-jc co-ver">
+                  <div class="appD nativeIcon1"></div>
+                  <div class="co-fs-01 co-cl-0 co-mg-t02">原生功能扩展</div>
+              </div>
+              <div @click="goHtml('sdk','extend/sdk.html',10)" class="co-f2 bg8 co-flex co-ac co-jc co-ver co-mg-l02">
+                  <div class="appD sdkIcon1"></div>
+                  <div class="co-fs-01 co-cl-0 co-mg-t02">第三方SDK</div>
+              </div>
+          </div>
+          <div class="co-f1 co-flex co-mg-t02 fh co-of">
+              <div class="tipDialog">界面展示</div>
+              <div class="co-f3 co-flex">
+                <div @click="goHtml('simple','case/simple/index.html',10)" class="co-f1 bg9 co-flex co-ac co-jc co-ver">
+                  <div class="appD simpleIcon1"></div>
+                  <div class="co-fs-01 co-cl-0 co-mg-t02">单页模板</div>
+                </div>
+                <div @click="goHtml('app','case/app.html',10)" class="co-f1 bg10 co-flex co-ac co-ver co-jc co-mg-l02">
+                  <div class="appD appIcon1"></div>
+                  <div class="co-fs-01 co-cl-0 co-mg-t02">项目模板</div>
+                </div>                  
+              </div>
+              <div @click="goHtml('case','case/case.html',10)" class="co-f2 bg11 co-flex co-ac co-ver co-jc co-mg-l02">
+                  <div class="appD caseIcon1"></div>
+                  <div class="co-fs-01 co-cl-0 co-mg-t02">案例展示</div>
+              </div>
+          </div>
+      </div>
+      <div v-show="!mystyle" class="co-f1 co-flex co-ver co-bg-1">
+        <div class="co-pd-a04">UI框架</div>
+        <div class="co-f1 co-flex co-bg-0">
+            <div @click="goHtml('window','ui/window.html',10)" class="co-f1 co-flex co-ac co-ver co-jc co-bd-r">
+               <div class="appD windowIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">窗口管理</div>                
+            </div>
+            <div @click="goHtml('jsDemo','ui/jsDemo.html',10)" class="co-f1 co-flex co-ac co-ver co-jc co-bd-r">
+               <div class="appD jsIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">JS组件</div>                
+            </div>
+            <div @click="goHtml('cssDemo','ui/cssDemo.html',10)" class="co-f1 co-flex co-ac co-ver co-jc">
+               <div class="appD cssIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">CSS组件</div>                
+            </div>
+        </div>
+        <div class="co-pd-a04">原生功能</div>
+        <div class="co-f1 co-flex co-bg-0">
+            <div @click="goHtml('system','native/system.html',10)" class="co-f1 co-bg-0 co-flex co-ac co-ver co-jc co-bd-r">
+               <div class="appD systemIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">系统功能</div>                
+            </div>
+            <div @click="goHtml('nativeUi','native/nativeUi.html',10)" class="co-f1 co-bg-0 co-flex co-ac co-ver co-jc co-bd-r">
+               <div class="appD nativeUiIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">原生控件</div>                
+            </div>
+            <div  class="co-f1 co-bg-0 co-flex co-ac co-ver co-jc">
+               <div class="appD ajaxIcon co-hide"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02 co-hide">网络通讯</div>                
+            </div>
+        </div>
+        <div class="co-pd-a04">功能扩展</div>
+        <div class="co-f1 co-flex co-bg-0">
+            <div @click="goHtml('nativeExtend','extend/nativeExtend.html',10)" class="co-f1 co-bg-0 co-flex co-ac co-ver co-jc co-bd-r">
+               <div class="appD nativeIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">原生功能扩展</div>                
+            </div>
+            <div @click="goHtml('sdk','extend/sdk.html',10)" class="co-f1 co-bg-0 co-flex co-ac co-ver co-jc co-bd-r">
+               <div class="appD sdkIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">第三方SDK</div>                
+            </div>
+            <div class="co-f1 co-bg-0 co-flex co-ac co-ver co-jc">
+            </div>
+        </div>
+        <div class="co-pd-a04">界面模板</div>
+        <div class="co-f1 co-flex co-bg-0">
+            <div @click="goHtml('simple','case/simple/index.html',10)" class="co-f1 co-bg-0 co-flex co-ac co-ver co-jc co-bd-r">
+               <div class="appD simpleIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">单页模板</div>                
+            </div>
+            <div @click="goHtml('app','case/app.html',10)" class="co-f1 co-bg-0 co-flex co-ac co-ver co-jc co-bd-r">
+               <div class="appD appIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">项目模板</div>                
+            </div>
+            <div @click="goHtml('case','case/case.html',10)" class="co-f1 co-bg-0 co-flex co-ac co-ver co-jc">
+               <div class="appD caseIcon"></div>
+               <div class="co-fs-01 co-tx-c co-mg-t02">案例展示</div>
+            </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+      corNative.onKeyPressed(1,function(data){
+        corNative.exitApp(true);
+      })
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+        mystyle:true,
+        tag:""
+    },
+    methods:{                   
+      changeType:function(){
+          this.mystyle = !this.mystyle;
+      },
+      goHtml:function(name,url,anim){
+        if(name=="app"||name=="window"){
+          corNative.openWindow({
+            name:name,
+            data: url,
+            animID:0,
+            flag:0
+         });
+          return
+        }
+        corNative.openWindow({
+            name:name,
+            data: url,
+            animID:2,
+            flag:1024
+         });
+      },
+      slideWin:function(){
+        corNative.toggleSlidingWindow(0);
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

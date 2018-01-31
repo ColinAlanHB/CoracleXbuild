@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/plugin-helper.css">
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="JSON&&XML转换">
+      <div slot="left">
+        <i class="coicon coicon-return co-fs-4" @click="goBack"></i>
+      </div>
+    </co-header>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script src="../js/plugin-helper.js"></script>
+  <script>
+    corJS.ready(function () {
+      new ContainerVue({
+        el: '#app',
+        mounted() {
+          var top = corJS.offset("co-header").h;
+          var h = corJS.getHeight() - top;          
+          corNative.openFloatWindow({
+            name: "co-frame",
+            url: "jsonToxml_main.html",
+            x: 0,
+            y: top,
+            w: null,
+            h: h
+          });
+        },
+        methods:{
+          goBack:function(){
+            corNative.closeWindow({
+              animID:-1,
+              animDuration:300
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

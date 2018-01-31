@@ -1,0 +1,18 @@
+#hourBuffet .no-hour-list {
+  margin-top: 2.37333333rem;
+  text-align: center;
+}
+#hourBuffet .no-hour-list img {
+  width: 1.97333333rem;
+  height: 2.13333333rem;
+}
+#hourBuffet .no-hour-list p {
+  margin-top: .64rem;
+  font-size: 18px;
+}
+[data-dpr="2"] #hourBuffet .no-hour-list p {
+  font-size: 36px;
+}
+[data-dpr="3"] #hourBuffet .no-hour-list p {
+  font-size: 54px;
+}

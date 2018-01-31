@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A121 新闻</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/news.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+<script src="./js/moment.min.js"></script>
+</head>
+<body>
+<div id="news">
+	<co-header title="新闻">
+		<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>	
+	</co-header>
+	<section>
+		<header class="banner">
+			<ul>
+				<li v-for='item in bannerList'>
+					<a href="news-detail.html" >
+						<img :src="item.imgSrc" alt="教授访问">	
+						<p class="title-bottom">
+							<span class="banner-title">{{ item.title }}</span>
+							<i class="icon iconfont icon-eye">{{ item.viewCnt }}</i>
+							<i class="icon iconfont icon-reply-fill">{{ item.cmtCnt }}</i>
+						</p>
+					</a>					
+				</li>	
+			</ul>			
+		</header>
+		<section>
+			<ul class="news-list">
+				<li class="news-item" v-for='item in newsList'>
+					<a href="news-detail.html">
+						<img :src="item.imgSrc" alt="公投贺电" class="news-illustration">	
+						<p class="news-info">							
+							<span class="info-title">{{ item.title }}</span>
+							<span class="info-date">{{ item.date }}</span>
+							<i class="icon iconfont icon-eye">{{ item.viewCnt }}</i>
+							<i class="icon iconfont icon-reply-fill">{{ item.cmtCnt }}</i>
+						</p>									
+					</a>					
+				</li>
+			</ul>
+		</section>
+	</section>
+</div>
+<script>
+	new Vue({
+		el: '#news',
+		data: {	
+			bannerList: [
+				{
+					title: "热烈欢迎周其仁教授应邀来访我司参观指导！",
+					imgSrc: './images/news-banner.jpg',
+					viewCnt: 54,
+					cmtCnt: 15					
+				}
+			],
+			newsList: [				
+				{
+					title: "埃尔多安致电土执政党主席 祝贺公投获得通过",
+					imgSrc: './images/news-illustration.jpg',
+					viewCnt: 999,
+					cmtCnt: 4,
+					date: '2017-04-17'
+				}
+			]
+		}
+	})
+</script>
+</body>
+</html>

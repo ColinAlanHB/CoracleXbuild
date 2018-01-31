@@ -1,0 +1,69 @@
+.login-main-link {	
+	padding: 10px;
+	padding-bottom: 0;
+	font-size: 12px;
+}
+.login-main-link a {
+	line-height: 1.5;
+}
+.login-main-link .link--forget {
+	float: right;
+	border-bottom: 1px solid #DFDFDF;
+}
+
+.login-main-skip {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: 90px;
+}
+
+.login-third {	
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 80%;
+	height: 60px;
+	
+	border-top: 1px solid #DFDFDF;	
+}
+
+.login-third-list {
+	height: 100%;	
+
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row nowrap;
+	flex-flow: row nowrap;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.login-third-list .list--btn {
+	-webkit-flex: 0 0 60px;
+	flex: 0 0 60px;	
+	text-align: center;	
+	padding: 0 5px;
+}
+.login-third-list .list--btn a {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: column nowrap;
+	flex-flow: column nowrap;
+	-webkit-justify-content: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;		
+}
+.login-third-list .list--btn .btn--icon { 
+	font-size: 32px;
+	line-height: 1;	
+}
+.login-third-list .list--btn .btn--meta {
+	width: 100%;
+	font-size: 12px;
+	line-height: 1.5;
+}

@@ -1,0 +1,145 @@
+.detail-main-banner .banner-list {
+	font-size: 0;
+	width: 1300vw;
+	overflow: hidden;
+}
+.detail-main-banner .banner-list .list--image {
+	float: left;
+	width: 100vw;
+}
+.detail-main-banner .list--image img {
+	object-fit: cover;
+	width: 100%;
+}
+
+.detail-main-info { 
+	position: relative;
+	padding: 10px 80px 10px 20px;
+}
+.detail-main-info .info-title {	
+	font-weight: bold;
+}
+.detail-main-info .info-price {
+	position: absolute;
+	top: 15px;
+	right: 15px;	
+}
+.detail-main-info .info-price .price-num {
+	font-size: 22px;
+}
+
+.detail-main-table {
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	border-top: 1px solid #DFDFDF;
+}
+
+.detail-main-table .table-item {
+	box-sizing: border-box;
+	width: 33.3%;	
+	padding: 10px;
+	font-size: 14px;	
+
+	border-right: 1px solid #DFDFDF;
+	border-bottom: 1px solid #DFDFDF;
+}
+.home-main-cate .cate-link:nth-child(4n) {
+	border-right-width: 0;	
+}
+
+.detail-main-table .table-item p {
+	text-align: center;
+}
+.detail-main-table .table-item .item-value {
+	margin-top: 5px;
+}
+
+.detail-main-check {
+	padding: 10px;
+}
+.detail-main-check .check-list {
+	border: 1px solid #DFDFDF;
+	border-radius: 4px;
+	padding: 10px;
+}
+.detail-main-check .check-list .list-item::before {
+	font-size: 20px;
+	line-height: 1.3;
+}
+.detail-main-self {
+	padding: 20px 10px;	
+}
+.detail-main-self .self--avatar {
+	float: left;
+	object-fit: cover;
+	width: 100px;
+	height: 100px;
+
+	margin-right: 10px;
+}
+.detail-main-self .self--title {
+	font-weight: bold;
+	line-height: 2;
+	font-size: 22px;
+}
+.detail-main-remark .remark--title {
+	position: relative;
+	padding: 30px 20px;
+	border: 1px solid #DFDFDF;
+	border-left-width: 0;
+	border-right-width: 0;
+}
+.detail-main-remark .remark--title span {
+	font-size: 24px;
+	width: 80%;
+}
+.detail-main-remark .remark--title img {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 20px;
+	margin: auto;
+}
+.detail-main-remark .remark--text {
+	padding: 20px 10px;
+
+	font-size: 16px
+	line-height: 1.3;
+}
+
+.detail-bar {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 44px;	
+	border-top: 1px solid #DFDFDF;
+	
+	display: -webkit-flex;
+	display: flex;
+}
+
+.detail-bar .bar-item {
+	text-align: center;
+	line-height: 44px;
+	vertical-align: middle;
+}
+
+.detail-bar .item--favo {
+	flex: 1 1 auto;		
+}
+.detail-bar .item--favo .iconfont {
+	font-size: 30px;
+}
+.detail-bar .item--favo .icon-heart-fill {
+	position: relative;
+	top: 2px;
+}
+.detail-bar .item--cut {
+	flex: 2 1 auto;
+}
+.detail-bar .item--book {
+	flex: 2 1 auto;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>search</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+    #search{position: fixed;top:2.2rem;z-index: 999;left:0;width:100%;}
+    .search{
+      height:2.2rem;
+      background-color:#ccc;
+    }
+    .co-content-top1 {
+      padding-top:4.4rem;
+    }
+    .myList{line-height: 1.6rem;padding:.2rem .4rem;color:#333;}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header fixed title="列表搜索" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="search"  class="co-tabContent">
+      <div class="search co-flex">
+        <co-search v-model="value" class="co-f1"></co-search>
+      </div>
+    </div>
+    <div id="co-content" class="co-content-top1">
+      <div>
+        <div class="myList co-bd-b co-bg-0" v-for="item in itemList">
+        <div class="co-te ">{{ item.title }}</div>
+        <div class="co-mg-lr06 co-tx-r co-fs-01 co-cl-3">
+          {{ item.time }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var item = [
+    {
+      title:"俄防长专机遭北约战机跟随 俄战机亮挂载武器警",
+      time:"2017-06-22",
+      tip:212
+    },
+    {
+      title:"全球珊瑚白化灾情暂缓 专家警告：这次危害最重",
+      time:"2017-06-22",
+      tip:43
+    },
+    {
+      title:"全球珊瑚白化灾情暂缓 专家警告：这次危害最重",
+      time:"2017-06-22",
+      tip:98
+    },
+    {
+      title:"京津冀及周边环保督查 490家企业中229家存在问",
+      time:"2017-06-22",
+      tip:1920
+    },
+    {
+      title:"全球珊瑚白化灾情暂缓 专家警告：这次危害最重",
+      time:"2017-06-22",
+      tip:12
+    },
+    {
+      title:"重庆丰都为什么叫鬼城 重庆丰都鬼城灵异事件 丰",
+      time:"2017-06-22",
+      tip:901
+    },
+    {
+      title:"全球珊瑚白化灾情暂缓 专家警告：这次危害最重",
+      time:"2017-06-22",
+      tip:1290
+    },
+    {
+      title:"麻辣财经：人人手机当钱包，中国到底有多牛？",
+      time:"2017-06-22",
+      tip:129
+    },
+    {
+      title:"信托收益降至5.01% 基础产业获信托投资超证券",
+      time:"2017-06-22",
+      tip:121
+    },
+    {
+      title:"最懂中国的美国“老干部”布热津斯基走了",
+      time:"2017-06-22",
+      tip:2190
+    }
+  ]
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      value:"",
+      itemList:item
+    },
+    watch:{
+      value:function(n,o){
+      }
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }
+  })
+</script>
+</html>

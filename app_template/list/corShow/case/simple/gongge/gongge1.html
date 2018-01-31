@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+	<title>gongge</title>
+	<link rel="stylesheet" href="../public/css/style.css" />
+	<link rel="stylesheet" href="../public/css/flex.css" />
+	<link rel="stylesheet" href="../public/css/base.css" />
+	<link rel="stylesheet" href="../public/css/font/iconfont.css" />
+	<style>
+		#slide{height:8rem;background:blue;}
+		.topTitle{background-color:#20A0FF;padding:.2rem .4rem;}
+		.topTitle p{line-height: .8rem;color:#fff;}
+		.loadImg{width:100%;height:8rem;display: block}
+		.p1{background: url(img/p1.png) no-repeat}
+		.p2{background: url(img/p2.png) no-repeat}
+		.p3{background: url(img/p3.png) no-repeat}
+		.p4{background: url(img/p4.png) no-repeat}
+		.p5{background: url(img/p5.png) no-repeat}
+		.p6{background: url(img/p6.png) no-repeat}
+		.icon{width:2rem;height:2rem;background-size:100% 100%;}
+	</style>
+</head>
+<body class="co-body">
+	<div id="app" class="co-Page co-flex co-ver co-bg-6" v-cloak>
+	 	<div class="co-flex co-jsb co-mg-lr05 co-tabContent co-bg-6">
+	 		<div class="co-flex co-f1 co-ac">
+	 			<div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+				<div @click="back" class="topTitle"><p>玩<p><p>图</p></div>
+				<div class="co-flex co-f1 co-je">
+				<i class="coicon coicon-add co-tx-c co-cl-0 co-mg-r05" style="font-size: 1.5rem"></i>
+				<i class=" coicon coicon-collection co-tx-c co-cl-0" style="font-size: 1.5rem"></i>
+				</div>
+	 		</div>
+	 	</div>
+	 	<div id="slide" class="co-mg-t05">
+			<co-swipe :auto="3000">
+			  <co-swipe-item>
+				<img src="img/01.png" class="loadImg" />
+			  </co-swipe-item>
+			  <co-swipe-item>
+				<img src="img/02.png" class="loadImg" />
+			  </co-swipe-item>
+			  <co-swipe-item>
+				<img src="img/03.png" class="loadImg" />
+			  </co-swipe-item>
+			</co-swipe>
+	 	</div>
+	 	<div class="co-f1 co-flex co-ver co-cl-0">
+			<div class="co-f1 co-flex">
+				<div style="background-color:#20A0FF" class="co-f1 co-ac co-jc co-flex co-ver" @click="phone('拼立得')">
+					<div class="icon p1"></div>
+					<div class="co-fs-01 co-mg-t04">拼立得</div>
+				</div>
+				<div style="background-color:#F7BA2A" class="co-f1 co-ac co-jc co-flex co-ver" @click="phone('拼图')">
+					<div class="icon p2"></div>
+					<div class="co-fs-01 co-mg-t04">拼图</div>
+				</div>
+			</div>
+			<div class="co-f1 co-flex">
+				<div style="background-color:#13CE66" class="co-f1 co-ac co-jc co-flex co-ver" @click="phone('美丽拍')">
+					<div class="icon p3"></div>
+					<div class="co-fs-01 co-mg-t04">美丽拍</div>
+				</div>
+				<div style="background-color:#FF4949" class="co-f1 co-ac co-jc co-flex co-ver" @click="phone('高清美化')">
+					<div class="icon p4"></div>
+					<div class="co-fs-01 co-mg-t04">高清美化</div>
+				</div>
+			</div>
+			<div class="co-f1 co-flex">
+				<div style="background-color:#20A0FF" class="co-f1 co-ac co-jc co-flex co-ver" @click="phone('画中画')">
+					<div class="icon p5"></div>
+					<div class="co-fs-01 co-mg-t04">画中画</div>
+				</div>
+				<div style="background-color:#1D8CE0" class="co-f1 co-ac co-jc co-flex co-ver" @click="phone('美颜拍')">
+					<div class="icon p6"></div>
+					<div class="co-fs-01 co-mg-t04">美颜拍</div>
+				</div>
+			</div>
+	 	</div>
+	</div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+	corJS.ready(function(){
+
+    })
+	var vm = new Vue({
+		el:"#app",
+		data:{
+		},
+		methods:{
+			phone:function(msg){
+				this.$toast(msg);
+			},
+		    back:function(){
+		     corNative.closeWindow({
+	              animID:-1,
+	              animDuration:300
+	            });
+		    },
+		},
+		created:function(){
+
+		},
+		mounted:function(){
+
+		}
+	})
+</script>
+</html>

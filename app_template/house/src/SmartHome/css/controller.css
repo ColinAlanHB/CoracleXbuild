@@ -1,0 +1,241 @@
+.controller-win {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	height: calc(100vh - 126px);
+	padding-bottom: 80px;
+}
+.controller-title {
+	font-size: 16px;
+	line-height: 2;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.controller-main-panel {
+	position: relative;	
+}
+
+.controller-main-panel .panel--chart {
+	text-align: center;	
+	padding: 40px 0;	
+}
+
+.controller-main-panel .panel--bg { 
+	position: absolute;	
+	width: 100%;
+	height: 100%;
+}	
+.controller-main-panel .panel--chart .chart--opacity {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;	
+}
+.controller-main-panel .panel--chart .chart--pm2p5 {
+	font-size: 18px;
+	line-height: 2;
+}	
+.controller-main-panel .panel--chart .chart--value {
+	font-weight: 100;
+	font-size: 60px;	
+	width: 106px;
+	overflow: hidden;
+	position: relative;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.controller-main-panel .panel--chart .chart--value span {
+	float: left;
+}	
+.controller-main-panel .panel--chart .chart--in_air,
+.controller-main-panel .panel--chart .chart--filter_rest {
+	line-height: 1.5;
+}
+.controller-main-panel .panel--pulldown {
+	text-align: center;
+	width: 100%;		
+	margin-top: 20px;
+}
+.controller-main-panel .panel--pulldown .icon-pulldown {
+	font-size: 26px;
+}
+
+.controller-main-table {
+	margin-top: 20px;
+
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;	
+	-webkit-align-items: top;
+	align-items: top;
+
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	border-left-width: 0;
+	border-right-width: 0;
+}	
+
+.controller-main-table .table--item {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 50%;	
+	padding: 20px 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.4);	
+}
+.controller-main-table .table--item:nth-child(odd) {
+	border-right: 1px solid rgba(255, 255, 255, 0.4);
+}	
+.controller-main-table .table--item > p {
+	width: 100%;
+	text-align: center;
+	line-height: 1.5;
+}
+.controller-main-table .table--item .item--title {
+	font-size: 16px;
+	opacity: .8;
+}
+.controller-main-table .table--item .item--value {
+	font-size: 18px;
+}
+
+.controller-tabbar {
+	position: fixed;
+	bottom: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px 3%;
+	padding-bottom: 5px;	
+
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row nowrap;
+	flex-flow: row nowrap;	
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: space-around;
+	justify-content: space-around;
+}
+.controller-tabbar a.tabbar--item {
+	display: block;
+	width: 25%;
+	position: relative;
+}
+.controller-tabbar a.tabbar--shutdown.active,
+.controller-tabbar a.tabbar--prefer.active {	
+	z-index: 9;
+}
+.controller-tabbar a.tabbar--item .item--icon {
+	background-repeat: no-repeat;
+	background-position: 0 1px;	
+	background-size: cover;
+	width: 50px;
+	height: 50px;
+	
+	position: relative;
+	left: 0;
+	right: 0;
+	margin: auto;	
+}
+.controller-tabbar a.tabbar--item.active .item--icon {
+	background-position: 0 -100px;	
+}
+.controller-tabbar a.tabbar--shutdown + .shutdown--layout {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+.controller-tabbar a.tabbar--shutdown.active + .shutdown--layout {
+	display: block;
+}
+.controller-tabbar .prefer--menu {
+	position: fixed;
+	left: 0;
+	right: 0;	
+	bottom: 0;	
+	z-index: 1;
+	display: none;	
+}	
+.controller-tabbar a.tabbar--prefer.active + .prefer--menu {
+	display: block;
+}
+.controller-tabbar .menu--layout {
+	height: 89px;	
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.controller-tabbar .menu--setting {
+	padding: 0 20px;		
+}
+.controller-tabbar .menu--setting .setting--item {
+	position: relative;
+	font-size: 16px;
+	line-height: 3;
+	vertical-align: middle;
+	display: block;
+}
+.controller-tabbar .menu--setting .setting--item:not(:last-child) {
+	border-bottom: 1px solid #DFDFDF;
+}
+.controller-tabbar .menu--setting .item--image {
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	object-fit: cover;	
+
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;	
+}
+.controller-tabbar .menu--setting .item--name {
+	margin-left: 35px;
+}
+.controller-tabbar .menu--setting .item--right {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+
+	height: 32px;
+	line-height: 32px;
+	vertical-align: middle;
+}
+.controller-tabbar .menu--setting .item--right .co-switch {
+	float: left;
+	margin-right: 5px;
+}
+
+
+.controller-tabbar .tabbar--shutdown .item--icon {
+	background-image: url('../images/ic-footer-off.png');
+}
+.controller-tabbar .tabbar--auto .item--icon {
+	background-image: url('../images/ic-footer-auto.png');	
+}
+.controller-tabbar .tabbar--sleep .item--icon {
+	background-image: url('../images/ic-footer-sleep.png');
+}
+.controller-tabbar .tabbar--prefer .item--icon {
+	background-image: url('../images/ic-footer-like.png');
+}
+
+.controller-tabbar a.tabbar--item .item--name {
+	margin-top: 5px;
+	font-size: 14px;	
+}
+.controller-tabbar a.tabbar--item p {
+	width: 100%;
+	text-align: center;
+}

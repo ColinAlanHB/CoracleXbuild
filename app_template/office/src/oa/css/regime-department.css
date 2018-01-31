@@ -1,0 +1,53 @@
+html,
+body,
+#departmentRegime {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#departmentRegime .co-cell-title {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#departmentRegime .co-cell-text {
+  display: block;
+  margin-left: 1.36rem;
+}
+#departmentRegime .co-cell-label {
+  font-size: 12px;
+  margin-left: 1.36rem;
+  margin-top: .16rem;
+}
+[data-dpr="2"] #departmentRegime .co-cell-label {
+  font-size: 24px;
+}
+[data-dpr="3"] #departmentRegime .co-cell-label {
+  font-size: 36px;
+}
+#departmentRegime .co-cell .icon {
+  position: absolute;
+}
+#departmentRegime .co-cell .iconfont {
+  font-size: 36px;
+  margin-left: 0.24rem;
+}
+[data-dpr="2"] #departmentRegime .co-cell .iconfont {
+  font-size: 72px;
+}
+[data-dpr="3"] #departmentRegime .co-cell .iconfont {
+  font-size: 108px;
+}
+#departmentRegime .co-cell .icon-eye {
+  font-size: 12px;
+  position: absolute;
+  bottom: .37333333rem;
+  right: .37333333rem;
+}
+[data-dpr="2"] #departmentRegime .co-cell .icon-eye {
+  font-size: 24px;
+}
+[data-dpr="3"] #departmentRegime .co-cell .icon-eye {
+  font-size: 36px;
+}

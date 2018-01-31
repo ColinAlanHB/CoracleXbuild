@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>zhedie</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+    .pd-1{padding-left:1.5rem;}
+    .pd-2{padding-left:3rem;}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header fixed title="折叠">
+      <div slot="left" class="co-flex">
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+        <co-button icon="more"></co-button>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top">
+      <div class="">
+        <div @click="two=!two" class="co-bg-2 co-pd-a06 co-bd-b1">武汉</div>
+        <div  v-show = "two">
+          <div class="">
+            <div @click="three1=!three1" class="co-bg-1 co-pd-tb05 pd-1 co-bd-b1">> 景点</div>
+            <div class="" v-show="three1">
+              <div class="co-pd-tb05 pd-2 co-bd-b1">> 汉口江滩</div>
+              <div class="co-pd-tb05 pd-2 co-bd-b1">> 黄鹤楼</div>
+              <div class="co-pd-tb05 pd-2 co-bd-b1">> 木兰天池</div>
+            </div>
+          </div>
+          <div class="">
+            <div @click="three2=!three2" class="co-bg-1 co-pd-tb05 pd-1 co-bd-b1">> 特产</div>
+            <div class="" v-show = "three2">
+              <div class="co-pd-tb05 pd-2 co-bd-b1">> 鸭脖</div>
+              <div class="co-pd-tb05 pd-2 co-bd-b1">> 周黑鸭</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div @click="two1=!two1" class="co-bg-2 co-pd-a06 co-bd-b1">深圳</div>
+        <div  v-show = "two1">
+          <div class="">
+            <div @click="three3=!three3" class="co-bg-1 co-pd-tb05 pd-1 co-bd-b1">> 景点</div>
+            <div v-show="three3">
+              <div class=" co-pd-tb05 pd-2 co-bd-b1">> 欢乐谷</div>
+              <div class=" co-pd-tb05 pd-2 co-bd-b1">> 梧桐山</div>
+              <div class=" co-pd-tb05 pd-2 co-bd-b1">> 大梅沙</div>
+            </div>
+          </div>
+          <div class="">
+            <div @click="three4=!three4" class="co-bg-1 co-pd-tb05 pd-1 co-bd-b1">> 特产</div>
+            <div v-show = "three4">
+              <div class="co-pd-tb05 pd-2 co-bd-b1">> 海鲜</div>
+              <div class="co-pd-tb05 pd-2 co-bd-b1">> 拉面</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var dataList = [
+    {
+      title:"武汉",
+      children:[
+        {
+          "title":"景点",
+          children:[
+            {
+              title:"汉口江滩"
+            },{
+              title:"黄鹤楼"
+            },
+            {
+              title:"木兰天池"
+            }
+          ] 
+        },
+        {
+          "title":"特产",
+          children:[
+            {
+              title:"鸭脖"
+            },{
+              title:"周黑鸭"
+            }
+          ] 
+        },
+      ] 
+    },
+    {
+      title:"深圳",
+      children:[
+        {
+          "title":"景点",
+          children:[
+            {
+              title:"欢乐谷"
+            },{
+              title:"梧桐山"
+            },
+            {
+              title:"大梅沙"
+            }
+          ] 
+        },
+        {
+          "title":"特产",
+          children:[
+            {
+              title:"海鲜"
+            },{
+              title:"拉面"
+            }
+          ] 
+        },
+      ] 
+    },
+  ]
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      two:false,
+      three1:false,
+      three2:false,
+      two1:false,
+      three3:false,
+      three4:false,
+    }, 
+    props: [
+      'init'
+    ]
+  })
+</script>
+</html>

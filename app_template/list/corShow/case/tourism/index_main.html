@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+      <co-swipe :auto="3000" >
+        <co-swipe-item >
+          <img src="images/banner1.png" class="bannerImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+          <img src="images/banner2.png" class="bannerImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+          <img src="images/banner3.png" class="bannerImg" />
+        </co-swipe-item>
+      </co-swipe>
+      <div @click="goDetial('newsDetail')" class="co-of co-pd-b06 co-bg-0 co-mg-t04">
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t1">
+          <div class="listC co-flex co-ac co-jc co-cl-4">
+              <i class="coicon coicon-label_fill co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">景点</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t1">
+          <div class="listC co-flex co-ac co-jc co-cl-3">
+              <i class="coicon coicon-homepage co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">酒店</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t1">
+          <div class="listC co-flex co-ac co-jc co-cl-6">
+              <i class="coicon coicon-qianniu co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">美食</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t1">
+          <div class="listC co-flex co-ac co-jc co-cl-7">
+              <i class="coicon coicon-shop_fill co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">优惠</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t1">
+          <div class="listC co-flex co-ac co-jc co-cl-8">
+              <i class="coicon coicon-flag co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">游记</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t1">
+          <div class="listC co-flex co-ac co-jc co-cl-1">
+              <i class="coicon coicon-document co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">攻略</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t1">
+          <div class="listC co-flex co-ac co-jc co-cl-4">
+              <i class="coicon coicon-taxi co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">交通</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t1">
+          <div class="listC co-flex co-ac co-jc co-cl-2">
+              <i class="coicon coicon-customerservice_fill co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">旅行社</div>
+        </div>
+      </div>
+      <div class="co-bg-0 co-mg-t04 co-pd-tb04">
+        <div class="co-pd-tb04 co-tx-c">【精选-攻略】</div>
+        <div class=" co-tx-c co-cl-2 co-fs-02">漫步在秘境的旅途，发现不一样的世界</div>
+        <div class=" co-of">
+          <div class="imgTab co-mg-t05">
+            <img src="images/p1.png" class="showImg co-pd-lr02" alt="">
+          </div>
+          <div class="imgTab co-mg-t05">
+            <img src="images/p2.png" class="showImg co-pd-lr02" alt="">
+          </div>
+          <div class="imgTab co-mg-t05">
+            <img src="images/p3.png" class="showImg co-pd-lr02" alt="">
+          </div>
+          <div class="imgTab co-mg-t05">
+            <img src="images/p4.png" class="showImg co-pd-lr02" alt="">
+          </div>
+          <div class="imgTab co-mg-t05">
+            <img src="images/p5.png" class="showImg co-pd-lr02" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="co-bg-0 co-mg-t04 co-pd-tb04">
+        <div class="co-pd-tb04 co-tx-c">【精选-攻略】</div>
+        <div class=" co-tx-c co-cl-2 co-fs-02">漫步在秘境的旅途，发现不一样的世界</div>
+        <div class="co-mg-t05">
+          <img src="images/p6.png" class="showImg co-pd-lr02" alt="">
+        </div>
+        <div class="co-mg-t05">
+          <img src="images/p7.png" class="showImg co-pd-lr02" alt="">
+        </div>
+      </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

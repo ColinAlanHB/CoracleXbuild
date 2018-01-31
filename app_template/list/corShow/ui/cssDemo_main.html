@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css">
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+</head>
+
+<body>
+  <div id="app" v-cloak class="co-cl-1">
+    <div class="co-bg-0 co-bd-t1 co-bd-b1">
+      <div @click="goHtml('cssDemo_header', 'cssDemo_header.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-header co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">标题栏</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('cssDemo_tabbar', 'cssDemo_tabbar.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-tabbar co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">底部导航</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('cssDemo_navbar', 'cssDemo_navbar.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-navbar co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">页签导航</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('cssDemo_button', 'cssDemo_button.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-button co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">按钮</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('cssDemo_cell', 'cssDemo_cell.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-cell co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">列表</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('cssDemo_cellSwipe', 'cssDemo_cellSwipe.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-cell-swipe co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">侧滑列表</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <!-- <div @click="goHtml('cssDemo_drawer', 'cssDemo_drawer.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-drawer co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">抽屉</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div> -->
+
+      <div @click="goHtml('cssDemo_spinner', 'cssDemo_spinner.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-spinner co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">状态图标</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('cssDemo_tabContainer', 'cssDemo_tabContainer.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-tab-container co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">标签容器</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('cssDemo_search', 'cssDemo_search.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-search co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">搜索框</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('cssDemo_collapse', 'cssDemo_collapse.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-collapse co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">折叠面板</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <!-- <div @click="goHtml('cssDemo_timeline', 'cssDemo_timeline.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-timeline co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">时间轴</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div> -->
+    </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el: "#app",
+    methods: {
+      goHtml:function(name,url,anim){
+        corNative.openWindow({
+            name:name,
+            data: url,
+            animID:anim,
+            flag:1024,
+        });
+      }
+    }
+  })
+</script>
+
+</html>

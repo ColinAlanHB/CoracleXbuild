@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .page-swipe {
+      height: 100%;
+    }
+
+    .page-button-group {
+      margin-bottom: 15px;
+      padding: 0 15px 15px;
+    }
+
+    .page-button-group .co-button {
+      margin-bottom: 15px;
+    }
+
+    .page-swipe-content {
+      position: relative;
+      left: 0;
+    }
+
+    .page-swipe-banner {
+      margin-top: 20px;
+      height: 300px;
+      text-align: center;
+      background-color: aqua;
+    }
+
+    .swipe-menu {
+      height: 100%;
+    }
+
+    .page-swipe-content .co-cell-title {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+    }
+
+    .page-swipe-content .co-cell-value {
+      -webkit-box-flex: 2;
+      -ms-flex: 2;
+      flex: 2;
+      position: relative;
+    }
+
+    .co-button .coicon {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-drawer :opened="isopen" :direction="direction" :distance="new_distance" :modal="modal=='是'? true : false" @togglemenu="handleToggle">
+      <div class="swipe-menu" slot="menu">
+        <div class="page-button-group">
+          <co-button size="large">菜单0</co-button>
+          <co-button size="large">菜单1</co-button>
+          <co-button size="large">菜单2</co-button>
+          <co-button size="large">菜单3</co-button>
+          <co-button size="large" type="danger" @click="handleToggle(false)">关闭</co-button>
+        </div>
+      </div>
+      <div slot="content">        
+        <co-header id="co-header" title="Drawer" class="co-bg-3 co-cl-0">
+          <a @click="corNative.closeWindow({animID:-1, animDuration:300})" slot="left">
+            <co-button icon="back"></co-button>
+          </a>
+        </co-header>
+
+        <div class="page-swipe-content">
+          <co-cell :title="'弹射距离:'+distance" label="0~1之间的小数">
+            <select style="width: 80%;" :disabled="isopen" v-model="distance"><option v-for="v in 9">NaN</option></select>
+          </co-cell>
+          <co-radio title="抽屉的位置" v-model="direction" :options="['left', 'right']">
+          </co-radio>
+          <co-radio title="是否添加覆盖层" v-model="modal" :options="['是','否']">
+          </co-radio>
+          <co-button size="large" type="success" @click="handleToggle(true)">打开</co-button>
+          <div class="page-swipe-banner">
+            向滑动
+          </div>
+        </div>
+      </div>
+    </co-drawer>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        isopen: false,
+        direction: 'left',
+        modal: '是',
+        distance: 0.5
+      },
+      computed: {
+        new_distance: function () {
+          return Number(this.distance);
+        },
+        swipeDir: function () {
+          if ('left' == this.direction) {
+            return '右'
+          } else if ('right' == this.direction) {
+            return '左'
+          }
+        }
+      },
+      methods: {
+        handleToggle(state) {
+          this.isopen = state;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

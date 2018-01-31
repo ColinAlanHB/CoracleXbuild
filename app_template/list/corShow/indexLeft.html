@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+  <style type="text/css" media="screen">
+    #divBottom{
+        position:absolute;
+        height:100%;
+        width:100%;
+        background:#666;
+      }
+  </style>
+</head>
+<body class="co-body">
+  <div id="divBottom" class="co-flex" style="padding-top:2.4rem">
+    <div style="width:8rem">
+      <div class="co-flex co-ac co-pd-a08 co-cl-0 co-fs-01">
+        <div class="co-f1">关于我们</div>
+        <div class="co-flex co-ac">
+          <div class="coicon coicon-enter co-mg-t02"></div>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-a08 co-cl-0 co-fs-01">
+        <div class="co-f1">服务支持</div>
+        <div class="co-flex co-ac">
+          <div class="coicon coicon-enter co-mg-t02"></div>
+        </div>
+      </div>
+    </div>
+    <div class="co-f1">
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    
+  })
+  var vm = new Vue({
+    el:"#divBottom",
+    data:{
+        mystyle:true,
+        tag:""
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

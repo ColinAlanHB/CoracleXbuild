@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="意见反馈" fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-1">
+      <div>
+        <textarea placeholder="请输入意见反馈" name="" id="" style="width:100%;height:6rem;border: 0;padding:.5rem">
+
+        </textarea>
+      </div>
+      <div class="co-bg-6 co-cl-0 co-pd-a05 co-mg-a1 co-br-a0 co-tx-c">提交</div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      value1:"",
+      value2:"",
+      value3:""
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

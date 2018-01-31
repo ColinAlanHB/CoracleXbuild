@@ -1,0 +1,15 @@
+.info-main {
+	padding: 20px 10px;	
+}
+
+.info-title {
+	font-size: 20px;
+}
+
+.info-intime {
+	text-align: right;
+	font-size: 12px;
+}
+.info-text img {
+	width: 100%;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+      <co-swipe :auto="3000" >
+        <co-swipe-item >
+          <img src="images/banner1.jpg" class="bannerImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+          <img src="images/banner2.jpg" class="bannerImg" />
+        </co-swipe-item>
+      </co-swipe>
+      <div class="co-pd-b05 co-bg-0 co-mg-t02 co-of">
+        <div @click="two" class="foodList co-flex co-ac co-jc co-ver">
+          <div><img src="images/tab1.png" class="tabList" /></div>
+          <div class="co-cl-1 co-fs-01 co-mg-t02">美食</div>
+        </div>
+        <div class="foodList co-flex co-ac co-jc co-ver">
+          <div><img src="images/tab2.png" class="tabList" /></div>
+          <div class="co-cl-1 co-fs-01 co-mg-t02">生鲜果蔬</div>
+        </div>
+        <div class="foodList co-flex co-ac co-jc co-ver">
+          <div><img src="images/tab3.png" class="tabList" /></div>
+          <div class="co-cl-1 co-fs-01 co-mg-t02">甜点饮品</div>
+        </div>
+        <div class="foodList co-flex co-ac co-jc co-ver">
+          <div><img src="images/tab4.png" class="tabList" /></div>
+          <div class="co-cl-1 co-fs-01 co-mg-t02">正餐优选</div>
+        </div>
+        <div class="foodList co-flex co-ac co-jc co-ver">
+          <div><img src="images/tab5.png" class="tabList" /></div>
+          <div class="co-cl-1 co-fs-01 co-mg-t02">家常菜</div>
+        </div>
+        <div class="foodList co-flex co-ac co-jc co-ver">
+          <div><img src="images/tab6.png" class="tabList" /></div>
+          <div class="co-cl-1 co-fs-01 co-mg-t02">跑腿代购</div>
+        </div>
+        <div class="foodList co-flex co-ac co-jc co-ver">
+          <div><img src="images/tab7.png" class="tabList" /></div>
+          <div class="co-cl-1 co-fs-01 co-mg-t02">小吃馆</div>
+        </div>
+        <div class="foodList co-flex co-ac co-jc co-ver">
+          <div><img src="images/tab8.png" class="tabList" /></div>
+          <div class="co-cl-1 co-fs-01 co-mg-t02">免费配送</div>
+        </div>
+      </div>
+      <div class="co-mg-t02 co-bg-0 co-pd-tb04">
+        <div class="co-tx-c co-pd-t04 co-pd-b08">优惠专区</div>
+        <div class="co-flex co-pd-lr02">
+          <div class="co-f3">
+            <img src="images/y1.png" style="width:100%;height:12rem;display: block;" alt="">
+          </div>
+          <div class="co-f4 co-mg-l02">
+            <div class="co-flex">
+              <div class="co-f1"><img src="images/y2.png" style="width:100%;height:5.8rem;display: block;" alt=""></div>
+              <div class="co-f1 co-mg-l02"><img src="images/y3.png" style="width:100%;height:5.8rem;display: block;" alt=""></div>
+            </div>
+            <div class="co-flex co-mg-t04">
+              <div class="co-f1"><img src="images/y4.png" style="width:100%;height:5.8rem;display: block;" alt=""></div>
+              <div class="co-f1 co-mg-l02"><img src="images/y5.png" style="width:100%;height:5.8rem;display: block;" alt=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="co-mg-t02 co-bg-0 co-pd-tb04">
+        <div class="co-tx-c co-pd-t04 co-pd-b08 co-bd-b1">附近商家</div>
+        <div v-for="item in data" class="co-flex co-pd-a04 co-bd-b1">
+          <div>
+            <img :src="item.img" style="width:4.2rem;height:3.2rem;display: block;" alt="">
+          </div>
+          <div class="co-f1 co-pd-l04">
+            <div>{{item.title}}</div>
+            <div class="co-flex co-fs-02 co-cl-2 co-pd-tb02">
+              <div></div>
+              <div class="co-f1">月售{{item.num}}</div>
+              <div class=""><span class="co-bd-r1 co-pd-r04">{{item.time}}分钟</span><span class="co-pd-l02">{{item.addr}}km</span></div>
+            </div>
+            <div class="co-fs-02 co-cl-2">
+              <span class="co-bd-r1 co-pd-r04">起送 ￥{{item.money}}</span>
+              <span class="co-bd-r1 co-pd-r04 co-pd-l02">配送 ￥{{item.money1}}</span>
+              <span class="co-pd-l02">人均 ￥{{item.per}}</span>
+            </div>
+            <div class="co-flex co-ac co-fs-02 co-cl-2 co-pd-t04">
+              <div class="co-bg-3 co-cl-0 co-flex co-ac co-jc" style="width:.9rem;height:.9rem">首</div>
+              <div class="co-of co-f1 co-mg-l04">{{item.first}}</div>
+            </div>
+            <div class="co-flex co-ac co-fs-02 co-cl-2 co-pd-t04">
+              <div class="co-bg-5 co-cl-0 co-flex co-ac co-jc" style="width:.9rem;height:.9rem">免</div>
+              <div class="co-of co-f1 co-mg-l04">{{item.mian}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var dataList = [
+    {
+      img:"images/s1.png",
+      title:"如意混沌",
+      num:"364",
+      time:56,
+      addr:1.5,
+      money:20,
+      money1:2,
+      per:22,
+      first:"新用户立减15元,首次使用银行卡支付打8折",
+      mian:"新用户首次免单"
+    },
+    {
+      img:"images/s2.png",
+      title:"襄阳邓家卤肉面",
+      num:"387",
+      time:34,
+      addr:4.5,
+      money:30,
+      money1:4,
+      per:30,
+      first:"新用户立减15元",
+      mian:"新用户首次免单"
+    },
+    {
+      img:"images/s3.png",
+      title:"哈尔滨饺子馆",
+      num:"245",
+      time:34,
+      addr:1.8,
+      money:18,
+      money1:2,
+      per:19,
+      first:"新用户立减15元",
+      mian:"新用户首次免单"
+    },
+    {
+      img:"images/s4.png",
+      title:"烤肉拌饭",
+      num:"566",
+      time:34,
+      addr:1.5,
+      money:24,
+      money1:2,
+      per:15,
+      first:"新用户立减15元",
+      mian:"新用户首次免单"
+    },
+    {
+      img:"images/s5.png",
+      title:"我家小厨",
+      num:"456",
+      time:34,
+      addr:4.5,
+      money:30,
+      money1:4,
+      per:30,
+      first:"新用户立减15元",
+      mian:"新用户首次免单"
+    }
+  ]
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      data:dataList
+    },
+    methods:{
+      goDetial:function(name){
+                 corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:10
+         });
+      },
+      tabMenu:function(name){
+                 corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:0
+         });
+      },
+      two:function(){
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

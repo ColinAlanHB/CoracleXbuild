@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../css/plugin-helper.css">
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="高德地图">
+      <div slot="left">
+        <i class="coicon coicon-return co-fs-4" @click="goBack"></i>
+      </div>
+    </co-header>
+    <div id="co-footer" class="co-flex co-ac co-bg-0 co-bd-t1 co-wp" style="height:auto !important">
+      <div v-show="tag" @click="open" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">打开</div>
+      <div @click="close" class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">关闭</div>
+      <div @click="xuanz" class=" co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">旋转</div>
+      <div @click="biaozhu" class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">标注</div>
+      <div @click="mapType(1)" class=" co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">标准地图</div>
+      <div @click="mapType(2)" class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">卫星地图</div>
+      <div @click="mapType(3)" class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">夜景地图</div>
+      <div @click="roadType(1)" class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">开启路况</div>
+      <div @click="roadType(0)" class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">关闭路况</div>
+      <div class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">单击地图</div>
+      <div class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">长按地图</div>
+      <div @click="changeAddress()" class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">地址转化为经纬度</div>
+      <div @click="changeNum()" class="co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-a05 co-fs-01">经纬度转化为地址</div>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script src="../js/plugin-helper.js"></script>
+  <script>
+    corJS.ready(function () {
+      corGaodeMap.onMapClickListener = function(data) {
+          corNative.alertDlg({
+            "title": "单击",
+            message: "经度为:"+JSON.parse(data).longitude+",纬度为："+JSON.parse(data).latitude,
+            buttonLabel: "确定"
+          })
+      }
+      corGaodeMap.onMapLongClickListener = function(data) {
+        corNative.alertDlg({
+            "title": "长按",
+            message: "经度为:"+JSON.parse(data).longitude+",纬度为："+JSON.parse(data).latitude,
+            buttonLabel: "确定"
+          })
+        alert("onMapLongClickListener: "+json);
+      }
+      var vm = new ContainerVue({
+        el: '#app',
+        mounted:function() {
+          Vue.nextTick(function(){
+            vm.open()
+          })
+        },
+        data:{
+          tag:false,
+        },
+        methods:{
+          goBack:function(){
+            corNative.closeWindow({
+              animID:-1,
+              animDuration:300
+            });
+          },
+          open:function(){
+            var topH = corJS.offset("co-header").h;
+            var bottom = corJS.offset("co-footer").h;
+            var w = corJS.getWidth();
+            var h = corJS.getHeight() - topH - bottom;
+            json = {
+              left:0,
+              top:topH,
+              width:w,
+              height:h,
+              isScrollWithWeb:true,
+              longitude:114.402815,
+              latitude:30.475798
+            };
+            corGaodeMap.open(JSON.stringify(json));
+            var json = {
+                level:14
+            };
+            corGaodeMap.setZoomLevel(JSON.stringify(json));
+          },
+          close:function(){
+            vm.tag = true;
+            corGaodeMap.close();
+          },
+          xuanz:function(){
+            var json = {
+                angle:90
+            };
+            corGaodeMap.rotate(JSON.stringify(json));
+          },
+          biaozhu:function(){
+            var json = [
+              {
+                  id:10001,
+                  longitude:114.402965,
+                  latitude:30.475845,
+                  icon:"",
+                  bubble:{
+                      title:"我的标注",
+                      subTitle:"图标标注"
+                  }
+              },
+              {
+                  id:10002,
+                  longitude:114.409308,
+                  latitude:30.476229,
+                  bubble:{
+                      title:"标注",
+                      subTitle:"没有图标"
+                  }
+              }
+          ];
+          corGaodeMap.addMarkersOverlay(JSON.stringify(json));
+          },
+          mapType:function(type){
+            var json = {
+              type:type
+            };
+            corGaodeMap.setMapType(JSON.stringify(json));
+          },
+          roadType:function(type){
+            var json = {
+                type:type
+            };
+            corGaodeMap.setTrafficEnabled(JSON.stringify(json));
+          },
+          changeAddress:function(){
+            var data=
+              {
+                  city: "武汉",
+                  address: "花山花城大道"
+              }
+              corBaiduMap.geocode(data, function(error,data) {
+                corNative.alertDlg({
+                  "title": "经纬度",
+                  message: "经度为:"+data.longitude+",纬度为："+data.latitude,
+                  buttonLabel: "确定"
+                })
+              })
+          },
+          changeNum:function(){
+            var data={
+                longitude: "114.409308",
+                latitude: "30.476229"
+            }
+            corBaiduMap.reverseGeocode(data, function(error,data) {
+              corNative.alertDlg({
+                "title": "地址",
+                message: data.address,
+                buttonLabel: "确定"
+              })
+            })
+          }
+        }
+      })
+    })
+  </script>
+</body>
+</html>

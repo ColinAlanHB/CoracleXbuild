@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .co-timeline-item-content-time {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .co-timeline-item-content-content {
+      margin: 5px 0 0 5px;
+    }
+
+    .co-timeline-item-head-custom {
+      position: relative;
+      left: -3px;
+      top: -3px;
+    }
+
+    .co-timeline-item-head-custom .indexicon {
+      color: red;
+    }
+
+    .page-timeline-main {
+      overflow: scroll;
+      background-color: #fff;
+      padding: 64px 20px 20px;
+    }
+
+    .page-timeline-main .header {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="时间轴" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <div class="page-timeline-main">
+      <header class="header">1.基本用法</header>
+      <co-timeline>
+        <co-timeline-item>
+          <p class="co-timeline-item-content-time">4月20号</p>
+          <p class="co-timeline-item-content-content">发布版本1.0</p>
+        </co-timeline-item>
+        <co-timeline-item>
+          <p class="co-timeline-item-content-time">5月20号</p>
+          <p class="co-timeline-item-content-content">发布版本2.0</p>
+        </co-timeline-item>
+        <co-timeline-item>
+          <p class="co-timeline-item-content-time">6月20号</p>
+          <p class="co-timeline-item-content-content">发布版本3.0</p>
+        </co-timeline-item>
+        <co-timeline-item>
+          <p class="co-timeline-item-content-time">7月20号</p>
+          <p class="co-timeline-item-content-content">发布版本4.0</p>
+        </co-timeline-item>
+      </co-timeline>
+      <header class="header">2.改变圆圈颜色</header>
+      <co-timeline>
+        <co-timeline-item color="red">
+          发布1.0
+        </co-timeline-item>
+        <co-timeline-item color="green">
+          发布2.0
+        </co-timeline-item>
+        <co-timeline-item color="#f50">
+          发布3.0
+        </co-timeline-item>
+      </co-timeline>
+      <header class="header">3.查看更多</header>
+      <co-timeline pending>
+        <template>
+          <co-timeline-item v-for="(item, i) in lookMoreList" :key="i">
+            {{item}}
+          </co-timeline-item>
+        </template>
+        <co-timeline-item><span @click.prevent="lookMore()">查看更多</span></co-timeline-item>
+      </co-timeline>
+      <header class="header">4.自定义时间轴点</header>
+      <co-timeline pending>
+        <co-timeline-item>
+          <i class="coicon coicon-success_fill" slot="dot"></i>
+          <p>发布1.0版本</p>
+        </co-timeline-item>
+        <co-timeline-item>发布2.0版本</co-timeline-item>
+        <co-timeline-item>发布3.0版本</co-timeline-item>
+      </co-timeline>
+    </div> 
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setWindowScrollbarVisibility(false);
+    });
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        lookMoreList: ['发布版本1.0', '发布版本2.0', '发布版本3.0']
+      },
+      methods: {
+        lookMore() {
+          let more = ['发布4.0版本', '发布5.0版本'];
+          this.lookMoreList = this.lookMoreList.concat(more);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

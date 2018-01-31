@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="忘记密码" fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-1">
+      <div class="co-bg-0 co-bd-b1 co-bd-t1">
+        <div class="co-pd-tb06 co-mg-l05 co-bd-b1">
+          <input v-model="tel" placeholder="请输入手机号" type="passWord" class="co-input co-f1">
+        </div>
+        <div class="co-pd-tb06 co-mg-l05 co-flex co-ac co-bd-b1">
+          <div class="co-f1">
+            <input v-model="telNum" placeholder="请输入短信验证码" type="passWord" class="co-input co-f1">
+          </div>
+          <div class="co-h-0 co-pd-lr06 co-br-a0 co-bg-3 co-cl-0 co-mg-r06">获取验证码</div>
+        </div>
+        <div class="co-pd-tb06 co-mg-l05 co-bd-b1">
+          <input v-model="pass" placeholder="请输入新密码" type="passWord" class="co-input co-f1">
+        </div>
+        <div class="co-pd-tb06 co-mg-l05">
+          <input v-model="pass1" placeholder="请再次输入新密码" type="passWord" class="co-input co-f1">
+        </div>
+      </div>
+      <div class="co-bg-6 co-cl-0 co-tx-c co-br-a0 co-pd-tb05 co-mg-lr06 co-mg-t1">确认修改</div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      tel:"",
+      telNum:"",
+      pass:"",
+      pass1:""
+    },
+    methods:{
+      back:function(){
+          corNative.closeWindow({
+            animID:-1
+          });
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+</head>
+<body>
+  <div id="app"></div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在ready里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    window.location.href = "https://www.baidu.com";
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

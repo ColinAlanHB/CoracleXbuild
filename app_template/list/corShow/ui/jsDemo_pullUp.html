@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <title></title>
+  
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .myList {
+      line-height: 2.2rem;
+      padding-left: .5rem;
+      color: #333;
+      border: 1px #eee solid
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="上滑加载" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <div>
+      <co-loadmore :top-method="loadTop" :bottom-method="loadBottom" ref="loadmore">
+        <ul>
+          <li class="myList co-bd-b" v-for="item in itemList">
+            <div class="co-ts"></div>
+          </li>
+        </ul>
+      </co-loadmore>
+    </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function () {
+  })
+
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      itemList: [{
+          title: "俄防长专机遭北约战机跟随 俄战机亮挂载武器警",
+        },
+        {
+          title: "南宁扫黄抓3男3女 纪委官员及警察嫖娼被开除党",
+        },
+        {
+          title: "男子猥亵KTV女服务员 将其按倒后强行摸胸撕裙子",
+        },
+        {
+          title: "京津冀及周边环保督查 490家企业中229家存在问",
+        },
+        {
+          title: "全球珊瑚白化灾情暂缓 专家警告：这次危害最重",
+        },
+        {
+          title: "重庆丰都为什么叫鬼城 重庆丰都鬼城灵异事件 丰",
+        },
+        {
+          title: "金桢勋女友是谁 金桢勋和谁交往过 金桢勋结婚了",
+        },
+        {
+          title: "麻辣财经：人人手机当钱包，中国到底有多牛？",
+        },
+        {
+          title: "信托收益降至5.01% 基础产业获信托投资超证券",
+        },
+        {
+          title: "最懂中国的美国“老干部”布热津斯基走了",
+        },
+      ]
+    },
+    methods: {
+      add: function () {
+        alert("点击了我");
+      },
+      loadTop: function () {
+        var self = this;
+        setTimeout(function () {
+          self.$toast("刷新成功");
+          self.$refs.loadmore.onTopLoaded();
+        }, 2000)
+      },
+      loadBottom: function () {
+        var self = this;
+        setTimeout(function () {
+          self.$toast("加载完毕");
+          self.$refs.loadmore.onBottomLoaded();
+        }, 2000)
+      }
+    }
+  });
+</script>
+</html>

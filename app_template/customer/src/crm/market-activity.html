@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="market-activity/css/index.css">
+
+</head>
+<body>
+    <div id="Page">
+            <co-header title="市场活动">
+                <a slot="left" class="iconfont icon-arr" @click="location(-1)"></a>
+            </co-header>
+            <div class="rowslist">
+                <div class="rowsone" v-for="item,index in list" :key="index" @click="location('market-detail.html')">
+                    <p class="title" v-cloak>{{item.name}}</p>
+                    <p v-cloak>举办单位：{{item.organiser}}</p>
+                    <p v-cloak>开始时间：{{item.date}}</p>
+                    <span v-cloak class="state theme-red" :class="{'theme-red':item.state == 0,'theme-green':item.state == 1,'theme-grey':item.state == 2}">{{item.state | getState}}</span>
+                </div>
+            </div>
+
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/market-activity.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

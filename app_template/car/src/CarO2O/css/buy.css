@@ -1,0 +1,107 @@
+.buy-main-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  padding: 10px 0;
+
+  position: relative;
+}
+.buy-main-filter .filter-type {
+  text-align: center;
+  line-height: 2;
+  vertical-align: middle;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  box-sizing: border-box;
+  border-right: 1px solid #DDD;
+}
+.buy-main-filter .filter-type:last-of-type {
+  border-right-width: 0;
+}
+.filter-layout {
+  position: fixed;  
+  top: 147px;
+  bottom: 55px;
+  width: 100%;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+}
+.filter-layout .filter--item {
+  position: relative;  
+  z-index: 10;
+  width: 100%;
+
+  background-color: #fff;
+}
+.filter-layout .filter--order {
+  padding: 20px 10px;
+  -webkit-box-sizing: border-box;  
+  box-sizing: border-box;
+}
+.filter-layout .filter--order .order-type {
+  padding: 10px;
+
+  border-top: 1px solid #DFDFDF;
+}
+.filter-layout .filter--order .order-type:last-child {
+  border-bottom: 1px solid #DFDFDF;
+}
+.filter-layout .filter--cate {
+  padding: 10px;
+  -webkit-box-sizing: border-box;  
+  box-sizing: border-box;
+}
+.filter-layout .filter--cate .cate-type {
+  display: inline-block;
+  padding: 5px 8px;
+  border: 1px solid #DFDFDF;
+  border-radius: 2px;
+
+  margin-top: 5px;
+}
+.filter-layout .filter--price {
+  padding: 10px;
+  -webkit-box-sizing: border-box;  
+  box-sizing: border-box;
+}
+.filter-layout .filter--price .price-type {
+  display: inline-block;
+  padding: 5px 8px;
+  border: 1px solid #DFDFDF;
+  border-radius: 2px;
+
+  margin-top: 5px;
+}
+.buy-main-list .list-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #DDD;
+  position: relative;
+}
+.buy-main-list .item--image {
+  width: 100%;
+}
+.buy-main-list .item--title {
+  padding: 0 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.buy-main-list .item--info {
+  padding: 10px 20px;
+}
+.buy-main-list .item--price {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px 10px;
+  border-radius: 0 0 0 20px;
+}
+#app .co-search {
+  height: auto;
+}
+#app .coui-search, #app .co-searchbar-text {
+  font-size: 16px;
+}

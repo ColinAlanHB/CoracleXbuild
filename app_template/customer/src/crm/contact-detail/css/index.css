@@ -1,0 +1,10 @@
+body{ background-color: #fff;}
+.contactor-box{ margin: 0 10px; padding: 10px 0; border-bottom: #eaeaea 1px solid; overflow: hidden;}
+.contactor-card{ float: left;}
+.contactor-card img{ border-radius: 5px; width: 75px; height: 75px; border: #e1e1e1 1px solid;}
+.contactor-msg{   margin-left: 87px; position: relative;}
+.contactor-msg p{ color: #999999; font-size: 12px; line-height: 1.5;}
+.contactor-msg p.name{ font-size: 14px; color: #000;}
+.contactor-msg-icon{position: absolute; right: 0px; top: 20px; font-size: 20px; color: #e8e8e8;}
+.contactor-msg-icon span{ margin: 0 10px;}
+

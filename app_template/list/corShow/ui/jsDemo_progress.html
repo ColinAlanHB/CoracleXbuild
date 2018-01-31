@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .co-cell-value {
+      flex: 2.5;
+      position: relative;
+      top: -20px;
+    }
+
+    .co-progress {
+      width: 100%;
+      position: absolute;
+      top: 5px;
+    }
+
+    .page-progress-wrapper {
+      padding: 0 10px;
+      margin-top: 50px;
+    }
+
+    .page-progress-wrapper .co-progress {
+      position: relative;
+    }
+
+    .page-progress-wrapper .progress-fade-transition {
+      transition: opacity .3s;
+    }
+
+    .progress-fade-enter,
+    .progress-fade-leave {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="进度条" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <co-cell title="默认" class="page-content-main">
+      <co-progress></co-progress>
+    </co-cell>
+    <co-cell title="设置 value">
+      <co-progress :value="20"></co-progress>
+    </co-cell>
+    <co-cell title="左右文字">
+      <co-progress :value="40">
+        <div slot="start">0%</div>
+        <div slot="end">100%</div>
+      </co-progress>
+    </co-cell>
+    <co-cell title="定义线宽">
+      <co-progress :value="60" :bar-height="5"></co-progress>
+    </co-cell>
+    <div class="page-progress-wrapper">
+      <co-button size="large" type="primary" @click.native="uploadFile">上传文件</co-button>
+      <co-progress :value="value" v-if="progressVisible" transition="progress-fade">
+        <div slot="end">{{ value }}%</div>
+      </co-progress>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        progressVisible: false,
+        value: 0,
+        uploading: false,
+        timer: null
+      },
+      watch: {
+        value(val) {
+          var self = this;
+          if (val >= 100) {
+            this.uploading = false;
+            this.progressVisible = false;
+            setTimeout(() => self.$toast({
+              message: '上传成功',
+              position: 'bottom',
+              duration: 1000
+            }), 200);
+            clearTimeout(this.timer);
+          }
+        }
+      },
+
+      methods: {
+        uploadFile() {
+          if (!this.uploading) {
+            this.value = 0;
+            this.progressVisible = true;
+            this.uploading = true;
+            this.timer = setInterval(() => this.value++, 10);
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

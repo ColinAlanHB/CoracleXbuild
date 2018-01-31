@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .tipD{transform: rotate(90deg);-webkit-transform:rotate(90deg)}
+    .tipD1{transform: rotate(-90deg);-webkit-transform:rotate(-90deg)}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak class="co-cl-1">
+      <div class="co-pd-a04">支付</div>
+      <div class="co-bg-0 co-bd-t1 co-bd-b1">
+        <div @click="aliPay" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+          <div class="icon iconfont icon-zhifubao co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">
+            <div>corAliPay</div>
+            <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装支付宝服务</div>
+          </div>
+          <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+        </div>
+        <div @click="wxPay" class="co-flex co-ac co-mg-l05 co-pd-tb05">
+          <div class="icon iconfont icon-weixinzhifu co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">
+            <div>corWeiXin</div>
+            <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装微信支付服务</div>
+          </div>
+          <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+        </div>
+      </div>
+      <div class="co-pd-a04">地图</div>
+      <div class="co-bg-0 co-bd-t1 co-bd-b1"> 
+        <div @click="openH('corBaiduMap')" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+          <div class="icon iconfont icon-iconbaiduditu co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">
+            <div>corBaiduMap</div>
+            <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装百度地图服务</div>
+          </div>
+          <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+        </div>
+        <div @click="openH('corGaodeMap')" class="co-flex co-ac co-mg-l05 co-pd-tb05">
+          <div class="icon iconfont icon-gaodeicon co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">
+            <div>corGaodeMap</div>
+            <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装高德地图服务</div>
+          </div>
+          <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+        </div>
+      </div>
+      <div class="co-pd-a04">分享</div>
+      <div class="co-bg-0 co-bd-t1 co-bd-b1 "> 
+        <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1 co-hide">
+          <div class="icon iconfont icon-xinlang co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">
+            <div>corSina</div>
+            <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装新浪微博社交分享功能</div>
+          </div>
+          <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+        </div>
+        <div @click="openH('corQQ')" class="co-flex co-ac co-mg-l05 co-pd-tb05  co-bd-b1">
+          <div class="icon iconfont icon-qq co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">
+            <div>corQQ</div>
+            <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装QQ登陆以及分享功能</div>
+          </div>
+          <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+        </div>
+        <div @click="openH('corWx')" class="co-flex co-ac co-mg-l05 co-pd-tb05">
+          <div class="icon iconfont icon-weixinzhifu co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">
+            <div>corWeiXin</div>
+            <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装微信登陆以及分享功能</div>
+          </div>
+          <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+        </div>
+      </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script src="../../public/js/weixin-helper.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      tag: false,
+      reTag: false
+    },
+    methods: {
+      openH: function (name) {
+        corNative.openWindow({
+          name: name,
+          data: "../thirdSdk/" + name + ".html",
+          animID: 2,
+          flag: 1024,
+        });
+      },
+      aliPay: function () {
+        //pay 商户信息        
+        var seller = "kakatour@qq.com";
+        var rsaPrivate =
+          "MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCztdVbd1ll0Bo1VyzX7trtadx1UHJrovRhtafl8//gBlH12n6L++RHyWH74EFCHBVmzL2skPBk+vJ5Yjd2aiqi45F/+8tRCjBNaHWSoguuxQ4mSExK50IYJbn/9Ecj5ge4ASjPdqgaWIZGV3BZ+2vxhh96KEi1GaHIwc5ODrY+pZPA0TDPbp+mnTtRZH3h9ALG5N5+7F4TsRozrdzNgOJxzOw6B4S+gGKwJt+1C9Z0bN9KsRQZ0Opxf681VJd4RQCdHl9BxeU+uU+FSBw54Lv+2hpRgfw802XWEdBjauyb87bgZU10VY9Bqc+7w9q1LzNeQa/DOQWuWcCtDFnnWXMjAgMBAAECggEALy+3beTQnGMf/pF9PNWCtoPtVwBgitKmyGEiTMbckL4YFy3fvHHPZuoByFkByZIGLI/l3cHQ3TLnJ+gaGAWYXFzUf35lzEmYlTqwZGgYGTO0m2iwX5qJSD3fsM07QLnNnQrw5EiLqx9DYoTjAz15AlntOe4J6UNpr4Tz3psOTzRJ7Eh/W7lfo5tRFxREXJrUGeXUEA7ArMs0s1cpVPIz//QpPcwuddWrLw6MrdE4UbHks7mILe3hxL5/gye6qulb8TomnpnJJBLk2f8ZdookvkTqce0r0ZDZN91O5TmckEIj57FD7oscjaVKmJmQG5brxPJHyM1T/6ImKRbnkaQQAQKBgQDgy2gBb9WUgjR3K61cIvVqpMaTG2Dv4MPOT4mNRC8LrAEoWcXb2bCTDA/ns3nGRQsgf3mJm9vOVfu6uga5feI5rIwkGfvZvZtI63DAjILchuKj9MN/P3cMokE6Ecq9uWea/xsm0x8u2U/8HEinRKML8Bk/+xa0Qh16vM9nGp5OIwKBgQDMqEDnbQka5aUJYMkruvXG1euf66e+uAvcZXP7GBWahO5C9EoL4kBDuo7CveHzGioSBTQID2wCevYGyQgoNCq9Bec1q2nEIKfUqUEcRxRkZs3L82wLd/7C/uAT12PvbCWxz5k91yPiHz+jz4BO2vX3peK+KpoYGmGOuiFTydIXAQKBgHsLvA11SsJ0lwVYOheB5zYNpchmJySGsodekBtsZBgOeb+9jAkwWm/THW2llxWJO3L5c+x4DNQfyp/GLeIg3tDU+wzT0EC6gaJjhZ9QCl1t0+cNFmmzspWOxwdjL8e0EdsMoq8YxyvcteR5EufEMT9amGemKCJZQkupyBlWv6pjAoGAJkA4SUjmz8EmNHeDggnij/RBotUvuAS8KshHgiHBP+0ifx8bi9cQvdfrgNhul7pHLLEORYdkX55Nx3zhamo9prCowy4ziXW1CJlN0xQx6oYQZtMrWYVm91kd1neGdSRYc0Bi2t0QFt5STbKlv5dLK6s0kuhxfpnHrB57xiZNfwECgYB5JdNWboRGYQS39aJ6ygt4kQvnQoe3CdCt/rX51bVd8mIPvj1Vc3WTIT1Tx964a4SwbrdF2+6jWywRQfpsCb9zXHXkSJspjcyhSN06G7SLYlyCrKAZcOMa5dvFzZUd/Fjv0dQyzT9aIDUmnI8UXOg/gJQSmNZiwoy2GLjVuHZecg==";
+        var aliNotifyUrl = "http://115.28.92.161:1337/parse/alipay";
+        var app_id = "2016122804687398";
+
+        var param = {
+          private_key: rsaPrivate,
+          app_id: app_id,
+          notify_url: aliNotifyUrl,
+          biz_content: {
+            subject: "支付宝测试",
+            out_trade_no: new Date().getTime() + "",
+            total_amount: "0.01",
+            seller_id: seller
+          }
+        }
+        var order = corAliPay.generatePayOrder(param);
+        corAliPay.payWithOrder(order,function(error, message){
+            if (!error) {
+              alert(message);
+            } else {
+              alert(error);
+            }
+        })
+      },
+      wxPay: function () {
+        var orderInfo = {
+          subject: '打赏支付',
+          total_amount: 0.01
+        };
+
+        weixinPay(orderInfo, function (error, data) {
+          alert(data);
+          if (!error) {
+            
+          }
+        });
+      }
+    },
+    created: function () {},
+    mounted: function () {}
+  });
+</script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../css/plugin-helper.css">
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="轮播图">
+      <div slot="left">
+        <i class="coicon coicon-return co-fs-4" @click="goBack"></i>
+      </div>
+    </co-header>
+    <div id="co-content">
+    </div>
+    <div id="co-footer" class="co-flex co-ac co-bg-0 co-bd-t1">
+      <div @click="start" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr02 co-fs-01">开始轮播</div>
+      <div @click="stop" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr02 co-fs-01">停止轮播</div>
+      <div @click="close" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr02 co-fs-01">删除</div>
+      <div @click="open" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr02 co-fs-01">创建</div>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function() {
+      corScrollPicture.onPicItemClick = function(data){
+        alert(JSON.parse(data).index);
+      }
+      var vm = new Vue({
+        el: '#app',
+        data:{
+          view:""
+        },
+        mounted:function(){
+          Vue.nextTick(function(){
+            vm.open();
+          })
+        },
+        methods:{
+          open:function(){
+            var y = corJS.offset("co-header").h;
+            var h = parseInt(corJS.getHeight()/3);
+            var w = corJS.getWidth();
+            var param={
+              interval:2000,
+              anchor:["0", (y*3).toString()],
+              height:h,
+              width:w,
+              urls:["res://image.jpg","res://photo1.jpg","res://photo3t.jpg"]
+            };
+            vm.view=corScrollPicture.createNewScrollPicture(JSON.stringify(param));
+            if(!view1){
+              alert("创建轮播图失败");
+            }
+          },
+          start:function(){
+            var param={
+              view:vm.view
+            };
+            corScrollPicture.startAutoScroll(JSON.stringify(param));
+          },
+          close:function(){
+            var param={
+              view:vm.view
+            };
+            corScrollPicture.removeView(JSON.stringify(param));
+          },
+          stop:function(){
+            var param={
+              view:vm.view
+            };
+            corScrollPicture.stopAutoScroll(JSON.stringify(param));
+          },
+          goBack:function(){
+            corNative.closeWindow({
+              animID:-1,
+              animDuration:300
+            });
+          }
+        }
+      })
+    })
+  </script>
+</body>
+</html>

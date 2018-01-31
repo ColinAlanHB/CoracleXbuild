@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="个人中心" fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-content-bottom">
+      <div class="co-bg-6 co-pd-tb05 co-flex co-ac co-cl-0">
+        <div class="coicon coicon-mine co-mg-l06" style="font-size:3rem">
+        </div>
+        <div class="co-mg-l04">
+          <div>neki</div>
+          <div class="co-mg-t02">13687267658</div>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-pd-tb06">
+        <div class="co-f1 co-flex co-ac co-jc co-ver co-bd-r1">
+          <div class="co-cl-4">1</div>
+          <div class="co-fs-01 co-cl-3 co-mg-t02">收藏车辆</div>
+        </div>
+        <div class="co-f1 co-flex co-ac co-jc co-ver co-bd-r1">
+          <div class="co-cl-5">6</div>
+          <div class="co-fs-01 co-cl-3 co-mg-t02">订阅车源</div>
+        </div>
+        <div class="co-f1 co-flex co-ac co-jc co-ver">
+          <div class="co-cl-6">25</div>
+          <div class="co-fs-01 co-cl-3 co-mg-t02">浏览记录</div>
+        </div>
+      </div>
+      <div class="co-mg-t04 co-bd-b1 co-bd-t1 co-bg-0 co-pd-l04">
+        <div class="co-flex co-ac co-pd-tb05 co-bd-b1">
+          <div class="coicon coicon-favor co-fs-4 co-cl-7"></div>
+          <div class="co-f1 co-mg-l05">我的收藏</div>
+          <div class="coicon coicon-enter co-fs-01 co-cl-3 co-mg-r05"></div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb05 co-bd-b1">
+          <div class="coicon coicon-label co-fs-4 co-cl-7"></div>
+          <div class="co-f1 co-mg-l05">我的订阅</div>
+          <div class="coicon coicon-enter co-fs-01 co-cl-3 co-mg-r05"></div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb05 co-bd-b1">
+          <div class="coicon coicon-browse co-fs-4 co-cl-7"></div>
+          <div class="co-f1 co-mg-l05">浏览记录</div>
+          <div class="coicon coicon-enter co-fs-01 co-cl-3 co-mg-r05"></div>
+        </div>
+      </div>
+      <div class="co-mg-t04 co-bd-b1 co-bd-t1 co-bg-0 co-pd-l04">
+        <div class="co-flex co-ac co-pd-tb05 co-bd-b1">
+          <div class="coicon coicon-lock_fill co-fs-4 co-cl-7"></div>
+          <div class="co-f1 co-mg-l05">修改密码</div>
+          <div class="coicon coicon-enter co-fs-01 co-cl-3 co-mg-r05"></div>
+        </div>
+      </div>
+      <div class="co-h-3 co-cl-7 co-tx-c co-bg-0 co-mg-t1 co-bd-b1 co-bd-t1">退出登录</div>
+    </div>
+    <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+      <div @click="tabMenu('index')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-homepage co-fs-4"></i>
+        <div class="co-fs-02">首页</div>
+      </div>
+      <div @click="tabMenu('buy')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-taxi co-fs-4"></i>
+        <div class="co-fs-02">买车</div>
+      </div>
+      <div @click="tabMenu('sell')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-taxi co-fs-4"></i>
+        <div class="co-fs-02">卖车</div>
+      </div>
+      <div class="co-f1 co-flex co-ver co-ac co-jc co-cl-7">
+        <i class="coicon coicon-mine co-fs-4"></i>
+        <div class="co-fs-02">我的</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  });
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      back:function(){
+       // corJS.closeWin();
+        corNative.closeWeb();
+      },
+      goDetial:function(name){
+        corJS.openWin(name);
+      },
+      tabMenu:function(name){
+        corJS.openWin(name,0);
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="详情" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+        <div @click="goFlow" class="co-bg-0 co-cl-4 co-fs-02 co-br-a1 co-pd-a02">1234跟帖</div>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-1 co-bg-0">
+      <div class="co-mg-lr06">
+        <div class="co-pd-tb05 co-te">关于继续实施大学生创业引领计划的通知</div>
+        <div class="co-cl-2 co-fs-02 co-flex co-jsb"><span>来源:市人社局</span><span>2017-07-19</span></div>
+        <div class="co-mg-t05"><img src="images/pic4.jpg" class="picW" /></div>
+        <div class="co-fs-01 co-cl-2 co-line-h2 co-mg-t08">
+          <p>大学生创业者：</p>
+          <p>为了贯彻国家和省关于促进大学生就业创业政策意见和市委八届六次全会关于掀起全民创业热潮的决策部署，引导和支持更多的大学生创业，市委组织部、市委宣传部、团市委、市人力资源和社会保障局、市发展和改革委员会、市科学技术局、市工业和信息化委员会、市财政局、市工商行政管理局、市国家税务局、市地方税务局决定2016年继续实施大学生创业引领计划。</p>
+          <p>一、指导思想</p>
+          <p>坚持政府政策支持与创业者努力相结合，合理运用政府公共资源，充分动员社会其他资源，激发大学生创新活力，为大庆市区内毕业5年以内，年龄在35周岁以下，遵纪守法，无不良信用记录，有创业愿望、创业能力、创业项目或者已经开始创业的普通高等院校在校生、毕业生、出国（出境）留学回国人员，提供有力的创业支持，以创新引领创业，以创业带动就业。</p>
+          <p>二、目标任务</p>
+          <p>通过各方共同努力，使政府激励创业、社会支持创业、大学生勇于创业的政策制度和服务体系更加完善，大学生的创业意识和创业能力进一步增强，大学生创业的规模、比例继续得到扩大和提高。通过一年的时间力争实现引领150名大学生成功创业，通过典型示范辐射作用，激励更多的大学生走上创业之路。</p>
+          <p>三、真实成功</p>
+          <p>通过各方共同努力，使政府激励创业、社会支持创业、大学生勇于创业的政策制度和服务体系更加完善，大学生的创业意识和创业能力进一步增强，大学生创业的规模、比例继续得到扩大和提高。通过一年的时间力争实现引领150名大学生成功创业，通过典型示范辐射作用，激励更多的大学生走上创业之路。</p>
+        </div> 
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      back:function(){
+          corNative.closeWindow({
+          animID:-1
+        });
+      },
+      goFlow:function(){
+        corJS.openWin("flow");
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

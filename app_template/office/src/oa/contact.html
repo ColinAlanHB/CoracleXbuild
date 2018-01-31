@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A3联系人</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/contact.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<!-- 先引入 Vue -->
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+</head>
+<body class='theme-default'>
+<div id="contact">
+		<co-header title="联系人">
+			<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>
+		</co-header>	
+		<section class="main">
+			<co-search v-model="schStr" placeholder="按人名搜索"></co-search>
+			<co-index-list>
+				<co-index-section index='#'>
+					<co-cell title="公司部门" class='no-lable'>
+						<i class="icon iconfont icon-organize-circle-fill" slot="icon"></i>
+					</co-cell>					
+					<co-cell :title='item.name' :label='item.profile' v-for='(item, index) in contacts["#"]'  :key='"contact#" + index'>
+						<img v-if='item.avatar' slot="icon" :src='item.avatar'></i>
+						<i v-else class="icon iconfont icon-people-circle" slot="icon"></i>
+					</co-cell>
+				</co-index-section>
+				<co-index-section :index="key" v-for='(value, key) in contacts' :key='"contact"+key'>
+					<co-cell :title='item.name' :label='item.profile' v-for='(item, index) in value' :key='"item"+index'>
+						<img v-if='item.avatar' slot="icon" :src='item.avatar' class="avatar icon"></i>
+						<i v-else class="icon iconfont icon-people-circle" slot="icon"></i>
+					</co-cell>										
+				</co-index-section>
+			</co-index-list>
+		</section>
+</div>
+<script>
+	new Vue({
+		el: '#contact',
+		data: {
+			schStr: '',
+			contacts: {
+				"A": [
+					{name: "艾文平", profile: "华润三九集团-IT总监"},
+					{name: "艾文平", profile: "华润三九集团-财务总监"}
+				],
+				"B": [
+					{name: "鲍春来", profile: "华润三九集团-CEO", avatar: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTTGkkpDu5lJyvS41n1LXj6j0E4oLRByoa9qbsC-mqT5UPAf_ptiQ"}
+				],
+				"#": [
+					{name: "10086", profile: "中国移动-全国统一客服"},
+					{name: "9555", profile: "招商银行-服务热线"},
+					{name: "12306", profile: "铁路客服中心"}
+				]				
+			}
+		}
+	});
+</script>
+</body>
+</html>

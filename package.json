@@ -1,0 +1,29 @@
+{
+  "consumedServices": {
+    "console-panel": {
+      "versions": {
+        "^1.0.0": "consumeConsolePanel"
+      }
+    }
+  },
+  "name": "coracle-tool",
+  "host": "http://172.16.23.86:8088",
+  "main": "./lib/coracle-tool",
+  "version": "1.98.0",
+  "description": "A short description of your package ",
+  "keywords": [],
+  "repository": "https://github.com/CoracleMobi/coracle-tool.git",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "apicloud-tools-core": "^0.1.0",
+    "atom-notify": "^1.1.0",
+    "etch": "^0.12.7",
+    "fs-plus": "^3.0.1",
+    "promisificator": "^4.0.0",
+    "react": "^16.1.1",
+    "ws": "^3.3.2"
+  }
+}

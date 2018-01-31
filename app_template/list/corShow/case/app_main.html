@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .divD{width:33.33%;float: left;padding:.8rem 0;border-right: 1px #eee solid}
+    .imgIcon{width:1.6rem;height:1.6rem;display: block;}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak class="co-of">
+    <div @click="openN('car')" class="divD co-ac co-flex co-jc co-ver co-bg-0 co-bd-b1">
+      <div><img src="../images/car.png" class="imgIcon" alt=""></div>
+      <div class="co-mg-t02 co-cl-2 co-fs-01">汽车类</div>
+    </div>
+    <div @click="openN('food')" class="divD co-ac co-flex co-jc co-ver co-bg-0 co-bd-b1">
+      <div><img src="../images/food.png" class="imgIcon" alt=""></div>
+      <div class="co-mg-t02 co-cl-2 co-fs-01">外卖类</div>
+    </div>
+    <div @click="openN('xSimple')" class="divD co-ac co-flex co-jc co-ver co-bg-0 co-bd-b1">
+      <div><img src="../images/OA.png" class="imgIcon" alt=""></div>
+      <div class="co-mg-t02 co-cl-2 co-fs-01">OA类</div>
+    </div>
+    <div @click="openN('shop')" class="divD co-ac co-flex co-jc co-ver co-bg-0 co-bd-b1">
+      <div><img src="../images/shop.png" class="imgIcon" alt=""></div>
+      <div class="co-mg-t02 co-cl-2 co-fs-01">商城类</div>
+    </div>
+    <div @click="openN('tourism')" class="divD co-ac co-flex co-jc co-ver co-bg-0 co-bd-b1">
+      <div><img src="../images/ly.png" class="imgIcon" alt=""></div>
+      <div class="co-mg-t02 co-cl-2 co-fs-01">旅游类</div>
+    </div>
+    <div @click="openN('news')" class="divD co-ac co-flex co-jc co-ver co-bg-0 co-bd-b1">
+      <div><img src="../images/new.png" class="imgIcon" alt=""></div>
+      <div class="co-mg-t02 co-cl-2 co-fs-01">新闻类</div>
+    </div>
+    <div  @click="openN('zhengwu')" class="divD co-ac co-flex co-jc co-ver co-bg-0 co-bd-b1">
+      <div><img src="../images/zx.png" class="imgIcon" alt=""></div>
+      <div class="co-mg-t02 co-cl-2 co-fs-01">咨询类</div>
+    </div>
+    <div  @click="openN('house')" class="divD co-ac co-flex co-jc co-ver co-bg-0 co-bd-b1">
+      <div><img src="../images/house.png" class="imgIcon" alt=""></div>
+      <div class="co-mg-t02 co-cl-2 co-fs-01">家装类</div>
+    </div>
+    <div  @click="openN('OA')" class="divD co-ac co-flex co-jc co-ver co-bg-0 co-bd-b1">
+      <div><img src="../images/crm.png" class="imgIcon" alt=""></div>
+      <div class="co-mg-t02 co-cl-2 co-fs-01">CRM</div>
+    </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      tag:false,
+      reTag:false
+    },
+    methods:{
+      openN:function(name){
+          corNative.openWindow({
+            name:name,
+            data: name+"/index.html",
+            animID:0,
+            flag:256
+         });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

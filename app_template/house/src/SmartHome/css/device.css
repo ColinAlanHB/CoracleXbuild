@@ -1,0 +1,98 @@
+.device-win {
+	width: 100%;
+	height: calc(100vh - 44px);
+
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.device-main-nodevice {
+	margin-top: 20%;
+}
+.device-main-nodevice a.nodevice--add {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: column nowrap;
+	flex-flow: column nowrap;	
+	-webkit-align-items: center;
+	align-items: center;
+	padding: 0 20px;		
+}
+.device-main-nodevice a.nodevice--add .add--image {	
+	width: 60%;
+	margin-bottom: 30px;
+}
+.device-main-nodevice a.nodevice--add .add--btn {
+	width: 100%;
+	height: 40px;
+	-webkit-border-radius: 99px;
+	border-radius: 99px;
+}
+
+.device-main-list {
+	padding-bottom: 60px;
+}
+.device-main-list .list--title {
+	font-size: 14px;
+	line-height: 3;
+	border: 1px solid #DFDFDF;
+	border-left-width: 0;
+	border-right-width: 0;	
+
+	padding-top: 20px;
+	padding-left: 20px;
+}
+.device-main-list .list--title:first-of-type {
+	border-top-width: 0;
+	padding-top: 0;
+}
+.device-main-list .list--item {
+	padding: 20px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(to right, transparent 5%, #DFDFDF 0, #DFDFDF 95%, transparent 95%);
+	background-size: 100% 1px;		
+
+	position: relative;
+}
+.device-main-list dt + dd.list--item {
+	background-image: none;
+}	
+.device-main-list .item--image {
+	float: left;
+	width: 40px;
+	height: 40px;	
+	object-fit: cover;
+
+	margin-right: 10px;
+}
+.device-main-list .item--name {
+	font-size: 16px;
+	line-height: 1.5;
+	width: 60%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}	
+.device-main-list .item--info {
+	font-size: 12px;	
+}	
+.device-main-list .item--link {
+	height: 1.25em;
+	vertical-align: middle;
+	line-height: 1.25;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 20px;
+	margin: auto;
+}	
+
+.device-attention {	
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	bottom: 0;
+	padding: 10px 0 22px 0;
+	font-size: 12px;
+}

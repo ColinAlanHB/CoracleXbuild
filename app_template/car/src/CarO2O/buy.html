@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>首页</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/car.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./font/iconfont.css">  
+  <link rel="stylesheet" href="./css/buy.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>  
+</head>
+<body>
+  <div id="app">  
+    <co-header title='买车' fixed></co-header>
+    <div class="app-win">
+      <section class="buy-main" v-cloak>
+      <co-search v-model="schStr" placeholder="请输入汽车品牌"></co-search>
+      <ul class="buy-main-filter">
+        <li class="filter-type">
+        <a @click='changeFilter(0)'>
+          排序 <i class="icon iconfont" :class='0===activeFilterIndex?"icon-up":"icon-down"'></i>
+        </a>
+        </li>
+        <li class="filter-type">
+          <a @click='changeFilter(1)'>
+            类型 <i class="icon iconfont" :class='1===activeFilterIndex?"icon-up":"icon-down"'></i>
+          </a>
+        </li>
+        <li class="filter-type">
+          <a @click='changeFilter(2)'>
+            品牌 <i class="icon iconfont" :class='2===activeFilterIndex?"icon-up":"icon-down"'></i>
+          </a>
+        </li>
+        <li class="filter-type">
+          <a @click='changeFilter(3)'>
+            价格 <i class="icon iconfont" :class='3===activeFilterIndex?"icon-up":"icon-down"'></i>
+          </a>
+        </li>
+        <li class="filter-type">
+          <a @click='changeFilter(4)'>
+            筛选 <i class="icon iconfont" :class='4===activeFilterIndex?"icon-up":"icon-down"'></i>
+          </a>
+        </li>
+        
+      </ul>
+      <ul class="buy-main-list">
+        <li v-for='(item, index) in list' class="list-item">
+        <a @click='linkDetail(item.id)'>
+          <img :src='item.thumb' class="item--image">
+          <p class="item--title">
+            {{ item.brand }}-{{ item.name }}<br/>
+            {{item.year }} {{ item.amtType }}
+          </p>
+          <p class="item--info">
+            {{ item.registerTime }}上牌/里程:{{ item.distance }}万公里
+          </p>
+          <span class="item--price">
+            ￥{{ item.price.toFixed(2) }}万
+          </span>
+        </a>
+        </li>
+      </ul>
+      </section>
+    </div>
+    <co-tabbar v-model='tabID' class="app-tabbar">
+      <co-tab-item id="home">
+        <i class="icon iconfont icon-home-fill" slot="icon"></i>
+        <p class="app-tabbar--label">首页</p>
+      </co-tab-item>
+      <co-tab-item id="buy">
+        <i class="icon iconfont icon-car" slot="icon"></i>
+        <p class="app-tabbar--label">买车</p>
+      </co-tab-item>
+      <co-tab-item id="sell">
+        <i class="icon iconfont icon-sell" slot="icon"></i>
+        <p class="app-tabbar--label">卖车</p>
+      </co-tab-item>
+      <co-tab-item id="personal">
+        <i class="icon iconfont icon-account-fill" slot="icon"></i>
+        <p class="app-tabbar--label">我的</p>
+      </co-tab-item>
+    </co-tabbar> 
+    <div class="filter-layout" @click='activeFilterIndex=-1' :style='{display: activeFilterIndex===-1?"none":"block"}'>
+      <ul class="filter--item filter--order" v-show='activeFilterIndex===0'>
+        <li class="order-type">默认排序</li>
+        <li class="order-type">按价格</li>
+        <li class="order-type">按车龄</li>
+        <li class="order-type">按里程</li>
+        <li class="order-type">按发布时间</li>
+      </ul>
+      <ul class="filter--item filter--cate" v-show='activeFilterIndex===1'>
+        <li class="cate-type">轿车</li>
+        <li class="cate-type">跑车</li>
+        <li class="cate-type">SUV</li>
+        <li class="cate-type">商务车</li>
+        <li class="cate-type">卡车</li>
+        <li class="cate-type">客车</li>
+        <li class="cate-type">房车</li>
+      </ul>
+      <ul class="filter--item filter--price" v-show='activeFilterIndex===3'>
+        <li class="price-type">不限</li>
+        <li class="price-type">3万以下</li>
+        <li class="price-type">3-5万</li>
+        <li class="price-type">5-10万</li>
+        <li class="price-type">10-15万</li>
+        <li class="price-type">15-20万</li>
+        <li class="price-type">20-30万</li>
+        <li class="price-type">30-60万</li>
+        <li class="price-type">60万以上</li>
+      </ul> 
+      <ul> class="filter--item filter--precise">
+        
+      </ul>
+    </div> 
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {  
+        tabID: 'buy',
+        schStr: '',
+        activeFilterIndex: -1,
+        list: [
+          {
+            id: 120,
+            amtType: '自动',
+            brand: '奔驰',
+            name: '奔驰R级2011款 R 350L 4MATIC',
+            year: '奔驰R级2011款 R',
+            distance: 3.5,
+            registerTime: '2014-04',
+            mileAge: 3.80,
+            price: 55.00,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c63e2dd53d1.png'
+          },
+          {
+            id: 135,
+            amtType: '自动',
+            brand: '丰田',
+            name: '丰田汉兰达2012款 2.7 手自一体 两驱精英版5座',
+            year: '丰田汉兰达2012款',
+            distance: 2.7,
+            registerTime: '2012-05',
+            mileAge: 5.60,
+            price: 16.90,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-30/thumb_640_360_57c5403a5cacc.jpg'
+          },
+          {
+            id: 121,
+            amtType: '自动',
+            brand: '大众',
+            name: '大众帕萨特2015款 1.4T 自动 尊荣版DSG双离合',
+            year: '大众帕萨特2015款',
+            distance: 1.4,
+            registerTime: '2016-05',
+            mileAge: 0.01,
+            price: 18.36,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c642cae768f.png'
+          },
+          {
+            id: 122,
+            amtType: '自动',
+            brand: '大众',
+            name: '大众朗逸2015款 1.6 自动 风尚版',
+            year: '大众朗逸2015款',
+            distance: 1.6,
+            registerTime: '2016-05',
+            mileAge: 0.01,
+            price: 11.08,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c6453ad032f.png'
+          },
+          {
+            id: 123,
+            amtType: '自动',
+            brand: '雪佛兰',
+            name: '雪佛兰科鲁兹2011款 1.8 自动 SX',
+            year: '雪佛兰科鲁兹2011款',
+            distance: 1.8,
+            registerTime: '2011-10',
+            mileAge: 8.30,
+            price: 6.50,
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c6457846868.png'
+          }
+        ]
+      },
+      created() {
+        setInterval(() => {
+          this.activeBanner = ++this.activeBanner % 3;
+        }, 2000);
+      },
+      methods: {
+        linkDetail(id) {
+          window.location.href = './detail.html?id=' + id;
+        },
+        changeFilter(index) {
+          if (index === this.activeFilterIndex) {
+            this.activeFilterIndex = -1;
+            return;
+          }
+          this.activeFilterIndex = index;
+        }
+      },
+      watch: {
+        tabID: function (val, oldVal) {
+          window.location.href = './' + val + '.html';
+        }
+      }
+    });   
+  </script>
+</body>
+</html>

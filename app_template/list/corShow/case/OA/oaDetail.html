@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+  <style>
+    #search{width:100%;position: fixed;top:2.2rem;left: 0;z-index: 1} 
+    .search{height:2.2rem;}
+    .co-content-top1{padding-top:4.4rem;}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header :title="typeName" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="search" class="co-tabContent">
+      <div class="search">
+        <co-search v-model="value" class="co-f1"></co-search>
+      </div>
+    </div>
+    <div id="co-content" class="co-content-top1 co-cl-1">
+      <div class="co-bg-0">
+        <div class="co-flex co-bd-b1 co-pd-a04" v-for="item in dataList">
+          <div class="co-f1 co-ac co-flex">
+            <div class="coicon coicon-document co-fs-6"></div>
+            <div class="co-f1 co-mg-l04">
+              <div>{{item.title}}</div>
+              <div class="co-fs-01 co-cl-2 co-flex co-mg-t04">
+                <span>{{item.type}}</span>
+                <span class="co-f1 co-pd-l06">{{item.time}}</span>
+                <span>{{item.size}}</span>
+              </div>
+            </div>
+            <div class="co-flex co-ac co-cl-2 co-fs-01">
+              <i class="coicon coicon-browse_fill"></i>{{item.look}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var dataList = [
+    {
+      title:"内部推荐奖励机制",
+      time:"2017-07-10",
+      type:"DOC",
+      size:"345.5KB",
+      look:"322"
+    },
+    {
+      title:"关于移动办公流程整理",
+      time:"2017-07-11",
+      type:"PDF",
+      size:"124.5KB",
+      look:"356"
+    },
+    {
+      title:"员工财务报销流程规范",
+      time:"2017-07-12",
+      type:"DOC",
+      size:"45.5KB",
+      look:"123"
+    },
+  ]
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:"",
+      typeName:"",
+      value:""
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+    },
+    created:function(){
+        this.typeName = corJS.getLocVal("typeName");
+    },
+    mounted:function(){
+      this.$indicator.open({spinnerType: 'double-bounce' });
+      var self = this;
+      setTimeout(function(){
+        self.$indicator.close();
+        vm.dataList = dataList;
+      },1500)
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="co-pd-a05 co-bg-1">GET 请求</div>
+    <co-cell title='原生代理 GET'>
+      <co-button :disabled='hasGot' type="primary" @click='getList'>请求</co-button>
+    </co-cell>
+    <co-collapse accordion>
+      <co-panel v-for='(item, i) in list' :key='i'>
+        {{ item.id }}、{{ item.tilte }}
+        <p slot="content">{{ item.des }}</p>
+      </co-panel>
+    </co-collapse>
+
+    <div class="co-pd-a05 co-bg-1">POST 请求</div>
+    <co-cell title='提交表单'>
+      <co-button :disabled='hasPost' type="primary" @click='postForm'>请求</co-button>
+    </co-cell>
+    <co-collapse accordion>
+      <co-panel>
+        Headers 请求头
+        <p slot="content">{{ JSON.stringify(form.requestHeaders) }}</p>
+      </co-panel>
+      <co-panel>
+        Body 请求报文
+        <p slot="content">{{ JSON.stringify(form.requestBody) }}</p>
+      </co-panel>
+    </co-collapse>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setBounceEnabled(1);
+    });
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        hasGot: false,
+        list: [],
+        hasPost: false,
+        form: {}
+      },
+      methods: {
+        getList() {
+          var deadms = 2000;
+          var timer = setTimeout(() => {
+            this.hasGot = false;
+          }, deadms);
+
+          this.hasGot = true;
+          corNative.requestAjax({
+            timeout: deadms,
+            url: 'http://app.coracle.com:5303/api/auth',
+            method: 'GET'
+          }, function (params) {
+            if (params.status) vm.hasGot = true;
+            else alert(params.errMsg);
+            vm.list = JSON.parse(params.data);
+            clearTimeout(timer);
+          });
+        },
+        postForm() {
+          var deadms = 2000;
+          var timer = setTimeout(() => {
+            this.hasPost = false;
+          }, deadms);
+
+          this.hasPost = true;
+          corNative.requestAjax({
+            timeout: deadms,
+            url: 'http://120.76.190.76:45678/post',
+            method: 'POST',
+            headers: {
+              "custom-header": "test"
+            },
+            data: {
+              "field1": "value1",
+              "field2": "value2",
+            }
+          }, function (params) {
+            if (params.status) vm.hasPost = true;
+            else alert(params.errMsg);
+            
+            alert(params.data);
+            vm.form = JSON.parse(params.data);            
+            clearTimeout(timer);
+          });
+        }
+      }
+    });
+  </script>
+</body>

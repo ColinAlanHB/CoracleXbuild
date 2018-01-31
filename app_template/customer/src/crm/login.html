@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="login/css/index.css">
+
+</head>
+<body>
+    <div id="Page">
+        <div id="login">
+            <aside class="logo"><img src="login/images/login-logo.png">
+            <span>圆舟CRM</span>
+            </aside>
+            <section class="form">
+                <co-field type="text" class="user" v-model='user' :disable-clear='true'>
+                    <i class="iconfont icon-account"></i>
+                </co-field>
+                <co-field type="password" class="pwd" v-model='pwd' :disable-clear='true' id="pwd">
+                    <i class="iconfont icon-lock"></i>
+                </co-field>
+                <co-checklist v-model='checks' :options='options'></co-checklist>
+                <co-button type="primary" size="large" class='btn-login theme-bgcolor' @click='login'>登录</co-button>
+            </section>
+            <footer>
+                <p class="company">深圳市前海圆舟网络科技股份有限公司</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

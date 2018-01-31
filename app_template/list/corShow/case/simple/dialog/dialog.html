@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>Popup</title>
+	<link rel="stylesheet" href="../public/css/style.css" />
+	<link rel="stylesheet" href="../public/css/flex.css" />
+	<link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+  	<co-header fixed title="弹出界面" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-bg-0">
+		<div @click="dialogTag = true" class="co-flex co-ac co-jsb co-bd-b1 co-pd-a06 ">
+        <div>
+          武汉
+        </div>
+        <div class="co-pd-lr08 co-bg-6 co-br-a0 co-cl-0">
+          景区
+        </div>
+      </div>
+      <div @click="dialogTag = true" class="co-flex co-ac co-jsb co-bd-b1 co-pd-a06">
+        <div>
+          深圳
+        </div>
+        <div class="co-pd-lr08 co-bg-6 co-br-a0 co-cl-0">
+          景区
+        </div>
+      </div>
+      <div @click="dialogTag = true" class="co-flex co-ac co-jsb co-bd-b1 co-pd-a06">
+        <div>
+          广州
+        </div>
+        <div class="co-pd-lr08 co-bg-6 co-br-a0 co-cl-0">
+          景区
+        </div>
+      </div>
+      <div @click="dialogTag = true" class="co-flex co-ac co-jsb co-bd-b1 co-pd-a06">
+        <div>
+          上海
+        </div>
+        <div class="co-pd-lr08 co-bg-6 co-br-a0 co-cl-0">
+          景区
+        </div>
+      </div>
+    </div>
+    <!--position:top从上向下打开  left:从左向右打开  right:从右向左打开  bottom:从下向上打开-->
+    <co-popup v-model="dialogTag" class="co-w-100"  position="bottom">
+    	<div class="co-flex co-wp co-mg-lr08">
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">黄鹤楼</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">汉口江滩</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">玛雅海滩</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">木兰故里</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">欢乐谷</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">中山公园</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">光谷广场</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">湖北省博物馆</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">辛亥革命武昌起义纪念馆</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">武昌首义文化旅游区</div>
+	        <div class="co-bg-1 co-br-a2 co-pd-a04 co-mg-a04">马鞍山森林公园 </div>
+      </div>
+    </co-popup>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dialogTag: false,
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }
+  })
+</script>
+</html>

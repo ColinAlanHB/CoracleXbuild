@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>Index List</title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+</head>
+<body>
+    <div id="app">
+      <co-header id="co-header" fixed :title=title class="co-bg-3 co-cl-0">
+      </co-header>
+      <div id="co-content" class="co-content-top">
+      </div>
+
+      <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+        <div @click="clickTab('首页',0)" :class='["co-f1 co-flex co-ver co-ac co-jc",{"co-cl-4":tabIndex==0}]'>
+          <i class="coicon coicon-homepage co-fs-4"></i>
+          <div class="co-fs-02">首页</div>
+        </div>
+        <div @click="clickTab('应用',1)" :class='["co-f1 co-flex co-ver co-ac co-jc",{"co-cl-4":tabIndex==1}]'>
+          <i class="coicon coicon-taxi co-fs-4"></i>
+          <div class="co-fs-02">应用</div>
+        </div>
+        <div @click="clickTab('窗口',2)" :class='["co-f1 co-flex co-ver co-ac co-jc",{"co-cl-4":tabIndex==2}]'>
+          <i class="coicon coicon-taxi co-fs-4"></i>
+          <div class="co-fs-02">窗口</div>
+        </div>
+        <div @click="clickTab('案例',3)" :class='["co-f1 co-flex co-ver co-ac co-jc",{"co-cl-4": tabIndex==3}]'>
+          <i class="coicon coicon-mine co-fs-4"></i>
+          <div class="co-fs-02">案例</div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+  <script src="../public/js/vue.js"></script>
+  <script src="../public/js/index.js"></script>
+  <script src="../public/js/corAPI.js"></script>
+  <script>
+
+    corJS.ready(function(){
+
+      var top = corJS.offset("co-header").h;
+      var bottom = corJS.offset("co-footer").h;
+      var h = corJS.getHeight() - top - bottom;
+
+      corNative.onchangeInMultiFWindow(function(index){
+      })
+
+      corNative.openMultiFloatWindow({
+          content: {
+              content: [{
+                  inPageName: "m1",
+                  inUrl: "home/home_1.html"
+              },
+              {
+                  inPageName: "m2",
+                  inUrl: "home/home_2.html"
+              },
+              {
+                  inPageName: "m3",
+                  inUrl: "home/home_3.html"
+              },
+              {
+                  inPageName: "m4",
+                  inUrl: "home/home_4.html"
+              }
+            ]
+          },
+          name: "more-frame",
+          x:0,
+          y:top,
+          w:null,
+          h:h,
+          indexSelected:0
+      });
+
+      //关闭手势滑动切换窗口
+      corNative.setMultiFWindowFlippingEnbaled(1);
+
+    })
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        title:"首页",
+        tabIndex:0
+      },
+      methods:{
+        clickTab:function(name,index){
+          vm.title = name;
+          vm.tabIndex = index;
+          corNative.setSelectedInMultiFWindow({
+            name:'more-frame', 
+            index:index,
+            animated:0
+          });
+        }
+      }
+    });
+  </script>
+</html>

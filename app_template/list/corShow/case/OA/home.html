@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>drawer</title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body class="co-body">
+  <div id="app" v-cloak class="">
+      <div class="page-swipe co-Page co-flex">
+          <co-drawer class="co-f1 co-flex" :modal="false" :opened="isopen" :direction="direction" @togglemenu="togglemenu">
+            <div class="swipe-menu co-tabContent co-cl-1" slot="menu">
+                <div class="co-mg-a06">
+                  <div @click="isopen=false" class="co-flex co-ac co-pd-tb04">
+                    <div class="coicon coicon-other"></div>
+                    <div class="co-f1 co-mg-l04">工作区</div>
+                  </div>
+                  <div @click="goHtml('contact',true)" class="co-flex co-ac co-pd-tb04">
+                    <div class="coicon coicon-mine"></div>
+                    <div class="co-f1 co-mg-l04">联系人</div>
+                  </div>
+                  <div @click="goHtml('set',true)" class="co-flex co-ac co-pd-tb04">
+                    <div class="coicon coicon-setup"></div>
+                    <div class="co-f1 co-mg-l04">设置</div>
+                  </div>
+                </div>
+            </div>
+            <div slot="content">
+              <co-header title="工作区" class="co-bg-3 co-cl-0">
+                 <div slot="left" class="co-flex">
+                    <div @click="togglemenu" class="coicon coicon-other co-fs-4"></div>
+                 </div>
+              </co-header>
+              <div id="co-content">
+                <div class="oaTitle co-bg-2">签到管理</div>
+                <div class="co-flex co-ac co-mg-t05">
+                  <div @click="goHtml('mobileSign')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/checkin.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">移动签到</div>
+                  </div>
+                  <div @click="goHtml('signList')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/check-record.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">签到记录</div>
+                  </div>
+                  <div @click="goHtml('againSign')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/check-later.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">补签</div>
+                  </div>
+                  <div @click="goHtml('signBI')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/check-report.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">签到列表</div>
+                  </div>
+                </div>
+                <div class="oaTitle co-bg-2  co-mg-t05">资讯</div>
+                <div class="co-flex co-ac co-mg-t05">
+                  <div @click="goHtml('news')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/news.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">新闻</div>
+                  </div>
+                  <div @click="goHtml('notice')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/check-record.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">公告</div>
+                  </div>
+                  <div class="co-f1 co-flex co-ver co-jc co-ac">
+                  </div>
+                  <div class="co-f1 co-flex co-ver co-jc co-ac">
+                  </div>
+                </div>
+                <div class="oaTitle co-bg-2  co-mg-t05">办公</div>
+                <div class="co-flex co-ac co-mg-t05">
+                  <div  @click="goHtml('oa')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/regime.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">办公制度</div>
+                  </div>
+                  <div  @click="goHtml('flowCenter')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/flow.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">流程中心</div>
+                  </div>
+                  <div  @click="goHtml('meeting')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/meeting.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">会议室</div>
+                  </div>
+                  <div class="co-f1 co-flex co-ver co-jc co-ac">
+                  </div>
+                </div>
+                <div class="oaTitle co-bg-2  co-mg-t05">工时填报</div>
+                <div class="co-flex co-ac co-mg-t05">
+                  <div @click="goHtml('hour')" class="co-f1 co-flex co-ver co-jc co-ac">
+                    <div><img src="images/hour.png" class="iconImg" /></div>
+                    <div class="co-mg-t02 co-fs-02 co-cl-02">工时自助</div>
+                  </div>
+                  <div class="co-f1 co-flex co-ver co-jc co-ac">
+                  </div>
+                  <div class="co-f1 co-flex co-ver co-jc co-ac">
+                  </div>
+                  <div class="co-f1 co-flex co-ver co-jc co-ac">
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </co-drawer>
+        </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      isopen:false,
+      direction:"left"
+    },
+    methods:{
+      togglemenu(state) {
+        this.isopen = !this.isopen;
+      },
+      goHtml:function(url,tag){
+        if(tag)this.isopen=false;
+                 corNative.openWindow({
+            name:url,
+            data:url+".html",
+            animID:10,
+            flag:1024
+         });
+      },
+    },
+    created:function(){
+
+    },
+    mounted:function(){
+
+    }
+  })
+</script>
+</html>

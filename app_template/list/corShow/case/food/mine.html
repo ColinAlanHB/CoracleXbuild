@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="个人中心" fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+        <div class="coicon coicon-setup co-fs-4 co-cl-0"></div>
+      </div>
+    </co-header>
+    <div id="co-content">
+    </div>
+    <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+      <div @click="tabMenu('index')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-homepage co-fs-4"></i>
+        <div class="co-fs-02">首页</div>
+      </div>
+      <div @click="tabMenu('order')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-activity co-fs-4"></i>
+        <div class="co-fs-02">订单</div>
+      </div>
+      <div class="co-f1 co-flex co-ver co-ac co-jc co-cl-7">
+        <i class="coicon coicon-mine co-fs-4"></i>
+        <div class="co-fs-02">我的</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    var bottom = corJS.offset("co-footer").h;
+    var top = corJS.offset("co-header").h;
+    var h = corJS.getHeight() - top - bottom;
+    corNative.openFloatWindow({
+        name:"co-frame",
+        url:"mine_main.html",
+        x:0,
+        y:top,
+        h:h
+    })
+    corNative.subscribeChannelNotification("closeWin",function(msg){
+        corNative.closeWindow();
+    })
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      tabMenu:function(name){
+                corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:0,
+            flag:256
+         });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

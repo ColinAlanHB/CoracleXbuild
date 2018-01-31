@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>登陆</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+    .logo{width:4rem;height:4rem;background:url(img/logo.png);background-size:100%;margin:2rem auto;}
+    .userName{width:1.2rem;height:1.2rem;background: url(img/userName.png) no-repeat;background-size:100%;}
+    .passWord{width:1.2rem;height:1.2rem;background: url(img/userPass.png) no-repeat;background-size:100% 100%;}
+    .forget{width:1rem;height:1rem;background: url(img/forget.png) no-repeat;background-size:100%;}
+  </style>
+</head>
+<body  class="co-body">
+  <div id="app" v-cloak>
+    <co-header fixed title="登陆" class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+        <span class="co-cl-0" @click="regist">注册</span>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top">
+      <div class="logo">
+      </div>
+      <div class="co-flex co-ac co-bd-a1 co-mg-lr08 co-br-a0 co-pd-a04">
+        <div class="userName co-mg-r05"></div>
+        <div class="co-bd-l1 co-pd-lr06">
+          <input v-model="userName" placeholder="账号" type="text" class="co-field-core co-input co-cl-2">
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bd-a1 co-mg-lr08 co-mg-t06 co-br-a0 co-pd-a04">
+        <div class="passWord co-mg-r05"></div>
+        <div class="co-bd-l1 co-pd-lr06">
+          <input v-model="passWord" placeholder="密码" type="passWord" class="co-field-core co-input co-cl-2">
+        </div>
+      </div>
+      <div class="co-pd-a08 co-flex co-ac co-je co-cl-1 co-fs-01" @click="forget">
+        忘记密码<div class="forget"></div>
+      </div>
+      <div @click="login" class="co-flex co-jc co-cl-0 co-mg-lr08 co-br-a0 co-bg-3 co-pd-a04 co-bd-a1 co-mg-t02">登录</div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      userName:"",
+      passWord:""
+    },
+    methods:{
+      login:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+        return;
+        this.$toast({
+          message: '登陆成功',
+          position: 'bottom', 
+          duration: 2000
+        })
+      },
+      forget:function(){
+        this.$toast({
+          message: '忘记密码',
+          duration: 2000
+        })
+      },
+      regist:function(){
+        this.$toast({
+          message: '注册',
+          duration: 2000
+        })
+      }
+    }
+  })
+</script>
+</html>

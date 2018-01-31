@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body class="">
+  <div id="app" v-cloak>
+        <div><img src="images/banner.png" style="width:100%;height:auto;display: block;" alt=""></div>
+        <div class="co-bg-2 co-pd-a04">
+          <div class="co-fs-01 co-cl-1 modelT co-pd-l04">xSimple模块</div>
+        </div>
+        <div class="co-of co-pd-b08 co-bg-0">
+          <div class="appList co-flex co-ver co-ac co-jc">
+            <img src="images/app1.png" class="appImg" alt="">
+            <div class="co-cl-1 co-fs-02 co-mg-t02">移动打卡</div>
+          </div>
+          <div class="appList co-flex co-ver co-ac co-jc">
+            <img src="images/app2.png" class="appImg" alt="">
+            <div class="co-cl-1 co-fs-02 co-mg-t02">任务管理</div>
+          </div>
+          <div class="appList co-flex co-ver co-ac co-jc">
+            <img src="images/app3.png" class="appImg" alt="">
+            <div class="co-cl-1 co-fs-02 co-mg-t02">问卷调查</div>
+          </div>
+          <div class="appList co-flex co-ver co-ac co-jc">
+            <img src="images/app4.png" class="appImg" alt="">
+            <div class="co-cl-1 co-fs-02 co-mg-t02">公众号</div>
+          </div>
+          <div class="appList co-flex co-ver co-ac co-jc">
+            <img src="images/app5.png" class="appImg" alt="">
+            <div class="co-cl-1 co-fs-02 co-mg-t02">同事圈</div>
+          </div>
+        </div>
+        <div class="co-bg-2 co-pd-a04">
+          <div class="co-fs-01 co-cl-1 modelT co-pd-l04">测试模块</div>
+        </div>
+        <div class="co-of co-pd-b08 co-bg-0">
+          <div class="appList co-flex co-ver co-ac co-jc">
+            <img src="images/app6.png" class="appImg" alt="">
+            <div class="co-cl-1 co-fs-02 co-mg-t02">移动OA</div>
+          </div>
+          <div class="appList co-flex co-ver co-ac co-jc">
+            <img src="images/app7.png" class="appImg" alt="">
+            <div class="co-cl-1 co-fs-02 co-mg-t02">WIFI同步</div>
+          </div>
+          <div class="appList co-flex co-ver co-ac co-jc">
+            <img src="images/app9.png" class="appImg" alt="">
+            <div class="co-cl-1 co-fs-02 co-mg-t02">UI界面</div>
+          </div>
+          <div class="appList co-flex co-ver co-ac co-jc">
+            <img src="images/app8.png" class="appImg" alt="">
+            <div class="co-cl-1 co-fs-02 co-mg-t02">政务信息</div>
+          </div>
+        </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corLocation Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../css/plugin-helper.css">
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" fixed title="短信验证码">
+      <div slot="left">
+        <i class="coicon coicon-return co-fs-4" @click="goBack"></i>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-cl-1 co-content-top">
+      <div class="co-flex co-ac co-bg-0 co-mg-t1 co-pd-tb04">
+        <div class="co-f1 co-mg-lr04">
+          <input v-model="phoneNum" type="text" class="co-input co-bg-1 co-pd-l04 co-pd-r04" placeholder="输入手机号" />
+        </div>
+        <div @click="send" class="co-bg-3 co-pd-a04 co-cl-0 co-fs-01 co-br-a0 co-mg-r04">获取验证码</div>
+      </div>
+      <div v-show="tag" class="co-flex co-ac co-bg-0 co-mg-t1 co-pd-tb04">
+        <div class="co-f1 co-mg-lr04">
+          <input v-model="validCode" type="text" class="co-input co-bg-1 co-pd-l04 co-pd-r04" placeholder="输入验证码" />
+        </div>
+        <div @click="commitCode" class="co-bg-3 co-pd-a04 co-cl-0 co-fs-01 co-br-a0 co-mg-r04">提交验证</div>
+      </div>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script src="../js/plugin-helper.js"></script>
+  <script>
+    corJS.ready(function() {
+      var vm = new ContainerVue({
+        el: '#app',
+        data:{
+          phoneNum:"",
+          countryCode:"86",
+          validCode:"",
+          tag:false
+        },
+        mounted:function(){
+          var params = {
+            "corMobSMS_APPKey": "e5c90ea53640",
+            "corMobSMS_APPSecret": "d2ec92c2e5de325c52fc53bdb63374fc"
+          };
+          corMobSMS.init(params);
+          //this.$toast('初始化成功');
+        },
+        methods:{
+          send:function(){
+            var params = {
+                "phoneNum": vm.phoneNum,
+                "countryCode": vm.countryCode
+            };
+            this.$indicator.open({text:'发送中',spinnerType: 'double-bounce' });
+            corMobSMS.sendCode(params, function (error, data) {
+              if(error==0) {
+                vm.$indicator.close();
+                vm.$toast('发送成功');
+                vm.tag = true;
+              } else {
+                corNative.alertDlg({
+                  title:"提示",
+                  message:"发送失败",
+                  buttonLabel:"确定"
+                })
+              }
+            })
+          },
+          commitCode:function(){
+            if(vm.validCode==""){
+              alert("请输入验证码");
+              return;
+            }
+            var params = {
+                "phoneNum": vm.phoneNum,
+                "countryCode": vm.countryCode,
+                "validCode": vm.validCode
+            }
+            this.$indicator.open({text:'验证中',spinnerType: 'double-bounce' });
+            corMobSMS.commitCode(params, function (error, data) {
+                vm.$indicator.close();
+                if(!error){
+                  corNative.alertDlg({
+                    title:"提示",
+                    message:"验证成功",
+                    buttonLabel:"确定"
+                  })
+                }else{
+                  corNative.alertDlg({
+                    title:"提示",
+                    message:"验证成功",
+                    buttonLabel:"确定"
+                  })
+                }
+            })
+          },
+          goBack:function(){
+            corNative.closeWindow({
+              animID:-1,
+              animDuration:300
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="移动签到" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-1">
+      <div class="co-flex co-ac co-pd-a02 co-bg-2">
+        <div class="coicon coicon-locationfill co-cl-4"></div>
+        <div>签到地址</div>
+        <div class="co-fs-02 co-pd-l04">(如果地址为乱码,也可以签到成功)</div>
+      </div>
+      <div class="co-bd-t1 co-bd-b1 co-pd-tb05 co-mg-t02 co-flex co-ac co-bg-0">
+        <div class="co-f1 co-pd-l05">
+          联想研发中心
+        </div>
+        <div class="coicon coicon-location co-cl-4 co-pd-lr05 co-bd-l1"></div>
+      </div>
+      <div class="co-pd-a05">外勤</div>
+      <div class="co-bd-t1 co-bd-b1 co-mg-t02 co-flex co-ac co-bg-0 co-pd-lr05">
+        <div class="co-flex co-f1">
+          <div class="co-flex co-ac">
+            <div class="radiobox co-flex">
+              <input v-model="tag" value="上班" name="sex1" type="radio" />
+            </div>
+            <div class="co-mg-l04">上班</div>
+          </div>
+          <div class="co-flex co-ac co-mg-l1">
+            <div class="radiobox  co-flex">
+              <input v-model="tag" value="下班" name="sex1" type="radio" />
+            </div>
+            <div class="co-mg-l04">下班</div>
+          </div>
+        </div>
+        <div @click="sign" class="co-bg-3 co-h-0 co-cl-0 co-br-a0 co-pd-lr1 co-mg-tb05">签到</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      tag:''
+    },
+    methods:{
+      sign:function(){
+        if(this.tag==""){
+          this.$toast("请选择打卡类型");
+          return;
+        }
+        this.$indicator.open('打卡中...');
+        setTimeout(function(){
+          vm.$indicator.close();
+          vm.$toast({
+            message: '打卡成功',
+            position: 'bottom', 
+            duration: 1000
+          })
+          setTimeout(function(){
+            corNative.prevPage();
+          },1200)
+        },1500)
+      },
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

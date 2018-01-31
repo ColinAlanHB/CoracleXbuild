@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="标题栏" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <div class="page-content-main page-header-main">
+      <co-header title="标题过长会隐藏后面的内容啊哈哈哈哈">
+        <div slot="left" class="co-flex">
+          <co-button icon="back">返回</co-button>
+        </div>
+        <co-button icon="more" slot="right"></co-button>
+      </co-header>
+
+      <co-header title="多个按钮">
+        <div slot="left" class="co-flex">
+          <co-button icon="back">返回</co-button>
+          <co-button @click="corNative.closeWindow({animID:-1, animDuration:300})" class='co-mg-l04'>关闭</co-button>
+        </div>
+        <co-button icon="more" slot="right"></co-button>
+      </co-header>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      
+    })
+    var vm = new Vue({
+      el: "#app"
+    });
+  </script>
+</body>
+
+</html>

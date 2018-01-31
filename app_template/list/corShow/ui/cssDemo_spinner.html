@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .page-spinner .co-cell {
+      min-height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="状态图标" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <co-cell title="snake" class="page-content-main">
+      <co-spinner color="#26a2ff" type="snake"></co-spinner>
+    </co-cell>
+
+    <co-cell title="double-bounce">
+      <co-spinner color="#26a2ff" type="double-bounce"></co-spinner>
+    </co-cell>
+
+    <co-cell title="triple-bounce">
+      <co-spinner color="#26a2ff" type="triple-bounce"></co-spinner>
+    </co-cell>
+
+    <co-cell title="fading-circle">
+      <co-spinner color="#26a2ff" type="fading-circle"></co-spinner>
+    </co-cell>
+
+    <co-cell title="rgb 颜色函数">
+      <co-spinner color="rgb(100, 100, 100)"></co-spinner>
+    </co-cell>
+    <co-cell title="css 颜色关键字">
+      <co-spinner color="yellow"></co-spinner>
+    </co-cell>
+
+    <co-cell title="自定义大小（px 单位）">
+      <co-spinner :size=40></co-spinner>
+    </co-cell>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+    })
+    var vm = new Vue({
+      el: "#app"
+    });
+  </script>
+</body>
+
+</html>

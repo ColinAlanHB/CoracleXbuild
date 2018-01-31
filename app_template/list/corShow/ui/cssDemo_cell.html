@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="列表" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <co-cell title="标题文字" class="page-content-main"></co-cell>
+    <co-cell title="标题文字" value="说明文字"></co-cell>
+    
+    <co-cell title="标题" label="描述信息"></co-cell>
+    
+    <co-cell title="标题文字" is-link value="带链接"></co-cell>
+
+    <co-cell title="标题文字" icon="more" value="带coicon"></co-cell>
+    <co-cell title="标题文字">
+      <span>自定义图片作为 icon</span>
+      <img slot="icon" src="../images/100x100.png" width="24" height="24">
+    </co-cell>
+
+    <co-cell title="标题文字" value='将被 co-cell 元素内默认 slot 覆盖' is-link>
+      <span style="color: green">自定义元素替换 value</span>
+    </co-cell>
+    <co-cell title="被 slot=title 标签覆盖" value='自定义元素替换 title'>
+      <co-button size="small" type="primary" slot='title'>这里是按钮</co-button>
+    </co-cell>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+    })
+    var vm = new Vue({
+      el: "#app"
+    });
+  </script>
+</body>
+
+</html>

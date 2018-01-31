@@ -1,0 +1,194 @@
+body {
+  background-color: #eeeeee;
+}
+.co-header {
+  background-color: #00a1ea;
+  color: #fff;
+}
+.co-checkbox-input:checked + .co-checkbox-core {
+  background-color: #fff;
+}
+.co-checkbox-input:checked + .co-checkbox-core::after {
+  border-color: #D33233;
+}
+.co-component-progressbar {
+  border-color: #eeeeee;
+}
+.co-component-progressbar > li.active {
+  background-color: #eeeeee;
+}
+#workspace .menu-container {
+  background-color: #eeeeee;
+}
+#workspace .menu-container .iconfont::before {
+  color: #777777;
+}
+#workspace .block-label p {
+  border-color: #D33233;
+}
+#workspace .block-label::before {
+  background-color: #EEEDF3;
+  border-color: #FFF;
+}
+#workspace .block-icons {
+  background-color: #EEEDF3;
+  border-color: #FFF;
+}
+#workspace .work-icon > p {
+  color: #9E9E9E;
+}
+#checkin section > header {
+  color: #777777;
+}
+#checkin .icon-location::before,
+#checkin .icon-map::before {
+  color: #F15A24;
+}
+#checkin .btn-check {
+  color: #fff;
+  background-color: #7fbd3c;
+}
+#checkin .co-radio-input:checked + .co-radio-core {
+  background-color: #777777;
+  border-color: #777777;
+}
+#checkRecord .no-check-list p {
+  color: #777777;
+}
+#checkReport table.report-list {
+  border-color: #777777;
+  background-color: #FFF;
+}
+#checkReport table.report-list thead {
+  color: #999;
+}
+#checkReport table.report-list td {
+  border-color: #777777;
+}
+#checkReport .list-date {
+  color: #666;
+}
+#checkReport .list-date.weekend {
+  color: #E67268;
+}
+#checkReport .list-name {
+  color: #007AFF;
+}
+#checkReport .list-start {
+  color: #009245;
+}
+#checkReport .list-end {
+  color: #c4180e;
+}
+#news .title-bottom {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+#news .title-bottom span {
+  color: #4D4D4D;
+}
+#news .title-bottom i {
+  color: #989898;
+}
+#news .news-item {
+  background-color: #FFF;
+}
+#news .news-info .info-date,
+#news .news-info .iconfont {
+  color: #989898;
+}
+#newsDetail .detail-info {
+  color: #989898;
+}
+#newsComment .comment-write {
+  background-color: #E6E6E6;
+}
+#newsComment .comment-write input {
+  border-color: #555555;
+}
+#newsComment .comment-list {
+  background-color: #FFF;
+}
+#newsComment .comment-list > li {
+  border-color: #555555;
+}
+#newsComment .avatar-left .iconfont {
+  color: #B3B3B3;
+}
+#newsComment .comt-profile {
+  color: #989898;
+}
+#newsComment .comt-time {
+  color: #989898;
+}
+#newsComment .comment-reply {
+  background-color: #F7F6FB;
+}
+#newsComment .reply-title {
+  color: #989898;
+}
+#companyRegime .icon-layer {
+  color: #4E7FFF;
+}
+#departmentRegime .icon-pdf {
+  color: #88B6DD;
+}
+#meetingRoom .room {
+  border-color: #777777;
+  background-color: #fff;
+}
+#meetingRoom .btn-book {
+  color: #fff;
+  background-color: #51C3C2;
+}
+#meetingRoom .room-info p {
+  color: #555555;
+}
+#meetingRoom .room-info p.info-name {
+  color: #000;
+}
+#meetingRoom ul.schedule-scroller {
+  border-color: #777777;
+}
+#meetingRoom li.hour {
+  border-color: #777777;
+}
+#meetingRoom li.hour a {
+  color: #555555;
+}
+#meetingRoom .expired {
+  background-color: #777777;
+}
+#meetingRoom .occupied {
+  background-color: #FF9B52;
+}
+#meetingRoom .actived {
+  background-color: #51C3C2;
+}
+#addHour .icon-project-circle-fill {
+  color: #51C3C2;
+}
+#addHour .icon-stage-circle-fill {
+  color: #82BAFA;
+}
+#addHour .icon-date-circle-fill {
+  color: #FF9B52;
+}
+#addHour .icon-clock-fill {
+  color: #FF7373;
+}
+#contact .co-header .icon-back {
+  color: #fff;
+}
+#contact .iconfont {
+  color: #777777;
+}
+#setting .logout {
+  color: #D33233;
+}
+.fixed-bottom {
+  border-color: #777777;
+}
+.fixed-bottom .co-button {
+  color: #fff;
+  background-color: #D33233;
+}

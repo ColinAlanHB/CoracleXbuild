@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>个人中心</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/car.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./font/iconfont.css">  
+  <link rel="stylesheet" href="./css/list.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>  
+</head>
+<body>
+  <div id="app">  
+    <co-header title='我的记录' fixed>
+      <a href="personal.html" slot="left" class="icon iconfont icon-cross"></a>
+      <a slot="right" class="icon iconfont icon-clean" @click='clean'></a> 
+    </co-header>
+    <div class="app-win">
+      <ul class="list-record">
+        <li class="record-item" v-for='item in list'>
+          <a href="detail.html">
+            <img  class="item--image" :src='item.thumb || "./images/placeholder_big.png"'  alt="无法显示图片">            
+            <p class="item--title">{{ item.name }}</p>
+            <p class="item--price">￥{{ item.price }}万</p>
+          </a>
+        </li>
+        <img src="./images/noresult.png" alt="没有相关记录" class="empty-image" v-if='!list || list.length === 0'>
+      </ul>
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list: [
+          {
+            name: '本田锋范经典2009款 1.5 自动 精英版',
+            price: '5.80',
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_320_180_57c64a5ca87fe.jpg'
+          },
+          {
+            name: '奥迪A6L2014款 30 FSI 技术型',
+            price: '34.80'
+          },
+          {
+            name: '奔驰R级2011款 R 350L 4MATIC',
+            price: '55.00',
+            thumb: 'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_320_180_57c63e2dd53d1.png'
+          }
+        ],
+      },
+      methods: {
+        clean: function () {
+          this.$messagebox.confirm('是否清空').then(function () {            
+            vm.list = [];
+          }, function () {
+            return;
+          });
+        }
+      }          
+    })
+  </script>
+</body>
+</html>

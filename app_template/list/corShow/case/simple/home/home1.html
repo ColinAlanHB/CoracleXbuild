@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>home</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+    #banner{height:8rem;}
+    .loadImg{width:100%;height:8rem;display: block;}
+    .scImg{width:2.2rem;height:2.2rem;display: block;}
+  </style>
+</head>
+<body class="co-body">
+  <div id="app" class="co-Page co-flex co-ver" v-cloak>
+    <co-header title="首页" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex" >
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="banner" class="">
+      <co-swipe :auto="5000">
+        <co-swipe-item>
+        <img src="img/b1.png" class="loadImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+        <img src="img/b2.png" class="loadImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+        <img src="img/b3.png" class="loadImg" />
+        </co-swipe-item>
+      </co-swipe>
+    </div>
+    <div id="co-content" class="co-f1 co-flex co-ver co-content-bottom">
+      <div class="co-flex co-f1 co-mg-lr02 co-mg-t02">
+        <div class="co-f3 co-bg-3 co-flex co-ac co-jc co-cl-0"><img src="img/pg.png" class="scImg" />苹果</div>
+        <div class="co-f2 co-mg-l02 co-bg-7 co-flex co-ac co-jc co-cl-0"><img src="img/juzi.png" class="scImg" />橘子</div>
+      </div>
+      <div class="co-flex co-f1 co-mg-lr02 co-mg-t02">
+        <div class="co-f1 co-bg-7 co-flex co-ac co-jc co-cl-0">
+          <img src="img/bol.png" class="scImg" />菠萝
+        </div>
+        <div class="co-f1 co-mg-l02 co-flex co-ac co-jc co-cl-0 co-bg-5">
+          <img src="img/xiangjiao.png" class="scImg" />香蕉
+        </div>
+      </div>
+      <div class="co-flex co-f1 co-mg-lr02 co-mg-t02 co-mg-b02">
+        <div class="co-f2  co-bg-5 co-flex co-ac co-jc co-cl-0">
+          <img src="img/juzi.png" class="scImg" />酸桔
+        </div>
+        <div class="co-f3 co-mg-l02 co-flex co-ac co-jc co-cl-0 co-bg-3">
+          <img src="img/pg.png" class="scImg" />桃子
+        </div>
+      </div>
+    </div>
+    <co-tabbar v-model="selected">
+      <co-tab-item id="首页">
+        <img src="img/home.png" slot="icon"></img>
+        首页
+      </co-tab-item>
+      <co-tab-item id="分类">
+        <img src="img/type.png" slot="icon"></img>
+        分类
+      </co-tab-item>
+      <co-tab-item id="菜单">
+        <img src="img/caidan.png" slot="icon"></img>
+        菜单
+      </co-tab-item>
+      <co-tab-item id="排行榜">
+        <img src="img/paihang.png" slot="icon"></img>
+        排行榜
+      </co-tab-item>
+      <co-tab-item id="我的">
+        <img src="img/mine.png" slot="icon"></img>
+        我的
+      </co-tab-item>
+    </co-tabbar>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+   corJS.ready(function(){
+
+    })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      selected:"首页"
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }    
+  })
+</script>
+</html>

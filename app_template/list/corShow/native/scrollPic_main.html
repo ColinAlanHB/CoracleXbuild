@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak class="co-cl-1">
+    
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      alertU:function(){
+        corNative.alertDlg({
+          "title":"提示",
+          message:"删除成功",
+          buttonLabel:"确定"
+        })
+      },
+      confirmU:function(){
+        corNative.confirmDlg({
+          title:"警告",
+          message:"确认退出吗?",
+          buttonLabels:"确定,取消"
+        },function(index){
+          var info = index==0?"确定":"取消";
+          corNative.alertDlg({
+            "title":"提示",
+            message:"您点击了："+info,
+            buttonLabel:"确定"
+          })
+        })
+      },
+      promptU:function(){
+        corNative.promptDlg({
+          title:"提示",
+          message:"请输入内容:",
+          defaultValue:"",
+          buttonLabels:"确定,取消"
+        },function(index,data){
+          if(index==0){
+            corNative.alertDlg({
+              "title":"提示",
+              message:"您输入的内容是："+data,
+              buttonLabel:"确定"
+            })
+          }
+        });
+      },
+      toastU:function(){
+        corNative.toastDlg({
+          type:0,
+          location:5,
+          msg:"操作完成",
+          duration:1500
+        })
+      },
+      toastU1:function(){
+        corNative.toastDlg({
+          type:1,
+          location:5,
+          msg:"正在加载...",
+          duration:0
+        })
+      },
+      closeToastU:function(){
+        corNative.closeToastDlg();
+      },
+      actionSheetU:function(){
+        corNative.actionSheetMenu({
+          title:"请上传照片",
+          cancel:"取消",
+          buttons:"拍照,从相册获取"
+        },function(index){
+          if(index==0){
+            corNative.alertDlg({
+              "title":"提示",
+              message:"您点击了拍照",
+              buttonLabel:"确定"
+            })
+          }else if(index==1){
+            corNative.alertDlg({
+              "title":"提示",
+              message:"您点击了相册",
+              buttonLabel:"确定"
+            })
+          }
+        });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

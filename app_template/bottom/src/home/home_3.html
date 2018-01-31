@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>home_3</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+</head>
+<body >
+
+    <div id="app" v-cloak>
+        <co-cell title="打开一个普通窗口" @click.native="openAWindow">
+            </co-cell>
+            <co-cell title="打开一个侧滑关闭窗口" @click.native="openAGWindow">
+            </co-cell>
+            <co-cell title="打开一个浮动窗口" @click.native="openAFloatWindow">
+            </co-cell>
+            <co-cell title="打开一组浮动窗口" @click.native="openMultiWindow">
+        </co-cell>
+    </div>
+        
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+
+corJS.ready(function(){
+
+})
+
+
+var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+    openAWindow:_openAWindow,
+    openAGWindow:_openAGWindow,
+    openAFloatWindow:_openAFloatWindow,
+    openMultiWindow:_openMultiWindow
+    }
+});
+
+function _openMultiWindow() {
+
+    corNative.openWindow({
+        name:"aWindow",
+        data:"../window/m_win.html",
+        flag:1024
+    })
+
+}
+
+function _openAFloatWindow() {
+
+    corNative.openWindow({
+        name:"aWindow",
+        data:"../window/f_win.html",
+        flag:1024
+    })
+
+}
+
+function _openAGWindow() {
+
+    corNative.openWindow({
+        name:"aWindow",
+        data:"../window/g_win.html",
+        flag:1024
+    })
+
+}
+
+function _openAWindow() {
+
+    corNative.openWindow({
+        name:"aWindow",
+        data:"../window/a_win.html",
+        animID:2,
+        flag:0
+    })
+    
+}
+
+</script>
+</html>

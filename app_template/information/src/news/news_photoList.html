@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/ui-icon.css">
+    <link rel="stylesheet" href="css/ui-control.css">
+    <link rel="stylesheet" href="news_photoList/css/index.css">
+</head>
+<body>
+    <div class="bc-bg"  id="Page">
+
+            <co-header title="图片">
+                <co-button icon="back" slot="left" @click="location('index.html')"></co-button>
+            </co-header>
+            <div class="ub sc-bg">
+                <div class="ub ub-f1 us-i">
+                    <co-navbar>
+                        <co-tab-item id="1" class="active">头条</co-tab-item>
+                        <co-tab-item id="2">娱乐</co-tab-item>
+                        <co-tab-item id="3">科技</co-tab-item>
+                        <co-tab-item id="4">军事</co-tab-item>
+                        <co-tab-item id="5">互联网</co-tab-item>
+                    </co-navbar>
+                </div>
+                <div class="ub ub-ac ub-pc uw-hnfn1 us-i" @click="location('addcolumn.html')">
+                    <div class="uwh-tBtn ub-img newstianjia"></div>
+                </div>
+            </div>
+
+
+
+
+        <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+            <co-loadmore :top-method="loadTop" @top-status-change="handleTopChange" ref="loadmore">
+                <div class="c-wh2 ub-ver">
+                    <div class="uinn-npic1" id="picList" >
+                        <div class="uinn-npic2" v-for="item in photolist" @click="location('news_photoDetail.html')">
+                            <div class="uba bc-border c-wh" >
+                                <div class="ub-img7 ub-fh uh-npic1" :style="{backgroundImage:'url('+ item.newsImg +')'}"></div>
+                                <div class="ub uinn">
+                                    <div class="ulev-4 ub-f1" v-text="item.imgTit"></div>
+                                    <div class="ub ub-pe">
+                                        <div class="ub ub-ac umar-npic3">
+                                            <div class="ub-img newscommon umw1 umh1 umar-npic1"></div>
+                                            <div class="t-gra-9c ulev-2" v-text="item.commentNum"></div>
+                                        </div>
+                                        <div class="ub ub-ac">
+                                            <div class="ub-img newsunknown umw1 umh1 umar-npic1"></div>
+                                            <div class="t-gra-9c ulev-2" v-text="item.imgNum"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </co-loadmore>
+        </div>
+
+    </div>
+
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/news_photoList.js"></script>
+
+</body>
+</html>

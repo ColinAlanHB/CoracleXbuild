@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>登录</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/car.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./font/iconfont.css">  
+  <link rel="stylesheet" href="./css/login.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>  
+</head>
+<body>
+  <div id="app">  
+    <co-header fixed title="个人中心" class="login-header">
+      <a href="personal.html" slot="left">
+        <i class="icon iconfont icon-cross"></i>
+      </a>
+    </co-header>
+    <section class="login-main">
+      <header class="login-main-logo">
+        <img src="./images/cccar.png" alt="至信Logo">
+      </header>
+      <section class="login-main-form">
+        <co-field type="text" class="login-main-form--user" v-model='tel' :disable-clear='true'>
+          <i class="icon iconfont icon-account">手机号：</i>
+        </co-field>
+        <co-field type="password" class="login-main-form--pwd" v-model='pwd' :disable-clear='true' id="pwd">
+          <i class="icon iconfont icon-lock">密　码：</i>
+        </co-field>
+        <co-button type="primary" class='login-main-form--btn' @click='login'>登录</co-button>
+      </section>
+      <aside class="login-main-link">
+        <a href="forget.html" class="login-main-link--forget">忘记密码？</a>
+        <a href="register.html" class="login-main-link--register">立即注册</a>
+      </aside>
+    </section>  
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        tel: '',
+        pwd: ''
+      },
+      methods: {
+        login() {
+			window.location.href = 'index.html';
+          return;
+        }
+      }
+    }) 
+  </script>
+</body>
+</html>

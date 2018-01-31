@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="contact/css/index.css">
+
+</head>
+<body>
+    <div id="Page">
+        <div class="is-fixed">
+            <co-header title="联系人">
+                <a slot="left" class="iconfont icon-arr" @click="location(-1)"></a>
+            </co-header>
+            <div style="height: 40px;">
+            <co-search v-model="searchVal" placeholder="按姓名、手机号"></co-search>
+            </div>
+        </div>
+        <div class="indexlist-wrapper">
+            <co-index-list>
+                <co-index-section v-for="item,index in alphabet" :key="index" :index="item.initial">
+                    <co-cell v-for="cell,index in item.cells" :key="index"  :label="cell.company + ' - ' + cell.level" :title="cell.name" to="contact-detail.html"></co-cell>
+                </co-index-section>
+            </co-index-list>
+        </div>
+
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

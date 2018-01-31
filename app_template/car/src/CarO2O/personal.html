@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>个人中心</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/car.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./font/iconfont.css">  
+  <link rel="stylesheet" href="./css/personal.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>  
+</head>
+<body>
+  <div id="app">  
+    <co-header title='我的' fixed></co-header>
+    <div class="app-win">
+      <section class="personal-main" v-cloak>
+        <header class="personal-main-info">
+          <img :src="info.avatar" alt="用户头像" class="personal-main-info--avatar" v-if="info && info.avatar">
+          <img src="./images/avatar.png" alt="默认头像"
+           class="personal-main-info--avatar" v-else>
+          <co-button plain class="personal-main-info--login" v-if="!info">点击登陆</co-button>
+          <template v-else>
+            <p class="personal-main-info--user icon iconfont icon-account-fill">{{ info.user }}</p>
+            <p class="personal-main-info--tel icon iconfont icon-phone-fill">{{ info.tel | hideTel }}</p>
+          </template>
+        </header>
+      <section class="personal-main-card">
+        <a class="card-item card-collect" href="list.html">
+          <p class="item-num">{{ card.collectCnt | showCnt }}</p>
+          <p class="item-title">收藏车辆</p>
+        </a>
+        <a class="card-item card-subscribe" href="list.html">
+          <p class="item-num">{{ card.subscribeCnt | showCnt }}</p>
+          <p class="item-title">订阅车源</p>
+        </a>
+        <a class="card-item card-view" href="list.html">
+          <p class="item-num">{{ card.viewCnt | showCnt }}</p>
+          <p class="item-title">浏览记录</p>
+        </a>
+      </section>
+      <section class="personal-main-list">
+        <a href="list.html" class="list-link">
+          <i class="icon iconfont icon-star"></i>
+          <span class='link-title'>我的收藏</span>
+          <i class="icon iconfont icon-right"></i>
+        </a>
+        <a href="list.html" class="list-link">
+          <i class="icon iconfont icon-subscribe"></i>
+          <span class='link-title'>我的订阅</span>
+          <i class="icon iconfont icon-right"></i>
+        </a>
+        <a href="list.html" class="list-link">
+          <i class="icon iconfont icon-record"></i>
+          <span class='link-title'>浏览记录</span>
+          <i class="icon iconfont icon-right"></i>
+        </a>
+    </section>
+    <section class="personal-main-edit">
+      <a href="forget.html" class="list-link">
+        <i class="icon iconfont icon-lock"></i>
+        <span class='link-title'>修改密码</span>
+        <i class="icon iconfont icon-right"></i>
+      </a>
+    </section>
+    <footer class="personal-main-logout">
+      <a href="login.html" class="logout-btn">退出登录</a>
+    </footer>
+  </section>
+    </div>
+    <co-tabbar v-model='tabID' class="app-tabbar">
+      <co-tab-item id="home">
+        <i class="icon iconfont icon-home-fill" slot="icon"></i>
+        <p class="app-tabbar--label">首页</p>
+      </co-tab-item>
+      <co-tab-item id="buy">
+        <i class="icon iconfont icon-car" slot="icon"></i>
+        <p class="app-tabbar--label">买车</p>
+      </co-tab-item>
+      <co-tab-item id="sell">
+        <i class="icon iconfont icon-sell" slot="icon"></i>
+        <p class="app-tabbar--label">卖车</p>
+      </co-tab-item>
+      <co-tab-item id="personal">
+        <i class="icon iconfont icon-account-fill" slot="icon"></i>
+        <p class="app-tabbar--label">我的</p>
+      </co-tab-item>
+    </co-tabbar>  
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {    
+        tabID: 'personal',       
+        info: {
+          avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo6S3Bv_gEkomYL6WLTUfU8oi8OKfj5akpo2V_rirloJBEtQQ3wg',
+          user: 'neko',
+          tel: '12345678987'
+        },
+        card: {
+          collectCnt: 1,
+          subscribeCnt: 0,
+          viewCnt: 6
+        }
+      },
+      filters: {
+        hideTel(tel) {
+          return tel.substr(0, 3) + '****' + tel.substr(-4);
+        },
+        showCnt(cnt) {
+          if (!cnt && cnt !== 0) {
+            return '-';
+          }
+          return cnt;
+        } 
+      },
+      watch: {
+        tabID: function (val, oldVal) {
+          window.location.href = './' + val + '.html';
+        }
+      }
+    });   
+  </script>
+</body>
+</html>

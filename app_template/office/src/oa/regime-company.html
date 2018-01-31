@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A131办公制度</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<script src="./js/co-flexible.js"></script>
+<!-- 先引入 Vue -->
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+</head>
+<body>
+<div id="companyRegime">
+	<co-header title="分类">
+		<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>
+	</co-header>
+	<section class="main-cells">
+		<co-cell title="人力资源" is-link href="regime-department.html">
+			<i class="icon iconfont icon-layer" slot="icon"></i>
+		</co-cell>
+		<co-cell title="财务" is-link href="regime-department.html">
+			<i class="icon iconfont icon-layer" slot="icon"></i>
+		</co-cell>	
+	</section>
+</div>
+<script>
+	new Vue({
+		el: '#companyRegime'
+	});
+</script>
+</body>
+</html>

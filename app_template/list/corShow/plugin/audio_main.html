@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <style>
+    /*
+      HOW TO CREATE AN AUDIO PLAYER [TUTORIAL]
+
+      "How to create an Audio Player [Tutorial]" was specially made for DesignModo by our friend Valeriu Timbuc.
+
+      Links:
+      http://vtimbuc.net/
+      https://twitter.com/vtimbuc
+      http://designmodo.com
+      http://vladimirkudinov.com
+
+    */
+
+    .audio-player,
+    .audio-player div,
+    .audio-player h1,
+    .audio-player a,
+    .audio-player img,
+    .audio-player span,
+    .audio-player button {
+      margin: 0;
+      padding: 0;
+      border: none;
+      outline: none;
+    }
+
+    div.audio-player {
+      position: relative;
+      width: 100%;
+      height: 120px;
+
+      background: #4c4e5a;
+      background: -webkit-linear-gradient(top, #4c4e5a 0%, #2c2d33 100%);
+      background: -moz-linear-gradient(top, #4c4e5a 0%, #2c2d33 100%);
+      background: -o-linear-gradient(top, #4c4e5a 0%, #2c2d33 100%);
+      background: -ms-linear-gradient(top, #4c4e5a 0%, #2c2d33 100%);
+      background: linear-gradient(top, #4c4e5a 0%, #2c2d33 100%);
+    }
+    /* Title */
+
+    .audio-player h1 {
+      position: absolute;
+      top: 37px;
+      left: 165px;
+
+      font-family: Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      color: #ececec;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+    }
+    /* Cover */
+
+    .audio-player .cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    /* Buttons */
+
+    .mejs-controls .mejs-button button {
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      text-indent: -9999px;
+    }
+    /* Play & Pause */
+
+    .mejs-controls .mejs-play button,
+    .mejs-controls .mejs-pause button {
+      width: 21px;
+      height: 21px;
+      top: 35px;
+      left: 135px;
+      background: transparent url(img/play-pause.png) 0 0;
+    }
+
+    .mejs-controls .mejs-pause button {
+      background-position: 0 -21px;
+    }
+    /* Mute & Unmute */
+
+    .mejs-controls .mejs-mute button,
+    .mejs-controls .mejs-unmute button {
+      width: 14px;
+      height: 12px;
+      top: 70px;
+      left: 140px;
+      background: transparent url(img/mute-unmute.png) 0 0;
+    }
+
+    .mejs-controls .mejs-unmute button {
+      background-position: 0 -12px;
+    }
+    /* Volume Slider */
+
+    .mejs-controls div.mejs-horizontal-volume-slider {
+      position: absolute;
+      top: 71px;
+      left: 165px;
+
+      width: 40%;
+      cursor: pointer;
+    }
+
+    .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+      width: 100%;
+      height: 8px;
+      background: #212227;
+
+      -webkit-box-shadow: inset 0px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px rgba(255, 255, 255, .25);
+      -moz-box-shadow: inset 0px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px rgba(255, 255, 255, .25);
+      box-shadow: inset 0px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px rgba(255, 255, 255, .25);
+
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius: 6px;
+    }
+
+    .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+      position: absolute;
+      width: 0;
+      height: 6px;
+      top: 1px;
+      left: 1px;
+      background: url(img/volume-bar.png) repeat-x;
+
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius: 6px;
+    }
+    /* Progress Slider */
+
+    .mejs-controls div.mejs-time-rail {
+      width: 100%;
+      position: relative;
+      bottom: -120px;
+    }
+
+    .mejs-controls .mejs-time-rail span {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 5px;
+      left: 0;
+      bottom: 0;
+      cursor: pointer;
+
+      -webkit-border-radius: 0px 0px 2px 2px;
+      -moz-border-radius: 0px 0px 2px 2px;
+      border-radius: 0px 0px 2px 2px;
+    }
+
+    .mejs-controls .mejs-time-rail .mejs-time-total {
+      background: #999999;
+    }
+
+    .mejs-controls .mejs-time-rail .mejs-time-loaded {
+      width: 0;
+      background: #cccccc;
+    }
+
+    .mejs-controls .mejs-time-rail .mejs-time-current {
+      width: 0;
+      background: #64b44c;
+    }
+    /* Volume Slider & Progress Bar Handle */
+
+    .mejs-controls .mejs-time-rail .mejs-time-handle,
+    .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+      position: absolute;
+      display: block;
+      width: 12px;
+      height: 14px;
+      top: -4px;
+      background: url(img/handle.png) no-repeat;
+    }
+
+    .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+      top: -2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="audio-player">
+      <h1>Demo - Preview Song</h1>
+      <img class="cover" src="img/cover.png" alt="">
+      <div id="mep_0" class="mejs-container mejs-audio" style="width: 100%; height: 120px;">
+        <div class="mejs-inner">
+          <!-- <div class="mejs-mediaelement">
+            <audio id="audio-player" src="res://song.mp3" type="audio/mp3" preload='metadata'></audio>
+          </div> -->
+          <div class="mejs-layers">
+            <div class="mejs-poster mejs-layer" style="display: none; width: 100%; height: 120px;"></div>
+          </div>
+          <div class="mejs-controls">
+            <div class="mejs-button mejs-playpause-button" :class='ppStyle' @click='togglePP'>
+              <button type="button" aria-controls="mep_0" title="Play/Pause"></button>
+            </div>
+            <div class="mejs-button mejs-volume-button mejs-mute"><button type="button" aria-controls="mep_0" title="Mute Toggle"></button></div>
+            <div class="mejs-horizontal-volume-slider mejs-mute">
+              <div class="mejs-horizontal-volume-total"></div>
+              <div class="mejs-horizontal-volume-current" style="width: 80px;"></div>
+              <div class="mejs-horizontal-volume-handle" style="left: 77px;"></div>
+            </div>
+            <div class="mejs-time-rail">
+              <span class="mejs-time-total">
+                <span class="mejs-time-loaded" style="width: 100%;"></span>
+              <span class="mejs-time-current" style="width: 63.8798px;"></span>
+              <span class="mejs-time-handle" style="left: 57.8798px;"></span>
+              </span>
+            </div>
+          </div>
+          <div class="mejs-clear"></div>
+        </div>
+      </div>
+    </div>
+    <div class="co-pd-a05 co-bg-1">听筒设置</div>
+    <co-cell title='感应模式（靠近自动切换听筒）'>
+      <co-switch v-model="isProximity" @change='toggleProximity'></co-switch>
+    </co-cell>
+    <co-radio v-model='playMode' :options='modeOpts'></co-radio>
+    <div class="co-pd-a05 co-bg-1">音效池</div>
+    <co-cell title='播放音效'>
+      <co-switch v-model="isSoundPlaying" @change='toggleSound'></co-switch>
+    </co-cell>
+    <div class="co-pd-a05 co-bg-1">后台录音</div>
+    <co-cell :title='isRecording ? "停止" : "开始"'>
+      <co-switch v-model="isRecording" @change='toggleRecord'></co-switch>
+    </co-cell>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setBounceEnabled(1);
+      corAudio.open("res://song.mp3");
+    });
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        h5Audio: null,
+        isPlaying: false,
+        isSoundPlaying: false,
+        isRecording: false,
+        isProximity: false,
+        loopMode: 0,
+        playMode: "-1",
+        modeOpts: [{
+            label: "无",
+            value: "-1",
+            disabled: false
+          },
+          {
+            label: "扩音器模式",
+            value: "0",
+            disabled: false
+          },
+          {
+            label: "听筒模式",
+            value: "1",
+            disabled: false
+          }
+        ]
+      },
+      watch: {
+        playMode(mode, lastMode) {
+          if (lastMode == '-1') {
+            this.modeOpts[0].disabled = true;
+            this.isProximity = false;
+          };
+          mode = parseInt(mode);
+          corAudio.setPlayMode({
+            playMode: mode
+          });
+        }
+      },
+      computed: {
+        ppStyle() {
+          return this.isPlaying ? ['mejs-pause'] : ['mejs-play']
+        }
+      },
+      methods: {
+        togglePP() {
+          var isPlaying = !this.isPlaying;
+          this.isPlaying = isPlaying;
+          if (isPlaying) {            
+            corAudio.play(this.loopMode);
+          } else {
+            corAudio.pause();
+          }
+        },
+        toggleSound() {
+          if (!this.isSoundPlaying) {
+            corAudio.closeSoundPool();
+          } else {
+            setTimeout(() => {
+              console.log(this.isSoundPlaying);
+              this.isSoundPlaying = false;
+            }, 2500);
+            corAudio.stop();
+            corAudio.openSoundPool();
+            corAudio.addSound(2, "res://sound.wav");
+            corAudio.playFromSoundPool(2);
+          }
+        },
+        toggleRecord() {
+          if (!this.isRecording) {
+            corAudio.stopBackgroundRecord(function (filePath) {
+              corAudio.stop();
+              corAudio.open(filePath);
+              onPlayFinished = function (repeats) {
+                alert(`录音播放${repeats}次`);
+              };
+              corAudio.play(2);
+            });
+          } else {
+            corAudio.startBackgroundRecord(0, 'bg_record');
+          }
+        },
+        toggleProximity() {
+          var mode = this.isProximity ? 1 : 0;
+
+          if (this.playMode != '-1' && mode === 1) {
+            this.$nextTick(() => {
+              this.isProximity = false;
+            });
+            return;
+          }
+
+          corAudio.setProximityState(mode);
+        }
+      },
+      mounted() {
+        // this.h5Audio = document.getElementById('audio-player');
+        // this.h5Audio.play();        
+      }
+    });
+  </script>
+</body>

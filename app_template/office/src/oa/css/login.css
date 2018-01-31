@@ -1,0 +1,139 @@
+html,
+body,
+#login {
+  width: 100%;
+  height: 100%;
+}
+#login {
+  position: relative;
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 100%, #fff 0%), url('../images/login-bg.png');
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 100%, #fff 0%), url('../images/login-bg.png');
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7) 100%, #fff 0%), url('../images/login-bg.png');
+  background-size: cover;
+}
+#login .logo {
+  width: 4.50666667rem;
+  height: 1.6rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 17.5%;
+  margin: auto;
+  background-image: url('../images/login-logo.png');
+  background-size: cover;
+}
+#login .form {
+  width: 8.56rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 33.9%;
+  margin: auto;
+  /* 文本输入框 box */
+  /* input 元素 */
+  /* field 图标 */
+  /* checkbox 样式 */
+  /*  */
+}
+#login .form .co-cell {
+  background-color: transparent;
+  background-image: none;
+  overflow: visible;
+}
+#login .form .co-cell-wrapper {
+  background-image: none;
+}
+#login .form .co-field {
+  height: 1.14666667rem;
+  border-bottom: 1px solid #B5B5B5;
+  position: relative;
+}
+#login .form .co-field-core {
+  font-size: 16px;
+  padding-left: .78666667rem;
+  background-color: transparent;
+}
+[data-dpr="2"] #login .form .co-field-core {
+  font-size: 32px;
+}
+[data-dpr="3"] #login .form .co-field-core {
+  font-size: 48px;
+}
+#login .form .co-field-other {
+  right: unset;
+  left: .35em;
+}
+#login .form .icon {
+  font-size: 17px;
+  line-height: 1.16rem;
+  vertical-align: middle;
+  margin-left: .16rem;
+  color: #B5B5B5;
+}
+[data-dpr="2"] #login .form .icon {
+  font-size: 34px;
+}
+[data-dpr="3"] #login .form .icon {
+  font-size: 51px;
+}
+#login .form .co-checklist {
+  margin: .53333333rem 0;
+}
+#login .form .co-checklist .co-cell-wrapper {
+  padding: 0;
+}
+#login .form .co-checkbox-core {
+  box-sizing: border-box;
+  width: .53333333rem;
+  height: .53333333rem;
+  border: 2px solid #B5B5B5;
+  border-radius: .08rem;
+}
+#login .form .co-checkbox-core::after {
+  border-width: .05333333rem;
+  top: 12.5%;
+  left: 30%;
+  width: 25%;
+  height: 50%;
+}
+#login .form .co-checkbox-label {
+  font-size: 12px;
+  color: #828282;
+  margin-left: .14666667rem;
+}
+[data-dpr="2"] #login .form .co-checkbox-label {
+  font-size: 24px;
+}
+[data-dpr="3"] #login .form .co-checkbox-label {
+  font-size: 36px;
+}
+#login .form .btn-login {
+  font-size: 18px;
+  width: 97%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 1.17333333rem;
+  border-radius: .14666667rem;
+  background-color: #D33233;
+}
+[data-dpr="2"] #login .form .btn-login {
+  font-size: 36px;
+}
+[data-dpr="3"] #login .form .btn-login {
+  font-size: 54px;
+}
+#login footer .company {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 10px;
+  text-align: center;
+}
+[data-dpr="2"] #login footer .company {
+  font-size: 20px;
+}
+[data-dpr="3"] #login footer .company {
+  font-size: 30px;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css">
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .tipD {
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg)
+    }
+
+    .tipD1 {
+      transform: rotate(-90deg);
+      -webkit-transform: rotate(-90deg)
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak class="co-cl-1">
+    <div class="co-bg-0 co-bd-t1 co-bd-b1">
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('request','../plugin/database.html',0)">
+        <div class="icon iconfont icon-shujuku co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corDatabaseMgr</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装SQL操作数据库接口</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      <div class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1" @click="goHtml('request','../plugin/request.html',0)">
+        <div class="icon iconfont icon-wangluotongxun co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">
+          <div>corXmlHttpMgr</div>
+          <div class="co-cl-3 co-fs-02 co-mg-t02 co-te2">封装Http网络异步请求</div>
+        </div>
+        <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      tag: false,
+      reTag: false,
+      unfolded: []
+    },
+    methods: {
+      goBack: function () {
+        corJS.closeWin();
+      },
+      goHtml: function (name, url, anim) {
+        corNative.openWindow({
+          name: name,
+          data: url,
+          animID: anim,
+          flag: 1024,
+        });
+      },
+      collapse: function (key) {
+        var curIndex = this.unfolded.indexOf(key);
+        curIndex > -1 ? this.unfolded.splice(curIndex, 1) : this.unfolded.push(key);
+      },
+      getCollapseStyle: function (key) {
+        var isUnfolded = this.unfolded.indexOf(key) > -1;
+        return {
+          "co-mg-l05": !isUnfolded,
+          "co-bg-2 co-pd-l05": isUnfolded
+        }
+      },
+      getEnterStyle: function (key) {
+        var isUnfolded = this.unfolded.indexOf(key) > -1;
+        return isUnfolded ? ["tipD1"] : ["tipD"];
+      }
+    }
+  })
+</script>
+
+</html>

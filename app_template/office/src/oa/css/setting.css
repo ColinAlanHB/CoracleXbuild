@@ -1,0 +1,12 @@
+html,
+body,
+#setting {
+  width: 100%;
+  height: 100%;
+}
+.logout {
+  margin-top: .66666667rem;
+}
+.logout .co-cell-title {
+  text-align: center;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="侧滑列表" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <div class="page-content-main">
+      <co-cell-swipe :left="[{
+        content: '更多',
+        style: { background: 'blue', color: '#fff' }
+      }]" title="向右滑动">
+      </co-cell-swipe>
+      <co-cell-swipe :right="rightButtons" title='无效的设置'>
+        <co-button size="small" type="primary" slot='title' class="co-mg-l04">可以是按钮</co-button>
+        <span>请往左划</span>
+        <img slot="icon" src="../images/100x100.png" width="24" height="24">
+      </co-cell-swipe>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+    })
+    var vm = new Vue({
+      el: "#app",
+      created: function() {
+        var self = this;
+        this.rightButtons = [
+          {
+            content: '可以多个按钮',
+            style: { background: 'lightgray', color: '#fff' }
+          },
+          {
+            content: '删除',
+            style: { background: 'red', color: '#fff' },
+            handler: () => self.$messagebox('delete')
+          }
+        ];
+      }
+    });
+  </script>
+</body>
+
+</html>

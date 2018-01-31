@@ -1,0 +1,18 @@
+.loginBg{background:url(../images/login-bg.png) no-repeat;background-size: 100%;}
+.logo{width:10rem;display: block;height:3rem;}
+.checkbox input[type=checkbox]:checked:before{
+  background:red
+}
+.logoBottom{position: fixed;z-index: 9999;bottom: .2rem;width:100%;}
+.oaTitle{border-left:3px #d81e06 solid;padding:.2rem .5rem;}
+.iconImg{width:2.4rem;height:2.4rem;display: block;}
+.radiobox input[type=radio]:checked:before {
+    border-color: #d81e06;
+}
+.cryImg{width:2.8rem;height:3rem;display: block;}
+.co-swipe{height:8rem;}
+.bannerImg{height:8rem;width:100%;display: block}
+.newImg{width:3.5rem;height:3.5rem;display: block;}
+.typeTip{
+	width:1rem;height:1rem;-webkit-border-radius:1rem;border-radius: 1rem;position: absolute;left:-.5rem;top:1.6rem;z-index: 99
+}

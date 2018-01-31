@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A141 工时自助</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/hour-buffet.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+<!-- 时间库 moment.js @zh-cn 版本CDN地址 -->
+<!-- https://momentjs.com/ -->
+<script src="./js/moment.min.js"></script>
+<script src="./js/zh-CN.js"></script>
+</head>
+<body class="theme-default">
+<div id="hourBuffet">
+	<co-header :title='dateChoosed.format("YYYY年M月")'>
+		<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>			
+	</co-header>
+	<section>
+		<header>
+			<co-datebar :year-month='dateChoosed.format("YYYY-M")' :day='dateChoosed.format("D")' @click='chooseDate'>				
+			</co-datebar>
+		</header>
+		<section v-if='hourList.length>0'></section>
+		<section v-else class='no-hour-list'>
+			<img src="./images/empty-cry.png" alt="图片都没有。。。">
+			<p>抱歉，您的列表为空的</p>
+		</section>
+	</section>
+	<footer class="fixed-bottom">
+		<a href="hour-add.html">
+			<co-button type="default">新增工时</co-button>	
+		</a>		
+	</footer>
+</div>
+<script>	
+	moment.locale("zh-CN");
+	
+	var vm = new Vue({
+		el: '#hourBuffet',
+		data: {
+			dateChoosed: moment(),
+			// 日期滚动条
+			dateBarEl: null,
+			hourList: []
+		},
+		methods: {
+			chooseDate: function (bar) {				
+				var dateOfMonth = bar.$this.data;				
+				var nowDateOfMonth = moment().date();
+				var oldDateOfMonth = this.dateChoosed.date();					
+				if(dateOfMonth > nowDateOfMonth) {	
+					// ToDo: 类名添加机制没有放在成功回调执行 or CSS 方案：添加蒙版屏蔽点击
+					return false;
+				}
+				this.dateChoosed = this.dateChoosed.date(dateOfMonth);			
+			}
+		},
+		mounted: function () {
+			var barEl = this.dateBarEl = document.querySelector('#datebar-id .co-component-progressbar');
+			// li 还未更新			
+			this.$nextTick(function () {				
+				// datebar 组件“内联样式”修改
+				var lis = barEl.querySelectorAll('li.datedata');			
+				var liStyle = window.getComputedStyle(lis[0],null);		
+				// 防止小数丢失，破坏浮动			
+				var liWidth = parseFloat(liStyle.getPropertyValue("width"));
+				barEl.style.width = (liWidth * (lis.length)) + "px";
+				barEl.style.height = liStyle.getPropertyValue("height");				
+				// 设置 overflow 滚动条位置				
+				setTimeout(function () {
+					var scrollerWin = barEl.parentNode;
+					scrollerWin.scrollLeft = liWidth * (vm.dateChoosed.date() - 2);	
+				}, 40);
+
+				// 明日蒙版，屏蔽点击
+				var nowDateOfMonth = moment().date();
+				var daysInMonth = this.dateChoosed.daysInMonth();
+				var div = document.createElement('div');			
+				// 覆盖原有样式
+				
+				div.style.cssText = "position: absolute; right: 0; z-index: 99; opacity: 0.7; background-color: black";							
+				div.style.height = barEl.style.height;
+				div.style.width = (daysInMonth - nowDateOfMonth) * liWidth + "px";
+				
+				barEl.style.position = "relative";
+				barEl.appendChild(div);
+			});					
+		}
+	});			
+</script>
+</body>
+</html>

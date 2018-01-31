@@ -1,0 +1,53 @@
+
+.forget-main-logo {
+    width: 100%;
+    text-align: center;
+    margin-top: 30%;
+}
+.forget-main-logo img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 60%;
+}
+.forget-main-form {
+    padding: 0 10%;
+    position: relative;
+}
+.forget-main-form .co-field {
+    border-bottom:2px solid #DDDDDD;
+}
+.forget-main-form .co-cell-wrapper {
+    background: none;
+}
+.forget-main-form .co-cell-value {
+    position: relative;
+}
+.forget-main-form .co-field-other {
+    position: absolute;
+    left: 0;
+    right: unset;
+}
+.forget-main-form .co-field-other .iconfont {
+    font-size: 20px;
+    line-height: 48px
+}
+.forget-main-form .co-field-other .iconfont::before {
+    margin-right: 5px;
+}
+.forget-main-form input.co-field-core {
+    text-indent: 100px;
+    height: 48px;
+}
+#app .forget-main-form--get {
+    position: absolute;
+    z-index: 1;
+    right: 10%;
+    bottom: 140px;
+    height: 40px;
+}
+#app .forget-main-form--btn {
+    width: 100%;
+    height: 60px;
+    font-size: 22px;
+    margin-top: 20px;
+}

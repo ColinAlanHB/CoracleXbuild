@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .item {
+      display: inline-block;
+    }
+
+    .nav {
+      padding: 10px;
+    }
+
+    .link {
+      color: inherit;
+      padding: 20px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="标签容器" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <div class="nav page-content-main">
+      <co-button size="small" @click.native.prevent="active = 'tab-container1'">tab 1</co-button>
+      <co-button size="small" @click.native.prevent="active = 'tab-container2'">tab 2</co-button>
+      <co-button size="small" @click.native.prevent="active = 'tab-container3'">tab 3</co-button>
+    </div>
+    <div>
+      <co-tab-container v-model="active" swipeable>
+        <co-tab-container-item id="tab-container1">
+          <co-cell v-for="n in 7" title="tab-container 1" :key='n'></co-cell>
+        </co-tab-container-item>
+        <co-tab-container-item id="tab-container2">
+          <co-cell v-for="n in 3" title="tab-container 2" :key='n'></co-cell>
+        </co-tab-container-item>
+        <co-tab-container-item id="tab-container3">
+          <co-cell v-for="n in 5" title="tab-container 3" :key='n'></co-cell>
+        </co-tab-container-item>
+      </co-tab-container>
+
+      <co-tab-container v-model="activeFlush">
+        <co-tab-container-item id="A">
+          <co-cell title="没有滑动 A"></co-cell>
+        </co-tab-container-item>
+        <co-tab-container-item id="B">
+          <co-cell title="没有滑动 B"></co-cell>
+        </co-tab-container-item>
+        <co-tab-container-item id="C">
+          <co-cell title="没有滑动 C"></co-cell>
+        </co-tab-container-item>
+      </co-tab-container>
+      <div class="nav">
+        <co-button size="small" @click.native.prevent="activeFlush = 'A'">tab A</co-button>
+        <co-button size="small" @click.native.prevent="activeFlush = 'B'">tab B</co-button>
+        <co-button size="small" @click.native.prevent="activeFlush = 'C'">tab C</co-button>
+      </div>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        active: 'tab-container1',
+        activeFlush: 'C'
+      }     
+    });
+  </script>
+</body>
+
+</html>

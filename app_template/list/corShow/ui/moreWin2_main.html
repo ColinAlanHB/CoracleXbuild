@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .bgImg{height:3rem;width:3rem;background:#ccc;display: block;border: none;}
+  </style>
+</head>
+<body>
+  <div id="app" class="co-fs-01">
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="../images/logo.png" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>
+前海圆舟--智能制造</div>
+          <div class="co-fs-02 co-cl-3 co-te2">智能制造的概念在信息化建设项目实践过程中可以归纳总结为：利用信息系统实现在生产制造过程中各项管理业务的高度自动化</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="../images/logo.png" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>
+前海圆舟--信息安全</div>
+          <div class="co-fs-02 co-cl-3 co-te2">圆舟建立了完整的信息体系和安全策略， 包括了网络环境、应用需求、业务流程、组织结构和战略目标的安全策略与实施计划，并详细说明实现安全策略的方式方法</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="../images/logo.png" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>
+前海圆舟--企业云</div>
+          <div class="co-fs-02 co-cl-3 co-te2">随着云服务的深入发展, 企业云的内容已不限于计算和存储， 将技术和应用结合的云服务，是圆舟推进网络、存储、数据、开发、测试等服务在企业内的方式.</div>
+        </div>
+      </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在ready里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      goBack:function(){
+        corJS.closeWin();
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

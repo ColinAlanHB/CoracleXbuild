@@ -1,0 +1,15 @@
+.message-wrap{ background-color: #fff;}
+.message-count{ padding: 0 10px; font-size: 14px; line-height: 36px; text-align: right;}
+.message-box{}
+.message-list{ padding-bottom: 15px;}
+.message-date{ height:10px; margin-bottom: 10px; border-bottom: 1px solid #dddddd; position: relative;}
+.message-date span{ padding: 0 20px; background-color: #fff; color: #989898;}
+.message-one{ overflow: hidden; padding-top: 10px;}
+.message-icon{ width: 65px; text-align: center; float: left;font-size: 14px; color: #989898;}
+.message-msg{ margin-left: 65px; min-height: 55px;  border-bottom: 1px solid #dddddd; font-size: 16px; line-height: 1.5; padding-bottom: 15px; position: relative;}
+.message-list .message-one:last-child .message-msg{ border-bottom: none;}
+.message-time{ position: absolute; right: 10px; top: 0px;font-size: 14px; color: #989898;}
+.message-msg .title{ margin-right: 60px;}
+.message-msg .msg{ font-size: 14px; color: #989898;}
+
+

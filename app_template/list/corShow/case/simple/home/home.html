@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>home</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+    #banner{height:8rem;}
+    .loadImg{width:100%;height:8rem;display: block;}
+    .imgList{width:1.4rem;height:1.4rem;display: block;}
+    .scImg{width:2rem;height:2rem;display: block;}
+    .tel{width:1.2rem;height:1.2rem;background:url(img/tel.png) no-repeat;background-size:100%;}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header fixed title="首页" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+        <co-button icon="more"></co-button>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-content-bottom">
+      <div id="banner" class="">
+        <co-swipe :auto="5000">
+          <co-swipe-item>
+          <img src="img/b1.png" class="loadImg" />
+          </co-swipe-item>
+          <co-swipe-item>
+          <img src="img/b2.png" class="loadImg" />
+          </co-swipe-item>
+          <co-swipe-item>
+          <img src="img/b3.png" class="loadImg" />
+          </co-swipe-item>
+        </co-swipe>
+      </div>
+      <div class="co-bg-0 co-pd-tb05 co-mg-t02">
+        <div class="co-flex">
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/ji.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">鸡</span>
+          </div>
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/jidan.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">鸡蛋</span>
+          </div>
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/mt.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">面条</span>
+          </div>
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/nn.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">牛奶</span>
+          </div>
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/pig.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">猪肉</span>
+          </div>
+        </div>
+        <div class="co-flex co-mg-t05">
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/sg.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">水果</span>
+          </div>
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/shucai.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">蔬菜</span>
+          </div>
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/sl.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">沙拉</span>
+          </div>
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/xia.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">龙虾</span>
+          </div>
+          <div class="co-f1 co-flex co-ac co-jc co-ver">
+            <img src="img/yu.png" class="imgList" />
+            <span class="co-fs-01 co-cl-1">鱼</span>
+          </div>
+        </div>
+      </div>
+      <div class="co-mg-t02 co-bg-0">
+        <div class="co-flex co-ac co-pd-a04 co-bd-b">
+          <div class="">
+            <img class="scImg" src="img/shucai.png" />
+          </div>
+          <div class="co-f1 co-mg-l05">
+            <div>新鲜蔬菜</div>
+            <div class="co-fs-01 co-cl-1">湖北特色</div>
+          </div>
+          <div class="tel"></div>
+        </div>
+        <div class="co-flex co-ac co-pd-a04 co-bd-b">
+          <div class="">
+            <img class="scImg" src="img/sg.png" />
+          </div>
+          <div class="co-f1 co-mg-l05">
+            <div>新鲜水果</div>
+            <div class="co-fs-01 co-cl-1">湖北特色</div>
+          </div>
+          <div class="tel"></div>
+        </div>
+        <div class="co-flex co-ac co-pd-a04 co-bd-b">
+          <div class="">
+            <img class="scImg" src="img/pig.png" />
+          </div>
+          <div class="co-f1 co-mg-l05">
+            <div>猪肉</div>
+            <div class="co-fs-01 co-cl-1">湖北特色</div>
+          </div>
+          <div class="tel"></div>
+        </div>
+      </div>
+    </div>
+    <co-tabbar fixed v-model="selected">
+      <co-tab-item id="首页">
+        <img src="img/home.png" slot="icon"></img>
+        首页
+      </co-tab-item>
+      <co-tab-item id="分类">
+        <img src="img/type.png" slot="icon"></img>
+        分类
+      </co-tab-item>
+      <co-tab-item id="菜单">
+        <img src="img/caidan.png" slot="icon"></img>
+        菜单
+      </co-tab-item>
+      <co-tab-item id="排行榜">
+        <img src="img/paihang.png" slot="icon"></img>
+        排行榜
+      </co-tab-item>
+      <co-tab-item id="我的">
+        <img src="img/mine.png" slot="icon"></img>
+        我的
+      </co-tab-item>
+    </co-tabbar>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+   corJS.ready(function(){
+
+    })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      selected:"首页"
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }
+  })
+</script>
+</html>

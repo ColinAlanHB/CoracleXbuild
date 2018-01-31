@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>mine</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style type="text/css">
+    .imgIcon{width:1.2rem;height:1.2rem;display: block;}
+  </style>
+</head>
+<body class="co-bg-2">
+  <div id="app">
+    <co-header fixed title="个人中心" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top">
+      <div class="co-flex co-ac co-pd-a05 co-bd-b co-bg-0">
+        <div>
+          <img src="img/login.png" style="width: 3rem;height:3rem;display: block;" />
+        </div>
+        <div class="co-f1 co-mg-l06">
+          <div>王小五</div>
+          <div class="co-cl-3 co-fs-01">信息技术部</div>
+        </div>
+        <div>
+          <img src="img/rit.png" style="width:.8rem;height:.8rem;display: block;" />
+        </div>
+      </div>
+      <div class="co-mg-t04 co-bd-t co-bd-b co-bg-0">
+        <div class="co-flex co-ac co-bd-b co-mg-l06 co-pd-tb05">
+          <div>
+            <img src="img/sc.png" class="imgIcon" />
+          </div>
+          <div class="co-f1 co-mg-l06">我的收藏</div>
+          <div class="co-mg-r05">
+            <img src="img/rit.png" style="width:.8rem;height:.8rem;display: block;" />
+          </div>
+        </div>
+        <div class="co-flex co-ac co-bd-b co-mg-l06 co-pd-tb05">
+          <div><img src="img/rw.png" class="imgIcon" /></div>
+          <div class="co-f1  co-mg-l06">我的任务</div>
+          <div class="co-mg-r05">
+            <img src="img/rit.png" style="width:.8rem;height:.8rem;display: block;" />
+          </div>
+        </div>
+        <div class="co-flex co-ac co-mg-l06 co-pd-tb05">
+          <div><img src="img/fp.png" class="imgIcon" /></div>
+          <div class="co-f1  co-mg-l06">开票信息</div>
+          <div class="co-mg-r05">
+            <img src="img/rit.png" style="width:.8rem;height:.8rem;display: block;" />
+          </div>
+        </div>
+      </div>
+      <div class="co-mg-t04 co-bd-t co-bd-b co-bg-0">
+        <div class="co-flex co-ac co-bd-b co-mg-l06 co-pd-tb05">
+          <div><img src="img/hand.png" class="imgIcon" /></div>
+          <div class="co-f1  co-mg-l06">手势密码</div>
+          <div class="co-mg-r05">
+            <img src="img/rit.png" style="width:.8rem;height:.8rem;display: block;" />
+          </div>
+        </div>
+        <div class="co-flex co-ac co-mg-l06 co-pd-tb05">
+          <div><img src="img/mm.png" class="imgIcon" /></div>
+          <div class="co-f1  co-mg-l06">忘记密码</div>
+          <div class="co-mg-r05">
+            <img src="img/rit.png" style="width:.8rem;height:.8rem;display: block;" />
+          </div>
+        </div>
+      </div>
+      <div class="co-mg-t04 co-bd-t co-bd-b co-bg-0">
+        <div class="co-flex co-ac co-mg-l06 co-pd-tb05">
+          <div><img src="img/set.png" class="imgIcon" /></div>
+          <div class="co-f1  co-mg-l06">更多设置</div>
+          <div class="co-mg-r05">
+            <img src="img/rit.png" style="width:.8rem;height:.8rem;display: block;" />
+          </div>
+        </div>
+      </div>
+      <div class="co-bg-6 co-pd-a05 co-mg-a06 co-cl-0 co-br-a0 co-tx-c" style="margin-top:2rem">
+        注销
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }
+  })
+</script>
+</html>

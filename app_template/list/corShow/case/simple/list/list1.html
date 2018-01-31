@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>Index List</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header fixed title="通讯录" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top">
+      <co-index-list>
+        <co-index-section v-for="listItem in indexList" :index="listItem.index">
+          <co-cell :title="nameItem.name" v-for="nameItem in listItem.nameList">
+            <div>{{nameItem.sex==1?"男":"女"}}</div>
+          </co-cell>
+        </co-index-section>
+      </co-index-list>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+    })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      indexList:[
+        {
+          index:"A",
+          nameList:[
+            {id:"1",name:"安妮",sex:1},
+            {id:"2",name:"安徒生",sex:2},
+            {id:"3",name:"ali",sex:1},
+            {id:"4",name:"andy",sex:2},
+          ]
+        },
+        {
+          index:"B",
+          nameList:[
+            {id:"3",name:"Billon",sex:2},
+            {id:"4",name:"Better",sex:1},
+          ]
+        },
+        {
+          index:"C",
+          nameList:[
+            {id:"5",name:"陈伟",sex:1},
+            {id:"6",name:"陈龙",sex:2},
+            {id:"7",name:"陈龙",sex:2},
+            {id:"8",name:"陈龙",sex:1},
+          ]
+        },
+        {
+          index:"D",
+          nameList:[
+            {id:"9",name:"董路",sex:2},
+            {id:"10",name:"董小姐",sex:1},
+          ]
+        },
+        {
+          index:"M",
+          nameList:[
+            {id:"11",name:"马龙",sex:2},
+            {id:"12",name:"马晓",sex:1},
+            {id:"13",name:"mary",sex:2},
+            {id:"14",name:"milly",sex:1},
+          ]
+        },
+        {
+          index:"Z",
+          nameList:[
+            {id:"15",name:"张鹏飞",sex:2},
+            {id:"16",name:"张晓燕",sex:1},
+          ]
+        }
+      ]
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }
+  })
+</script>
+</html>

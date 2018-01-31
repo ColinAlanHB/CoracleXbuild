@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+  .co-header .co-button {
+    color: #fff;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="头部日历" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+      <co-button icon="more" slot="right" @click="open('picker4')"></co-button>
+    </co-header>
+    <div class="page-databar">
+      <co-datebar year-month="2017-3" day="22" v-on:click="clickDayFun"></co-datebar>
+    </div>
+    <co-datetime-picker ref="picker4" type="date" v-model="value4" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleChange">
+    </co-datetime-picker> 
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        value4: ''
+      },
+      mounted: function () {
+        var now = new Date();
+        this.value4 = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate(); // 获取当前日期
+      },
+      methods: {
+        open(picker) {
+          this.$refs[picker].open();
+        },
+        handleChange(value) {
+          let date = this.$children[1];
+          let yearMonth = value.getFullYear() + '-' + (value.getMonth() + 1);
+          date.rows = date.init({ // 刷新组件日期
+            componentData: {
+              yearMonth: yearMonth,
+              day: value.getDate()
+            }
+          });
+          date.repos(); // 定位到当天
+          var $container = this.$children[1].$el;
+          setTimeout(function () { // 刷新组件选中位置
+            $container.childNodes[0].scrollLeft = (value.getDate() - 3) * 64;
+          }, 50);
+          this.$toast({
+            message: '已选择 ' + value.toString(),
+            position: 'bottom'
+          });
+        },
+        clickDayFun: function (e) {
+          this.$toast(e.$this.year + '/' + e.$this.data); // 获取当前点击的日期信息
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

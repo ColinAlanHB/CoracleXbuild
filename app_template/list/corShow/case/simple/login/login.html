@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+	<title>登陆</title>
+	<link rel="stylesheet" href="../public/css/style.css" />
+	<link rel="stylesheet" href="../public/css/flex.css" />
+	<link rel="stylesheet" href="../public/css/base.css" />
+</head>
+<body class="co-body">
+	<div id="app" class="co-Page co-flex co-f1 co-bg-6 co-ac co-jc" v-cloak>
+		<div id="co-content" class="co-f1">
+			<div class="co-tx-c co-cl-0 co-pd-a06" style="font-size:1.8rem">WELCOME</div>
+			<div class="co-mg-a06 co-br-a0 co-f1 co-bg-0 co-pd-a05">
+				<input v-model="userName" placeholder="Email Address" type="text" class="co-field-core co-cl-2">
+			</div>
+			<div class="co-mg-a06 co-br-a0 co-f1 co-bg-0 co-pd-a05">
+				<input v-model="passWord" placeholder="passWord" type="passWord" class="co-field-core co-cl-2">
+			</div>
+			<div class="co-flex">
+				<co-button @click="login" class="co-f1 co-mg-a06 co-h-1" type="default">Login</co-button>
+			</div>	
+			<div class="co-flex co-jc co-cl-0 co-mg-t02 co-fs-01">
+				<div>Password</div><span class="co-pd-lr06">|</span><div>Register</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+    corJS.ready(function(){
+
+    })
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			userName:"",
+			passWord:"",
+		},
+		methods:{
+			login:function(){
+				corNative.closeWindow({
+	              animID:-1,
+	              animDuration:300
+	            });
+				return;
+				if(this.userName==""){
+					this.$toast({
+				        message: '请输入账号',
+				        position: 'bottom', 
+				        duration: 2000
+			        })
+					return;
+				}else if(this.passWord==""){
+					this.$toast({
+				        message: '请输入密码',
+				        position: 'bottom', 
+				        duration: 2000
+			        })
+			        return;
+				}
+				this.$toast({
+			        message: '登陆成功',
+			        position: 'bottom', 
+			        duration: 2000
+			    })
+				if(this.checkTag){
+					//选择记住账号后执行
+				}
+			},
+		},
+		created:function(){
+
+		}
+	})
+</script>
+</html>

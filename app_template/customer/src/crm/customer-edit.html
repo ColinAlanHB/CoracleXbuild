@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="customer-edit/css/index.css">
+
+</head>
+<body>
+    <div id="Page">
+            <co-header title="编辑客户">
+                <a slot="left" class="iconfont icon-arr" @click="location('customer-detail.html')"></a>
+                <div slot="right">
+                    保存
+                </div>
+            </co-header>
+
+            <div class="customer-edit-wrap">
+                <co-field label="公司全称 *" v-model="customer.name"  :attr="{ maxlength: 10 }"></co-field>
+                <co-field label="简称" v-model="customer.sname" ></co-field>
+                <co-field label="地址 *" v-model="customer.adds"></co-field>
+                <co-field label="客户等级 *" v-model="customer.level"  :readonly="true" :disabled="true" @click.native="pick('level')"></co-field>
+                <co-field label="行业 *" v-model="customer.type"  :readonly="true" :disabled="true" @click.native="pick('type')"></co-field>
+                <co-field label="公司电话" v-model="customer.tel"></co-field>
+                <co-field label="网址" v-model="customer.website" type="url"></co-field>
+                <co-field label="电子邮箱" v-model="customer.email" type="email"></co-field>
+                <co-field label="员工总数" v-model="customer.count"></co-field>
+                <co-field label="年度收入" v-model="customer.money"></co-field>
+                <co-field label="CEO" v-model="customer.ceo"></co-field>
+            </div>
+
+             <co-popup v-model="visible" position="bottom" class="co-datetime">
+                <co-picker :visible-item-count="3" :slots="slots[pickType]" @change="onChange" show-toolbar>
+                    <span class="co-datetime-action co-datetime-cancel" @click="visible = false">取消</span>
+                    <span class="co-datetime-action co-datetime-confirm" @click="selectConfirm">确认</span>
+                </co-picker>
+            </co-popup>
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/customer-edit.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

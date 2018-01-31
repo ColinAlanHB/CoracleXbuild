@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>个人中心</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/car.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./font/iconfont.css">  
+  <link rel="stylesheet" href="./css/info.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>  
+</head>
+<body>
+  <div id="app">  
+    <co-header title='资讯' fixed>
+    	<a href="home.html" slot="left" class="icon iconfont icon-left"></a>
+    </co-header>
+   	<div class="app-win">
+    	<article class='info-main'>
+    		<h2 class='info-title'>{{ title }}</h2>
+    		<p class='info-intime'>{{ intime }}</p>
+    		<p class='info-text' v-html='text'></p>
+    	</article>
+    </div>
+  </div>		
+  <script>
+  	new Vue({
+  		el: '#app',
+  		data: {
+  			title: '宝马全新7系个性化定制品鉴会在京举行',
+  			intime: '2016-09-19 20:49:06',
+  			text: `<span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;"> 9月4日，</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">全新7系个性化定制媒体品鉴会在</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">举办。活动中，</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">高层和设计师与</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">们分享了</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">个性化定制的历史和</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">还展示了刚刚在</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">上市的</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">未来百年特别版和经典的</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">L7两款个性化定制车型。</span><img src="http://ershouche.apicloud-saas.com/Public/js/kindeditor-4.1.10/attached/image/20160913/20160913103055_72309.jpg" alt="" /><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">首次向中国市场推出的个性化定制服务已应用于7系全系产品，</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">（中国）汽车贸易有限公司</span><span style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;line-height:28px;background-color:#FFFFFF;">刘智在活动中谈道：“豪华<img src="http://ershouche.apicloud-saas.com/Public/js/kindeditor-4.1.10/attached/image/20160913/20160913103416_21356.jpg" alt="" /> 
+<p style="color:#333333;font-family:宋体, arial, tahoma, sans-serif;font-size:16px;background-color:#FFFFFF;">
+	资深设计师Alexandra Korndoerfer表示：“我们帮助客户打造他们的‘梦想之车’，让每一辆完全定制车型，都成为融入车主独特个性和独到品味的移动艺术品。”在谈及个性化定制所遵循的原则时Alexandra Korndoerfer认为，提供的个性化定制服务开放且独一无二，选取的材质、颜色等尽可能适应更广泛的市场，同时设计师给予用户选择意见时也会考虑车型本身的格调。
+</p>
+</span>`
+  		}
+  	})
+  </script>
+</body>
+</html>

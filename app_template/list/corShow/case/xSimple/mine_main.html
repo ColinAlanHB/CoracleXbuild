@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body class="">
+  <div id="app" v-cloak>
+        <div class="co-flex co-ver co-ac co-jc co-cl-0 co-bg-6 co-pd-tb1">
+          <div>
+            <img src="images/avtar.png" style="width:2.8rem;height:2.8rem;display: block;" alt="">
+          </div>
+          <div class="co-fs-01 co-mg-t04">某某某</div>
+        </div>
+        <div class="co-mg-t04 co-bd-t1 co-bd-b1 co-bg-0">
+          <div class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l06">
+            <div class="coicon coicon-customerservice co-cl-7 co-fs-3"></div>
+            <div class="co-cl-2 co-f1 co-mg-l06">客服中心</div>
+            <div class="coicon coicon-enter co-cl-2"></div>
+          </div>
+          <div @click="goHtml('save')" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l06">
+            <div class="coicon coicon-favor co-cl-7 co-fs-3"></div>
+            <div class="co-cl-2 co-f1 co-mg-l06">我的收藏</div>
+            <div class="coicon coicon-enter co-cl-2"></div>
+          </div>
+          <div @click="goHtml('ideaBack')" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l06">
+            <div class="coicon coicon-edit co-cl-7 co-fs-3"></div>
+            <div class="co-cl-2 co-f1 co-mg-l06">意见反馈</div>
+            <div class="coicon coicon-enter co-cl-2"></div>
+          </div>
+          <div @click="goHtml('set')" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l06">
+            <div class="coicon coicon-setup co-cl-7 co-fs-3"></div>
+            <div class="co-cl-2 co-f1 co-mg-l06">设置</div>
+            <div class="coicon coicon-enter co-cl-2"></div>
+          </div>
+        </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      goHtml:function(name){
+         corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:10,
+            flag:1024
+         });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

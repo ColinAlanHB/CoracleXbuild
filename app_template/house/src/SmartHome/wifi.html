@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>选择设备工作Wi-Fi</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/smart.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <!-- ToDo: 替换为本地 font 资源 -->
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_8wb1b2yn9vz5xw29.css">  
+  <link rel="stylesheet" href="./css/wifi.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>
+</head>
+<body>
+<div id="app">
+  <co-header title='选择设备工作Wi-Fi'>
+    <a href="device.html" class="icon iconfont icon-left" slot='left'>返回</a>  
+  </co-header>
+  <main class="wifi-main">
+    <header class="wifi-main-title">
+      <img src="./images/bg-select.png" alt="选择WiFi" class="title--image">      
+      <p class="title--clue">请输入Wi-Fi密码，连接您的智能设备</p>
+      <a href="wifi.html" class="title--module">选择模组类型：高通</a>
+    </header>
+    <section class="wifi-main-form">
+      <div class="form--field form--wifi">
+        <input type="text" class="field--ipt" placeholder="选择设备工作Wi-Fi" v-model='wifi' readonly>
+        <i class="icon iconfont icon-wifi field--left"></i>
+        <i class="icon iconfont icon-right field--right"></i>
+      </div>
+      <div class="form--field form--pwd">
+        <input type="text" class="field--ipt" placeholder="请输入Wi-Fi密码" v-model='pwd'>
+        <input type="password" class="field--ipt field--secret" placeholder="请输入Wi-Fi密码" v-model='pwd' :style='{display: hasShowPwd?"none":""}'>
+        <i class="icon iconfont icon-lock field--left"></i>
+        <i class="icon iconfont icon-eye field--right" 
+        @click='hasShowPwd=!hasShowPwd' :style='{color: hasShowPwd?"black":""}'></i>
+      </div>      
+    </section>  
+    <co-button class="wifi-main-next">下一步</co-button>
+    <footer class="wifi-main-attention">提示 暂不支持 5G 频道的 Wi-Fi 网络</footer>      
+  </main> 
+</div>
+<script>
+	new Vue({
+		el: '#app',
+    data: {
+      wifi: 'Coracle Tech',
+      pwd: '',
+      hasShowPwd: false
+    }
+	})
+</script>
+</body>
+</html>

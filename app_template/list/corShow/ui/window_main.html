@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak class="co-cl-1">
+      <div class="co-bg-0 co-bd-t1 co-bd-b1">
+        <div @click="change" :class='["co-flex co-ac co-pd-tb05 co-bd-b1",{"co-mg-l05":!tag},{"co-bg-2 co-pd-l05":tag}]'>
+          <div class="coicon coicon-workbench co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">窗口动画</div>
+          <div :class='["coicon coicon-enter co-cl-3 co-mg-r05",{"tipD":!tag},{"tipD1":tag}]'></div>
+        </div>
+        <div v-show="tag" class="co-mg-l1  co-cl-2">
+          <div @click="openA(0)" class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1">
+            <div class="co-f1 co-pd-l04">无动画</div>
+            <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+          </div>
+          <div @click="openA(2)" class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1">
+            <div class="co-f1 co-pd-l04">从右往左推入</div>
+            <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+          </div>
+          <div @click="openA(10)" class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1">
+            <div class="co-f1 co-pd-l04">从右往左切入</div>
+            <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+          </div>
+          <div @click="openA(12)" class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1">
+            <div class="co-f1 co-pd-l04">从下往上切入</div>
+            <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>  
+          </div>
+        </div>
+        <div @click="change2" :class='["co-flex co-ac co-pd-tb05 co-bd-b1",{"co-mg-l05":!slideTag},{"co-bg-2 co-pd-l05":slideTag}]'>
+          <div class="coicon coicon-smallscreen co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">窗口侧滑(抽屉)</div>
+          <div :class='["coicon coicon-enter co-cl-3 co-mg-r05",{"tipD":!slideTag},{"tipD1":slideTag}]'></div>
+        </div>
+        <div v-show="slideTag" class="co-mg-l1 co-cl-2">
+          <div @click="openSlide(0)" class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1">
+            <div class="co-f1 co-pd-l04">左侧抽屉窗口</div>
+            <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+          </div>
+          <div  @click="openSlide(1)" class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1">
+            <div class="co-f1 co-pd-l04">右侧抽屉窗口</div>
+            <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+          </div>
+        </div>
+        <div @click="goHtml('moreWin','moreWin.html',10)" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+          <div class="coicon coicon-qrcode co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">多页面窗口切换</div>
+          <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+        </div>
+        <div @click="change1" :class='["co-flex co-ac co-pd-tb05 co-bd-b1",{"co-mg-l05":!reTag},{"co-bg-2 co-pd-l05":reTag}]'>
+          <div class="coicon coicon-unfold co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">窗口弹动刷新</div>
+          <div :class='["coicon coicon-enter co-cl-3 co-mg-r05",{"tipD":!reTag},{"tipD1":reTag}]'></div>
+        </div>
+        <div v-show="reTag" class="co-mg-l1 co-cl-2">
+          <div @click="goHtml('refresh','refresh.html',10)" class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1">
+            <div class="co-f1 co-pd-l04">双向刷新加载</div>
+            <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+          </div>
+          <div @click="goHtml('topRefresh','topRefresh.html',10)" class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1">
+            <div class="co-f1 co-pd-l04">上拉刷新</div>
+            <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+          </div>
+          <div @click="goHtml('bottomRefresh','bottomRefresh.html',10)" class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1">
+            <div class="co-f1 co-pd-l04">底部加载</div>
+            <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+          </div>
+        </div>
+        <div @click="goHtml('site','site.html',10)" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+          <div class="coicon coicon-computer co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">嵌入网站</div>
+          <div class="coicon coicon-enter co-cl-3 co-mg-r05"></div>
+        </div>
+      </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      tag:false,
+      reTag:false,
+      slideTag:false
+    },
+    methods:{
+      goHtml:function(name,url,anim){
+        corNative.openWindow({
+            name:name,
+            data: url,
+            animID:anim,
+            flag:1024,
+        });
+      },
+      change:function(){
+        this.tag = !this.tag;
+      },
+      change1:function(){
+        this.reTag = !this.reTag;
+      },
+      change2:function(){
+        this.slideTag = !this.slideTag;
+      },
+      openSlide:function(tag){
+        corNative.toggleSlidingWindow(tag)
+      },
+      openA:function(index){
+        if(index==10){
+          var url = "newWindow10.html";
+        }else if(index==12){
+          var url = "newWindow12.html";
+        }else{
+          var url = "newWindow.html";
+        }
+        corNative.openWindow({
+          name:"newW",
+          data:url,
+          animID:index,
+          flag:0
+        })
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

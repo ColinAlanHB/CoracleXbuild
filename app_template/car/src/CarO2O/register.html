@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>立即注册</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/car.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./font/iconfont.css">  
+  <link rel="stylesheet" href="./css/register.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>  
+</head>
+<body>
+  <div id="app">  
+    <co-header fixed title="个人中心" class="register-header">
+      <a href="login.html" slot="left">
+        <i class="icon iconfont icon-left"></i>
+      </a>
+    </co-header>
+    <section>
+      <header class="register-main-logo">
+        <img src="./images/cccar.png" alt="至信Logo">
+      </header>
+      <section class="register-main-form">
+        <co-field type="text" class="register-main-form--user" v-model='user' :disable-clear='true'>
+          <i class="icon iconfont icon-account">昵　　称：</i>
+        </co-field>
+        <co-field type="text" class="register-main-form--user" v-model='tel' :disable-clear='true'>
+          <i class="icon iconfont icon-tel">手机号码：</i>
+        </co-field>
+        <co-field type="text" class="register-main-form--check" v-model='check' :disable-clear='true'>
+          <i class="icon iconfont icon-unlock">输验证码：</i>
+        </co-field>
+        <co-button @click="checkNum" type="primary" class="register-main-form--get">获取验证码</co-button>
+        <co-field type="password" class="register-main-form--pwd" v-model='pwd' :disable-clear='true'>
+          <i class="icon iconfont icon-lock">密　　码：</i>
+        </co-field>
+        <co-field type="password" class="register-main-form--pwd" v-model='repwd' :disable-clear='true'>
+          <i class="icon iconfont icon-lock">确认密码：</i>
+        </co-field>
+        <co-button type="primary" class='register-main-form--btn' @click='register'>立即注册</co-button>
+      </section>
+    </section>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        user: '',
+        tel: '',
+        check: '',
+        pwd: '',
+        repwd: ''
+      },
+      methods: {
+        checkNum: function() {
+          return false;
+        },
+        register() {
+          return false;
+        }
+      }
+    });    
+  </script>
+</body>

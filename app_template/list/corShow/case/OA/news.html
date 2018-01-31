@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="新闻" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-1">
+      <co-swipe :auto="4000" @change="handleChange">
+        <co-swipe-item >
+          <img src="images/news-banner.jpg" class="bannerImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+          <img src="images/news-illustration.jpg" class="bannerImg" />
+        </co-swipe-item>
+      </co-swipe>
+      <div class="co-bg-0">
+        <div @click="goDetial" class="co-flex co-bd-b1 co-pd-a04" v-for="item in dataList">
+          <div><img src="images/room.jpg" class="newImg"></div>
+          <div class="co-f1 co-mg-l04 co-flex co-ver co-jsb">
+            <div class="co-te2">
+            {{item.title}}
+            </div>
+            <div class="co-flex co-ac co-jsb co-fs-01 co-cl-2">
+              <div>{{item.time}}</div>
+              <div class="co-flex co-ac">
+                <i class="coicon coicon-message"></i>{{item.tip}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var dataList = [
+    {
+      title:"很多企业现在都极其重视自动驾驶技术研发，而忽略了法律研发也是网络产品研发的一部分这个道理。而未来，谁能在自动驾驶的法律设计中占得先机",
+      time:"2017-07-10",
+      tip:89
+    },
+    {
+      title:"中国地震台网正式测定：07月11日06时05分在新疆克孜勒苏州阿克陶县（北纬38.94度，东经75.46度）发生3.8级地震，震源深度8千米。",
+      time:"2017-07-10",
+      tip:129
+    },
+    {
+      title:"罂粟是阿拉伯使者带给大唐的礼物，在进入中国的最初几百年里，罂粟是悦目的观赏植物和救命的治病良药，而后却演变为谋财害命的毒品",
+      time:"2017-07-12",
+      tip:1123
+    },
+    {
+      title:"辽宁号航母编队或今天返回启程离开香港，在香港的这段时间，辽宁号为香港市民留下了解放军威武文明的形象",
+      time:"2017-07-12",
+      tip:834
+    },
+  ]
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:""
+    },
+    methods:{
+      back:function(){
+       corNative.closeWindow({
+          animID:-1
+        });
+      },
+      handleChange:function(index){
+        console.log("当前幻灯片索引"+index);
+      },
+      goDetial:function(){
+                 corNative.openWindow({
+            name:"newsDetail",
+            data:"newsDetail.html",
+            animID:10,
+            flag:1024
+         });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+      this.$indicator.open({spinnerType: 'double-bounce' });
+      var self = this;
+      setTimeout(function(){
+        self.$indicator.close();
+        vm.dataList = dataList;
+      },1500)
+    }
+  })
+</script>
+</html>

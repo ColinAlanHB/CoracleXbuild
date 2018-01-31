@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>首页</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/car.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./font/iconfont.css">  
+  <link rel="stylesheet" href="./css/sell.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>  
+</head>
+<body>
+  <div id="app">  
+    <co-header title='卖车' fixed></co-header>
+    <div class="app-win">
+      <section class="sell-main" v-cloak>
+    <header class="sell-main-banner">
+      <img src="./images/banner.jpg" alt="卖车banner" class="banner-image">
+    </header>
+    <section class="sell-main-contact">
+      <co-button class="contact-btn">
+        <i class="icon iconfont icon-contact">咨询400-000-0000</i>
+      </co-button>
+      <co-field placeholder="请输入手机号" class="contact-book" v-model="tel">
+        <co-button class="book-btn">预约卖车</co-button>
+      </co-field>
+    </section>
+    <section class="sell-main-step">
+      <div class="step-item">
+        <img src="./images/img01.png" class="item-image">
+        <div class="item-right">
+          <p class="right-title">1 - 预约评估</p>
+          <p class="right-detail">
+            专业二手车评估师，上门免费评估，给出两个价格，仅供参考。<br/>
+            ①市场收购价 ②中端成交价
+          </p>
+          <img src="./images/deal.png" class="right-image">
+        </div>
+      </div>
+      <div class="step-item">
+        <img src="./images/img02.png" class="item-image">
+        <div class="item-right">
+          <p class="right-title">2 - 三种交易模式</p>
+          <p class="right-detail">
+            ①万米展厅寄售：<br/>
+            凡来展厅寄售车辆均赠送一次汽车美容翻新，车辆光亮如新，线上线下同时展示，加速成交。
+            买家随时看车，不占用车主时间和精力。全程无忧。<br/>
+            <br/>
+            ②边开边卖：<br/>
+            通过至信二手车APP及各大汽车门户网站合作推广，不耽误车主日常用车。<br/>
+            <br/>
+            ③直接收购：<br/>
+            车主急售，期望车辆迅速变现。本公司根据合理的市场价格直接收购，高于一般市场收购价，绝不压价。
+          </p>
+          <img src="./images/second.png" class="right-image">
+        </div>
+      </div>
+      <div class="step-item">
+        <img src="./images/img03.png" class="item-image">
+        <div class="item-right">
+          <p class="right-title">3 - 成功售出</p>
+          <p class="right-detail">
+            ①买卖双方直接对接，不赚取中间差价，只收取2%的服务费，全网最低。<br/>
+            ②过户手续费及费用均由本公司承担，让您省心，省时，省力。
+          </p>
+          <img src="./images/sell02.png" class="right-image">
+        </div>
+      </div>
+      <div class="step-item">
+          <img src="./images/img04.png" class="item-image">
+          <div class="item-right">
+            <p class="right-title">4 - 无忧售后</p>
+            <p class="right-detail">
+              本公司为5年以内的车辆，提供2年或6万公里的质保，让买卖双方皆无后顾之忧。
+            </p>
+            <img src="./images/phone.png" class="right-image">
+          </div>
+        </div>
+    </section>
+    <section class="sell-main-qa">
+      <header class="qa-title">至信问答</header>
+      <section class="qa-collapse">
+        <div class="collapse-item" v-for='(item, index) in qa' @click='showIndexer=index'>
+          <header class="item-question" :class='{active: showIndexer === index}'>
+            <span class="question-indexer">Q{{ index+1 }} </span>
+            <span class="question-title">{{ item.question }}</span>
+            <i class="icon iconfont" :class='showIndexer === index ? "icon-up" : "icon-down"'></i>
+          </header>
+          <section class="item-answer" v-show='showIndexer === index'>{{ item.answer }}</section>
+        </div>
+      </section>
+    </section>
+  </section>
+    </div>
+    <co-tabbar v-model='tabID' class="app-tabbar">
+      <co-tab-item id="home">
+        <i class="icon iconfont icon-home-fill" slot="icon"></i>
+        <p class="app-tabbar--label">首页</p>
+      </co-tab-item>
+      <co-tab-item id="buy">
+        <i class="icon iconfont icon-car" slot="icon"></i>
+        <p class="app-tabbar--label">买车</p>
+      </co-tab-item>
+      <co-tab-item id="sell">
+        <i class="icon iconfont icon-sell" slot="icon"></i>
+        <p class="app-tabbar--label">卖车</p>
+      </co-tab-item>
+      <co-tab-item id="personal">
+        <i class="icon iconfont icon-account-fill" slot="icon"></i>
+        <p class="app-tabbar--label">我的</p>
+      </co-tab-item>
+    </co-tabbar>  
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {  
+        tabID: 'sell',
+        tel: '',
+        qa: [
+          {
+            question: '至信二手车怎么帮我卖车？',
+            answer: '至信二手车是省内规模最大最专业的二手车交易服务平台，拥有万米实体门店展厅，和四千米维修养护车间。坐落于哈尔滨市内的汽车交易集散地--国际汽车城。同时我们拥有自主APP，合作多家汽车门户网站。每天线上线下数十万买家在这里选车， 在把您爱车卖出最优价格的同时，也为您杜绝了各方面的骚扰'
+          },
+          {
+            question: '大概多长时间能够成交？'
+          },
+          {
+            question: '30天保底价格出售是什么意思？'
+          },
+          {
+            question: '大概多长时间能够成交？'
+          },
+          {
+            question: '在至信二手车转让需要什么费用？'
+          },
+          {
+            question: '需要准备什么?'
+          }
+        ],
+        showIndexer: 0
+      },
+      watch: {
+        tabID: function (val, oldVal) {
+          window.location.href = './' + val + '.html';
+        }
+      }
+    });   
+  </script>
+</body>
+</html>

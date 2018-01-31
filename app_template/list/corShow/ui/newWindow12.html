@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+</head>
+<body>
+  <div id="app">
+    <co-header id="co-header" title="新窗口" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex" >
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" @click="goBack">
+          <i class="coicon coicon-return co-fs-4 co-cl-0"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top">
+        <div class="co-bg-0 co-bd-b1 co-pd-a08">CorMobi移动开发平台</div>
+        <div class="co-bg-0 co-bd-b1 co-pd-a08">CorMobi移动开发平台</div>
+        <div class="co-bg-0 co-bd-b1 co-pd-a08">CorMobi移动开发平台</div>
+        <div class="co-bg-0 co-bd-b1 co-pd-a08">CorMobi移动开发平台</div>
+        <div class="co-bg-0 co-bd-b1 co-pd-a08">CorMobi移动开发平台</div>
+    </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function () {
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      goBack:function(){
+        corWindow.close({
+          animID:-1,
+          animDuration:300
+        })
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body class="co-body">
+  <div id="app" v-cloak class="co-Page loginBg co-flex co-ac">
+    <div class="co-mg-lr1 co-f1">
+      <div class="co-flex co-f1 co-jc"><img src="images/login-logo.png" class="logo" /></div>
+      <div class="co-flex co-ac co-pd-tb04 co-bd-b1" style="margin-top:2.5rem">
+        <div class="coicon coicon-people_fill co-cl-2 co-fs-3"></div>
+        <div class="co-mg-l08 co-f1 co-flex co-pd-tb02">
+             <input v-model="userName" value="Admin" placeholder="请输入账号" type="text" class="co-input co-f1">
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-tb04 co-bd-b1">
+        <div class="coicon coicon-unlock_fill co-cl-2 co-fs-3"></div>
+        <div class="co-mg-l08 co-f1 co-flex co-pd-tb02">
+            <input v-model="userPass" value="123456" placeholder="请输入密码" type="passWord" class="co-input co-f1">
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-tb08">
+        <div class="checkbox">
+          <input v-model="checkTag" value="checked" type="checkbox" />
+        </div>
+        <div class="co-mg-l04 co-cl-2">记住账号</div>
+      </div>
+      <div @click="login" class="co-bg-3 co-cl-0 co-pd-tb05 co-br-a0 co-tx-c co-mg-t05">
+        登录
+      </div>
+      <div @click="back" class="co-bg-3 co-cl-0 co-pd-tb05 co-br-a0 co-tx-c co-mg-t05">
+        返回
+      </div>
+    </div>
+    <div class="co-pd-tb02 co-tx-c co-cl-1 co-fs-02 logoBottom">深圳前海圆舟网络科技股份有限公司</div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      userName:"Admin",
+      userPass:"123456",
+      checkTag:false
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+      login:function(){
+        if(this.userName==""){
+          this.$toast("请输入账号");
+          return;
+        }
+        if(this.userPass==""){
+          this.$toast("请输入密码");
+          return;
+        }
+        this.$indicator.open('登陆中...');
+        setTimeout(function(){
+          vm.$indicator.close();
+          vm.$toast({
+            message: '登陆成功',
+            position: 'bottom', 
+            duration: 800
+          })
+         corNative.openWindow({
+            name:"home",
+            data:"home.html",
+            animID:10,
+            flag:1024
+         });
+        },1500)
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

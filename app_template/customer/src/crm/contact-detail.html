@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="contact-detail/css/index.css">
+
+</head>
+<body>
+    <div id="Page">
+            <co-header title="联系人详情">
+                <a slot="left" class="iconfont icon-arr" @click="location(-1)"></a>
+                <a slot="right" class="iconfont icon-edit1"></a>
+            </co-header>
+            <div class="contactor-wrap">
+                <div class="contactor-box">
+                    <div class="contactor-card">
+                        <img src="images/card.jpg" >
+                    </div>
+                    <div class="contactor-msg">
+                    <p class="name">董永</p>
+                    <p>18900000000</p>
+                    <p>IT流程中心---IT总监</p>
+                    <p>华润三九集团</p>
+                     <div class="contactor-msg-icon">
+                         <span class="iconfont icon-phone theme-red"></span>|<span class="iconfont icon-mail theme-red"></span>
+                     </div>
+                    </div>
+                </div>
+                <div class="contactor-list">
+                    <div class="rows-list">
+                        <div class="rows">
+                            <div class="rows-label">座机</div>
+                            <div class="rows-value">0755 - 123456 <span class="iconfont icon-phone1 theme-red"></span></div>
+                        </div>
+                        <div class="rows">
+                            <div class="rows-label">公司地址</div>
+                            <div class="rows-value">深圳市龙华新区</div>
+                        </div>
+                        <div class="rows">
+                            <div class="rows-label">生日</div>
+                            <div class="rows-value">无</div>
+                        </div>
+                        <div class="rows">
+                            <div class="rows-label">QQ</div>
+                            <div class="rows-value">23456789</div>
+                        </div>
+                        <div class="rows">
+                            <div class="rows-label">微信</div>
+                            <div class="rows-value">无</div>
+                        </div>
+                        <div class="rows">
+                            <div class="rows-label">邮箱</div>
+                            <div class="rows-value">23456789@qq.com <span class="iconfont icon-youxiang theme-red"></span></div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/contact-detail.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

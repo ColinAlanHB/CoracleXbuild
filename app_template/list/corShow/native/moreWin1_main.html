@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .bgImg{height:3rem;width:3rem;background:#ccc;display: block;border: none;}
+  </style>
+</head>
+<body>
+  <div id="app" class="co-fs-01" v-cloak>
+    <div class="co-bg-1 co-pd-a06">{{dataList}}</div>
+    <div v-for="item in dataList" class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+      <div class="">
+        <img src="../images/logo.png" class="bgImg" />
+      </div>
+      <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+        <div>{{item.title}}</div>
+        <div class="co-fs-02 co-cl-3 co-te2">{{item.des}}</div>
+      </div>
+      </div>
+    <div @click="getAjax" class="co-pd-a06 co-cl-0 co-mg-a08 co-br-a0 co-bg-3 co-tx-c">请求数据</div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:""
+    },
+    methods:{
+      getAjax:function(){
+        this.$indicator.open({text:'加载中',spinnerType: 'double-bounce' });
+        corNative.requestAjax({
+          url:"http://192.168.13.44:8089/oaApp/jobList",
+          method:"get"
+        },function(res){
+          console.log(res)
+          vm.$indicator.close();
+          if(res.status){
+              //请求成功处理
+              console.log(res.data)
+              vm.dataList = JSON.parse(res.data)
+          }else{
+              //请求失败处理
+          }    
+        })
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

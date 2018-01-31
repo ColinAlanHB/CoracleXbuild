@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+  <style type="text/css">
+    .moneyTip{
+      background: rgba(255, 158, 50, 0.9);
+      color:#fff;
+      width:4rem;
+      height:2.4rem;
+      position: absolute;
+      right: 0;
+      top:0;
+      line-height: 2.4rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+      <div class="co-w-100 co-flex co-hide">
+         <co-search v-model="search" placeholder="请输入汽车品牌"  class="co-f1"></co-search>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-pd-tb04 co-hide">
+        <div class="co-f1 co-tx-c co-bd-r1 co-cl-2">排序<i class="coicon coicon-unfold"></i></div>
+        <div class="co-f1 co-tx-c co-bd-r1 co-cl-2">类型<i class="coicon coicon-unfold"></i></div>
+        <div class="co-f1 co-tx-c co-bd-r1 co-cl-2">品牌<i class="coicon coicon-unfold"></i></div>
+        <div class="co-f1 co-tx-c co-bd-r1 co-cl-2">价格<i class="coicon coicon-unfold"></i></div>
+      </div>
+      <div class="co-bd-t1 co-bd-b1 co-bg-0">
+        <div class="">
+          <div class="moneyTip co-br-bl1">￥45.50万</div>
+          <img src="images/buy1.png" style="width:100%;height:auto;display: block;" alt="">
+        </div>
+        <div class="co-pd-l04">
+          <div class="co-pd-t02 co-te">奔驰-奔驰R级2011款 R 350L 4MATIC</div>
+          <div class="co-fs-01 co-pd-tb02  co-te">奔驰R级2011款 R 自动</div>
+          <div class="co-cl-3 co-fs-01 co-pd-b02  co-te">2014-04上牌/里程:3.5万公里</div>
+        </div>
+      </div>
+      <div class="co-bd-t1 co-bd-b1 co-bg-0">
+        <div class="">
+          <div class="moneyTip co-br-bl1">￥25.50万</div>
+          <img src="images/buy2.png" style="width:100%;height:auto;display: block;" alt="">
+        </div>
+        <div class="co-pd-l04">
+          <div class="co-pd-t02 co-te">丰田-丰田汉兰达2012款 2.7 手自一体 两驱精英版5座</div>
+          <div class="co-fs-01 co-pd-tb02  co-te">丰田汉兰达2012款 自动</div>
+          <div class="co-cl-3 co-fs-01 co-pd-b02  co-te">2012-05上牌/里程:2.7万公里</div>
+        </div>
+      </div>
+      <div class="co-bd-t1 co-bd-b1 co-bg-0">
+        <div class="">
+          <div class="moneyTip co-br-bl1">￥15.50万</div>
+          <img src="images/buy3.png" style="width:100%;height:auto;display: block;" alt="">
+        </div>
+        <div class="co-pd-l04">
+          <div class="co-pd-t02 co-te">大众-大众帕萨特2015款 1.4T 自动 尊荣版DSG双离合</div>
+          <div class="co-fs-01 co-pd-tb02  co-te">大众帕萨特2015款 自动</div>
+          <div class="co-cl-3 co-fs-01 co-pd-b02  co-te">2016-05上牌/里程:1.4万公里</div>
+        </div>
+      </div>
+      <div class="co-bd-t1 co-bd-b1 co-bg-0">
+        <div class="">
+          <div class="moneyTip co-br-bl1">￥25.50万</div>
+          <img src="images/buy4.png" style="width:100%;height:auto;display: block;" alt="">
+        </div>
+        <div class="co-pd-l04">
+          <div class="co-pd-t02 co-te">大众-大众朗逸2015款 1.6 自动 风尚版</div>
+          <div class="co-fs-01 co-pd-tb02  co-te">大众朗逸2015款 自动</div>
+          <div class="co-cl-3 co-fs-01 co-pd-b02  co-te">2016-05上牌/里程:1.6万公里</div>
+        </div>
+      </div>
+      <div class="co-bd-t1 co-bd-b1 co-bg-0">
+        <div class="">
+          <div class="moneyTip co-br-bl1">￥35.50万</div>
+          <img src="images/buy5.png" style="width:100%;height:auto;display: block;" alt="">
+        </div>
+        <div class="co-pd-l04">
+          <div class="co-pd-t02 co-te">雪佛兰-雪佛兰科鲁兹2011款 1.8 自动 SX</div>
+          <div class="co-fs-01 co-pd-tb02  co-te">雪佛兰科鲁兹2011款 自动</div>
+          <div class="co-cl-3 co-fs-01 co-pd-b02  co-te">2011-10上牌/里程:1.8万公里</div>
+        </div>
+      </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);   
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      search:""
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

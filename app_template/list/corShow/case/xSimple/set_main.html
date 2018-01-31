@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+      <div class="co-bg-0 co-bd-t1 co-bd-b1 co-pd-l04 ">
+        <div class="co-flex co-ac co-bd-b1 co-pd-tb05">
+          <div></div>
+          <div class="co-f1 co-pd-lr06">设置手势密码</div>
+          <div class="coicon coicon-enter co-cl-3"></div>
+        </div>
+        <div class="co-flex co-ac co-bd-b1 co-pd-tb04">
+          <div></div>
+          <div class="co-f1 co-pd-lr06">启动手势密码</div>
+          <div class="co-mg-r04">
+            <co-switch v-model="value1">
+            </co-switch>
+          </div>
+        </div>
+        <div class="co-flex co-ac co-bd-b1 co-pd-tb04">
+          <div></div>
+          <div class="co-f1 co-pd-lr06">仅WIFI模式下下载</div>
+          <div class="co-mg-r04">
+            <co-switch v-model="value2">
+            </co-switch>
+          </div>
+        </div>
+        <div class="co-flex co-ac co-bd-b1 co-pd-tb05">
+          <div></div>
+          <div class="co-f1 co-pd-lr06">修改密码</div>
+          <div class="coicon coicon-enter co-cl-3"></div>
+        </div>
+        <div class="co-flex co-ac co-bd-b1 co-pd-tb04">
+          <div></div>
+          <div class="co-f1 co-pd-lr06">消息免打扰</div>
+          <div class="co-mg-r04">
+            <co-switch v-model="value3">
+            </co-switch>
+          </div>
+        </div>
+        <div class="co-flex co-ac co-bd-b1 co-pd-tb05">
+          <div></div>
+          <div class="co-f1 co-pd-lr06">检查更新</div>
+          <div class="co-cl-3 co-fs-02 co-mg-lr06">V3.2.1</div>
+          <div class="coicon coicon-enter co-cl-3"></div>
+        </div>
+        <div class="co-flex co-ac co-bd-b1 co-pd-tb05">
+          <div></div>
+          <div class="co-f1 co-pd-lr06">清理缓存</div>
+          <div class="co-cl-3 co-fs-02 co-mg-lr06">0B</div>
+          <div class="coicon coicon-enter co-cl-3"></div>
+        </div>
+        <div class="co-flex co-ac co-bd-b1 co-pd-tb05">
+          <div></div>
+          <div class="co-f1 co-pd-lr06">皮肤切换</div>
+          <div class="coicon coicon-enter co-cl-3"></div>
+        </div>
+        <div class="co-flex co-ac co-bd-b1 co-pd-tb05">
+          <div></div>
+          <div class="co-f1 co-pd-lr06">分享本产品</div>
+          <div class="coicon coicon-enter co-cl-3"></div>
+        </div>
+      </div>
+      <div style="margin-top:2.5rem" class="co-bg-6 co-h-2 co-cl-0 co-br-a0 co-tx-c co-mg-lr06">退出登录</div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      value1:"",
+      value2:"",
+      value3:""
+    },
+    methods:{
+      back:function(){
+        corNative.prevPage();
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

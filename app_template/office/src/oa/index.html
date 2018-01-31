@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A2 工作区</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/workspace.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<!-- 先引入 Vue -->
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+</head>
+<body>
+<div id="workspace">
+	<co-drawer :opened='menuVisible' direction="left" :distance='0.61' :modal='true' @togglemenu='menuVisible=!menuVisible'>
+		<ul class="menu-container" slot="menu">
+			<li>
+				<a href="workspace.html" class="icon iconfont icon-workspace">工作区</a>
+			</li>	
+			<li>
+				<a href="contact.html" class="icon iconfont icon-contact">联系人</a>
+			</li>
+			<li>
+				<a href="setting.html" class="icon iconfont icon-setting">设置</a>
+			</li>		
+		</ul>
+		<div slot="content">
+			<co-header title="工作区">
+				<a slot="left" class="icon iconfont icon-category" @click='menuVisible=true'></a>
+			</co-header>
+			<section>
+				<section class="work-block">
+					<header class="block-label"><p>签到管理</p></header>
+					<section class="block-icons">
+						<a href="checkin.html" class="work-icon">
+							<img src="./images/checkin.png" alt="移动签到">
+							<p>移动签到</p>
+						</a>
+						<a href="check-record.html" class="work-icon">
+							<img src="./images/check-record.png" alt="签到记录">
+							<p>签到记录</p>
+						</a>
+						<a class="work-icon">
+							<img src="./images/check-later.png" alt="补签">
+							<p>补签</p>
+						</a>
+						<a href="check-report.html" class="work-icon">
+							<img src="./images/check-report.png" alt="签到报表">
+							<p>签到报表</p>
+						</a>												
+					</section>
+				</section>
+				<section class="work-block">
+					<header class="block-label"><p>资讯</p></header>
+					<section class="block-icons">
+						<a href="news.html" class="work-icon">
+							<img src="./images/news.png" alt="新闻">
+							<p>新闻</p>
+						</a>
+						<a class="work-icon">
+							<img src="./images/bulletin.png" alt="公告">
+							<p>公告</p>
+						</a>
+						<a class="work-icon">
+							<img src="./images/book.png" alt="图书借阅">
+							<p>图书借阅</p>
+						</a>
+						<a class="work-icon">
+							<img src="./images/liaison.png" alt="接口人">
+							<p>接口人</p>
+						</a>
+				</section>
+				<section class="work-block">
+					<header class="block-label"><p>办公</p></header>
+					<section class="block-icons">
+						<a href="regime-company.html" class="work-icon">
+							<img src="./images/regime.png" alt="办公制度">
+							<p>办公制度</p>
+						</a>
+						<a class="work-icon">
+							<img src="./images/flow.png" alt="流程中心">
+							<p>流程中心</p>
+						</a>
+						<a href="meeting-room.html" class="work-icon">
+							<img src="./images/checkin.png" alt="会议室">
+							<p>会议室</p>
+						</a>
+				</section>
+				<section class="work-block"> 
+					<header class="block-label"><p>工时填报</p></header>
+					<section class="block-icons">
+						<a href="hour-buffet.html" class="work-icon">
+							<img src="./images/hour.png" alt="工时自助">
+							<p>工时自助</p>
+						</a>
+						<a class="work-icon">
+							<img src="./images/hour-report.png" alt="工时报表">
+							<p>工时报表</p>
+						</a>
+				</section>
+			</section>
+		</div>
+	</co-drawer>	
+</div>
+<script>
+	var vm = new Vue({
+		el: '#workspace',
+		data: {
+			menuVisible: false,
+		}
+	});
+</script>
+</body>
+</html>

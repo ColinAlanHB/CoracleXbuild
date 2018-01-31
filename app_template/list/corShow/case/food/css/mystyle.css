@@ -1,0 +1,8 @@
+body{font-family: "微软雅黑"}
+.co-swipe{height:6rem;}
+.bannerImg{height:6rem;width:100%;display: block}
+.foodList{width:25%;float: left;margin-top:.5rem;} 
+.tabList{width:2.4rem;height:2.4rem;display: block;}
+.carB{border-left:3px #1296db solid;}
+.co-search input{flex: 1;-webkit-flex:1;}
+.yDiv{height: 12rem}

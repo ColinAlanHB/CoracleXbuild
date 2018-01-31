@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+  <style>
+    .goBtn{
+      width:100%;
+      height:4.5rem;
+      z-index: 99;
+      bottom:0rem;
+      z-index:999;
+      position: absolute;
+    }
+  </style>
+</head>
+<body id="body" class="co-Page co-flex">
+    <div id="app" class="co-f1 co-flex tx-l">
+      <div class="swiper-container co-f1">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide" style="background-image:url(images/zujian.png)"></div>
+              <div class="swiper-slide" style="background-image:url(images/yuansheng.png)"></div>
+              <div  class="swiper-slide" style="background-image:url(images/moban.png)"><div @click="goHome" class="goBtn"></div></div>
+          </div>
+      </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+  if(!corJS.getLocVal("status")){
+    corJS.getDom("body").className = "co-Page co-flex";
+  }
+  corJS.ready(function(){
+      var swiper = new Swiper('.swiper-container', {
+      });
+      if(corJS.getLocVal("status")){
+        corNative.openWindow({
+            name:"home",
+            data: "home.html",
+            animID:0,
+            flag:0
+         })
+      }
+      
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      goHome:function(){
+        corJS.setLocVal("status","ok");
+        corNative.openWindow({
+            name:"home",
+            data: "home.html",
+            animID:0,
+            flag:0
+         })
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

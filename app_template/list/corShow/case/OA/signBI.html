@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="签到报表" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-1">
+      <div class="co-bg-0 co-pd-a04 co-flex co-jsa">
+        <div >起始：2017-07-10</div>
+        <div >结束：2017-07-15</div>
+      </div>
+      <div class="co-flex co-ac co-bd-b1 co-pd-tb04 co-mg-t02 co-bg-0 co-fs-01">
+        <div class="co-f2 co-tx-c">日期</div>
+        <div class="co-f1 co-tx-c">人员</div>
+        <div class="co-f1 co-tx-c">首次</div>
+        <div class="co-f1 co-tx-c">末次</div>
+      </div>
+      <div class="co-flex co-ac co-bd-b1 co-pd-tb04 co-bg-0 co-fs-01">
+        <div class="co-f2 co-tx-c co-cl-3">07-10 周四</div>
+        <div class="co-f1 co-tx-c co-cl-7">张鹏</div>
+        <div class="co-f1 co-tx-c co-cl-8">09:00</div>
+        <div class="co-f1 co-tx-c co-cl-4">18:08</div>
+      </div>
+      <div class="co-flex co-ac co-bd-b1 co-pd-tb04 co-bg-0 co-fs-01">
+        <div class="co-f2 co-tx-c co-cl-3">07-11 周五</div>
+        <div class="co-f1 co-tx-c co-cl-7">张鹏</div>
+        <div class="co-f1 co-tx-c co-cl-8">08:00</div>
+        <div class="co-f1 co-tx-c co-cl-4">18:28</div>
+      </div>
+      <div class="co-flex co-ac co-bd-b1 co-pd-tb04 co-bg-0 co-fs-01">
+        <div class="co-f2 co-tx-c co-cl-3">07-12 周六</div>
+        <div class="co-f1 co-tx-c co-cl-7">张鹏</div>
+        <div class="co-f1 co-tx-c co-cl-8">09:00</div>
+        <div class="co-f1 co-tx-c co-cl-4">19:08</div>
+      </div>
+      <div class="co-flex co-ac co-bd-b1 co-pd-tb04 co-bg-0 co-fs-01">
+        <div class="co-f2 co-tx-c co-cl-3">07-13 周日</div>
+        <div class="co-f1 co-tx-c co-cl-7">张鹏</div>
+        <div class="co-f1 co-tx-c co-cl-8">08:40</div>
+        <div class="co-f1 co-tx-c co-cl-4">18:00</div>
+      </div>
+      <div class="co-flex co-ac co-bd-b1 co-pd-tb04 co-bg-0 co-fs-01">
+        <div class="co-f2 co-tx-c co-cl-3">07-14 周一</div>
+        <div class="co-f1 co-tx-c co-cl-7">张鹏</div>
+        <div class="co-f1 co-tx-c co-cl-8">09:05</div>
+        <div class="co-f1 co-tx-c co-cl-4">18:48</div>
+      </div>
+      <div class="co-flex co-ac co-bd-b1 co-pd-tb04 co-bg-0 co-fs-01">
+        <div class="co-f2 co-tx-c co-cl-3">07-15 周二</div>
+        <div class="co-f1 co-tx-c co-cl-7">张鹏</div>
+        <div class="co-f1 co-tx-c co-cl-8">09:00</div>
+        <div class="co-f1 co-tx-c co-cl-4">19:18</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+</head>
+<body>
+  <div id="app" class="co-cl-1">
+    <div class="co-pd-a04  co-cl-0 co-fs-01 " style="background-color: #999">
+      JSON数据
+    </div>
+    <div class="co-pd-a04 co-bg-0">
+      { "id":"001","orderInfo":{"oId":"001123","oName":"新鲜海鲜"},"time":"2017-08-28"}
+    </div>
+    <div @click="json2xml" class="co-pd-a04 co-tx-c co-bg-1 co-fs-01 co-mg-a04 co-br-a0">JSON 转 XML</div>
+    <div class="co-pd-a04 co-bg-0">
+      {{xmlData}}
+    </div>
+    <div class="co-pd-a04 co-cl-0 co-fs-01 co-mg-t1" style="background-color: #999">
+      XML数据
+    </div>
+    <div class="co-pd-a04 co-bg-0">
+      <textarea  style="color:#333;font-size:.7rem;width:100%;border:none;height:auto;background-color: #fff;" ><id>001</id><name>大闸蟹</name><type>海鲜</type><price>128.00</price></textarea>
+    </div>
+    <div @click="xml2json" class="co-pd-a04 co-tx-c co-bg-1 co-fs-01 co-mg-a04 co-br-a0">XML 转 JSON</div>
+    <div class="co-pd-a04 co-bg-0">
+      {{jsonData}}
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setBounceEnabled(1);
+    });
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        xmlData:"",
+        jsonData:""
+      },
+      methods:{
+        json2xml: function () {
+          var param = '{ "id":"001","orderInfo":{"oId":"001123","oName":"新鲜海鲜"},"time":"2017-08-28"}';
+          corJsonXmlTrans.json2xml(param, function (error, data) {
+              if (!error) {
+                vm.xmlData = data;
+              } else {
+                  alert("转换失败");
+              }
+          });
+        },
+        xml2json: function () {
+          var param = '<id>001</id><name>大闸蟹</name><type>海鲜</type><price>128.00</price>';
+          corJsonXmlTrans.xml2json(param, function (error, data) {
+              if (!error) {
+                  vm.jsonData = data;
+              } else {
+                  alert("转换失败");
+              }
+          });
+        },
+      },
+      created:function(){
+      },
+      mounted:function(){
+      }
+    })
+  </script>
+</body>

@@ -1,0 +1,56 @@
+
+.register-main {
+    overflow-y: scroll;
+}
+.register-main-logo {
+    width: 100%;
+    text-align: center;
+    margin-top: 30%;
+}
+.register-main-logo img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 60%;
+}
+.register-main-form {
+    padding: 0 10%;
+    position: relative;
+}
+.register-main-form .co-field {
+    border-bottom:2px solid #DDDDDD;
+}
+.register-main-form .co-cell-wrapper {
+    background: none;
+}
+.register-main-form .co-cell-value {
+    position: relative;
+}
+.register-main-form .co-field-other {
+    position: absolute;
+    left: 0;
+    right: unset;
+}
+.register-main-form .co-field-other .iconfont {
+    font-size: 20px;
+    line-height: 48px
+}
+.register-main-form .co-field-other .iconfont::before {
+    margin-right: 5px;
+}
+.register-main-form input.co-field-core {
+    text-indent: 125px;
+    height: 48px;
+}
+#app .register-main-form--get {
+    position: absolute;
+    z-index: 1;
+    right: 10%;
+    bottom: 190px;
+    height: 40px;
+}
+#app .register-main-form--btn {
+    width: 100%;
+    height: 60px;
+    font-size: 22px;
+    margin-top: 20px;
+}

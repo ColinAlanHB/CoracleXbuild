@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .co-cell-value {
+      flex: 2.5;
+      position: relative;
+      top: -20px;
+    }
+
+    .co-progress {
+      width: 100%;
+      position: absolute;
+      top: 5px;
+    }
+
+    .page-progress-wrapper {
+      padding: 0 10px;
+      margin-top: 50px;
+    }
+
+    .page-progress-wrapper .co-progress {
+      position: relative;
+    }
+
+    .page-progress-wrapper .progress-fade-transition {
+      transition: opacity .3s;
+    }
+
+    .progress-fade-enter,
+    .progress-fade-leave {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="评分" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <section class="page-rate-container page-content-main">
+      <dl class="main-list">
+        <dt class="list-title"><span>基础</span></dt>
+        <dd class="list-info">
+          设置属性<b>size</b>控制星星大小。
+        </dd>
+        <dd class="list-example">
+          <co-rate v-model="value1" :size='30'></co-rate>
+        </dd>
+        <dt class="list-title"><span>半星</span></dt>
+        <dd class="list-info">
+          设置属性<b>allow-half</b>可以选中半星。<br> 设置属性
+          <b>show-text</b>显示<b>slot</b>提示内容。
+        </dd>
+        <dd class="list-example">
+          <co-rate v-model="value2" allow-half show-text></co-rate>
+        </dd>
+        <dt class="list-title"><span>只读</span></dt>
+        <dd class="list-info">
+          设置属性<b>disabled</b>开启只读模式。<br> 提示内容通过
+          <b>slot </b>自定义。
+        </dd>
+        <dd class="list-example">
+          <co-rate v-model="value3" disabled show-text>
+            <i style="color: orange">五星级酒店</i>
+          </co-rate>
+        </dd>
+      </dl>
+    </section>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        value1: 3,
+        value2: 2.7,
+        value3: 5
+      }
+    });
+  </script>
+</body>
+
+</html>

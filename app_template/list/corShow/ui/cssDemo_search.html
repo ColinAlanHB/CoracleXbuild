@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .page-search {
+      height: 100%;
+      position: relative;
+      top:44px;
+      left:0;
+    }
+    .co-searchbar-core {
+      width: 100%;
+    }
+    .co-searchbar-core:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body class="co-body">
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="搜索框" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <div id="co-content" >
+      <div class="page-search">
+        <co-search autofocus v-model="value" :result="filterResult"></co-search>
+      </div>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        value: '',
+        defaultResult: [
+          'Apple',
+          'Banana',
+          'Orange',
+          'Durian',
+          'Lemon',
+          'Peach',
+          'Cherry',
+          'Berry',
+          'Core',
+          'Fig',
+          'Haw',
+          'Melon',
+          'Plum',
+          'Pear',
+          'Peanut',
+          'Other'
+        ]
+      },
+      computed: {
+        filterResult() {
+          return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value));
+        }
+      } 
+    });
+  </script>
+</body>
+
+</html>

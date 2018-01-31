@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+      <co-swipe :auto="4000" >
+        <co-swipe-item >
+          <img src="images/kv.jpg" class="bannerImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+          <img src="images/kv-guide.jpg" class="bannerImg" />
+        </co-swipe-item>
+      </co-swipe>
+      <div class="co-flex co-ac co-cl-2 co-pd-tb06 co-bg-0">
+        <div @click="goDetial('guide')" class="co-f1 co-flex co-ver co-ac co-jc">
+          <img src="images/icon1.jpg" class="iconImg" />
+          <div class="co-fs-01 co-pd-t02">办事指南</div>
+        </div>
+        <div @click="goDetial('myMessage')" class="co-f1 co-flex co-ver co-ac co-jc">
+          <img src="images/icon2.jpg" class="iconImg" />
+          <div class="co-fs-01 co-pd-t02">咨询投诉</div>
+        </div>
+        <div @click="goDetial('notice')" class="co-f1 co-flex co-ver co-ac co-jc">
+          <img src="images/icon3.jpg" class="iconImg" />
+          <div class="co-fs-01 co-pd-t02">公告通知</div>
+        </div>
+        <div @click="goDetial('read')" class="co-f1 co-flex co-ver co-ac co-jc">
+          <img src="images/icon4.jpg" class="iconImg" />
+          <div class="co-fs-01 co-pd-t02">政策解读</div>
+        </div>
+      </div>
+      <div @click="goDetial('newsDetail')" class="co-flex co-ac co-bd-b1 co-bd-t1 co-pd-a06 co-bg-0 co-mg-t05">
+        <div><img src="images/idx-news.jpg" style="width:2.8rem;height:2.8rem;display: block;"></div>
+        <div class="co-mg-lr05 co-flex co-ver co-jsb">
+          <div class="co-cl-1 co-fs-01">关于继续实施大学生创业引领计划的通知...</div>
+          <div class="co-cl-2 co-fs-02 co-flex co-jsb">
+            <span>来源：人社局</span>
+            <span>2017-10-17</span>
+          </div>
+        </div>
+        <div class="coicon coicon-enter co-cl-2"></div>
+      </div>
+      <div class="co-bd-b1 co-bd-t1 co-bg-0 co-mg-t05">
+        <div class="co-pd-a04 co-flex co-ac co-cl-4"><i class="coicon coicon-group co-fs-4"></i>便民服务</div>
+        <div class="co-flex co-ac co-bd-t1 co-pd-tb08 co-cl-2 ">
+          <div  @click="goDetial('search')" class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+            <i class="coicon coicon-financial_fill co-fs-5"></i>
+            <div class="co-fs-02 co-mg-t02">社保查询</div>
+          </div>
+          <div  @click="goDetial('search')" class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+            <i class="coicon coicon-transaction_fill co-fs-5"></i>
+            <div class="co-fs-02 co-mg-t02">医保查询</div>
+          </div>
+          <div  @click="goDetial('search')" class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+            <i class="coicon coicon-warning co-fs-5"></i>
+            <div class="co-fs-02 co-mg-t02">违章查询</div>
+          </div>
+          <div  @click="goDetial('search')" class="co-flex co-f1 co-ac co-jc co-ver co-bd-r1">
+            <i class="coicon coicon-addition co-fs-5"></i>
+            <div class="co-fs-02 co-mg-t02">诊断挂号</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);   
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      back:function(){
+      },
+      goDetial:function(name){
+                 corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:10,
+            flag:1024
+         });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

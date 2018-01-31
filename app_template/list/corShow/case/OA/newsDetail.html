@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="详情" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+        <div @click="save" class="backBtn co-pd-r06">
+          <i :class="['coicon','co-fs-4',{'coicon-collection_fill':saveTag==true},{'coicon-collection':saveTag==false}]"></i>
+        </div>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-1">
+      <div class="co-pd-lr06 co-mg-t05">
+        <div class="co-te2">很多企业现在都极其重视自动驾驶技术研发，而忽略了法律研发也是网络产品研发的一部分这个道理</div>
+        <div class="co-flex co-jsb co-ac co-fs-01 co-cl-2">
+          <div>2017-07-10</div>
+          <div class="co-flex co-ac">
+            <i class="coicon coicon-browse_fill"></i>898
+          </div>
+        </div>
+        <div><img src="images/news-banner.jpg" class="bannerImg" alt=""></div>
+        <div class="co-mg-t05 co-fs-01 co-line-h2 co-text">
+          <p>很多企业现在都极其重视自动驾驶技术研发，而忽略了法律研发也是网络产品研发的一部分这个道理。而未来，谁能在自动驾驶的法律设计中占得先机，谁就能在产品竞争中立于不败之地。</p>
+      　　<p>原本是一场高科技产品的介绍大会，却被交警盯上了，不但成为一堂全民普法课，还引发了法律与新技术之间的立法讨论。当技术创新遇上尊法守法，就这样戏剧性地碰撞出了火花。</p>
+      　　<p>7月5日，2017百度AI开发者大会上，百度CEO李彦宏视频直播了一段自己乘坐无人驾驶汽车上北京五环的情景。</p>
+      　　<p>随后，这一技术演示引发了舆论关于无人驾驶汽车上路是否合法的热议，进而不断升级成为一场新技术和立法的大讨论。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:"",
+      saveTag:false
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+      save:function(){
+        this.saveTag = !this.saveTag;
+        if(this.saveTag){
+          this.$toast("收藏成功");
+        }else{
+          this.$toast("取消收藏");
+        }
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

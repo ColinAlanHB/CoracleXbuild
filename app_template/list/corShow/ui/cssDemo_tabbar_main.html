@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+</head>
+
+<body>
+  <div id="app" class="page-tabbar" v-cloak>
+    <co-cell class="page-part" title="当前选中" :value="selected"></co-cell>
+    <!-- 可切换的内容区 -->
+    <co-tab-container class='co-mg-t04' v-model="selected">
+      <co-tab-container-item id="外卖">
+        <co-cell v-for="n in 10" :title="'餐厅 ' + n" :key='n'></co-cell>
+      </co-tab-container-item>
+      <co-tab-container-item id="订单">
+        <co-cell v-for="n in 5" :title="'订单 ' + n" :key='n'></co-cell>
+      </co-tab-container-item>
+      <co-tab-container-item id="发现">
+        <co-cell v-for="n in 7" :title="'发现 ' + n" :key='n'></co-cell>
+      </co-tab-container-item>
+      <co-tab-container-item id="我的">
+        <div class="page-part">
+          <co-cell v-for="n in 12" :title="'我的 ' + n" :key='n'></co-cell>
+        </div>
+      </co-tab-container-item>
+    </co-tab-container>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setBounceEnabled(1);
+    });
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        selected: '外卖'
+      }
+    });
+  </script>
+</body>
+
+</html>

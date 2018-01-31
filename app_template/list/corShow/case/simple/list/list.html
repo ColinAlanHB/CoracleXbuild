@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>Index List</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style type="text/css">
+    .autoImg{
+      width:3.5rem;
+      height:3.5rem;
+      display: block;
+    }
+    .tipImg{
+      width:.8rem;
+      height:.8rem;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header fixed title="新闻列表" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top">
+      <!--静态模板
+        <div class="co-flex co-bd-b1 co-pd-a04">
+          <div>
+            <img src="img/autoImg.png" class="autoImg" />
+          </div>
+          <div class="co-f1 co-mg-l04 co-flex co-ver co-jsb">
+            <div class="co-te2 co-cl-1">
+              仲夏之夜，和煦的微风轻抚着迷人的维多利亚港，波光粼粼的水面上，流泻着五颜六色的霓虹灯光
+            </div>
+            <div class="co-flex co-jsb co-fs-01 co-cl-2">
+              <div>娱乐</div>
+              <div class="co-flex co-ac"><img src="img/tip.png" class="tipImg co-mg-r02" />122</div>
+            </div>
+          </div>
+        </div>
+        -->
+        <div class="co-flex co-bd-b1 co-pd-a04 co-bg-0" v-for="item in dataList">
+          <div>
+            <img src="img/autoImg.png" class="autoImg" />
+          </div>
+          <div class="co-f1 co-mg-l04 co-flex co-ver co-jsb">
+            <div class="co-te2 co-cl-1">
+              {{item.title}}
+            </div>
+            <div class="co-flex co-jsb co-fs-01 co-cl-2">
+              <div>{{item.type}}</div>
+              <div class="co-flex co-ac"><img src="img/tip.png" class="tipImg co-mg-r02" />{{item.tip}}</div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+    })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:[
+        {
+          title:"仲夏之夜，和煦的微风轻抚着迷人的维多利亚港，波光粼粼的水面上，流泻着五颜六色的霓虹灯光",
+          tip:"89",
+          type:"社会"
+        },
+        {
+          title:"古来情依中国土，却作百年异邦人。这是香港历史的真实写照。",
+          tip:"876",
+          type:"历史"
+        },{
+          title:"预计，6月27日08时至28日08时，广西中北部、广东北部、贵州南部、湖南中南部、江西中南部、福建北部、浙江南部、",
+          tip:"123",
+          type:"天气"
+        },{
+          title:"今天下午，中纪委官网再发打虎消息：湖北省政协副主席刘善桥涉嫌严重违纪，目前正接受组织审查。",
+          tip:"678",
+          type:"国内"
+        },{
+          title:"今晚，法晚·观海解局记者登录政协湖北省委员会官网发现，刘善桥名字还在，并在副主席中排名第4。",
+          tip:"34",
+          type:"国内"
+        },{
+          title:"2015年4月17日，福州市中院一审以滥用职权罪和受贿罪判处其有期徒刑17年。法院查明，2003年-2013年",
+          tip:"567",
+          type:"国内"
+        },
+        {
+          title:"最近的新闻里，经常可以见到房价在下降的消息。在很多一线二线城市，房价N连跌的情况比比皆是。不仅是普通商品房在降价",
+          tip:"567",
+          type:"房产"
+        },{
+          title:"虽然房价跌跌不休，但其实很多城市每个月的跌幅都仅仅在0.1-0.3%之间，比起之前的房价快速上涨来说 ，这一点跌幅实在微不足道",
+          tip:"1123",
+          type:"房产"
+        },{
+          title:"从数据来看。中国的平均房价不但不是最高，反而是全球最容易买房的地区之一。这是何解呢？我们来看看经济学人（The Economist）统计的房价指数。",
+          tip:"567",
+          type:"房产"
+        }
+      ]
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }
+  })
+</script>
+</html>

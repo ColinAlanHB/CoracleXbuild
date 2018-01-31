@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body class="">
+  <div id="app" v-cloak>
+        <div class="co-cl-1 co-pd-a04">#</div>
+        <div class="co-bg-0">
+          <div class="co-flex co-ac co-pd-a06 co-bd-b1">
+            <div class="coicon coicon-addpeople co-fs-5"></div>
+            <div class="co-f1 co-mg-l06">组织机构</div>
+            <div class="coicon coicon-enter co-cl-2 co-fs-01"></div>
+          </div>
+          <div class="co-flex co-ac co-pd-a06 co-bd-b1">
+            <div class="coicon coicon-interactive co-fs-5"></div>
+            <div class="co-f1 co-mg-l06">讨论组</div>
+            <div class="coicon coicon-enter co-cl-2 co-fs-01"></div>
+          </div>
+          <div class="co-flex co-ac co-pd-a06 co-bd-b1">
+            <div class="coicon coicon-group co-fs-5"></div>
+            <div class="co-f1 co-mg-l06">群组</div>
+            <div class="coicon coicon-enter co-cl-2 co-fs-01"></div>
+          </div>
+          <div class="co-flex co-ac co-pd-a06 co-bd-b1">
+            <div class="coicon coicon-addressbook co-fs-5"></div>
+            <div class="co-f1 co-mg-l06">常用联系人</div>
+            <div class="coicon coicon-enter co-cl-2 co-fs-01"></div>
+          </div>
+        </div>
+        <div>
+          <co-index-list>
+            <co-index-section v-for="listItem in indexList" :index="listItem.index">
+              <co-cell :title="nameItem.name" label='138000000' v-for="nameItem in listItem.nameList" class="co-flex">
+              <div class="co-flex co-ac co-pd-tb05">
+                <img src="images/avtar.png" class="co-br-a2" slot="icon" style="width:2.5rem;height:2.5rem;"/>
+              </div>
+              </co-cell>
+            </co-index-section>
+          </co-index-list>
+        </div>
+      </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      indexList:[
+        {
+          index:"A",
+          nameList:[
+            {id:"1",name:"安妮",sex:1},
+            {id:"2",name:"安徒生",sex:2},
+            {id:"3",name:"ali",sex:1},
+            {id:"4",name:"andy",sex:2},
+          ]
+        },
+        {
+          index:"B",
+          nameList:[
+            {id:"3",name:"Billon",sex:2},
+            {id:"4",name:"Better",sex:1},
+          ]
+        },
+        {
+          index:"C",
+          nameList:[
+            {id:"5",name:"陈伟",sex:1},
+            {id:"6",name:"陈龙",sex:2},
+            {id:"7",name:"陈龙",sex:2},
+            {id:"8",name:"陈龙",sex:1},
+          ]
+        },
+        {
+          index:"D",
+          nameList:[
+            {id:"9",name:"董路",sex:2},
+            {id:"10",name:"董小姐",sex:1},
+          ]
+        },
+        {
+          index:"M",
+          nameList:[
+            {id:"11",name:"马龙",sex:2},
+            {id:"12",name:"马晓",sex:1},
+            {id:"13",name:"mary",sex:2},
+            {id:"14",name:"milly",sex:1},
+          ]
+        },
+        {
+          index:"Z",
+          nameList:[
+            {id:"15",name:"张鹏飞",sex:2},
+            {id:"16",name:"张晓燕",sex:1},
+          ]
+        }
+      ],
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

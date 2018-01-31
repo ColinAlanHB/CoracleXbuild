@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+  <link rel="stylesheet" href="css/swiper.min.css" />
+  <style>
+   #tabMenu{position: fixed;z-index: 2;top:2.2rem;left:0;width: 100%} 
+   #sliderType{height:2.2rem;}
+   .co-content-top1{padding-top:4.4rem;}
+   .tabAct{color:red;}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="首页" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-undo co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="tabMenu" class="co-tabContent co-bg-2">
+      <div class="swiper-container co-flex co-cl-1" id="sliderType">
+        <div class="swiper-wrapper moveList" >
+          <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active tabAct" >
+            <div class="co-flex co-f1 co-ac co-jc ">
+                头条
+            </div>
+           </div>
+           <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+              <div class="co-flex co-f1 co-ac co-jc ">
+              热点
+              </div>
+           </div>
+           <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+              <div class="co-flex co-f1 co-ac co-jc ">
+              娱乐
+              </div>
+           </div>
+           <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+              <div class="co-flex co-f1 co-ac co-jc ">
+              体育
+              </div>
+           </div>
+           <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+              <div class="co-flex co-f1 co-ac co-jc ">
+              时尚
+              </div>
+           </div>
+           <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+              <div class="co-flex co-f1 co-ac co-jc ">
+              房产
+              </div>
+           </div>
+           <div class="co-flex co-pc swiper-slide typeItem swiper-slide-active" >
+              <div class="co-flex co-f1 co-ac co-jc ">
+              军事
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div id="co-content" class="co-content-top1 co-content-bottom co-flex">
+      <div class="swiper-container co-bg-0 co-f1 co-flex" id="tabcontent">
+        <div class="swiper-wrapper co-f1 co-flex">
+            <div class="swiper-slide">
+            <div  v-infinite-scroll="addMore"
+                    infinite-scroll-distance="0">
+            <co-loadmore :top-method="loadTop" ref="loadmore">
+                <div>
+                    <div keys="index" @click="goDetial" v-for="(item,index) in data1" class="co-flex co-pd-tb05 co-bd-b1">
+                    <div class="co-mg-l04">
+                      <img :src="item.img" style="width:4.8rem;height:3.5rem;display: block;" />
+                    </div>
+                    <div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+                      <div class="co-te2 co-cl-1">{{item.title}}</div>
+                      <div class="co-flex co-ac co-jsb co-cl-3 co-fs-02">
+                        <div class="">{{item.type}}</div>
+                        <div class="co-flex co-ac">
+                          <i class="coicon coicon-message"></i>{{item.tip}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div  class="co-pd-tb04 co-bg-1 co-cl-2 co-br-a0 co-jc co-mg-a04 co-flex co-ac">
+                    <div :class="['coicon',{'coicon-refresh':dataTag},{'co-spin':dataTag},{'coicon-emoji1':!dataTag},'co-fs-3','co-mg-r02']"></div>{{bottomLoad}}
+                  </div>
+                </div>
+            </co-loadmore>
+            </div>
+          </div>
+          <div class="swiper-slide">
+              <div @click="goDetial" v-for="item in data1" class="co-flex co-pd-tb05 co-bd-b1">
+                <div class="co-mg-l04">
+                  <img :src="item.img" style="width:4.8rem;height:3.5rem;display: block;" />
+                </div>
+                <div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+                  <div class="co-te2 co-cl-1">{{item.title}}</div>
+                  <div class="co-flex co-ac co-jsb co-cl-3 co-fs-02">
+                    <div class="">{{item.type}}</div>
+                    <div class="co-flex co-ac">
+                      <i class="coicon coicon-message"></i>{{item.tip}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-slide">
+             <div @click="goDetial" v-for="item in data1" class="co-flex co-pd-tb05 co-bd-b1">
+                <div class="co-mg-l04">
+                  <img :src="item.img" style="width:4.8rem;height:3.5rem;display: block;" />
+                </div>
+                <div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+                  <div class="co-te2 co-cl-1">{{item.title}}</div>
+                  <div class="co-flex co-ac co-jsb co-cl-3 co-fs-02">
+                    <div class="">{{item.type}}</div>
+                    <div class="co-flex co-ac">
+                      <i class="coicon coicon-message"></i>{{item.tip}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div @click="goDetial" v-for="item in data1" class="co-flex co-pd-tb05 co-bd-b1">
+                <div class="co-mg-l04">
+                  <img :src="item.img" style="width:4.8rem;height:3.5rem;display: block;" />
+                </div>
+                <div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+                  <div class="co-te2 co-cl-1">{{item.title}}</div>
+                  <div class="co-flex co-ac co-jsb co-cl-3 co-fs-02">
+                    <div class="">{{item.type}}</div>
+                    <div class="co-flex co-ac">
+                      <i class="coicon coicon-message"></i>{{item.tip}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div @click="goDetial" v-for="item in data1" class="co-flex co-pd-tb05 co-bd-b1">
+                <div class="co-mg-l04">
+                  <img :src="item.img" style="width:4.8rem;height:3.5rem;display: block;" />
+                </div>
+                <div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+                  <div class="co-te2 co-cl-1">{{item.title}}</div>
+                  <div class="co-flex co-ac co-jsb co-cl-3 co-fs-02">
+                    <div class="">{{item.type}}</div>
+                    <div class="co-flex co-ac">
+                      <i class="coicon coicon-message"></i>{{item.tip}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div @click="goDetial" v-for="item in data1" class="co-flex co-pd-tb05 co-bd-b1">
+                <div class="co-mg-l04">
+                  <img :src="item.img" style="width:4.8rem;height:3.5rem;display: block;" />
+                </div>
+                <div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+                  <div class="co-te2 co-cl-1">{{item.title}}</div>
+                  <div class="co-flex co-ac co-jsb co-cl-3 co-fs-02">
+                    <div class="">{{item.type}}</div>
+                    <div class="co-flex co-ac">
+                      <i class="coicon coicon-message"></i>{{item.tip}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div @click="goDetial" v-for="item in data1" class="co-flex co-pd-tb05 co-bd-b1">
+                <div class="co-mg-l04">
+                  <img :src="item.img" style="width:4.8rem;height:3.5rem;display: block;" />
+                </div>
+                <div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+                  <div class="co-te2 co-cl-1">{{item.title}}</div>
+                  <div class="co-flex co-ac co-jsb co-cl-3 co-fs-02">
+                    <div class="">{{item.type}}</div>
+                    <div class="co-flex co-ac">
+                      <i class="coicon coicon-message"></i>{{item.tip}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+      <div class="co-f1 co-flex co-ver co-ac co-jc co-cl-4">
+        <i class="coicon coicon-homepage co-fs-4"></i>
+        <div class="co-fs-02">首页</div>
+      </div>
+      <div @click="tabMenu('topNew')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-tasklist co-fs-4"></i>
+        <div class="co-fs-02">要闻</div>
+      </div>
+      <div @click="tabMenu('picNew')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-manage co-fs-4"></i>
+        <div class="co-fs-02">图片</div>
+      </div>
+      <div @click="tabMenu('mine')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-mine co-fs-4"></i>
+        <div class="co-fs-02">我的</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/zepto.min.js"></script>
+<script>
+  var newData = {
+    img:"images/img0.jpg",
+      title:"1111111111",
+      type:"国内",
+      tip:"1234"
+  }
+  var data1 = [
+    {
+      img:"images/img0.jpg",
+      title:"媒体：中国首个海外基地 最核心的功能是“保障”",
+      type:"国内",
+      tip:"1234"
+    },
+    {
+      img:"images/img1.jpg",
+      title:"河南裕达置业骗贷案3被告认罪：受郭文贵指使骗贷15亿",
+      type:"法律",
+      tip:"6754"
+    },
+    {
+      img:"images/img2.jpg",
+      title:"中国首推“公路债” 终结政府贷款修路历史",
+      type:"财政",
+      tip:"453"
+    },
+    {
+      img:"images/img3.jpg",
+      title:"上半年新增人民币贷款近8万亿元 6月M2增速创新低",
+      type:"金融",
+      tip:"345"
+    },
+    {
+      img:"images/img4.jpg",
+      title:"摔断30万玉镯女游客：没工作领低保 不想让大家同情",
+      type:"事件",
+      tip:"345"
+    },
+    {
+      img:"images/img5.jpg",
+      title:"美军加油机爆炸坠毁致16死 目击者以为是特技表演",
+      type:"事件",
+      tip:"456"
+    },
+    {
+      img:"images/img6.jpg",
+      title:"男子入室盗窃顺走女婴 为躲追赶将孩子扔3米深天井",
+      type:"事件",
+      tip:"123"
+    },
+    {
+      img:"images/img7.jpg",
+      title:"重庆51岁男子身家上亿 每天开豪车捡垃圾已持续3年",
+      type:"事件",
+      tip:"33"
+    },
+    {
+      img:"images/img5.jpg",
+      title:"美军加油机爆炸坠毁致16死 目击者以为是特技表演",
+      type:"事件",
+      tip:"456"
+    },
+    {
+      img:"images/img6.jpg",
+      title:"男子入室盗窃顺走女婴 为躲追赶将孩子扔3米深天井",
+      type:"事件",
+      tip:"123"
+    },
+    {
+      img:"images/img7.jpg",
+      title:"重庆51岁男子身家上亿 每天开豪车捡垃圾已持续3年",
+      type:"事件",
+      tip:"33"
+    }
+  ]
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataTag:true,
+      tabIndex:0,
+      data1:data1,
+      bottomLoad:"正在加载中..."
+    },
+    methods:{
+      loadTop:function(){
+        var self = this;
+        setTimeout(function(){
+          self.$toast("刷新成功");
+          self.$refs.loadmore.onTopLoaded();
+        },2000)
+      },
+      addMore:function(){
+        if(!this.dataTag)return;
+        var self = this;
+        if(this.tabIndex!=0)return;
+        setTimeout(function(){
+          self.dataTag = false;
+          self.bottomLoad = "数据已加载完毕"
+          self.data1 = self.data1.concat(data1);
+          //重新设置容器的值
+          $(".swiper-container").height("10000")
+        },4000)
+      },
+      back:function(){
+       corNative.closeWindow({
+          animID:-1
+        });
+      },
+      goDetial:function(){
+                 corNative.openWindow({
+            name:"newsDetail",
+            data: "newsDetail.html",
+            animID:10,
+            flag:1024
+         });
+        corJS.openWin('newsDetail');
+      },
+      tabMenu:function(name){
+        corNative.openWindowdow({
+            name:name,
+            data: name+".html",
+            animID:0,
+            flag:0
+         });
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+      initW();
+    }
+  })
+  var moveList = new Swiper('#sliderType', {
+      slidesPerView: 5.5,
+      freeMode: true,
+      onTap:function(swiper,ele){ 
+          var clickedSlide = swiper.clickedSlide;
+          var index = $(clickedSlide).index();
+          vm.tabIndex = index;
+          swiper2.slideTo(index, 200, true);
+          $('.moveList>div').eq(index).addClass("tabAct").siblings().removeClass("tabAct");
+      },
+      onSliderMove:function(swiper){
+      },
+      onTouchEnd: function(swiper){
+      }
+  });
+  var swiper2;
+  function initW(){
+    swiper2 = new Swiper('#tabcontent', {
+      autoHeight: true,
+      onSliderMove:function(swiper, event){
+      },
+      onSlideChangeEnd: function(swiper){
+          var activeIndex = swiper.activeIndex;
+          vm.tabIndex = swiper.activeIndex;
+          moveList.slideTo(activeIndex,200, false);
+          $('.moveList>div').eq(activeIndex).addClass("tabAct").siblings().removeClass("tabAct");
+      },
+      observer:true,//修改swiper自己或子元素时，自动初始化swiper 
+      observeParents:false,//修改swiper的父元素时，自动初始化swiper 
+    });
+  }
+</script>
+</html>

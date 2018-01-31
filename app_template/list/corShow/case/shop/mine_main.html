@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+      <div class="co-flex mineBg co-ac">
+        <div class="co-mg-lr05">
+          <img src="images/set_img1.png" class="typeImg co-br-a3" alt="">
+        </div>
+        <div class="co-f1 co-cl-0">
+          <div class="co-flex co-ac">
+            <span>用户名</span><span class="co-bg-3 co-br-a0 co-pd-a02 co-fs-02 co-mg-l04">V2会员</span>
+          </div>
+          <div class="co-fs-02 co-pd-tb02">个性签名</div>
+          <div class="co-fs-02">积分：123</div>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-pd-tb05 co-bg-0 co-bd-b1">
+        <div class="co-f1 co-ac co-ver co-jc co-bd-r1">
+          <div class="co-fs-01 co-tx-c">待付款</div>
+          <div class="co-fs-02 co-tx-c co-mg-t04 co-cl-4">5</div>
+        </div>
+        <div class="co-f1 co-ac co-ver co-jc co-bd-r1">
+          <div class="co-fs-01 co-tx-c">待发货</div>
+          <div class="co-fs-02 co-tx-c co-mg-t04">0</div>
+        </div>
+        <div class="co-f1 co-ac co-ver co-jc co-bd-r1">
+          <div class="co-fs-01 co-tx-c">待收货</div>
+          <div class="co-fs-02 co-tx-c co-mg-t04">0</div>
+        </div>
+        <div class="co-f1 co-ac co-ver co-jc co-bd-r1">
+          <div class="co-fs-01 co-tx-c">待评价</div>
+          <div class="co-fs-02 co-tx-c co-mg-t04 co-cl-4">2</div>
+        </div>
+        <div class="co-f1 co-ac co-ver co-jc">
+          <div class="co-fs-01 co-tx-c">退款</div>
+          <div class="co-fs-02 co-tx-c co-mg-t04 co-cl-4">2</div>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-pd-a05 co-mg-t02  co-fs-01">
+        <div class="coicon coicon-activity co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">全部订单</div>
+        <div class="coicon coicon-enter co-fs-01 co-cl-3"></div>
+      </div>
+      <div class="co-bg-0 co-bd-b1 co-bd-t1 co-fs-01 co-mg-t02">
+        <div class="co-flex co-ac co-bg-0 co-pd-a05 ">
+          <div class="coicon coicon-systemprompt co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">我的优惠信息</div>
+          <div class="coicon coicon-enter co-fs-01 co-cl-3"></div>
+        </div>
+        <div class="co-flex co-ac co-bg-0 co-pd-a05 co-bd-t1">
+          <div class="coicon coicon-time co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">我的日历</div>
+          <div class="coicon coicon-enter co-fs-01 co-cl-3"></div>
+        </div>
+      </div>
+      <div class="co-bg-0 co-bd-b1 co-bd-t1 co-fs-01 co-mg-t02">
+        <div class="co-flex co-ac co-bg-0 co-pd-a05 ">
+          <div class="coicon coicon-favor co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">宝贝收藏</div>
+          <div class="coicon coicon-enter co-fs-01 co-cl-3"></div>
+        </div>
+        <div class="co-flex co-ac co-bg-0 co-pd-a05 co-bd-t1">
+          <div class="coicon coicon-collection co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">店铺收藏</div>
+          <div class="coicon coicon-enter co-fs-01 co-cl-3"></div>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-pd-a05 co-mg-t02  co-fs-01">
+        <div class="coicon coicon-coupons co-fs-4"></div>
+        <div class="co-f1 co-mg-l04">我的钱包</div>
+        <div class="coicon coicon-enter co-fs-01 co-cl-3"></div>
+      </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

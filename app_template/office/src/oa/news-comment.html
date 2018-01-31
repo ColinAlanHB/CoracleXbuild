@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A133会议室</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/news-comment.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+<script src="./js/moment.min.js"></script>
+</head>
+<body>
+<div id="newsComment">
+	<co-header title="评论">
+		<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>	
+	</co-header>
+	<section class="comment-win">
+		<ul class="comment-list">
+			<li v-for='item in list'>
+				<div class="avatar-left">
+						<img v-if='item.avatar' slot="icon" :src='item.avatar'></i>
+						<i v-else class="icon iconfont icon-people-circle" slot="icon"></i>
+				</div>
+				<div class="comment-main">
+					<p class="comt-name">{{ item.name }}</p>
+					<p class="comt-profile">{{ item.profile }}</p>
+					<p class="comt-text">{{ item.text }}</p>
+					<span class="comt-time">{{ item.time }}</span>
+				</div>				
+				<div class="comment-reply" v-if='item.reply'>
+					<p class="reply-title">
+						<span>{{ item.reply.name }}</span>
+						<span>{{ item.reply.time }}</span>
+					</p>					
+					<p class="reply-text">{{ item.reply.text }}</p>
+				</div>
+			</li>
+		</ul>				
+	</section>
+	<footer class="comment-write">
+		<input type="text" v-model='selfComt' placeholder="我也来说两句">		
+	</footer>
+</div>
+<script>
+	new Vue({
+		el: '#newsComment',
+		data: {
+			list: [
+				{					
+					name: "奥巴马",
+					time: "2016-04-14 15:23",
+					text: "干的不错，以后都是川普的锅了！！"					
+				},
+				{						
+					name: "蒂勒森",
+					time: "2016-04-14 13:02",
+					profile: "CRM产品部总监",
+					text: "坚决拥护总裁决定，American First",
+					reply: {
+						name: "川普",
+						time: "2016-04-14 12:35",
+						text: "中东局势再次恶化，考研我们的时候到了，May God Bless USA！"
+					}
+				},
+				{
+					name: "川普",
+					profile: "公司总裁",
+					text: "中东局势再次恶化，考研我们的时候到了，May God Bless USA！"					
+				},
+				{
+					name: "金三胖",
+					profile: "前台",
+					text: "老弟，恭喜啦。向着民主自由又进了一步啊，是我们学习的榜样。"					
+				}
+			],
+			selfComt: ''
+		}
+	});
+</script>
+</body>
+</html>

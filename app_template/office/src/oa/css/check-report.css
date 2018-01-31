@@ -1,0 +1,65 @@
+html,
+body,
+#checkReport {
+  width: 100%;
+  height: 100%;
+}
+#checkReport .co-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#checkReport .report-win {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 2rem;
+  overflow: scroll;
+}
+#checkReport .report-list {
+  width: 100%;
+  border-spacing: 0;
+  font-size: 13px;
+  text-align: center;
+  border: 2px solid;
+  border-left-style: none;
+  border-right-style: none;
+}
+[data-dpr="2"] #checkReport .report-list {
+  font-size: 26px;
+}
+[data-dpr="3"] #checkReport .report-list {
+  font-size: 39px;
+}
+#checkReport caption.report-timeline {
+  text-align: left;
+  padding: .2rem .28rem;
+}
+#checkReport th.head-date {
+  width: 36.8%;
+}
+#checkReport th.head-name {
+  width: 26%;
+}
+#checkReport td {
+  height: .90666667rem;
+}
+#checkReport th {
+  border: 1px solid;
+  border-top: none;
+  border-left: none;
+  height: .70666667rem;
+}
+#checkReport th:last-child {
+  border-right: none;
+}
+#checkReport td {
+  border: 1px solid;
+  border-top: none;
+  border-left: none;
+}
+#checkReport td.list-name,
+#checkReport td.list-start,
+#checkReport td.list-end {
+  border-right: none;
+}

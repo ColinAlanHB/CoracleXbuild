@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>mine</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style type="text/css">
+    .imgIcon{width:1.8rem;height:1.8rem;display: block;}
+    .w33{
+      width: 33%;
+      margin-top:1rem;
+    }
+  </style>
+</head>
+<body class="co-bg-2">
+  <div id="app">
+    <co-header fixed title="个人中心" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top">
+      <div class="co-flex co-ver co-ac co-pd-a05 co-bd-b co-bg-6 co-cl-0">
+        <div>
+          <img src="img/head.png" style="width: 3rem;height:3rem;display: block;" />
+        </div>
+        <div class="co-mg-t04">王小五</div>
+        <div class="co-fs-01">信息技术部</div>
+      </div>
+      <div class="co-bd-t co-mg-t02  co-bd-b co-bg-0 co-pd-b1" style="overflow: auto">
+        <div class="w33 co-fl co-flex co-ac co-jc co-ver">
+            <img src="img/sc.png" class="imgIcon" />
+            <span class="co-fs-01">我的收藏</span>
+        </div>
+        <div class="w33 co-fl co-flex co-ac co-jc co-ver">
+            <img src="img/rw.png" class="imgIcon" />
+            <span class="co-fs-01">我的任务</span>
+        </div>
+        <div class="w33 co-fl co-flex co-ac co-jc co-ver">
+            <img src="img/fp.png" class="imgIcon" />
+            <span class="co-fs-01">开票信息</span>
+        </div>
+        <div class="w33 co-fl co-flex co-ac co-jc co-ver">
+            <img src="img/hand.png" class="imgIcon" />
+            <span class="co-fs-01">手势密码</span>
+        </div>
+        <div class="w33 co-fl co-flex co-ac co-jc co-ver">
+            <img src="img/mm.png" class="imgIcon" />
+            <span class="co-fs-01">忘记密码</span>
+        </div>
+      </div>
+      <div class="co-bd-t co-mg-t02  co-bd-b co-bg-0 co-pd-b1" style="overflow: auto">
+        <div class="w33 co-fl co-flex co-ac co-jc co-ver">
+            <img src="img/sc.png" class="imgIcon" />
+            <span class="co-fs-01">我的收藏</span>
+        </div>
+        <div class="w33 co-fl co-flex co-ac co-jc co-ver">
+            <img src="img/rw.png" class="imgIcon" />
+            <span class="co-fs-01">我的任务</span>
+        </div>
+        <div class="w33 co-fl co-flex co-ac co-jc co-ver">
+            <img src="img/fp.png" class="imgIcon" />
+            <span class="co-fs-01">开票信息</span>
+        </div>
+      </div>
+      <div class="co-bd-t co-mg-t02  co-bd-b co-bg-0 co-pd-b1" style="overflow: auto">
+        <div class="w33 co-fl co-flex co-ac co-jc co-ver">
+            <img src="img/set.png" class="imgIcon" />
+            <span class="co-fs-01">更多设置</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title>table</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <style>
+    .menu{
+      height:2rem;
+      width:100%;
+      line-height: .8rem;
+      background-color:#fff;
+      border-bottom: 1px #ccc solid
+    }
+    .menu div{
+      font-size: .75rem;
+      height:2rem;
+    }
+    .co-menu{
+          width:100%;
+          position: fixed;
+          left: 0;
+          top:2.2rem;
+          z-index:999;
+      }
+    .co-content-top1 {
+      padding-top:4.2rem;
+    }
+    .tableList>div:nth-child(2n){
+      background-color:#f5f5f5;
+    }
+    .listItem div{
+      font-size: .6rem;
+      height:1.6rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header fixed title="表格" class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="co-pd-r05"><img src="img/back.png" style="width:1.2rem;height:1.2rem;display: block;" /></div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div  class="co-tabContent co-flex co-menu co-bg-2">
+      <div class="menu co-flex co-ac co-cl-1">
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">基本<br/>工资</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">加班<br/>费用</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">奖金</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">伙食<br/>补贴</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">实发<br/>工资</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">五险<br/>一金</div>
+        <div class="co-f1 co-flex co-ac co-jc">总计</div>
+      </div>
+    </div>
+    <div id="co-content" class="co-content-top1 tableList co-cl-2">
+      <div class="co-bg-1 co-pd-a02 co-fs-02 co-cl-4 co-tx-c">金额以.00结尾</div>
+      <div class="co-flex co-ac co-fs-01 co-bd-b listItem" v-for="item in dataList">
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">{{item.m1}}</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">{{item.m2}}</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">{{item.m3}}</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">{{item.m4}}</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">{{item.m5}}</div>
+        <div class="co-f1 co-flex co-ac co-jc co-bd-r1">{{item.m6}}</div>
+        <div class="co-f1 co-flex co-ac co-jc">{{item.m7}}</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+   corJS.ready(function(){
+   })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:[
+        {
+           m1:"4000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"5600",
+        },
+        {
+           m1:"3000",
+           m2:"200", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"5600",
+        },
+        {
+           m1:"5000",
+           m2:"600", 
+           m3:"1000",
+           m4:"200",
+           m5:"6500",
+           m6:"1200",
+           m7:"7600",
+        },
+        {
+           m1:"3000",
+           m2:"300", 
+           m3:"2000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"6600",
+        },
+        {
+           m1:"6000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"8600",
+        },
+        {
+           m1:"3000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"5600",
+        },
+        {
+           m1:"6000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"9000",
+        },
+        {
+           m1:"2000",
+           m2:"300", 
+           m3:"800",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"5600",
+        },
+        {
+           m1:"3000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"7600",
+        },
+        {
+           m1:"5000",
+           m2:"300", 
+           m3:"500",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"7600",
+        },
+        {
+           m1:"3000",
+           m2:"300", 
+           m3:"2000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"6600",
+        },
+        {
+           m1:"6000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"8600",
+        },
+        {
+           m1:"3000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"5600",
+        },
+        {
+           m1:"6000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"9000",
+        },
+        {
+           m1:"2000",
+           m2:"300", 
+           m3:"800",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"5600",
+        },
+        {
+           m1:"3000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"7600",
+        },
+        {
+           m1:"5000",
+           m2:"300", 
+           m3:"500",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"7600",
+        },{
+           m1:"3000",
+           m2:"300", 
+           m3:"2000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"6600",
+        },
+        {
+           m1:"6000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"8600",
+        },
+        {
+           m1:"3000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"5600",
+        },
+        {
+           m1:"6000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"9000",
+        },
+        {
+           m1:"2000",
+           m2:"300", 
+           m3:"800",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"5600",
+        },
+        {
+           m1:"3000",
+           m2:"300", 
+           m3:"1000",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"7600",
+        },
+        {
+           m1:"5000",
+           m2:"300", 
+           m3:"500",
+           m4:"200",
+           m5:"4500",
+           m6:"1200",
+           m7:"7600",
+        },
+      ]
+    },
+    methods:{
+      back:function(){
+        corNative.closeWindow({
+          animID:-1,
+          animDuration:300
+        });
+      },
+    }
+  })
+</script>
+</html>

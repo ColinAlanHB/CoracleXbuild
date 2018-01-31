@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+      <div class="co-flex co-ac co-bg-0 co-pd-tb02">
+        <div class="co-pd-l06">证件类型：</div>
+        <div class="co-flex co-f1 co-ac co-pd-a04">
+          <div class="co-f1">{{hourList.project.text}}</div>
+          <div class="coicon coicon-enter"></div>
+          <select v-model="hourList.project" class="co-select" selectedindex="0">
+            <option :value="option" v-for="option in projectList">{{option.text}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-bd-b1 co-pd-tb05">
+        <div class="co-pd-l06">证件号：</div>
+        <div class="co-f1 co-flex co-pd-l04">
+          <input v-model="telNum" placeholder="请输入证件号" type="text" class="co-input co-f1">
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-pd-tb02">
+        <div class="co-pd-l06">开始日期：</div>
+        <div @click="open('picker4',0)" class="co-flex co-f1  co-cl-2 co-je co-pd-a04">
+          {{hourList.date}}
+        </div>
+        <div class="coicon coicon-enter co-pd-r04"></div>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-pd-tb02">
+        <div class="co-pd-l06">结束日期：</div>
+        <div @click ="open('picker4',1)" class="co-flex co-f1 co-pd-a04 co-cl-2 co-je">
+        {{hourList.date1}}
+        </div>
+        <div class="coicon coicon-enter co-pd-r04"></div>
+      </div>
+      <div @click="send" class="co-bg-6 co-br-a0 co-h-2 co-tx-c co-cl-0 co-mg-lr06" style="margin-top:2.5rem">查询</div>
+      <co-datetime-picker ref="picker4" type="date" v-model="dateTime" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleChange">
+      </co-datetime-picker>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corJS.ready里面,等所有原生组件加载完毕后执行
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      telNum:"",
+      hourList:{
+        date:"请选择日期",
+        date1:"请选择日期",
+        dateTag:"",
+        startTime:"",
+        endTime:"",
+        project:{value:"-1",text:"选择证件类型"},
+      },
+      projectList:[
+        {value:"-1",text:"选择证件类型"},
+        {
+          value:"0",text:"身份证"
+        },
+        {
+          value:"1",text:"护照"
+        },
+        {
+          value:"2",text:"驾驶证"
+        }
+      ],
+      dateTime: '',
+      hourVisible: false,
+      slots: [
+        {
+          flex: 1,
+          values: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30"],
+          className: 'start-time'         
+        },
+        {         
+          divider: true,
+          content: "~"
+        },
+        {
+          flex: 1,
+          values: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"],
+          defaultIndex: 16,
+          className: 'end-time'         
+        }
+      ]
+    },
+    methods:{
+      send:function(){
+        if(this.hourList.project=="选择项目"||this.hourList.step=="选择阶段"||this.hourList.date=="请选择日期"){
+          vm.$toast({
+            message: '请填写完整信息',
+            duration: 1200
+          })
+          return;
+        }
+        var params = {
+          name:"addList",
+          extras:this.hourList
+        }
+        corNative.sendNotification(params);
+        this.$indicator.open('查询中...');
+        setTimeout(function(){
+          vm.$indicator.close();
+          vm.$toast({
+            message: '查询成功',
+            position: 'bottom', 
+            duration: 800
+          })
+          setTimeout(function(){
+            corNative.prevPage();
+          },800)
+        },1500)
+      },
+      back:function(){
+          corNative.prevPage();
+      },
+      open:function(picker,index) {
+        this.dateTag = index;
+        this.$refs[picker].open();
+      },
+      handleChange:function(value) {
+        var yearMonth = value.getFullYear() + '-' + (value.getMonth() + 1)+ '-' + value.getDate();
+        if(this.dateTag){
+          this.hourList.date1 = yearMonth;
+        }else{
+          this.hourList.date = yearMonth;
+        }
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+      var now = new Date();
+      this.dateTime = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+    }
+  })
+</script>
+</html>

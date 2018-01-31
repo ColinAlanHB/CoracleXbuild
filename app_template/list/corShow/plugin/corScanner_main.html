@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+</head>
+<body>
+  <div id="app">
+    <div class="co-pd-a04 co-cl-2">扫描结果：</div>
+    <div class="co-bg-1 co-pd-a1" style="word-break: break-all;">
+        {{msg}}
+    </div>
+    <div @click="openS" class="co-mg-a1 co-pd-tb05 co-tx-c co-bg-3 co-cl-0 co-br-a0">扫描</div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setBounceEnabled(1);
+    });
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        msg:''
+      },
+      methods:{
+        openS:function(){
+          corScanner.open(function(error,data){
+            if(!error){
+              vm.msg = JSON.stringify(data);
+            }else{
+              alert("扫描失败");
+            }
+          })
+        }
+      },
+      created:function(){
+      },
+      mounted:function(){
+      }
+    })
+  </script>
+</body>

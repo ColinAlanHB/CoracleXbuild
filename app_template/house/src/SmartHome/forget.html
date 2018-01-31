@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>忘记密码</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/smart.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <!-- ToDo: 替换为本地 font 资源 -->
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_qsmw9mnt83fh6w29.css">  
+  <link rel="stylesheet" href="./css/register.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>
+</head>
+<body>
+<div id="app">
+  <co-header title='忘记密码'>
+    <a href="login.html" class="icon iconfont icon-left" slot='left'>返回</a>     
+  </co-header>
+  <main class="register-main">
+    <section class="register-main-form">
+      <div class="form--field form--phone">
+        <input type="tel" class="field--ipt" placeholder="请输入手机号" v-model='telphone'>
+        <i class="icon iconfont icon-phone field--left"></i>
+        <co-button class="field--right btn-code" @click.native='sendCode' :disabled='reSendSec>0'>{{ reSendSec | codeBtnText }}</co-button>
+      </div>
+      <div class="form--field form--code">
+        <input type="numeric" class="field--ipt" placeholder="请输入验证码" v-model='idenCode' maxlength="6">
+        <i class="icon iconfont icon-msg field--left"></i>
+      </div>
+      <div class="form--field form--pwd">
+        <input type="text" class="field--ipt" placeholder="请输入密码" v-model='pwd'>
+        <input type="password" class="field--ipt field--secret" placeholder="请输入密码" v-model='pwd' :style='{display: hasShowPwd?"none":""}'>
+        <i class="icon iconfont icon-lock field--left"></i>
+        <i class="icon iconfont icon-eye field--right" 
+        @click='hasShowPwd=!hasShowPwd' :style='{color: hasShowPwd?"black":""}'></i>
+      </div>
+      <div class="form--field form--repwd">
+        <input type="text" class="field--ipt" placeholder="再次输入密码" v-model='rePwd'>
+        <input type="password" class="field--ipt field--secret" placeholder="再次输入密码" v-model='rePwd' :style='{display: hasShowRePwd?"none":""}'>
+        <i class="icon iconfont icon-lock field--left"></i>
+        <i class="icon iconfont icon-eye field--right" 
+        @click='hasShowRePwd=!hasShowRePwd' :style='{color: hasShowRePwd?"black":""}'></i>
+      </div>
+    </section>    
+    <co-button class="register-main-submit">重置密码</co-button>      
+  </main>	    
+</div>
+<script>
+	var vm = new Vue({
+		el: '#app',
+    data: {
+      telphone: '',
+      idenCode: '',      
+      reSendSec: 0,      
+      pwd: '',
+      rePwd: '',
+      hasShowPwd: false,
+      hasShowRePwd: false,      
+    },
+    filters: {
+      codeBtnText: function (sec) {
+        if (sec > 0){
+          return sec + 's后重新发送';          
+        }
+        return '获取验证码';
+      }
+    },
+    methods: {
+      sendCode: function () {
+        vm.reSendSec = 10;                
+        var id = setInterval(function () {
+          if (vm.reSendSec === 0) {            
+            clearInterval(id);
+            return;
+          }          
+          vm.reSendSec--;
+
+        }, 1000);
+        
+      }
+    }
+	})
+</script>
+</body>
+</html>

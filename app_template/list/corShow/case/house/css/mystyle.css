@@ -1,0 +1,38 @@
+.tabC{color:#03cbcb;}
+.headerBg{background:#00cccb;}
+.headerBg1{background:#b1ebed;}
+ .wh1Icon{width:1rem;height:1rem;display: block;}
+ .co-header-title{flex:1;-webkit-flex:1;position:relative;font-size:.9rem;height:2.2rem;line-height: 2.2rem;}
+.mainColor{color:#545454;}
+.bg_eee{background-color:#eee;}
+.t_00c{color:#00cccc;}
+.t_009{color:#009999;}
+.t_ccc{color:#ccc;}
+.co-mg-t75{padding-top:.75rem;}
+.co-mg-b75{padding-bottom:.75rem;}
+.co-pd-lr625{padding:0 .625rem;}
+.co-mg-lr87{margin:0 .875rem;}
+.co-pd-t75{padding-top:.75rem;}
+.co-pd-b75{padding-bottom:.75rem;}
+.readlist{padding:1rem .625rem;}
+.statusTip .sleft{border-right:.5rem solid #00cccb;border-bottom:.5rem solid transparent; border-top:.5rem solid transparent;width:0;height:0;}
+.statusTip .sTitle{background:#00cccb;padding:0 .3rem;height:1rem;line-height:1rem;color:#fff;}
+.readTitle{margin:.75rem 0; line-height: 1rem}
+.smallIcon{width:.6rem;height:.6rem;display: block;}
+.userPic{width:1.85rem;height:1.85rem;display: block;-webkit-border-radius:1.85rem;border-radius:1.85rem;}
+.tabIcon{width:1.2rem;height:1.2rem;display: block;}
+.tabAdd{width:1.9rem;height:1.9rem;display: block;}
+.backBtn{width:1.25rem;height:1rem;background:url(../images/backBtn.png) no-repeat;background-size:.95rem .95rem;}
+.menuBtn{width:1.25rem;height:1rem;background:url(../images/menuBtn.png) no-repeat;background-size:1.25rem .95rem;}
+.diaryAct{background-color:#00cccc;color:#fff;}
+.diaryTabMenu{height:3.5rem;}
+.menuTab{height:2.1rem;}
+.diary_br{border-right:1px #666 solid}
+.saveIcon{width:.9rem;height:.9rem;display: block;}
+.tipC{border:1px #00cccb solid;color:#00cccb;padding:.1rem .2rem}
+.autoImg{width:100%;height:auto;display: block;}
+.hfBtn{border:1px dashed #00cece;height:1.75rem;line-height: 1.75rem;}
+.plTip{width:.75rem;height:.75rem;display: block;}
+.dialogT{width:3.2rem;height:1.7rem;line-height: 1.7rem;background: #00cccc;color:#fff;text-align: center;position:fixed;left:0;bottom:.6rem;z-index:9999;}
+.wh16Icon{width:1.6rem;;height:1.6rem;display: block;}
+.pointIcon{width:.45rem;height: .9rem;display: block;}

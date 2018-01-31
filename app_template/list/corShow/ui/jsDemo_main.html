@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css">
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .co-popup-1 {
+      width: 200px;
+      border-radius: 8px;
+      padding: 10px;
+      transform: translate(-50%, 0);
+    }
+
+    h1 {
+      font-size: 20px;
+      color: #26a2ff;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    .co-popup-1::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+      border-bottom: 40px solid #fff;
+      position: absolute;
+      top: -20px;
+      right: 50px;
+    }
+
+    .co-popup-2 {
+      width: 100%;
+      height: 44px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .7);
+      backface-visibility: hidden;
+    }
+
+    .co-popup-2 p {
+      line-height: 44px;
+      color: #fff;
+    }
+
+    .co-popup-3 {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+    }
+
+    .co-popup-3 .co-button {
+      position: absolute;
+      width: 90%;
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%);
+    }
+
+    .co-popup-4 {
+      width: 100%;
+    }
+
+    .picker-slot-wrapper,
+    .picker-item {
+      backface-visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak class="co-cl-1">
+    <div class="co-bg-0 co-bd-t1 co-bd-b1">
+      <div @click="collapse('toast')" class="co-flex co-ac co-pd-tb05 co-bd-b1" :class="getCollapseStyle('toast')">
+        <div class="iconfont icon-toast co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">指示框</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05" :class='getEnterStyle("toast")'></div>
+      </div>
+      <div v-show="unfolded.indexOf('toast') > -1" class="co-mg-l1">
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openToast'>
+          <div class="co-f1 co-pd-l04 co-cl-2">点击弹出Toast</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openToastWithIcon'>
+          <div class="co-f1 co-pd-l04 co-cl-2">点击弹出带有 icon 的 Toast</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openBottomToast'>
+          <div class="co-f1 co-pd-l04 co-cl-2">自定义 Toast 位置</div>
+        </div>
+      </div>
+
+      <div @click="collapse('indicator')" class="co-flex co-ac co-pd-tb05 co-bd-b1" :class="getCollapseStyle('indicator')">
+        <div class="iconfont icon-indicator co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">状态指示框</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05" :class='getEnterStyle("indicator")'></div>
+      </div>
+      <div v-show="unfolded.indexOf('indicator') > -1" class="co-mg-l1">
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openIndicator'>
+          <div class="co-f1 co-pd-l04 co-cl-2">点击弹出 Indicator</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openIndicatorWithSpinner'>
+          <div class="co-f1 co-pd-l04 co-cl-2">可配置 spinner</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openIndicatorWithText'>
+          <div class="co-f1 co-pd-l04 co-cl-2">点击弹出带有文字的 Indicator</div>
+        </div>
+      </div>
+
+      <div @click="collapse('messageBox')" class="co-flex co-ac co-pd-tb05 co-bd-b1" :class="getCollapseStyle('messageBox')">
+        <div class="iconfont icon-message-box co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">消息框</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05" :class='getEnterStyle("messageBox")'></div>
+      </div>
+      <div v-show="unfolded.indexOf('messageBox') > -1" class="co-mg-l1">
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openAlert'>
+          <div class="co-f1 co-pd-l04 co-cl-2">打开 alert 提示框</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openAlert1'>
+          <div class="co-f1 co-pd-l04 co-cl-2">打开 alert 确认提示框</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openConfirm'>
+          <div class="co-f1 co-pd-l04 co-cl-2">打开 confirm 提示框</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='openPrompt'>
+          <div class="co-f1 co-pd-l04 co-cl-2">打开 prompt 提示框</div>
+        </div>
+      </div>
+
+      <div @click="collapse('actionSheet')" class="co-flex co-ac co-pd-tb05 co-bd-b1" :class="getCollapseStyle('actionSheet')">
+        <div class="iconfont icon-action-sheet co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">动作菜单</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05" :class='getEnterStyle("actionSheet")'></div>
+      </div>
+      <div v-show="unfolded.indexOf('actionSheet') > -1" class="co-mg-l1">
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='sheetVisible = true'>
+          <div class="co-f1 co-pd-l04 co-cl-2">点击上拉 action sheet</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='sheetVisible2 = true'>
+          <div class="co-f1 co-pd-l04 co-cl-2">不带取消按钮的 action sheet</div>
+        </div>
+      </div>
+      <co-actionsheet :actions="actions" v-model="sheetVisible"></co-actionsheet>
+      <co-actionsheet :actions="actions2" v-model="sheetVisible2" cancel-text=""></co-actionsheet>
+
+      <div @click="collapse('popup')" class="co-flex co-ac co-pd-tb05 co-bd-b1" :class="getCollapseStyle('popup')">
+        <div class="iconfont icon-popup co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">弹出框</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05" :class='getEnterStyle("popup")'></div>
+      </div>
+      <div v-show="unfolded.indexOf('popup') > -1" class="co-mg-l1">
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='popupVisible2 = true'>
+          <div class="co-f1 co-pd-l04 co-cl-2">上侧弹出 popup</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='popupVisible3 = true'>
+          <div class="co-f1 co-pd-l04 co-cl-2">右侧弹出 popup</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='popupVisible4 = true'>
+          <div class="co-f1 co-pd-l04 co-cl-2">下侧弹出 popup</div>
+        </div>
+      </div>
+      <co-popup v-model="popupVisible1" popup-transition="popup-fade" class="co-popup-1" :style="{ top: buttonBottom + 300 + 'px' }">
+        <h1>popup</h1>
+        <p>/ ˈpɑpˌʌp /</p>
+        <p>n. 弹出式; [棒]内野飞球; 自动起跳式装置</p>
+        <p>adj. 弹起的; 有自动起跳装置的</p>
+      </co-popup>
+      <co-popup v-model="popupVisible2" position="top" class="co-popup-2" :modal="false">
+        <p>更新成功</p>
+      </co-popup>
+      <co-popup v-model="popupVisible3" position="right" class="co-popup-3" :modal="false">
+        <co-button @click.native="popupVisible3 = false" size="large" type="primary" class="co-h-2">关闭 popup</co-button>
+      </co-popup>
+      <co-popup v-model="popupVisible4" position="bottom" class="co-popup-4">
+        <co-picker :slots="dateSlots" @change="onDateChange" :visible-item-count="5" :show-toolbar="false"></co-picker>
+      </co-popup>
+
+      <div @click="collapse('datepicker')" class="co-flex co-ac co-pd-tb05 co-bd-b1" :class="getCollapseStyle('datepicker')">
+        <div class="iconfont icon-datepicker co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">日期时间选择器</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05" :class='getEnterStyle("datepicker")'></div>
+      </div>
+      <div v-show="unfolded.indexOf('datepicker') > -1" class="co-mg-l1">
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='open("picker1")'>
+          <div class="co-f1 co-pd-l04 co-cl-2">点击弹出 DateTime Picker</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='open("picker2")'>
+          <div class="co-f1 co-pd-l04 co-cl-2">点击弹出 Date Picker</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='open("picker3")'>
+          <div class="co-f1 co-pd-l04 co-cl-2">点击弹出 Time Picker</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='open("picker4")'>
+          <div class="co-f1 co-pd-l04 co-cl-2">自定义模板</div>
+        </div>
+        <div class="co-ac co-flex co-pd-tb06 co-bd-b1 co-mg-l1" @click='open("picker5")'>
+          <div class="co-f1 co-pd-l04 co-cl-2">设定初始值</div>
+        </div>
+      </div>
+      <co-datetime-picker ref="picker1" v-model="value" @confirm="handleChange">
+      </co-datetime-picker>
+      <co-datetime-picker ref="picker2" type="date" v-model="value2" @confirm="handleChange">
+      </co-datetime-picker>
+      <co-datetime-picker ref="picker3" type="time" v-model="value3" @confirm="handleChange">
+      </co-datetime-picker>
+      <co-datetime-picker ref="picker4" type="date" v-model="value4" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日"
+        @confirm="handleChange">
+      </co-datetime-picker>
+      <co-datetime-picker ref="picker5" type="time" v-model="value5" @confirm="handleChange">
+      </co-datetime-picker>
+
+      <!-- <div @click="goHtml('jsDemo_pullDown', 'jsDemo_pullDown.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-pull-down co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">下拉刷新</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('jsDemo_pullUp', 'jsDemo_pullUp.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-pull-up co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">上滑加载</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div> -->
+
+      <div @click="goHtml('jsDemo_swipe', 'jsDemo_swipe.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-swipe co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">滑动</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+      
+      <div @click="goHtml('jsDemo_lazyload', 'jsDemo_lazyload.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-lazyload co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">懒加载</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('jsDemo_range', 'jsDemo_range.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-range co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">范围选择器</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('jsDemo_progress', 'jsDemo_progress.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-progress co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">进度条</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('jsDemo_picker', 'jsDemo_picker.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-picker co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">选择器</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('jsDemo_datebar', 'jsDemo_datebar.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-datebar co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">头部日历</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('jsDemo_indexList', 'jsDemo_indexList.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-alphabet co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">索引列表</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+
+      <div @click="goHtml('jsDemo_rate', 'jsDemo_rate.html', 10)" class="co-flex co-ac co-pd-tb05 co-bd-b1 co-mg-l05">
+        <div class="iconfont icon-rate co-fs-4"></div>
+        <div class="co-f1 co-mg-l04 co-cl-1">评分</div>
+        <div class="iconfont icon-enter co-cl-3 co-mg-r05"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+  });
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      unfolded: [],
+      sheetVisible: false,
+      sheetVisible2: false,
+      actions: [],
+      actions2: [],
+      popupVisible1: false,
+      popupVisible2: false,
+      popupVisible3: false,
+      popupVisible4: false,
+      buttonBottom: 0,
+      dateSlots: [{
+        flex: 1,
+        values: ['2016-01', '2016-02', '2016-03', '2016-04', '2016-05', '2016-06'],
+        className: 'slot1',
+        textAlign: 'right'
+      }, {
+        divider: true,
+        content: '-',
+        className: 'slot2'
+      }, {
+        flex: 1,
+        values: ['2016-01', '2016-02', '2016-03', '2016-04', '2016-05', '2016-06'],
+        className: 'slot3',
+        textAlign: 'left'
+      }],
+      value: null,
+      value2: null,
+      value3: null,
+      value4: null,
+      value5: '04:32',
+      visible: false,
+      visible2: false,
+      visible3: false,
+      visible4: false,
+      visible5: false
+    },
+    watch: {
+      popupVisible2: function (val) {
+        if (val) {
+          setTimeout(function () {
+            vm.popupVisible2 = false;
+          }, 2000)
+        }
+      }
+    },
+    methods: {
+      goHtml:function(name,url,anim) {        
+        corNative.openWindow({
+            name:name,
+            data: url,
+            animID:anim,
+            flag:1024,
+        });
+      },
+      goBack: function () {
+        corJS.closeWin();
+      },
+      collapse: function (key) {
+        var curIndex = this.unfolded.indexOf(key);
+        curIndex > -1 ? this.unfolded.splice(curIndex, 1) : this.unfolded.push(key);
+      },
+      getCollapseStyle: function (key) {
+        var isUnfolded = this.unfolded.indexOf(key) > -1;
+        return {
+          "co-mg-l05": !isUnfolded,
+          "co-bg-2 co-pd-l05": isUnfolded
+        }
+      },
+      getEnterStyle: function (key) {
+        var isUnfolded = this.unfolded.indexOf(key) > -1;
+        return isUnfolded ? ["tipD1"] : ["tipD"];
+      },
+      openToast: function () {
+        this.$toast('提示信息');
+      },
+      openToastWithIcon: function () {
+        //自定义图标更换class类即可
+        this.$toast({
+          message: '操作成功',
+          iconClass: 'coicon coicon-success_large',
+          duration: '2000'
+        });
+      },
+      openBottomToast: function () {
+        this.$toast({
+          message: '提示信息',
+          position: 'bottom'
+        });
+      },
+      openIndicator: function () {
+        this.$indicator.open();
+        var self = this;
+        setTimeout(function () {
+          self.$indicator.close();
+        }, 3000)
+      },
+      openIndicatorWithSpinner: function () {
+        this.$indicator.open({
+          text: '加载中',
+          spinnerType: 'double-bounce'
+        });
+        var self = this;
+        setTimeout(function () {
+          self.$indicator.close();
+        }, 3000)
+      },
+      openIndicatorWithText: function () {
+        this.$indicator.open('加载中...');
+        var self = this;
+        setTimeout(function () {
+          self.$indicator.close();
+        }, 3000)
+      },
+      openAlert: function () {
+        this.$messagebox.alert('操作成功!', '提示');
+      },
+      openAlert1: function () {
+        this.$messagebox.alert('操作成功!', '提示').then(function () {
+          //todo
+          alert("点击了确认");
+        })
+      },
+      openConfirm: function () {
+        this.$messagebox.confirm('确定执行此操作?', '提示').then(function () {
+          //点击确定执行后续操作
+          alert("点击了确定按钮");
+        });
+      },
+      openPrompt: function () {
+        var self = this;
+        this.$messagebox.prompt(' ', '请输入姓名').then(function (obj) {
+          if (obj.value) {
+            self.$messagebox.alert("你的姓名是" + obj.value, '输入成功');
+          }
+        })
+      },
+      takePhoto:function() {
+        alert("点击了拍照");
+      },
+      openAlbum:function() {
+        alert("点击了从相册中选择");
+      },
+      onDateChange: function (picker, values) {
+        if (values[0] > values[1]) {
+          picker.setSlotValue(1, values[0]);
+        }
+        this.dateStart = values[0];
+        this.dateEnd = values[1];
+      },
+      open: function (picker) {
+        this.$refs[picker].open();
+      },
+      handleChange: function (value) {
+        this.$toast({
+          message: '已选择 ' + value.toString(),
+          position: 'bottom'
+        });
+      }
+    },
+    mounted: function () {
+      this.actions = [{
+        name: '拍照',
+        method: this.takePhoto
+      }, {
+        name: '从相册中选择',
+        method: this.openAlbum
+      }];
+      this.actions2 = [{
+        name: '确定'
+      }, {
+        name: '返回上一步',
+        method: this.goBack
+      }];
+    }
+  })
+</script>
+
+</html>

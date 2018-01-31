@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <div class="page-indexlist-wrapper">
+      <co-index-list>
+        <co-index-section v-for="listItem in indexList" :index="listItem.index">
+          <co-cell :title="nameItem.name" v-for="nameItem in listItem.nameList">
+          </co-cell>
+        </co-index-section>
+      </co-index-list>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      // corNative.setBounceEnabled(1);
+    });
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        indexList: [{
+            index: "A",
+            nameList: [{
+                id: "1",
+                name: "安妮"
+              },
+              {
+                id: "2",
+                name: "安徒生"
+              },
+              {
+                id: "3",
+                name: "ali"
+              },
+              {
+                id: "4",
+                name: "andy"
+              },
+            ]
+          },
+          {
+            index: "B",
+            nameList: [{
+                id: "3",
+                name: "Billon"
+              },
+              {
+                id: "4",
+                name: "Better"
+              },
+            ]
+          },
+          {
+            index: "C",
+            nameList: [{
+                id: "5",
+                name: "陈伟"
+              },
+              {
+                id: "6",
+                name: "陈龙"
+              },
+              {
+                id: "7",
+                name: "陈龙"
+              },
+              {
+                id: "8",
+                name: "陈龙"
+              },
+            ]
+          },
+          {
+            index: "D",
+            nameList: [{
+                id: "9",
+                name: "董路"
+              },
+              {
+                id: "10",
+                name: "董小姐"
+              },
+            ]
+          },
+          {
+            index: "M",
+            nameList: [{
+                id: "11",
+                name: "马龙"
+              },
+              {
+                id: "12",
+                name: "马晓"
+              },
+              {
+                id: "13",
+                name: "mary"
+              },
+              {
+                id: "14",
+                name: "milly"
+              },
+            ]
+          },
+          {
+            index: "Z",
+            nameList: [{
+                id: "15",
+                name: "张鹏飞"
+              },
+              {
+                id: "16",
+                name: "张晓燕"
+              },
+            ]
+          }
+        ]
+      }
+    });
+  </script>
+</body>
+
+</html>

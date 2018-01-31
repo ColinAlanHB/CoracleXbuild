@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>  
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .co-range {
+      width: 100%;
+    }
+
+    .co-cell-value {
+      flex: 2.5;
+      position: relative;
+    }
+
+    .main-list .list-example {
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="范围选择器" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <section class="page-rate-container page-content-main">
+      <dl class="main-list">
+        <dt class="list-title"><span>基本功能</span></dt>
+        <dd class="list-example">
+          <co-cell v-for="(item, i) in cells1" :key="i" :title="item.title" :label="'value:' + item.value">
+            <co-range v-model="item.value">
+              <div slot="start" v-if="item.start">{{ item.start }}</div>
+              <div slot="end" v-if="item.end">{{ item.end }}</div>
+            </co-range>
+          </co-cell>
+        </dd>
+
+        <dt class="list-title"><span>自定义</span></dt>
+        <dd class="list-example">
+          <co-cell v-for="(item, i) in cells2" :key="i" :title="item.title" :label="'value:' + item.value">
+            <co-range v-model="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1" :bar-height="item.barHeight || 1"
+              :disabled="item.disabled">
+              <div slot="start" v-if="item.start">{{ item.start }}</div>
+              <div slot="end" v-if="item.end">{{ item.end }}</div>
+            </co-range>
+          </co-cell>
+        </dd>
+
+        <dt class="list-title"><span>场景举例</span></dt>
+        <dd class="list-example">
+          <co-cell v-for="(item, i) in cells3" :key="i" :title="item.title" :label="'value:' + item.value">
+            <co-range v-model="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1">
+              <div slot="start" v-if="item.start" :style="{ 'font-size': item.start + 'px' }">{{ item.start }}</div>
+              <div slot="end" v-if="item.end" :style="{ 'font-size': item.end + 'px' }">{{ item.end }}</div>
+            </co-range>
+          </co-cell>
+        </dd>
+      </dl>
+    </section>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setWindowScrollbarVisibility(false);
+    })
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        value1: 0,
+        value2: 20,
+        value3: 0,
+        value4: 0,
+        value5: 10,
+        value6: 0,
+        value7: 40,
+        value8: 14,
+        cells1: null,
+        cells2: null,
+        cells3: null
+      },
+      mounted: function () {
+        this.cells1 = [{
+          title: '默认',
+          value: this.value1
+        }, {
+          title: '预设 value',
+          value: this.value2
+        }, {
+          title: '左右文字',
+          value: this.value3,
+          start: '0',
+          end: '100'
+        }];
+        this.cells2 = [{
+          title: '定义步长',
+          value: this.value4,
+          step: 10
+        }, {
+          title: '定义区间',
+          value: this.value5,
+          start: '10',
+          end: '90',
+          min: 10,
+          max: 90
+        }, {
+          title: '定义线宽',
+          value: this.value6,
+          barHeight: 5
+        }, {
+          title: '置为无效',
+          value: this.value7,
+          disabled: true
+        }];
+        this.cells3 = [{
+          title: '字体大小',
+          value: this.value8,
+          start: '14',
+          end: '22',
+          min: 14,
+          max: 22,
+          step: 2
+        }];
+      }
+    });
+  </script>
+</body>
+
+</html>

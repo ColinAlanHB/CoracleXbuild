@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .bgImg{height:3rem;width:3rem;background:#ccc;display: block;border: none;}
+  </style>
+</head>
+<body>
+  <div id="app" class="co-fs-01">
+    <div id="appList">
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>企业移动平台</div>
+          <div class="co-fs-02 co-cl-3 co-te2">专注大中型企业移动信息化转型的平台，实现企业移动互联的平台化开发和管理。</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>企业门户及应用商店</div>
+          <div class="co-fs-02 co-cl-3 co-te2">整合即时通讯、应用商店、社交分享、移动办公、企业文化、移动业务等130多个应用。</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>移动互联咨询规划</div>
+          <div class="co-fs-02 co-cl-3 co-te2">从解决客户复杂业务逻辑角度出发，帮助企业构建内部和外部融合互通的移动互联商业模式。</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>企业安全卫士</div>
+          <div class="co-fs-02 co-cl-3 co-te2">企业级安全卫士，为用户在物联网、云计算、大数据、移动互联环境下的安全提供强大保障。</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>运营维护服务</div>
+          <div class="co-fs-02 co-cl-3 co-te2">对客服的产品、服务及系统运行环境进行的综合管理，以保证持续提供更多的价值。</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>IT人员外包服务</div>
+          <div class="co-fs-02 co-cl-3 co-te2">专业的IT人员协助客户完成信息化建设，企业集中精力发展核心业务。</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>随时随地移动互联</div>
+          <div class="co-fs-02 co-cl-3 co-te2">帮助企业在任意时间、任意地点
+任意智能终端访问多种应用和处理核心业务</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>安全保障</div>
+          <div class="co-fs-02 co-cl-3 co-te2">将MDM，MAM，MIM进行有效的整合
+为企业确保移动应用的全面安全保障</div>
+        </div>
+      </div>
+      <div class="co-flex co-pd-a04 co-bg-0 co-bd-b1">
+        <div class="">
+          <img src="" class="bgImg" />
+        </div>
+        <div class="co-mg-l04 co-flex co-ver co-jsb co-f1">
+          <div>专业级移动平台</div>
+          <div class="co-fs-02 co-cl-3 co-te2">集成企业ERP、CRM、OA等多个业务系统
+解决了企业多系统多平台的移动化难题</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function () {
+    var autoH = corJS.getDom("appList").innerHTML;
+    corNative.setBounceEnabled(1);
+    corNative.setBounceParams({
+      "textColor":"#ffffff",
+      "levelText":"更多精彩敬请期待...",
+      "pullToReloadText":"刷新中",
+      "releaseToReloadText":"刷新中...",
+      "loadingText":"刷新中...",
+      "bgColor":"rgba(255, 255, 255, 100)"
+    },function(){
+        setTimeout(function(){
+            corJS.getDom("appList").innerHTML = autoH;
+            corNative.resetBounce(0);
+        },1500)
+    })
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

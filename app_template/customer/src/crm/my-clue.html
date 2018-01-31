@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="my-clue/css/index.css">
+
+</head>
+<body>
+    <div id="Page">
+            <co-header title="我的线索">
+                <a slot="left" class="iconfont icon-arr" @click="location(-1)"></a>
+                <div slot="right">
+                    <a class="iconfont icon-search"></a>
+                    <a class="iconfont icon-plus"></a>
+                </div>
+            </co-header>
+            <co-navbar v-model="selected">
+                <co-tab-item id="1">待处理</co-tab-item>
+                <co-tab-item id="2">处理中</co-tab-item>
+                <co-tab-item id="3">已关闭</co-tab-item>
+            </co-navbar>
+
+            <co-tab-container v-model="selected">
+                <co-tab-container-item id="1">
+                    <div class="rowslist">
+                        <div class="rowsone" v-for="item in stateList[0]" @click="location('my-clue-detail.html')">
+                            <p class="title" v-cloak>{{item.name}}</p>
+                            <p v-cloak>联系方式：{{item.phone}}</p>
+                            <p v-cloak>最新更进时间：{{item.time}}</p>
+                            <span class="state theme-red" v-if="item.isNew">今日新增</span>
+                        </div>
+                    </div>
+
+
+                </co-tab-container-item>
+                <co-tab-container-item id="2">
+                    <div class="rowslist">
+                        <div class="rowsone" v-for="item in stateList[1]" @click="location('my-clue-detail.html')">
+                            <p class="title" v-cloak>{{item.name}}</p>
+                            <p v-cloak>联系方式：{{item.phone}}</p>
+                            <p v-cloak>最新更进时间：{{item.time}}</p>
+                            <span class="state theme-red" v-if="item.isNew">今日新增</span>
+                        </div>
+                    </div>
+                </co-tab-container-item>
+                <co-tab-container-item id="3">
+                    <div class="rowslist">
+                        <div class="rowsone" v-for="item in stateList[2]" @click="location('my-clue-detail.html')">
+                            <p class="title" v-cloak>{{item.name}}</p>
+                            <p v-cloak>联系方式：{{item.phone}}</p>
+                            <p v-cloak>最新更进时间：{{item.time}}</p>
+                            <span class="state theme-red" v-if="item.isNew">今日新增</span>
+                        </div>
+                    </div>
+                </co-tab-container-item>
+            </co-tab-container>
+
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/my-clue.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

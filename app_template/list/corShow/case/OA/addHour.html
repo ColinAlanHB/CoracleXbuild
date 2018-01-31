@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="新增工时" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-return co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-cl-1">
+      <div class="co-flex co-ac co-bg-0 co-pd-tb02">
+        <div class="co-pd-l06">项目名称：</div>
+        <div class="co-flex co-f1 co-ac co-pd-a04">
+          <div class="co-f1">{{hourList.project.text}}</div>
+          <div class="coicon coicon-enter"></div>
+          <select v-model="hourList.project" class="co-select" selectedindex="0">
+            <option :value="option" v-for="option in projectList">{{option.text}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-pd-tb02 co-bd-b1">
+        <div class="co-pd-l06">项目阶段：</div>
+        <div class="co-flex co-f1 co-ac co-pd-a04">
+          <div class="co-f1">{{hourList.step.text}}</div>
+          <div class="coicon coicon-enter"></div>
+          <select v-model="hourList.step" class="co-select" selectedindex="0">
+            <option :value="option" v-for="option in stepList">{{option.text}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-pd-tb02">
+        <div class="co-pd-l06">日期：</div>
+        <div @click="open('picker4')" class="co-flex co-f1  co-cl-2 co-je co-pd-a04">
+          {{hourList.date}}
+        </div>
+        <div class="coicon coicon-enter co-pd-r04"></div>
+      </div>
+      <div class="co-flex co-ac co-bg-0 co-pd-tb02">
+        <div class="co-pd-l06">时间：</div>
+        <div @click ='hourVisible=true' class="co-flex co-f1 co-pd-a04 co-cl-2 co-je">
+            {{hourList.startTime}} ~ {{hourList.endTime}}
+        </div>
+        <div class="coicon coicon-enter co-pd-r04"></div>
+      </div>
+      <div @click="send" class="co-bg-3 co-br-a0 co-h-2 co-tx-c co-cl-0 co-mg-lr06" style="margin-top:2.5rem">提交</div>
+      <co-datetime-picker ref="picker4" type="date" v-model="dateTime" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleChange">
+      </co-datetime-picker>
+      <co-popup style="width:100%" v-model='hourVisible' position="bottom">
+        <co-picker :slots='slots' @change='onHourChange'>      
+        </co-picker>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      hourList:{
+        date:"请选择日期",
+        startTime:"",
+        endTime:"",
+        project:{value:"-1",text:"选择项目"},
+        step:{value:"-1",text:"选择阶段"}
+      },
+      projectList:[
+        {value:"-1",text:"选择项目"},
+        {
+          value:"0",text:"广州地铁"
+        },
+        {
+          value:"1",text:"佳兆业"
+        },
+        {
+          value:"2",text:"福田汽车"
+        }
+      ],
+      stepList:[
+        {value:"-1",text:"选择阶段"},
+        {
+          value:"0",text:"设计"
+        },
+        {
+          value:"1",text:"开发"
+        },
+        {
+          value:"2",text:"测试"
+        }
+      ],
+      dateTime: '',
+      hourVisible: false,
+      slots: [
+        {
+          flex: 1,
+          values: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30"],
+          className: 'start-time'         
+        },
+        {         
+          divider: true,
+          content: "~"
+        },
+        {
+          flex: 1,
+          values: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"],
+          defaultIndex: 16,
+          className: 'end-time'         
+        }
+      ]
+    },
+    methods:{
+      send:function(){
+        if(this.hourList.project=="选择项目"||this.hourList.step=="选择阶段"||this.hourList.date=="请选择日期"){
+          vm.$toast({
+            message: '请填写完整信息',
+            duration: 1200
+          })
+          return;
+        }
+        var params = {
+          name:"addList",
+          extras:this.hourList
+        }
+        corNative.sendNotification(params);
+        this.$indicator.open('提交中...');
+        setTimeout(function(){
+          vm.$indicator.close();
+          vm.$toast({
+            message: '提交成功',
+            position: 'bottom', 
+            duration: 800
+          })
+          setTimeout(function(){
+            corNative.prevPage();
+          },800)
+        },1500)
+      },
+      back:function(){
+        corNative.closeWindow({
+          animID:-1
+        });
+      },
+      open:function(picker) {
+        this.$refs[picker].open();
+      },
+      handleChange:function(value) {
+        var yearMonth = value.getFullYear() + '-' + (value.getMonth() + 1)+ '-' + value.getDate();
+        this.hourList.date = yearMonth;
+      },
+      onHourChange: function (picker, slots) {
+        var pickerStartTime = slots[0] || "9:00",
+            pickerEndTime = slots[1] || "18:00";
+        
+        var startHm = pickerStartTime.split(':'),
+              endHm = pickerEndTime.split(':');
+          // 小时比较
+          if (startHm[0] > endHm[0]) {
+            if(startHm[0] == 13) {
+              pickerEndTime = "14:00";                            
+            } 
+            else {
+              pickerEndTime = pickerStartTime;  
+            }                     
+          }
+          // 分钟比较
+          else if (startHm[0] == endHm[0]) {
+            if(startHm[1] > endHm[1]) {
+              pickerEndTime = pickerStartTime;
+            }
+          }     
+        picker.setSlotValue(1, pickerEndTime);                        
+        this.hourList.startTime = pickerStartTime || "9: 00";
+        this.hourList.endTime = pickerEndTime || "18:00"; 
+      }
+
+    },
+    created:function(){
+    },
+    mounted:function(){
+      var now = new Date();
+      this.dateTime = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+    }
+  })
+</script>
+</html>

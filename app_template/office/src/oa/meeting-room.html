@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A133会议室</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/meeting-room.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+<script src="./js/moment.min.js"></script>
+</head>
+<body>
+<div id="meetingRoom">
+	<co-header title="会议室管理">
+		<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>	
+	</co-header>
+	<section>
+		<header>
+			<co-datebar :year-month='dateChoosed.format("YYYY-M")' :day='dateChoosed.format("D")' @click='chooseDate'>						
+			</co-datebar>
+		</header>
+		<section class="room-win">
+			<ul class="room-list">
+				<li v-for="(room, index) in rooms" class="room" :key='"room" + index'>
+					<section class="room-main">
+						<div class="room-img"><img :src="room.imgSrc" alt="会议室图片"></div>
+						<div class="room-info">
+							<p class="info-name">{{ room.name }}</p>
+							<p class="info-location">地址：{{ room.location }}</p>
+							<p class="info-devices">
+								设备：
+								<i class="icon iconfont" :class='"icon-" + icon' v-for='(icon, index) in room.devices' :key='"icon" + index'></i>
+							</p>
+							<p class="info-capacity">可容纳人数：{{ room.capacity }}</p>
+							<p class="info-remarks">备注：{{ room.remarks }}</p>
+						</div>
+						<div class="room-book">
+							<co-button class="btn-book">发起</co-button>
+						</div>									
+					</section>
+					<footer class="room-schedule">
+						<ul class="schedule-scroller" id="timeline">						
+							<li v-for='(n, hour) in 24' class="hour" :class='hourStyleObj[index][hour]'>
+								<a @click='chooseHour(index, hour)'>{{ hour | i2hour}}</a>
+							</li>						
+						</ul>
+					</footer>
+				</li>		
+			</ul>			
+		</section>
+	</section>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#meetingRoom',
+		data: {
+			dateChoosed: moment(),	
+			rooms: []			
+		},	
+		filters: {
+			i2hour: function (i) {
+				if(i < 10){
+					return "0" + i + ":00";
+				}
+				return i + ":00";
+			}
+		},
+		computed: {
+			hourStyleObj: function () {					
+				var roomStyleList = new Array(this.rooms.length);		
+				var room = null, style = null;
+				for (var r = 0; r < roomStyleList.length; r++)	{
+					room = this.rooms[r];
+					roomStyleList[r] = new Array(24);
+					// 检测时间状态
+					for (var h = 0; h < 24; h++) {
+						style = roomStyleList[r][h] = {};
+						if (room.expired && room.expired.indexOf(h) > -1) {
+							style.expired = true;							
+						} else if (this.dateChoosed.set('hour', h).isBefore(moment())) { // 过期时间
+							style.expired = true;
+						}
+						else if (room.occupied && room.occupied.indexOf(h) > -1) {
+							style.occupied = true;							
+						}	else if (room.actived && room.actived.indexOf(h) > -1) {
+							style.actived = true;
+						} else {
+							roomStyleList[r][h] = null;
+							continue;
+						}											
+					}					
+				}
+				
+				return roomStyleList;
+			}
+		},
+		methods: {
+			chooseDate: function (dateObj) {
+				// 更新选择时间
+				var dateOfMonth = dateObj.$this.data;				
+				this.dateChoosed = this.dateChoosed.date(dateOfMonth);
+				// 更新房间数据				
+			},
+			chooseHour: function (index, hour) {
+				var room = this.rooms[index];				
+				if (room.expired && room.expired.indexOf(hour) > -1) {
+					return false;
+				} else if (room.occupied && room.occupied.indexOf(hour) > -1)	{
+					return false;
+				} else { // 点击可选时间															
+					if(!room.actived || room.actived.length === 0) {	// 没有选中的时间
+						if(room.actived) {
+							room.actived.push(hour);
+						} else {
+							room.actived = [hour];
+						}
+					} else {
+						var minHour = room.actived[0],
+								maxHour = room.actived[room.actived.length - 1];
+						if (hour < minHour) {
+								room.actived = [hour];
+						} else if (hour == minHour) {
+							room.actived = [];
+						} else if (hour > maxHour) {
+							var addHourList = [];
+							for (var i = maxHour + 1; i <= hour; i++) {
+								addHourList.push(i); // 缓存，避免频发触发计算属性
+							}
+							room.actived = room.actived.concat(addHourList);
+						} else {
+							var newHourList = [];
+							for (var j = minHour; j <= hour; j++) {
+								newHourList.push(j)
+							}
+							room.actived = newHourList;
+						}
+					}					
+				}
+			}	
+		},
+		created: function () {
+			setTimeout(function () {
+				vm.rooms = [								
+					{
+						name: "一号会议室",
+						imgSrc: "./images/room.jpg",
+						location: "联想大楼信息楼",
+						devices: ["pc", "tv"],
+						capacity: 36,
+						remarks: "爱惜公物",
+						occupied: [9,10,11,12,13,14,15,16,17,18]					
+					},
+					{
+						name: "二号会议室",
+						imgSrc: "./images/room.jpg",
+						location: "联想大楼信息楼",
+						devices: ["tv"],
+						capacity: 12,
+						remarks: "到此一游",
+						occupied: [9, 10, 11, 12, 15, 16, 17, 18],
+						expired: [13, 14]
+					},
+					{
+						name: "X号会议室",
+						imgSrc: "./images/room.jpg",
+						location: "联想大楼信息楼",
+						devices: ["pc"],
+						capacity: 99,
+						remarks: "滑下来了"		
+					}
+				].map(function (item, i) {
+					// Vue 自动添加__ob__: Observer 用于响应式数据
+					item.actived = [];
+					return item;
+				});
+			});
+		},
+		mounted: function () {
+			var barEl = this.dateBarEl = document.querySelector('#datebar-id .co-component-progressbar');
+			// li 还未更新
+			this.$nextTick(function () {				
+				// datebar 组件“内联样式”修改
+				var lis = barEl.querySelectorAll('li.datedata');			
+				var liStyle = window.getComputedStyle(lis[0],null);		
+				// 防止小数丢失，破坏浮动			
+				var liWidth = parseFloat(liStyle.getPropertyValue("width"));
+				barEl.style.width = (liWidth * (lis.length)) + "px";
+				barEl.style.height = liStyle.getPropertyValue("height");				
+				// 设置 overflow 滚动条位置				
+				setTimeout(function () {
+					var scrollerWin = barEl.parentNode;
+					scrollerWin.scrollLeft = liWidth * (vm.dateChoosed.date() - 2);
+					// 会议室滚动列表高度计算
+					var roomWin = document.querySelector('.room-win');
+					var headerHeight = window.getComputedStyle(document.querySelector('#meetingRoom>.co-header'), null).getPropertyValue("height");
+					roomWin.style.height = (document.body.clientHeight - parseFloat(headerHeight) - parseFloat(barEl.style.height) - 5) + "px";			
+				}, 40);
+			});		
+		}
+	});	
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+  <style>
+    .page-search {
+      height: 100%;
+      position: relative;
+      top: 44px;
+      left: 0;
+    }
+
+    .co-searchbar-core {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="折叠面板" fixed class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div class="co-pd-r05" onclick="corNative.closeWindow({animID:-1, animDuration:300})">
+          <i class="coicon coicon-back co-fs-1 co-cl-0" style='font-weight: bloder;'></i>
+        </div>
+      </div>
+    </co-header>
+    <section class="page-collapse-container page-content-main">
+      <dl class="main-list">
+        <dt class="list-title"><span>基础示例</span></dt>
+        <dd class="list-info">默认可以同时展开多个面板，可以设置默认展开第几个</dd>
+        <dd class="list-example">
+          <co-collapse :value="value1" @on-change='setVal'>
+            <co-panel>
+              0号面板
+              <p slot="content">Nothing is left here</p>
+            </co-panel>
+            <co-panel>
+              1号面板
+              <p slot="content">I am not the First</p>
+            </co-panel>
+          </co-collapse>
+        </dd>
+        <dt class="list-title"><span>手风琴</span></dt>
+        <dd class="list-info">通过设置属性accordion开启手风琴模式，每次只能打开一个面板。</dd>
+        <dd class="list-example">
+          <co-collapse v-model="value2" accordion>
+            <co-panel name="A">
+              A
+              <p slot="content">哆啦</p>
+            </co-panel>
+            <co-panel name="B">
+              B
+              <p slot="content">咪发嗦</p>
+            </co-panel>
+          </co-collapse>
+        </dd>
+      </dl>
+    </section>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script>
+    corJS.ready(function () {
+      corNative.setWindowScrollbarVisibility(false);
+    });
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        value1: '1',
+        value2: 'B'
+      },
+      methods: {
+        setVal(nameArr) {
+          this.value1 = nameArr;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

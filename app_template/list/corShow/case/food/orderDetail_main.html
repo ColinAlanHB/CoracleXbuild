@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+      <div class="co-pd-a04 co-bg-2 co-fs-01">
+        订单状态
+      </div>
+      <div class="co-pd-lr04 co-bg-0 co-cl-2 co-flex">
+        <div class="co-flex co-ver co-jsa" >
+          <div class="coicon coicon-task co-cl-6"></div>
+          <div class="coicon coicon-success_fill co-cl-7"></div>
+          <div class="coicon coicon-clock co-cl-4"></div>
+          <div class="coicon coicon-edit co-cl-2"></div>
+        </div>
+        <div class="co-f1 co-mg-l06">
+          <div class="co-flex co-ac co-bd-b1 co-pd-tb06 co-fs-01">
+            <div class="co-f1 co-cl-6">订单已完成</div>
+            <div>12:44</div>
+          </div>
+          <div class="co-flex co-ac co-bd-b1 co-pd-tb06 co-fs-01">
+            <div class="co-f1 co-cl-7">取餐完成</div>
+            <div>12:34</div>
+          </div>
+          <div class="co-flex co-ac co-bd-b1 co-pd-tb06 co-fs-01">
+            <div class="co-f1 co-cl-4">餐厅安排制作</div>
+            <div>12:26</div>
+          </div>
+          <div class="co-flex co-ac co-bd-b1 co-pd-tb06 co-fs-01">
+            <div class="co-f1 co-cl-2">下单成功</div>
+            <div>12:24</div>
+          </div>
+        </div>
+      </div>
+      <div class="co-pd-a04 co-bg-2 co-fs-01">
+        订单详情
+      </div>
+      <div class="co-pd-lr04 co-bg-0 co-cl-2 co-fs-01">
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="co-f1">如意混沌大份</div>
+          <div class="co-pd-r1">x 1</div>
+          <div class="co-pd-l1">￥16</div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="co-f1">如意混沌小份</div>
+          <div class="co-pd-r1">x 1</div>
+          <div class="co-pd-l1">￥12</div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="co-f1">包装费</div>
+          <div class="co-pd-r1"></div>
+          <div class="co-pd-l1">￥2</div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="co-f1">配送费</div>
+          <div class="co-pd-l1">￥2</div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="co-f1"></div>
+          <div class="co-pd-l1 co-cl-4">总计：￥32</div>
+        </div>
+      </div>
+      <div class="co-pd-a04 co-bg-2 co-fs-01">
+        支付信息
+      </div>
+      <div class="co-pd-lr04 co-bg-0 co-cl-2 co-fs-01">
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="co-f1">线上支付</div>
+          <div class="co-pd-l1">￥0</div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="co-f1">餐到付款</div>
+          <div class="co-pd-l1">￥32</div>
+        </div>
+      </div>
+      <div class="co-pd-a04 co-bg-2 co-fs-01">
+        送餐信息
+      </div>
+      <div class="co-pd-lr04 co-bg-0 co-cl-2 co-fs-01">
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="">联系人：</div>
+          <div class="co-pd-l06">陈先生</div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="">电话：</div>
+          <div class="co-pd-l1">027-87675643</div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="">送餐地址：</div>
+          <div class="co-pd-l06">武汉</div>
+        </div>
+        <div class="co-flex co-ac co-pd-tb02">
+          <div class="">送餐时间：</div>
+          <div class="co-pd-l06">2017-07-28 10:08:23</div>
+        </div>
+      </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

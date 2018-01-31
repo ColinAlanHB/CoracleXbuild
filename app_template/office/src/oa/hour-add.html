@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A1411 新增工时</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/setting.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<!-- 先引入 Vue -->
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+<script src="./js/moment.min.js"></script>
+</head>
+<body>
+<div id="addHour">
+	<co-header title="新增工时">
+		<a href="hour-buffet.html" slot="left" class="icon iconfont icon-back"></a>
+	</co-header>
+	<section class="main-cells">
+		<co-cell title="项目名称" is-link>
+			<i class="icon iconfont icon-project-circle-fill" slot="icon"></i>
+		</co-cell>
+		<co-cell title="项目阶段" is-link>
+			<i class="icon iconfont icon-stage-circle-fill" slot="icon"></i>
+		</co-cell>		
+		<co-cell title="日期" is-link class="no-link-icon" :value='date | dateFormat'>
+			<i class="icon iconfont icon-date-circle-fill" slot="icon"></i>
+		</co-cell>
+		<co-cell title="时间" is-link class="no-link-icon" @click.native ='hourVisible=true'>
+			<i class="icon iconfont icon-clock-fill" slot="icon"></i>
+			<span>{{ startTime }} ~ {{ endTime }}<span>
+		</co-cell>		
+	</section>
+	<footer class="fixed-bottom">
+		<co-button type="default">提交</co-button>
+	</footer>
+	<co-popup v-model='hourVisible' position="bottom">
+		<co-picker :slots='slots' @change='onHourChange' :item-height="0.96 | rem2px">			
+		</co-picker>
+	</co-popup>
+</div>
+<script>
+	new Vue({
+		el: '#addHour',
+		data: {
+			date: moment(),
+			startTime: '09:00',
+			endTime: '18:00',
+			hourVisible: false,
+			// 工时选择器插槽内容
+			slots: [
+				{
+					flex: 1,
+					values: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30"],
+					className: 'start-time'					
+				},
+				{					
+					divider: true,
+					content: "~"
+				},
+				{
+					flex: 1,
+					values: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"],
+					defaultIndex: 16,
+					className: 'end-time'					
+				}
+			]
+		},
+		filters: {
+			dateFormat: function (date) {
+				return date.format("YYYY-MM-DD");
+			},
+			rem2px: function (rem) {
+				var rFontSize = document.documentElement.style.fontSize;
+				return rem * parseFloat(rFontSize);
+			}
+		},
+		methods: {
+			onHourChange: function (picker, slots) {
+				var pickerStartTime = slots[0] || "9:00",
+						pickerEndTime = slots[1] || "18:00";
+				
+				var startHm = pickerStartTime.split(':'),
+							endHm = pickerEndTime.split(':');
+					// 小时比较
+					if (startHm[0] > endHm[0]) {
+						if(startHm[0] == 13) {
+							pickerEndTime = "14:00";														
+						}	
+						else {
+							pickerEndTime = pickerStartTime;	
+						}											
+					}
+					// 分钟比较
+					else if (startHm[0] == endHm[0]) {
+						if(startHm[1] > endHm[1]) {
+							pickerEndTime = pickerStartTime;
+						}
+					}			
+				picker.setSlotValue(1, pickerEndTime);												
+				this.startTime = pickerStartTime || "9: 00";
+				this.endTime = pickerEndTime || "18:00"; 
+			}
+		}
+	});
+</script>
+</body>
+</html>

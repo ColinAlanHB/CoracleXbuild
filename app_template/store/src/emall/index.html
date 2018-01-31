@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="商城" fixed  class="co-bg-6 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+        <div @click="back" class="backBtn co-pd-r06">
+          <i class="coicon coicon-undo co-fs-4"></i>
+        </div>
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-content-bottom">
+      <co-swipe :auto="3000" >
+        <co-swipe-item >
+          <img src="images/elec-ad1.png" class="bannerImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+          <img src="images/elec-ad1.png" class="bannerImg" />
+        </co-swipe-item>
+      </co-swipe>
+      <div class="co-flex co-mg-lr04 co-mg-t05">
+        <div class="co-f1 bgList1 co-pd-a05 co-br-a0">
+          <div>抢购</div>
+          <div class="co-fs-02 co-cl-4 co-pd-tb02">9时开始抢，倒计时：</div>
+          <div class="co-fs-02 co-cl-3">10:00:35</div>
+        </div>
+        <div class="co-f1 co-mg-l04 bgList2 co-pd-a05 co-br-a0">
+          <div>团购</div>
+          <div class="co-fs-02 co-cl-2 co-pd-tb02">全网最低价</div>
+        </div>
+        <div class="co-f1 co-mg-l04 bgList3 co-pd-a05 co-br-a0">
+          <div>早晚市</div>
+          <div class="co-fs-02 co-cl-2 co-pd-tb02">7时早市，18时夜场</div>
+        </div>
+      </div>
+      <div @click="goDetial('newsDetail')" class="co-of co-pd-b06">
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t05">
+          <div class="listC co-flex co-ac co-jc co-cl-4">
+              <i class="coicon coicon-marketing_fill co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">商品分类</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t05">
+          <div class="listC co-flex co-ac co-jc co-cl-3">
+              <i class="coicon coicon-like co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">掌上热卖</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t05">
+          <div class="listC co-flex co-ac co-jc co-cl-6">
+              <i class="coicon coicon-shake co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">天天摇</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t05">
+          <div class="listC co-flex co-ac co-jc co-cl-7">
+              <i class="coicon coicon-search2 co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">物流查询</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t05">
+          <div class="listC co-flex co-ac co-jc co-cl-8">
+              <i class="coicon coicon-financial_fill co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">花费充值</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t05">
+          <div class="listC co-flex co-ac co-jc co-cl-1">
+              <i class="coicon coicon-publishgoods_fill co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">特价清仓</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t05">
+          <div class="listC co-flex co-ac co-jc co-cl-4">
+              <i class="coicon coicon-like_fill co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">猜你喜欢</div>
+        </div>
+        <div class="listTab co-flex co-ver co-ac co-jc co-mg-t05">
+          <div class="listC co-flex co-ac co-jc co-cl-2">
+              <i class="coicon coicon-message co-fs-5"></i>
+          </div>
+          <div class="co-cl-2 co-fs-02 co-mg-t04">意见反馈</div>
+        </div>
+      </div>
+    </div>
+    <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+      <div class="co-f1 co-flex co-ver co-ac co-jc co-cl-7">
+        <i class="coicon coicon-homepage co-fs-4"></i>
+        <div class="co-fs-02">首页</div>
+      </div>
+      <div @click="tabMenu('type')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-marketing_fill co-fs-4"></i>
+        <div class="co-fs-02">分类</div>
+      </div>
+      <div @click="tabMenu('mine')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-mine co-fs-4"></i>
+        <div class="co-fs-02">我的</div>
+      </div>
+      <div @click="tabMenu('shopCar')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-publishgoods_fill co-fs-4"></i>
+        <div class="co-fs-02">购物车</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corJS.js"></script>
+<script>
+  corReady = function(){
+  }
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      back:function(){
+       // corJS.closeWin();
+        corNative.closeWeb();
+      },
+      goDetial:function(name){
+        corJS.openWin(name);
+      },
+      tabMenu:function(name){
+        corJS.openWin(name,0);
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

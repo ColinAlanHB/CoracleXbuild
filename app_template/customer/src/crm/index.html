@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="workplace/css/index.css">
+
+</head>
+<body>
+
+    <div id="Page" class="hidden">
+        <co-drawer :opened="isopen" direction="left" :distance="0.6" :modal="true" @togglemenu="togglemenu">
+            <div slot="menu">
+                <div class="avatar-wrap displayflex">
+                <div class="avatar-pic flex-1"><img src="images/avatar.jpg"></div>
+                <div class="avatar-name flex-1">白百合<br><span>销售经理</span></div>
+                </div>
+                    <ul class="avatar-menu">
+                        <li>
+                            <span class="iconfont icon-workspace"></span>任务<i class="dot"></i>
+                        </li>
+                        <li>
+                            <span class="iconfont icon-richeng"></span>日程<i class="dot"></i>
+                        </li>
+                        <li>
+                            <span class="iconfont icon-shenpi"></span>审批
+                        </li>
+                        <li>
+                            <span class="iconfont icon-tongxunlu"></span>通讯录
+                        </li>
+                        <li @click="location('setting.html')">
+                            <span class="iconfont icon-setting"></span>设置
+                        </li>
+                    </ul>
+            </div>
+            <div slot="content">
+                <div id="index" :style="{'height':wrapHeight + 'px'}">
+                    <div id="topbar">
+                        <co-header>
+                            <a class="icon iconfont icon-menu" slot="left" @click="togglemenu(!isopen)"></a>
+                            <a  class="icon iconfont icon-talk" slot="right" @click="location('notification.html')"></a>
+                        </co-header>
+                        <div class="topbar-sch">
+                            <co-search v-model="searchval" cancel-text=""></co-search>
+                        </div>
+                    </div>
+
+                    <article id="index-funs-wrap" class="theme-bgcolor boxsizing">
+                        <div>
+                            <h5>常用功能</h5>
+                            <ul class="displayflex boxsizing">
+                                <li class="boxsizing flex-1">
+                                    <a href="">
+                                        <img src="images/icon1.jpg">
+                                        <span>客户地图</span>
+                                    </a>
+                                </li>
+                                <li class="boxsizing flex-1">
+                                    <a href="customer.html">
+                                        <img src="images/icon2.jpg">
+                                        <span>客户</span>
+                                    </a>
+                                </li>
+                                <li class="boxsizing flex-1">
+                                    <a href="contact.html">
+                                        <img src="images/icon3.jpg">
+                                        <span>联系人</span>
+                                    </a>
+                                </li>
+                                <li class="boxsizing flex-1">
+                                    <a href="">
+                                        <img src="images/icon4.jpg">
+                                        <span>客户分配</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article id="index-todo-wrap">
+                        <header>
+                            <span class="time">今天</span>
+                            <span class="iconfont icon-rili theme-color"></span>
+                        </header>
+                        <div class="index-todo-list">
+                            <div class="index-todo-box">
+                                <div class="index-todo-box-title">
+                                    <span class="iconfont icon-clock theme-color"></span>
+                                    <span class="title">任务</span>
+                                </div>
+                                <div class="index-todo-box-info">
+                                    <p class="title">客户高层汇报</p>
+                                    <p class="time">全天</p>
+                                </div>
+                            </div>
+                            <div class="index-todo-box">
+                                <div class="index-todo-box-title">
+                                    <span class="iconfont icon-businessactive theme-color"></span>
+                                    <span class="title">活动</span>
+                                </div>
+                                <div class="index-todo-box-info">
+                                    <p class="title">招待客户</p>
+                                    <p class="time">01:50AM</p>
+                                </div>
+                            </div>
+                            <div class="index-todo-box">
+                                <div class="index-todo-box-title">
+                                    <span class="iconfont icon-CheckIn theme-color"></span>
+                                    <span class="title">活动</span>
+                                </div>
+                                <div class="index-todo-box-info">
+                                    <p class="title">销售绩效报告</p>
+                                    <p class="time">12:54AM</p>
+                                </div>
+                            </div>
+                            <div class="index-todo-box">
+                                <div class="index-todo-box-title">
+                                    <span class="iconfont icon-birthday theme-color"></span>
+                                    <span class="title">生日</span>
+                                </div>
+                                <div class="index-todo-box-info">
+                                    <p class="title">张萌生日</p>
+                                    <p class="time">02:58AM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </article>
+                </div>
+                <div id="footer-func">
+                    <ul class="displayflex">
+                        <li class="theme-color flex-1"><span class="iconfont icon-bangong"></span><br>工作区</li>
+                        <li class="flex-1" @click="location('application.html')"><span class="iconfont icon-apply"></span><br>应用</li>
+                    </ul>
+                    <div class="func-plus">
+                        <div class="quan"></div>
+                        <span class="iconfont icon-plus theme-bgcolor"></span>
+                    </div>
+                </div>
+            </div>
+        </co-drawer>
+
+
+
+    </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/workplace.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

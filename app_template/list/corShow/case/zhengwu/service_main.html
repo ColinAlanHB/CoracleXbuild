@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <div class="co-bg-2 co-pd-a05 co-cl-1">交通出行</div>
+    <div class="co-of co-bg-0"  @click="goDetial('search')">
+      <div class="serviceD co-flex co-ac co-jc co-pd-tb06 co-bd-r1 co-bd-t1">
+        <i class="coicon coicon-warning co-cl-7 co-fs-4"></i>
+        <div class="co-cl-1 co-fs-01 co-pd-l04">违章查询</div>
+      </div>
+      <div class="serviceD co-flex co-ac co-jc co-pd-tb06 co-bd-r1 co-bd-t1">
+        <i class="coicon coicon-phone co-cl-7 co-fs-4"></i>
+        <div class="co-cl-1 co-fs-01 co-pd-l04">便民逻车</div>
+      </div>  
+      <div class="serviceD co-flex co-ac co-jc co-pd-tb06 co-bd-r1 co-bd-t1">
+        <i class="coicon coicon-addition co-cl-7 co-fs-4"></i>
+        <div class="co-cl-1 co-fs-01 co-pd-l04">年检预约</div>
+      </div>
+      <div class="serviceD co-flex co-ac co-jc co-pd-tb06 co-bd-r1 co-bd-t1">
+      </div>
+    </div>
+    <div class="co-bg-2 co-pd-a05 co-cl-1">社会保险</div>
+    <div  @click="goDetial('search')" class="co-of co-bg-0">
+      <div class="serviceD co-flex co-ac co-jc co-pd-tb06 co-bd-r1 co-bd-t1">
+        <i class="coicon coicon-transaction_fill co-cl-7 co-fs-4"></i>
+        <div class="co-cl-1 co-fs-01 co-pd-l04">社保查询</div>
+      </div>
+      <div class="serviceD co-flex co-ac co-jc co-pd-tb06 co-bd-r1 co-bd-t1">
+        <i class="coicon coicon-search2 co-cl-7 co-fs-4"></i>
+        <div class="co-cl-1 co-fs-01 co-pd-l04">公积金查询</div>
+      </div>  
+      <div class="serviceD co-flex co-ac co-jc co-pd-tb06 co-bd-r1 co-bd-t1">
+        <i class="coicon coicon-financial_fill co-cl-7 co-fs-4"></i>
+        <div class="co-cl-1 co-fs-01 co-pd-l04">医保查询</div>
+      </div>
+      <div class="serviceD co-flex co-ac co-jc co-pd-tb06 co-bd-r1 co-bd-t1">
+      </div>
+    </div>
+    <div class="co-bg-2 co-pd-a05 co-cl-1">就医保健</div>
+    <div class="co-of co-bg-0">
+      <div class="serviceD co-flex co-ac co-jc co-pd-tb06 co-bd-r1 co-bd-t1">
+        <i class="coicon coicon-addition co-cl-7 co-fs-4"></i>
+        <div class="co-cl-1 co-fs-01 co-pd-l04">诊断挂号</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+      goDetial:function(name){
+                 corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:10,
+            flag:1024
+         });
+      },
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

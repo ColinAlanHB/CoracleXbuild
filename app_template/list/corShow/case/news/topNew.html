@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+    <co-header title="要闻" fixed  class="co-bg-3 co-cl-0">
+      <div slot="left" class="co-flex">
+        <!--头部左边内容区域-->
+      </div>
+      <div slot="right" class="co-flex co-je">
+        <!--头部右边内容区域-->
+      </div>
+    </co-header>
+    <div id="co-content" class="co-content-top co-content-bottom">
+      <div class=" co-bg-0">
+        <div @click="goDetial('newsDetail')" v-for="item in dataList" class="co-flex co-pd-tb05 co-bd-b1">
+          <div class="co-mg-l06">
+            <img :src="item.img" style="width:4.8rem;height:3.5rem;display: block;" />
+          </div>
+          <div class="co-mg-lr05 co-f1 co-flex co-ver co-jsb co-of">
+            <div class="co-te2 co-cl-1">{{item.title}}</div>
+            <div class="co-flex co-ac co-jsb co-cl-3 co-fs-02">
+              <div class="">{{item.type}}</div>
+              <div class="co-flex co-ac">
+                <i class="coicon coicon-message"></i>{{item.tip}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="co-footer" class="co-flex co-bg-0 co-bd-t1 co-cl-2">
+      <div  @click="tabMenu('index')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-homepage co-fs-4"></i>
+        <div class="co-fs-02">首页</div>
+      </div>
+      <div class="co-f1 co-flex co-ver co-ac co-jc co-cl-4">
+        <i class="coicon coicon-tasklist co-fs-4"></i>
+        <div class="co-fs-02">要闻</div>
+      </div>
+      <div @click="tabMenu('picNew')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-manage co-fs-4"></i>
+        <div class="co-fs-02">图片</div>
+      </div>
+      <div @click="tabMenu('mine')" class="co-f1 co-flex co-ver co-ac co-jc">
+        <i class="coicon coicon-mine co-fs-4"></i>
+        <div class="co-fs-02">我的</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var dataList = [
+    {
+      img:"images/img0.jpg",
+      title:"习近平接受八国新任驻华大使递交国书",
+      type:"热点",
+      tip:"123"
+    },
+    {
+      img:"images/img7.jpg",
+      title:"李克强陕西考察的五个瞬间  国务院常务会",
+      type:"热点",
+      tip:"455"
+    },
+    {
+      img:"images/img3.jpg",
+      title:"多地现“史上最热一天” 最强高温来袭",
+      type:"天气",
+      tip:"566"
+    },
+    {
+      img:"images/img5.jpg",
+      title:"发改委：2017全面实施居住证制度 推动城市落户",
+      type:"社会",
+      tip:"555"
+    },
+    {
+      img:"images/img6.jpg",
+      title:"美国联邦大陪审团正式起诉章莹颖绑架案嫌疑人",
+      type:"国际",
+      tip:"666"
+    },
+    {
+      img:"images/img2.jpg",
+      title:"美国联邦大陪审团正式起诉章莹颖绑架案嫌疑人",
+      type:"国际",
+      tip:"666"
+    },
+    {
+      img:"images/img3.jpg",
+      title:"美国联邦大陪审团正式起诉章莹颖绑架案嫌疑人",
+      type:"国际",
+      tip:"666"
+    },
+    {
+      img:"images/img5.jpg",
+      title:"上半年新增人民币贷款近8万亿元 6月M2增速创新低",
+      type:"财政",
+      tip:"666"
+    },
+    {
+      img:"images/img7.jpg",
+      title:"摔断30万玉镯女游客：没工作领低保 不想让大家同情",
+      type:"国际",
+      tip:"666"
+    },
+    {
+      img:"images/img0.jpg",
+      title:"河南裕达置业骗贷案3被告认罪：受郭文贵指使骗贷15亿",
+      type:"法律",
+      tip:"666"
+    },
+    {
+      img:"images/img4.jpg",
+      title:"猪肉价格同比连跌五个月 批发价每公斤跌破20元",
+      type:"生活",
+      tip:"666"
+    },
+  ]
+  corJS.ready(function(){
+
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:dataList
+    },
+    methods:{
+      back:function(){
+          corNative.closeWindow({
+          animID:-1
+        });
+      },
+      tabMenu:function(name){
+                corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:0,
+            flag:0
+         });
+      },
+      goDetial:function(name){
+         corNative.openWindow({
+            name:name,
+            data: name+".html",
+            animID:10,
+            flag:1024
+         });
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

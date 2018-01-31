@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+	<title>drawer</title>
+	<link rel="stylesheet" href="../public/css/style.css" />
+	<link rel="stylesheet" href="../public/css/flex.css" />
+	<link rel="stylesheet" href="../public/css/base.css" />
+	<style>
+		.quit{height:2rem;}
+		.title{background-color:#444;padding:.1rem .4rem;color:#fff;}
+		.openW{width:1.4rem;height: 1.4rem;background:url(img/lie.png) no-repeat;background-size:100%;}
+		.ritIcon{width:.8rem;height:.8rem;background:url(img/rit.png) no-repeat;background-size:100%;}
+		.co-drawer-container{flex:1;-webkit-flex:1;}
+    	.co-drawer-content{display: flex;display: -webkit-flex;}
+	</style>
+</head>
+<body class="co-body">
+	<div id="app" v-cloak class="co-Page co-flex">
+			    <co-drawer class="co-f1 co-flex co-ver" :modal="true" :opened="isopen" :direction="direction" @togglemenu="togglemenu">
+			      <div class="swipe-menu co-tabContent co-bg-1" slot="menu">
+				  	<div class="title co-fs-01">联系</div>
+				  	<div class="co-flex co-ac co-bd-b1 co-pd-a04">
+			        	<div class="co-f1">联系人</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b1 co-pd-a04">
+			        	<div class="co-f1">最新动态</div>
+			        </div>
+			        <div class="title co-fs-01 co-mg-t1">其他</div>
+				  	<div class="co-flex co-ac co-bd-b1 co-pd-a04">
+			        	<div class="co-f1">圈子</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b1 co-pd-a04">
+			        	<div class="co-f1">广场</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b1 co-pd-a04">
+			        	<div class="co-f1">获取金币</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b1 co-pd-a04">
+			        	<div class="co-f1">全球焦点</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b1 co-pd-a04">
+			        	<div class="co-f1">附近用户</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b1 co-pd-a04">
+			        	<div class="co-f1">高级搜索</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b1 co-pd-a04">
+			        	<div class="co-f1">更多功能</div>
+			        </div>
+			      </div>
+			      <div slot="content" class="co-f1">
+			        <co-header  title="个人中心" class="co-bg-6 co-cl-0">
+			           <div slot="left" class="co-flex">
+			           	<div class="openW" @click="togglemenu"></div>
+					   </div>
+			        </co-header>
+			        <div class="co-flex co-ac co-bd-b co-pd-a06">
+			        	<div class="co-f1">草稿箱</div>
+			        	<div class="ritIcon">
+			        	</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b co-pd-a06">
+			        	<div class="co-f1">称赞过的照片</div>
+			        	<div class="ritIcon">
+			        	</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b co-pd-a06">
+			        	<div class="co-f1">问题反馈</div>
+			        	<div class="ritIcon">
+			        	</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b co-pd-a06">
+			        	<div class="co-f1">检查更新</div>
+			        	<div class="ritIcon">
+			        	</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b co-pd-a06">
+			        	<div class="co-f1">常见问题</div>
+			        	<div class="ritIcon">
+			        	</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b co-pd-a06">
+			        	<div class="co-f1">关于我们</div>
+			        	<div class="ritIcon">
+			        	</div>
+			        </div>
+			        <div class="co-flex co-ac co-bd-b co-pd-a06">
+			        	<div class="co-f1">关于我们</div>
+			        	<div class="ritIcon">
+			        	</div>
+			        </div>
+			        <div class="co-flex co-mg-lr08 co-mg-t1" @click="back">
+						<co-button  class="co-f1 quit co-br-a co-bg-6 co-cl-0 co-fs-1" type="default">注销</co-button>
+					</div>
+			      </div>
+			    </co-drawer>
+	</div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+
+    })
+  var vm = new Vue({
+		el:"#app",
+		data:{
+			isopen:false,
+			direction:"left"
+		},
+		methods:{
+			togglemenu:function(state) {
+		      this.isopen = !this.isopen;
+		    },
+		    back:function(){
+	        	corNative.closeWindow({
+		          animID:-1,
+		          animDuration:300
+		        });
+	      	},
+		},
+		created:function(){
+
+		},
+		mounted:function(){
+
+		}
+	})
+</script>
+</html>

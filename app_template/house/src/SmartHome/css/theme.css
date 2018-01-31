@@ -1,0 +1,110 @@
+#app .v-modal {
+	opacity: 0.3;
+}
+
+#app .co-actionsheet {
+	background-color: transparent;
+}
+
+#app .co-actionsheet-listitem, 
+#app .co-actionsheet-button {
+	color: #26a2ff;
+}
+
+.login-main,
+.login-third,
+.register-main,
+.device-win,
+.device-attention,
+.wifi-main {
+	background-color: #eee;
+}
+
+.login-main-form,
+.register-main-form,
+.wifi-main-form {
+	background-color: #FFF;
+}
+.form--field .icon-eye,
+.form--field .icon-right {
+	color: #eaeaea;	
+}
+.login-main-link a {
+	color: #9a9a9a;
+}
+.login-main-submit,
+.register-main-submit,
+.forget-main-submit,
+.btn-code,
+.wifi-main-next {	
+	background-color: #ffc40d;
+	color: #000;	
+}
+.login-third-list .list--btn a { 
+	color: #AEAEAE;
+}
+
+.device-main-list .list--title {
+	color: #999;	
+}
+.device-main-list .list--item {
+	background-color: #FFF;	
+}
+.device-main-list .item--info {
+	color: #999;
+}	
+.device-main-list .item--link {
+	color: #999;
+}	
+.device-attention,
+.wifi-main-attention {
+	color: #999;
+}
+
+.wifi-main-title .title--clue {
+	color: #d1d1d1;
+}
+.wifi-main-title .title--module {
+	color: #26a2ff;	
+}
+
+#app {
+	background-color: #13bb8a;
+}
+
+#app .controller-header {
+	background-color: transparent;
+	color: #FFF;
+}
+#app .controller-title,
+#app .controller-main {
+	color: #FFF;
+}
+
+#app .controller-main-panel .panel--chart .chart--pm2p5,
+#app .controller-main-panel .panel--chart .chart--value .value--zero,
+#app .controller-main-panel .panel--chart .chart--in_air,
+#app .controller-main-panel .panel--chart .chart--filter_rest {
+	opacity: .4;
+}	
+
+#app .controller-tabbar {
+	background-color: #FFF;
+}	
+#app .controller-tabbar a.tabbar--shutdown.active .item--name,
+#app .controller-tabbar a.tabbar--prefer.active .item--name {
+	color: #FFF;
+}	
+#app .controller-tabbar a.tabbar--auto.active .item--name {
+	color: #13bb8a;
+}
+#app .controller-tabbar a.tabbar--sleep.active .item--name {
+	color: #25c3cf;
+}	
+.controller-tabbar .menu--setting {
+	background-color: #FFF;
+}
+.co-switch-input:checked + .co-switch-core {
+    border-color: #13bb8a;
+    background-color: #13bb8a;
+}

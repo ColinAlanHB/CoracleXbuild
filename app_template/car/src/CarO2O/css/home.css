@@ -1,0 +1,196 @@
+
+.home-main-banner {
+    overflow: hidden;
+    position: relative;
+}
+.home-main-banner .banner-list {
+    width: 300%;
+    overflow: hidden;
+}
+.home-main-banner .banner-item {
+    float: left;
+    width: 33.3%;
+}
+.home-main-banner .item--image {
+    display: inline-block;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+.home-main-banner .banner-pager {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.home-main-banner .banner-pager > li {
+    margin-right: 5px;
+}
+.home-main-banner .pager-item {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.home-main-cate {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;    
+    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    padding: 10px;
+    border-bottom: 1px solid #DFDFDF;
+}
+.home-main-cate .cate-link {
+    box-sizing: border-box;
+    display: inline-block;
+    border-right: 1px solid #DFDFDF;
+    width: 25%;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.home-main-cate .cate-link:nth-child(4n) {
+    border-right-width: 0;
+}
+.home-main-ad {
+    overflow: hidden;
+}
+.home-main-ad .ad-item {
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+.home-main-order {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+.home-main-order .order-item {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.home-main-order .item-image {
+    display: block;
+    width: 60px;
+    height: 60px;
+}
+.home-main-order .item-title {
+    margin-top: 10px;
+}
+.home-main-location {
+    text-align: center;
+    vertical-align: bottom;
+    margin-top: 25px;
+    position: relative;
+}
+.home-main-location .location-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 80px;
+    height: 20px;
+    text-align: center;
+    -webkit-transform: translateY(-90%);
+            transform: translateY(-90%);
+    border-radius: 10px 10px 0 0;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 2;
+}
+.home-main-location .location-address {
+    font-size: 16px;
+    line-height: 3;
+}
+.home-main-info {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.home-main-info .info-title {
+    width: 90%;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-left: 1px solid #ffa912;
+    text-indent: 0.5em;
+}
+.home-main-info .title-name {
+}
+.home-main-info .title-more {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.home-main-info .info-hot {
+    padding: 20px;
+    overflow: hidden;
+}
+.home-main-info .info-hot a {
+    display: block;
+    float: left;
+    width: 48%;
+}
+.home-main-info .info-hot a:last-child {
+    float: right;
+}
+.home-main-info .hot-image {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+.home-main-info .hot-title {
+    font-size: 14px;
+    text-align: center;
+}
+.home-main-info .info-news {
+    border-bottom: 1px solid #DDDDDD;
+}
+.home-main-info .info-news a {
+    display: block;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid #DDDDDD;
+}
+.home-main-info .news-image {
+    display: block;
+    float: left;
+    width: 40%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    margin-right: 10px;
+}
+.home-main-info .news-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.home-main-info .news-time {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    font-size: 14px;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+  <style>
+   .co-header-title{line-height: 1.6rem}
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+      <div v-for="item in dataList" class="co-flex co-bd-b1 co-pd-a04 co-bg-0">
+        <div class="">
+          <img :src="item.img" class="typeImg" alt="">
+        </div>
+        <div class="co-f1 co-mg-l05">
+          <div>{{item.typeName}}</div>
+          <div class="co-fs-01 co-cl-2 co-mg-t02">{{item.typeList}}</div>
+        </div>
+      </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script src="js/jsonData.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      dataList:typeList,
+      searchValue:""
+    },
+    methods:{
+      back:function(){
+       // corJS.closeWin();
+        corNative.closeWeb();
+      },
+      goDetial:function(name){
+        corJS.openWin(name);
+      },
+      tabMenu:function(name){
+        corJS.openWin(name,0);
+      }
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="opportunity/css/index.css">
+
+</head>
+<body>
+    <div id="Page" class="page-customer-manager">
+            <co-header title="商机">
+                <a slot="left" class="iconfont icon-arr" @click="location(-1)"></a>
+                <div slot="right">
+                    <a class="iconfont icon-search"></a>
+                    <a class="iconfont icon-plus"></a>
+                </div>
+            </co-header>
+
+        <co-navbar class="navbar-select" ref="button">
+            <co-tab-item id="1" @click.native="popup1.visible1 = true">{{popup1.list[popup1.activeIndex]}}<span class="icon iconfont icon-sanjiao1"></span></co-tab-item>
+            <co-tab-item id="2" @click.native="popup2.visible1 = true">{{selectedVal}}<span class="icon iconfont icon-sanjiao1"></span></co-tab-item>
+            <co-tab-item id="3">更多筛选</co-tab-item>
+        </co-navbar>
+
+        <co-popup v-model="popup1.visible1" popup-transition="popup-fade" class="select displayflex" :style="{ top: buttonBottom  + 'px' }">
+            <div class="type flex-1">
+                <co-cell v-for="(item, index) in popup1.list"
+                         @click.native="selectTime(index)" :title="item">
+                    <i v-show="popup1.activeIndex === index" class="indexicon icon-toast theme-color"></i>
+                </co-cell>
+            </div>
+        </co-popup>
+        <co-popup v-model="popup2.visible1" popup-transition="popup-fade" class="select displayflex" :style="{ top: buttonBottom  + 'px' }">
+            <div class="type flex-1">
+                <co-cell v-for="(item, index) in popup2.list"
+                         @click.native="selectType(index)"
+                         :title="item.title">
+                    <i v-show="popup2.typeIndex === index" class="indexicon icon-toast theme-color"></i>
+                </co-cell>
+            </div>
+            <div class="sub-type">
+                <co-cell v-for="(item, index) in popup2.list[popup2.typeIndex].list"
+                         @click.native="select(index)"
+                         :title="item">
+                    <i v-show="popup2.list[popup2.typeIndex].activeIndex === index" class="indexicon icon-toast theme-color"></i>
+                </co-cell>
+            </div>
+        </co-popup>
+
+
+        <div class="business-wrapper">
+            <div class="business-list">
+                <div class="mainInfo">
+                    <div class="price theme-red">¥200,000.00</div>
+                    <div class="name">深圳星光电工有限公司</div>
+                    <div class="address">深圳星光</div>
+                    <div class="address">需求调研</div>
+                    <span class="co-cell-allow-right"></span>
+                </div>
+                <div class="additional displayflex">
+                    <div class="flex-1"><span class="iconfont icon-time"></span> 2016-04-10</div>
+                    <div class="flex-1"><span class="iconfont icon-renwu"></span> 李军</div>
+                    <div class="flex-1"><span class="iconfont icon-shalou"></span> <span class="theme-green">进行中</span></div>
+                </div>
+            </div>
+            <div class="business-list">
+                <div class="mainInfo">
+                    <div class="price theme-red">¥200,000.00</div>
+                    <div class="name">深圳星光电工有限公司</div>
+                    <div class="address">深圳星光</div>
+                    <div class="address">需求调研</div>
+                    <span class="co-cell-allow-right"></span>
+                </div>
+                <div class="additional displayflex">
+                    <div class="flex-1"><span class="iconfont icon-time"></span> 2016-04-10</div>
+                    <div class="flex-1"><span class="iconfont icon-renwu"></span> 李军</div>
+                    <div class="flex-1"><span class="iconfont icon-shalou"></span> <span>已结束</span></div>
+                </div>
+            </div>
+            <div class="business-list">
+                <div class="mainInfo">
+                    <div class="price theme-red">¥200,000.00</div>
+                    <div class="name">深圳星光电工有限公司</div>
+                    <div class="address">深圳星光</div>
+                    <div class="address">需求调研</div>
+                    <span class="co-cell-allow-right"></span>
+                </div>
+                <div class="additional displayflex">
+                    <div class="flex-1"><span class="iconfont icon-time"></span> 2016-04-10</div>
+                    <div class="flex-1"><span class="iconfont icon-renwu"></span> 李军</div>
+                    <div class="flex-1"><span class="iconfont icon-shalou"></span> <span class="theme-red">未开始</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/opportunity.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

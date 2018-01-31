@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body class="">
+  <div id="app" v-cloak>
+        <div>
+          <div class="co-flex co-pd-a05 co-bd-b1 co-bg-0">
+            <div class="">
+              <img src="images/app2.png" class="co-br-a3" style="width:2.2rem;height:2.2rem;display: block;" alt="">
+            </div>
+            <div class="co-f1 co-mg-l05">
+              <div class="co-cl-1">待办事项</div>
+              <div class="co-fs-02 co-cl-2">暂无待办事项</div>
+            </div>
+          </div>
+          <div class="co-pd-a02 co-bg-2 co-fs-02">最近联系人</div>
+          <div class="co-bg-0">
+            <div v-for="item in charList" class="co-flex co-pd-a05 co-bd-b1">
+              <div><img src="images/app1.png" class="co-br-a3" style="width:2.2rem;height:2.2rem;display: block;" alt="">
+                <div v-show="item.tip!=0" class="chartTip">{{item.tip}}</div>
+              </div>
+              <div class="co-f1 co-mg-l05">
+                <div class="co-flex co-jsb"><span class="co-cl-1">{{item.name}}</span><span class="co-fs-02 co-cl-2">{{item.time}}</span></div>
+                <div class="co-fs-02 co-cl-2 co-mg-t02 co-te">{{item.content}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  var charList = [
+    {
+      name:"张立",
+      time:"今天 10:23",
+      content:"你好",
+      tip:"6"
+    },
+    {
+      name:"泡泡堂",
+      time:"今天 12:23",
+      content:"去玩游戏吧",
+      tip:"3"
+    },
+    {
+      name:"火星人",
+      time:"昨天 08:23",
+      content:"今天天气不错",
+      tip:"0"
+    },
+    {
+      name:"陈哲",
+      time:"昨天 10:23",
+      content:"明天放假",
+      tip:"2"
+    },
+    {
+      name:"小炮",
+      time:"昨天 10:23",
+      content:"一起出去完吧",
+      tip:"0"
+    },
+    {
+      name:"老王",
+      time:"昨天 07:23",
+      content:"在干嘛",
+      tip:"24"
+    },
+  ]
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      searchValue:"",
+      charList:charList,
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,139 @@
+html,
+body,
+#meetingRoom {
+  width: 100%;
+  height: 100%;
+}
+#meetingRoom .room-win {
+  overflow: scroll;
+}
+#meetingRoom #datebar-id .progressbar-year {
+  display: block;
+  margin-top: .16rem;
+  font-size: 11px;
+}
+[data-dpr="2"] #meetingRoom #datebar-id .progressbar-year {
+  font-size: 22px;
+}
+[data-dpr="3"] #meetingRoom #datebar-id .progressbar-year {
+  font-size: 33px;
+}
+#meetingRoom #datebar-id .progressbar-week {
+  line-height: 1;
+  height: 1em;
+}
+#meetingRoom #datebar-id .progressbar-data {
+  margin-top: .16rem;
+}
+#meetingRoom .room {
+  margin-top: .24rem;
+  height: 4.88rem;
+  border: 1px solid;
+  border-left: none;
+  border-right: none;
+}
+#meetingRoom .room-main {
+  position: relative;
+  width: 100%;
+  height: 2.8rem;
+  padding: .37333333rem;
+  padding-bottom: 0;
+  box-sizing: border-box;
+}
+#meetingRoom .room-main > * {
+  float: left;
+}
+#meetingRoom .room-img {
+  width: 2.8rem;
+  height: 100%;
+}
+#meetingRoom .room-img > img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+#meetingRoom .room-info {
+  width: 4.48rem;
+  height: 100%;
+  padding: 0 .36rem;
+}
+#meetingRoom .room-info > p {
+  font-size: 12px;
+  margin-top: .08rem;
+}
+[data-dpr="2"] #meetingRoom .room-info > p {
+  font-size: 24px;
+}
+[data-dpr="3"] #meetingRoom .room-info > p {
+  font-size: 36px;
+}
+#meetingRoom .room-info .iconfont {
+  font-size: 10px;
+  margin-right: .28rem;
+}
+[data-dpr="2"] #meetingRoom .room-info .iconfont {
+  font-size: 20px;
+}
+[data-dpr="3"] #meetingRoom .room-info .iconfont {
+  font-size: 30px;
+}
+#meetingRoom p.info-name {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: .16rem;
+}
+[data-dpr="2"] #meetingRoom p.info-name {
+  font-size: 28px;
+}
+[data-dpr="3"] #meetingRoom p.info-name {
+  font-size: 42px;
+}
+#meetingRoom .room-book {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 28px;
+}
+#meetingRoom .room-book .btn-book {
+  width: 1.44rem;
+  height: .66666667rem;
+  font-size: 10px;
+}
+[data-dpr="2"] #meetingRoom .room-book .btn-book {
+  font-size: 20px;
+}
+[data-dpr="3"] #meetingRoom .room-book .btn-book {
+  font-size: 30px;
+}
+#meetingRoom .room-schedule {
+  width: 100%;
+  margin-top: .68rem;
+  overflow-x: scroll;
+}
+#meetingRoom .room-schedule .schedule-scroller {
+  width: 384%;
+  height: .68rem;
+  box-sizing: border-box;
+  border: 1px solid;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+#meetingRoom .room-schedule .hour {
+  float: left;
+  width: 4.16666667%;
+  height: 100%;
+  box-sizing: border-box;
+  border-left: 1px solid;
+}
+#meetingRoom .room-schedule .hour:first-child {
+  border-left-width: 0;
+}
+#meetingRoom .room-schedule .hour > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: .64rem;
+  vertical-align: middle;
+}

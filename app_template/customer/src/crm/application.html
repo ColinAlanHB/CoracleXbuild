@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="application/css/index.css">
+
+</head>
+<body>
+
+<div id="Page" class="hidden">
+    <co-drawer :opened="isopen" direction="left" :distance="0.6" :modal="true" @togglemenu="togglemenu">
+        <div slot="menu">
+            <div class="avatar-wrap displayflex">
+                <div class="avatar-pic flex-1"><img src="images/avatar.jpg"></div>
+                <div class="avatar-name flex-1">白百合<br><span>销售经理</span></div>
+            </div>
+            <ul class="avatar-menu">
+                <li>
+                    <span class="iconfont icon-workspace"></span>任务<i class="dot"></i>
+                </li>
+                <li>
+                    <span class="iconfont icon-richeng"></span>日程<i class="dot"></i>
+                </li>
+                <li>
+                    <span class="iconfont icon-shenpi"></span>审批
+                </li>
+                <li>
+                    <span class="iconfont icon-tongxunlu"></span>通讯录
+                </li>
+                <li @click="location('setting.html')">
+                    <span class="iconfont icon-setting"></span>设置
+                </li>
+            </ul>
+        </div>
+        <div slot="content">
+            <div id="function" :style="{'height': wrapHeight+'px'}">
+            <div id="topbar">
+                    <co-header>
+                        <a class="icon iconfont icon-menu" slot="left" @click="togglemenu(!isopen)"></a>
+                        <a  class="icon iconfont icon-talk" slot="right" @click="location('notification.html')"></a>
+                    </co-header>
+                    <div class="topbar-sch">
+                        <co-search v-model="searchval" cancel-text=""></co-search>
+                    </div>
+                </div>
+            <div class="function-wrap">
+                <div class="function-title">客户管理</div>
+                <div class="function-list boxsizing">
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon1.jpg">
+                            <span>客户地图</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="customer.html">
+                            <img src="images/icon2.jpg">
+                            <span>客户</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="contact.html">
+                            <img src="images/icon3.jpg">
+                            <span>联系人</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon4.jpg">
+                            <span>客户分配</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="function-title">市场管理</div>
+                <div class="function-list">
+                    <div class="function-one">
+                        <a href="market-activity.html">
+                            <img src="images/icon5.jpg">
+                            <span>市场活动</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="my-clue.html">
+                            <img src="images/icon6.jpg">
+                            <span>线索</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="clue-distribution.html">
+                            <img src="images/icon7.jpg">
+                            <span>线索分配</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="clue-pool.html">
+                            <img src="images/icon8.jpg">
+                            <span>线索池</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon9.jpg">
+                            <span>市场资讯</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon10.jpg">
+                            <span>市场文档</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon11.jpg">
+                            <span>竞争对手</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="function-title">市场管理</div>
+                <div class="function-list">
+                    <div class="function-one">
+                        <a href="opportunity.html">
+                            <img src="images/icon12.jpg">
+                            <span>商机</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="activity.html">
+                            <img src="images/icon13.jpg">
+                            <span>活动</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon14.jpg">
+                            <span>任务</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon15.jpg">
+                            <span>报价</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon16.jpg">
+                            <span>销售计划</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon17.jpg">
+                            <span>销售漏斗</span>
+                        </a>
+                    </div>
+                    <div class="function-one">
+                        <a href="">
+                            <img src="images/icon18.jpg">
+                            <span>销售报表</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div id="footer-func">
+                <ul class="displayflex">
+                    <li class="flex-1" @click="location('workplace.html')"><span class="iconfont icon-bangong"></span><br>工作区</li>
+                    <li class="theme-color flex-1"><span class="iconfont icon-apply"></span><br>应用</li>
+                </ul>
+                <div class="func-plus">
+                    <div class="quan"></div>
+                    <span class="iconfont icon-plus theme-bgcolor"></span>
+                </div>
+            </div>
+        </div>
+    </co-drawer>
+
+    </div>
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/common-methods.js"></script>
+</body>
+</html>

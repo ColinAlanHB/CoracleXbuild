@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/ui-icon.css">
+    <link rel="stylesheet" href="css/ui-control.css">
+    <link rel="stylesheet" href="index/css/index.css">
+</head>
+<body>
+    <div class="bc-bg" id="Page">
+            <co-header title="Coracle新闻">
+                <co-button icon="menu" slot="right" @click="location('news_set.html')">&nbsp;&nbsp;</co-button>
+            </co-header>
+            <div class="ub sc-bg">
+                <div class="ub ub-f1 us-i">
+                    <co-navbar>
+                        <co-tab-item id="1" class="active">头条</co-tab-item>
+                        <co-tab-item id="2">娱乐</co-tab-item>
+                        <co-tab-item id="3">科技</co-tab-item>
+                        <co-tab-item id="4">军事</co-tab-item>
+                        <co-tab-item id="5">互联网</co-tab-item>
+                    </co-navbar>
+                </div>
+                <div class="ub ub-ac ub-pc uw-hnfn1 us-i" @click="location('addcolumn.html')">
+                    <div class="uwh-tBtn ub-img newstianjia"></div>
+                </div>
+            </div>
+
+        <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+                <div class="index-swipe-wrap">
+                    <co-swipe :auto="0" :show-indicators="false" @change="handleChange">
+                        <co-swipe-item v-for="item,index in newskv" :key="index"><img :src="item.imgsrc" width="100%"/></co-swipe-item>
+                    </co-swipe>
+                    <div class="index-swipe-label"><span v-cloak>{{newskvStr}}</span></div>
+                </div>
+
+                <co-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
+                    <ul class="index-newslist-ul">
+                        <li v-for="item,index in list" class="ubb ub bc-border t-bla ub-ac lis" :key="index" @click="location('news_articlecommon.html')">
+                            <ul class="ub ub ub-ver">
+                                <li>
+                                    <div class="lazy lis-icon ub-img"><img :src="item.newsimg" width="100%" /></div>
+                                </li>
+                            </ul>
+                            <ul class="ub-f1 ub ub-pj ub-ac">
+                                <ul class="ub-f1 ub ub-ver">
+                                    <li class="bc-text ub ub-ver ulev-1" v-cloak>{{item.title}}</li>
+                                    <li class="ulev-2 sc-text1 uinn3" v-cloak>{{item.msg}}</li>
+                                    <li class="ulev-2 sc-text1 uinn3" v-cloak>{{item.replynum}}跟帖</li>
+                                </ul>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div slot="bottom" class="co-loadmore-bottom">
+                        <span v-show="bottomStatus !== 'loading'" :class="{ 'is-rotate': bottomStatus === 'drop' }">↑</span>
+                          <span v-show="bottomStatus === 'loading'">
+                            <co-spinner type="snake"></co-spinner>
+                          </span>
+                    </div>
+                </co-loadmore>
+
+        </div>
+        <div class="page-tabbar"  ref="tabbar">
+        <co-tabbar v-model="selected" :fixed="true">
+            <co-tab-item id="新闻">
+                <i class="fa fa-list-alt fa-lg tx-c" slot="icon" ></i>
+                <span>新闻</span>
+            </co-tab-item>
+            <co-tab-item id="订阅">
+                <i class="fa fa-file-text-o fa-lg tx-c" slot="icon"></i>
+                <span>订阅</span>
+            </co-tab-item>
+            <co-tab-item id="图片">
+                <i class="fa fa-file-image-o fa-lg tx-c" slot="icon" @touchstart="location('news_photoList.html')"></i>
+                <span @touchstart="location('news_photoList.html')">图片</span>
+            </co-tab-item>
+            <co-tab-item id="视频">
+                <i class="fa fa-play-circle-o fa-lg tx-c" slot="icon"></i>
+                <span>视频</span>
+            </co-tab-item>
+        </co-tabbar>
+        </div>
+
+    </div>
+    <script src="../public/js/vue.js"></script>
+    <script src="../public/js/coui.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

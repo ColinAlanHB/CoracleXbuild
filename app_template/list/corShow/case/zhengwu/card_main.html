@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak class="co-bg-0 co-pd-b05">
+      <div class="co-flex co-ac co-mg-l04 co-bd-b1 co-pd-tb05">
+          <input v-model="name" placeholder="请输入真实姓名" type="text" class="co-input co-f1">
+      </div>
+      <div class="co-flex co-ac  co-bd-b1 co-pd-tb05 co-pd-l04">
+          <input v-model="cardNo" placeholder="请输入身份证号" type="text" class="co-input co-f1">
+      </div>
+      <div style="padding:2.5rem 0 " class="co-flex co-ver co-ac co-jc co-cl-3 co-bd-b1">
+        <div class="coicon coicon-add co-fs-6"></div>
+        <div class="cl-fs-01">请上传身份证正面照片</div>
+      </div>
+      <div style="padding:2.5rem 0 " class="co-flex co-ver co-ac co-jc co-cl-3">
+        <div class="coicon coicon-add co-fs-6"></div>
+        <div class="cl-fs-01">请上传身份证反面照片</div>
+      </div>
+    <div class="co-bg-6 co-cl-0 co-tx-c co-br-a0 co-pd-tb05 co-mg-lr06 co-mg-t1">提交认证</div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  //使用原生api的接口功能必须放在corReady里面,等所有原生组件加载完毕后执行
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+      name:"",
+      cardNo:""
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

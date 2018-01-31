@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title></title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/font-app/iconfont.css">
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak class="co-cl-1">
+    <div class="co-pd-a05 co-bg-1">设备信息</div>
+    <div class="co-bg-0 co-bd-t1 co-bd-b1">
+        <div onclick="alert(corNative.systemName)" class="co-flex co-ac co-mg-l05 co-pd-tb05 ">
+            <div class="icon iconfont icon-mingcheng co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">获取系统名称</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+          <div onclick="alert(corNative.systemVersion)" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-t1">
+            <div class="icon iconfont icon-banben co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">获取系统版本</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+          <div onclick="alert(corNative.getDeviceId())" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-t1">
+            <div class="coicon coicon-flashlight co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">获取设备唯一标示</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+          <div onclick="alert(corNative.getDeviceModel())" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-t1">
+            <div class="coicon coicon-mobilephone co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">获取设备型号</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+          <div onclick="alert(corNative.getDeviceName())" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-t1">
+            <div class="coicon coicon-headlines co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">获取设备名称</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+          <div onclick="alert('应用' + (corNative.isFullScreen?'是':'非') + '全屏状态')" class="co-hide co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-t1">
+            <div class="icon iconfont icon-navbar co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">应用是否全屏（没有状态栏）</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+          <div onclick="corNative.restartApp()" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-t1">
+            <div class="icon iconfont icon-zhongqi co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">重启应用</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+          <div onclick="corNative.exitApp(true)" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-t1">
+            <div class="icon iconfont icon-tuichu co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">退出程序（默认 .exitApp() 不弹窗）</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+        </div>
+        <div class="co-pd-a05 co-bg-1">设备功能</div>
+        <div class="co-bg-0 co-bd-t1 co-bd-b1">
+          <div @click="cancelVibrate" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+            <div class="icon iconfont icon-zhendong co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">设备震动</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+          <div @click="call" class="co-flex co-ac co-mg-l05 co-pd-tb05 co-bd-b1">
+            <div class="icon iconfont icon-dianhua co-fs-4"></div>
+            <div class="co-f1 co-mg-l04">
+              <div class=" co-fs-01 co-te2">拔打电话</div>
+            </div>
+            <div class="coicon coicon-enter  co-mg-r05"></div>
+          </div>
+        <div @click="network()" class="co-flex co-ac co-mg-l05 co-pd-tb05 ">
+          <div class="icon iconfont icon-wangluo co-fs-4"></div>
+          <div class="co-f1 co-mg-l04">
+            <div class=" co-fs-01 co-te2">获取设备网络状态</div>
+          </div>
+          <div class="coicon coicon-enter  co-mg-r05"></div>
+        </div>
+    </div>  
+  </div>
+</body>
+<script src="../../public/js/vue.js"></script>
+<script src="../../public/js/index.js"></script>
+<script src="../../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function () {
+    corNative.setBounceEnabled(1);
+  })
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      unfolded: [],
+      cameraPos: 0,
+      flashMode: 0
+    },
+    computed: {
+      flashModeName: function () {
+        switch (this.flashMode) {
+          case 0:
+            return "自动";
+          case 1:
+            return "打开";
+          case 2:
+            return "关闭"
+        }
+      }
+    },
+    methods: {
+      collapse: function (key) {
+        var curIndex = this.unfolded.indexOf(key);
+        curIndex > -1 ? this.unfolded.splice(curIndex, 1) : this.unfolded.push(key);
+      },
+      getCollapseStyle: function (key) {
+        var isUnfolded = this.unfolded.indexOf(key) > -1;
+        return {
+          "co-mg-l05": !isUnfolded,
+          "co-bg-2 co-pd-l05": isUnfolded
+        }
+      },
+      getEnterStyle: function (key) {
+        var isUnfolded = this.unfolded.indexOf(key) > -1;
+        return isUnfolded ? ["tipD1"] : ["tipD"];
+      },
+      cancelVibrate: function () {
+        corDevice.vibrate(500);
+      },
+      systemVersion: function (index) {
+        if (index == 12) {
+          corNative.alertDlg({
+            "title": "提示",
+            message: corNative.systemName,
+            buttonLabel: "确定"
+          })
+          return;
+        } else if (index == 13) {
+          if (corDevice.getInfo(index) == 0) {
+            var type = "wifi";
+          } else if (corDevice.getInfo(index) == 1) {
+            var type = "3g";
+          } else if (corDevice.getInfo(index) == 2) {
+            var type = "gprs";
+          } else if (corDevice.getInfo(index) == 3) {
+            var type = "4g";
+          } else {
+            var type = "无网络连接";
+          }
+          corNative.alertDlg({
+            "title": "提示",
+            message: type,
+            buttonLabel: "确定"
+          })
+          return;
+        }
+        corNative.alertDlg({
+          "title": "提示",
+          message: corDevice.getInfo(index),
+          buttonLabel: "确定"
+        })
+      },
+      network: function () {
+        corNative.alertDlg({
+          "title": "提示",
+          message: corNative.getConnectionType(),
+          buttonLabel: "确定"
+        })
+      },
+      call: function () {
+        var jsonData = {
+          number: "13813813800"
+        };
+        corNative.call(jsonData);
+      },
+      sms: function () {
+        var jsonData = {
+          numbers: [
+            "13813813800",
+            "15012772690"
+          ],
+          content: "测试短信内容"
+        }
+        corNative.sms(jsonData);
+      },
+      mail: function () {
+        var jsonData = {
+          recipients: ['zhkj@coracle.com', 'liy@coracle.com'],
+          subject: "测试邮件主题",
+          content: "这里是邮件内容！！！"
+        };
+        corNative.mail(jsonData);
+      }
+    }
+  })
+</script>
+
+</html>

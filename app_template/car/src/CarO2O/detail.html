@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+  <title>个人中心</title>
+  <!-- 引入 CoUI 样式 -->
+  <link rel="stylesheet" href="../public/css/style.css">
+  <!-- 覆盖 CoUI 样式 -->
+  <link rel="stylesheet" href="./css/car.css">
+  <!-- OA 默认配色皮肤 -->
+  <link rel="stylesheet" href="./css/theme.css">
+  <link rel="stylesheet" href="./font/iconfont.css">  
+  <link rel="stylesheet" href="./css/detail.css">
+  <!-- 先引入 Vue -->
+  <script src="../public/js/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="../public/js/coui.js"></script>  
+</head>
+<body>
+  <div id="app">  
+    <co-header title='详情' fixed>
+      <a href="buy.html" slot="left" class="icon iconfont icon-left"></a>
+      <a slot="right" class="icon iconfont icon-share" @click='shareVisible = true'></a> 
+    </co-header>
+    <div class="app-win">
+      <section class="detail-main">
+        <header class="detail-main-banner">
+          <ul class="banner-list" :style='{marginLeft: activeBanner * -100 + "vw"}'>
+            <li class="list--image" v-for='img in images'>
+              <img :src="img">
+            </li>
+          </ul>
+        </header>
+        <section class="detail-main-info">          
+          <p class="info-title">{{ name }}</p>
+          <p class="info-of">{{ cate }} 由 {{ of }} 提供</p>          
+          <p class="info-price"><span class="price-num">{{ price }}</span>万</p>
+        </section>
+        <section class="detail-main-table">
+          <div class="table-item">
+            <p class="item-key">上牌时间</p>
+            <p class="item-value">{{ registeTime }}</p>
+          </div>
+          <div class="table-item">
+            <p class="item-key">行驶里程</p>
+            <p class="item-value">{{ mileage }}</p>
+          </div>
+          <div class="table-item">
+            <p class="item-key">排量</p>
+            <p class="item-value">{{ engine }}L</p>
+          </div>
+          <div class="table-item">
+            <p class="item-key">变速箱</p>
+            <p class="item-value">{{ amt }}</p>
+          </div>
+          <div class="table-item">
+            <p class="item-key">环保标准</p>
+            <p class="item-value">{{ env }}</p>
+          </div>
+          <div class="table-item">
+            <p class="item-key">车辆所在地</p>
+            <p class="item-value">{{ location }}</p>
+          </div>
+        </section>
+        <section class="detail-main-check">
+          <ul class="check-list">
+            <li class="list-item icon iconfont icon-check">本车由至信二手车检测合格并提供质保</li>
+            <li class="list-item icon iconfont icon-check">100%无重大事故</li>
+            <li class="list-item icon iconfont icon-check">100%无火烧水泡</li>
+            <li class="list-item icon iconfont icon-check">7天可退</li>
+            <li class="list-item icon iconfont icon-check">2年或6万公里质保</li>
+          </ul>          
+        </section>        
+        <section class="detail-main-self">
+          <img src="./images/master.jpg" class="self--avatar">
+          <p class="self--title">车主自述</p>
+          <p class="self--text">{{ info }}</p>
+        </section>
+        <section class="detail-main-remark">
+          <header class="remark--title">
+            <span>质量检测合格证</span>
+            <img src="./images/safety.jpg" alt="合格证">
+          </header>
+          <section class="remark--text">
+            {{ remark }}
+          </section>
+        </section>
+      </section>
+      <footer class="detail-bar">
+        <div class="bar-item item--favo" @click='isCollected=!isCollected'><i class="icon iconfont" :class='isCollected ? "icon-heart-fill" : "icon-heart"'></i></div>
+        <div class="bar-item item--cut">我要砍价</div>        
+        <div class="bar-item item--book">资讯/预约</div>
+      </footer>
+    </div>
+    <co-actionsheet :actions='shareActions' v-model='shareVisible'></co-actionsheet>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {    
+        name: '本田锋范经典2009款 1.5 自动 精英版',        
+        of: '至信二手车',
+        price: '5.80',
+        registeTime: '2010-09-01',
+        mileage: '10.00',
+        cate: '轿车',       
+        engine: '1.5',
+        amt: '自动',
+        env: '-',
+        location: '武汉',
+        images: [          
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a5ca87fe.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a5ca8dfc.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a5ca9161.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a5ca94a1.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a5ca97f7.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a78d4a0e.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a78d4f4c.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a78d5203.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a78d54c4.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a78d57a5.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a8b457c3.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a8b45b99.jpg',
+          'http://ershouche.apicloud-saas.com/Uploads/2016-08-31/thumb_640_360_57c64a8b45f8a.jpg'
+        ],
+        info: `一、车型配置：自动挡、前排侧气囊、遥控钥匙、电动天窗、前后电动车窗、后视镜电动调节等
+          二、本车原值：11.68万
+          三、车况介绍:：
+            1.评估师检测：经232项专业检测，本车漆面局部喷漆，无重大事故，无水泡、无火烧。本田锋范（City）在同级别中属于比较省油的车型。整体质量稳定车主用车过程中比较省心。大量爱卡车主表示锋范的音响效果非常出色
+            检查发动机舱，无漏油、渗油现象，车辆发动机、变速箱等部件均无异常，电器系统使用正常，传动系统无异响，底盘平整无伤。`,
+        remark: `
+          四、至信二手车4S店介绍：
+            1．基本概况：万米豪华室内展厅，三千平米汽修车间。服务至上，设施完备。地址：机场路161号，国际汽车城二手车交易中心内
+            2．质保承诺：本公司为售出的五年内（含五年）的车辆，提供两年或6万公里的无忧车辆质保。 该质保依托于至信二手车4S店自己的汽修厂和专业维修团队，保证真实有效。无论您的车辆出现什么问题，让您有质保可依，有至信二手车专业汽修厂可去，购买车辆无任何后顾之忧。
+            3． 一站式服务：免费过户，上牌。
+          五：诚诚承诺：
+            1．凡是本公司出售的车辆均经过全面的232项检测，每辆车都由不同的检测师进行一次初检以及  一次复检，并由两位检测师出具检验合格证（例如：车辆哪个部位喷漆，哪个配件更换过等都要  详细的标注在合格证上）。以最诚信、透明的方式呈现在购车车主面前，本公司确保出售车辆100%无事故，无水泡，无火烧。
+            2．过户费用全免（一站式，无忧购车）
+            3．如售出车辆为五年内的（包含五年）车辆，本公司给予两年或6万公里的无忧车辆质保。（详 情请见《质保手册》）
+            4．7天无理由退车
+            5．首保免工时费，油品五折
+            6．为购车车主免费更换、存放雪地胎/四季胎
+          六．业务介绍：
+            1.二手车销售、收购、评估、置换、寄卖
+            2.专业评估师上门检车
+            3.车辆维修、保养
+          七.车辆寄售优惠政策
+            1：凡是在我公司寄售的车辆即送一次免费的美容翻新（内饰 发动机）
+            2：我们公司会通过多种渠道大力宣传，例如：黑龙江交通广播，报纸，网络等，保证帮助卖家以最快的速度把车辆销售出去
+            3：我们不赚取中间差价，直接让卖方和买方对接，确定最终价格。个人3%的，由买方承担，包括（我们对车辆车况的检测；以及5年以内的车辆我们提供两年或6万公里的质保）最高封顶8000元，最低1000元`,
+        activeBanner: 0,
+        shareVisible: false,
+        shareActions: [
+          {
+            name: '微信朋友圈',
+            method: function () {
+              return;
+            }
+          },
+          {
+            name: 'QQ空间/好友',
+            method: function () {
+              return;   
+            }
+          }
+        ],
+        isCollected: false
+      },
+      created() {
+        setInterval(() => {
+          this.activeBanner = ++this.activeBanner % 3;
+        }, 2000);
+      },
+      methods: {
+        share: function() {
+          return;
+        }        
+      }
+    });
+  </script>
+</body>
+</html>

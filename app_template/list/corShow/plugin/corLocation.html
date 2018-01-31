@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corLocation Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../css/plugin-helper.css">
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" fixed title="定位">
+      <div slot="left">
+        <i class="coicon coicon-return co-fs-4" @click="goBack"></i>
+      </div>
+    </co-header>
+    <div id="co-content" class="co-cl-1 co-content-top">
+      <div id="location" style="height:12rem;background-color:#ccc"></div>
+      <div class="co-pd-a04 co-fs-01">经度：{{lat}}</div>
+      <div class="co-pd-a04 co-fs-01">经度：{{log}}</div>
+      <div class="co-pd-a04 co-fs-01">位置：{{address}}</div>
+    </div>
+    <div id="co-footer" class="co-flex co-ac co-bg-0 co-bd-t1">
+      <div @click="start" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr05 co-fs-01">开始定位</div>
+      <div @click="stop" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr05 co-fs-01">停止定位</div>
+      <div @click="getAddress" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr05 co-fs-01">获取位置</div>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script src="../js/plugin-helper.js"></script>
+  <script>
+    corJS.ready(function() {
+      var vm = new ContainerVue({
+        el: '#app',
+        data:{
+          lat:"",
+          log:"",
+          address:""
+        },
+        mounted:function(){
+          Vue.nextTick(function(){
+            vm.open();
+          })
+        },
+        methods:{
+          open:function(){
+            corLocation.openLocation("bd09",function(error) {
+              if(!error){
+                corLocation.onChange = function(lat, log){
+                  vm.lat = lat;
+                  vm.log = log;
+                  var topH = corJS.offset("co-header").h;
+                  var bottom = corJS.offset("co-footer").h;
+                  var w = corJS.getWidth();
+                  var h = corJS.getDom("location").offsetHeight;
+                  corBaiduMap.open(0,topH,w,h,lat,log,function(){
+                      console.log('------->open success');
+                      corBaiduMap.setZoomLevel(14);
+                  });
+                }
+              }else{
+                alert("打开失败")
+              }
+            })
+          },
+          getAddress:function(){
+            var params = {
+              latitude: vm.log,
+              longitude: vm.lat,
+              type:"",
+              flag:2
+            };
+            corLocation.getAddressByType(params,function(error,data){
+              if(!error){
+                vm.address = JSON.stringify(data);
+              }else{
+                vm.address = "获取定位失败";
+              }
+            });
+          },
+          goBack:function(){
+            corNative.closeWindow({
+              animID:-1,
+              animDuration:300
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

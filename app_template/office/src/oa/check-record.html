@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A112签到记录</title>
+<!-- 引入 CoUI 样式 -->
+<link rel="stylesheet" href="../public/css/style.css">
+<!-- 覆盖 CoUI 样式 -->
+<link rel="stylesheet" href="./css/oa.css">
+<!-- OA 默认配色皮肤 -->
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./font/iconfont.css">
+<link rel="stylesheet" href="./css/check-record.css">
+<!-- html 根元素加入 font-size 及 data-dpr 用于 rem 适配 -->
+<script src="./js/co-flexible.js"></script>
+<script src="../public/js/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../public/js/coui.js"></script>
+<!-- 时间库 moment.js @zh-cn 版本CDN地址 -->
+<!-- https://momentjs.com/ -->
+<script src="./js/moment.min.js"></script>
+<script src="./js/zh-CN.js"></script>
+</head>
+<body>
+<div id="checkRecord">
+	<co-header title="签到记录">
+		<a href="workspace.html" slot="left" class="icon iconfont icon-back"></a>	
+		<a slot="right" href='#'><span>{{ dateChoosed | MFormat }}</span></a>			
+	</co-header>
+	<section>
+		<header>
+			<co-datebar :year-month='dateChoosed | yyyyMFormat' :day='dateChoosed | dFormat' @click='chooseDate'>				
+			</co-datebar>
+		</header>
+		<section v-if='checkList.length>0'></section>
+		<section v-else class='no-check-list'>
+			<img src="./images/empty-cry.png" alt="图片都没有。。。">
+			<p>没有查询到“签到记录”</p>
+		</section>
+	</section>
+</div>
+<script>	
+	moment.locale("zh-CN");
+
+	var vm = new Vue({
+		el: '#checkRecord',
+		data: {
+			dateChoosed: moment(),			
+			// 日期滚动条
+			dateBarEl: null,	
+			isScrolled: false,
+			// ToDo: 签到记录数据格式
+			checkList: []
+		},
+		filters: {
+			MFormat: function (date){						
+				return date.format("MMMM")
+			},
+			yyyyMFormat: function  (date) {				
+				return date.format("YYYY-M");
+			},
+			dFormat: function (date) {				
+				return date.format("D");
+			}
+		},
+		methods: {
+			chooseDate: function (dateObj) {
+				// 设置日期
+				var dateOfMonth = dateObj.$this.data;				
+				this.dateChoosed = moment(this.dateChoosed).date(dateOfMonth);
+			}
+		},
+		mounted: function () {
+			var barEl = this.dateBarEl = document.querySelector('#datebar-id .co-component-progressbar');
+			// li 还未更新
+			this.$nextTick(function () {				
+				// datebar 组件“内联样式”修改
+				var lis = barEl.querySelectorAll('li.datedata');			
+				var liStyle = window.getComputedStyle(lis[0],null);		
+				// 防止小数丢失，破坏浮动			
+				var liWidth = parseFloat(liStyle.getPropertyValue("width"));
+				barEl.style.width = (liWidth * (lis.length)) + "px";
+				barEl.style.height = liStyle.getPropertyValue("height");				
+				// 设置 overflow 滚动条位置				
+				setTimeout(function () {
+					var scrollerWin = barEl.parentNode;
+					scrollerWin.scrollLeft = liWidth * (vm.dateChoosed.date() - 2);	
+				}, 40);
+			});					
+		}
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+      <co-swipe :auto="3000" >
+        <co-swipe-item >
+          <img src="images/1.png" class="bannerImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+          <img src="images/2.png" class="bannerImg" />
+        </co-swipe-item>
+        <co-swipe-item>
+          <img src="images/3.png" class="bannerImg" />
+        </co-swipe-item>
+      </co-swipe>
+      <div class="co-flex co-ac co-pd-tb05 co-bg-0 co-mg-t02">
+        <div class="co-f1 co-tx-c co-bd-r1">
+          <div>轿车</div>
+          <div class="co-pd-tb02 co-fs-01">5-8万</div>
+          <div class="co-cl-3 co-fs-01">大众</div>
+        </div>
+        <div class="co-f1 co-tx-c co-bd-r1">
+          <div>SUV</div>
+          <div class="co-pd-tb02 co-fs-01">8-12万</div>
+          <div class="co-cl-3 co-fs-01">丰田</div>
+        </div>
+        <div class="co-f1 co-tx-c co-bd-r1">
+          <div>中大型车</div>
+          <div class="co-pd-tb02 co-fs-01">25-50万</div>
+          <div class="co-cl-3 co-fs-01">奥迪</div>
+        </div>
+        <div class="co-f1 co-tx-c">
+          <div>MPV</div>
+          <div class="co-pd-tb02 co-fs-01">5-20万</div>
+          <div class="co-cl-3 co-fs-01">五菱宏光</div>
+        </div>
+      </div>
+      <div class="co-mg-t02 co-pd-b05 co-bg-0 co-of">
+        <div class="carList co-flex co-ac co-jc co-ver">
+          <div class="tabList co-flex co-ac co-jc co-bg-3">
+            <i class="coicon coicon-favor co-fs-4 co-cl-0"></i>
+          </div>
+          <div class="co-cl-3 co-fs-01 co-mg-t02">车型收藏</div>
+        </div>
+        <div class="carList co-flex co-ac co-jc co-ver">
+          <div class="tabList co-flex co-ac co-jc co-bg-4">
+            <i class="coicon coicon-search co-fs-4 co-cl-0"></i>
+          </div>
+          <div class="co-cl-3 co-fs-01 co-mg-t02">条件选车</div>
+        </div>
+        <div class="carList co-flex co-ac co-jc co-ver">
+          <div class="tabList co-flex co-ac co-jc co-bg-5">
+            <i class="coicon coicon-appreciate co-fs-4 co-cl-0"></i>
+          </div>
+          <div class="co-cl-3 co-fs-01 co-mg-t02">销量排行</div>
+        </div>
+        <div class="carList co-flex co-ac co-jc co-ver">
+          <div class="tabList co-flex co-ac co-jc co-bg-7">
+            <i class="coicon coicon-location co-fs-4 co-cl-0"></i>
+          </div>
+          <div class="co-cl-3 co-fs-01 co-mg-t02">附近商家</div>
+        </div>
+        <div class="carList co-flex co-ac co-jc co-ver">
+          <div class="tabList co-flex co-ac co-jc co-bg-6">
+            <i class="coicon coicon-taxi co-fs-4 co-cl-0"></i>
+          </div>
+          <div class="co-cl-3 co-fs-01 co-mg-t02">汽车新闻</div>
+        </div>
+        <div class="carList co-flex co-ac co-jc co-ver">
+          <div class="tabList co-flex co-ac co-jc co-bg-3">
+            <i class="coicon coicon-phone co-fs-4 co-cl-0"></i>
+          </div>
+          <div class="co-cl-3 co-fs-01 co-mg-t02">预约评估</div>
+        </div>
+        <div class="carList co-flex co-ac co-jc co-ver">
+          <div class="tabList co-flex co-ac co-jc co-bg-6">
+            <i class="coicon coicon-customerservice_fill co-fs-4 co-cl-0"></i>
+          </div>
+          <div class="co-cl-3 co-fs-01 co-mg-t02">预约保养</div>
+        </div>
+        <div class="carList co-flex co-ac co-jc co-ver">
+          <div class="tabList co-flex co-ac co-jc co-bg-5">
+            <i class="coicon coicon-marketing_fill co-fs-4 co-cl-0"></i>
+          </div>
+          <div class="co-cl-3 co-fs-01 co-mg-t02">预约维修</div>
+        </div>
+      </div>
+      <div class="co-flex co-mg-t02 co-bg-0 co-pd-a04">
+        <div class="co-f1 co-mg-r04"><img src="images/b1.png" style="width:100%;height:1.6rem;display: block;"></div>
+        <div class="co-f1 co-mg-l04"><img src="images/b2.png" style="width:100%;height:1.6rem;display: block;"></div>
+      </div>
+      <div class="co-pd-a06 co-bg-0 co-mg-t02">
+        <div class="co-flex co-ac co-jsb">
+          <div class="co-pd-l04 carB">汽车资讯</div>
+          <div class="co-fs-01 co-cl-3">查看更多>></div>
+        </div>
+        <div class="co-flex co-ac co-mg-t05">
+          <div class="co-f1">
+            <div>
+              <img src="images/car1.png" style="width:100%;height:auto;display: block;" />
+            </div>
+            <div class="co-cl-2 co-fs-01 co-mg-t02 co-te2">
+              扩大产品线应对竞争 宝马或推7系双门版
+            </div>
+          </div>
+          <div class="co-f1 co-mg-l05">
+            <div>
+              <img src="images/car2.png" style="width:100%;height:auto;display: block;" />
+            </div>
+            <div class="co-cl-2 co-fs-01 co-mg-t02 co-te2">
+              自动泊车谁更强 迈腾VS君越对比测试
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="co-mg-t02 co-bg-0 co-pd-a04 co-bd-t1 co-bd-b1">
+          <div class="co-flex co-bd-b1 co-pd-tb05">
+            <div><img src="images/car3.png" style="width:5rem;height:3rem;display: block;" /></div>
+            <div class="co-f1 co-flex co-ver co-jsb co-mg-l04">
+              <div class="co-te2">2016成都车展探馆：C 200 4MATIC轿跑</div>
+              <div class="co-cl-3 co-fs-01 co-tx-r">2017-07-31</div>
+            </div>
+          </div>
+          <div class="co-flex co-bd-b1 co-pd-tb05">
+            <div><img src="images/car3.png" style="width:5rem;height:3rem;display: block;" /></div>
+            <div class="co-f1 co-flex co-ver co-jsb co-mg-l04">
+              <div class="co-te2">Galibier领头 布加迪4款新车或陆续投产</div>
+              <div class="co-cl-3 co-fs-01 co-tx-r">2017-07-31</div>
+            </div>
+          </div>
+          <div class="co-flex co-pd-tb05">
+            <div><img src="images/car4.png" style="width:5rem;height:3rem;display: block;" /></div>
+            <div class="co-f1 co-flex co-ver co-jsb co-mg-l04">
+              <div class="co-te2">宝马全新7系个性化定制品鉴会在京举行</div>
+              <div class="co-cl-3 co-fs-01 co-tx-r">2017-07-31</div>
+            </div>
+          </div>
+      </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);   
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0"
+  />
+  <title>corCamera Demo</title>
+  <link rel="stylesheet" href="../../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../../public/css/style.css" />
+  <link rel="stylesheet" href="../../public/css/base.css" />
+  <link rel="stylesheet" href="../../public/css/flex.css" />
+  <link rel="stylesheet" href="../css/plugin-helper.css">
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <co-header id="co-header" title="视频">
+      <div slot="left">
+        <i class="coicon coicon-return co-fs-4" @click="goBack"></i>
+      </div>
+    </co-header>
+    <div id="co-footer" class="co-flex co-ac co-bg-0 co-bd-t1">
+      <div v-show="tag" @click="openV('res://video.mp4')" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr05 co-fs-01">打开视频</div>
+      <div @click="closeV" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr05 co-fs-01">关闭视频</div>
+      <div @click="playV" class="co-f1 co-bg-3 co-pd-a04 co-cl-0 co-tx-c co-br-a0 co-mg-lr05 co-fs-01">录制视频</div>
+    </div>
+  </div>
+  <script src="../../public/js/vue.js"></script>
+  <script src="../../public/js/index.js"></script>
+  <script src="../../public/js/corAPI.js"></script>
+  <script src="../js/plugin-helper.js"></script>
+  <script>
+    corJS.ready(function () {
+      var vm = new ContainerVue({
+        el: '#app',
+        mounted() {
+          Vue.nextTick(function(){
+            vm.openV('res://video.mp4');
+          })
+        },
+        data:{
+          tag:false
+        },
+        methods:{
+          goBack:function(){
+            corNative.closeWindow({
+              animID:-1,
+              animDuration:300
+            });
+          },
+          openV:function(url){
+            vm.tag = false;
+            var top = corJS.offset("co-header").h;
+            var bottom = corJS.offset("co-footer").h;
+            var h = corJS.getHeight() - top - bottom;
+            var w = corJS.getWidth();  
+            var json = {
+              src: url,
+              startTime: 3,
+              autoStart: true,
+              forceFullScreen: false,
+              showCloseButton: true,
+              showScaleButton: true,
+              isAutoEndFullScreen: true,
+              width: w,
+              height: h,
+              x: 0,
+              y: top,
+              scrollWithWeb: true
+            }
+            corVideo.openPlayer(json);
+            corVideo.onPlayerClose = function(info){
+                console.log("播放器关闭");
+            };
+            corVideo.onPlayerFinish = function(){
+                console.log("播放完成");
+            }
+            corVideo.onPlayerStatusChange = function(info){
+                var json=JSON.parse(info);
+                console.log("播放状态:" + json.status);
+            };
+            corVideo.onPlayerEndTime = function(){
+                console.log("播放到endTime");
+            }
+          },
+          closeV:function(){
+            vm.tag = true;
+            corVideo.closePlayer()
+          },
+          playV:function(){
+            var json = {
+              maxDuration:15,
+              qualityType:1,
+              bitRateType:2,
+              fileType:"mp4"
+            }
+            corVideo.record(json);
+            corVideo.onRecordFinish = function(info){
+                vm.openV(JSON.parse(info).path);
+            };
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

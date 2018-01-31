@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <title></title>
+  <link rel="stylesheet" href="../public/css/font/iconfont.css" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/flex.css" />
+  <link rel="stylesheet" href="../public/css/base.css" />
+  <link rel="stylesheet" href="css/mystyle.css" />
+</head>
+<body>
+  <div id="app" v-cloak>
+      <div><img src="images/banner.jpg" style="width:100%;height:auto;display: block;" /></div>
+      <div class="co-mg-a06 co-pd-tb04 co-bg-3 co-br-a0 co-flex co-ac co-cl-0 co-jc co-fs-01">
+        <div class="coicon coicon-phone co-fs-3"></div>
+        <div class="co-mg-l04">咨询：400-7865732</div>
+      </div>
+      <div class="co-bd-a1 co-flex co-ac co-mg-a06">
+        <div class="co-f1 co-mg-lr04">
+          <input placeholder="请输入电话号码" type="text" class="co-input co-f1 co-cl-3">
+        </div>
+        <div style="background: #FE9808;color:#fff;height:2rem; line-height: 2rem" class="co-fs-01 co-pd-lr06">预约卖车</div>
+      </div>
+      <div class="co-flex co-mg-t1 co-pd-lr06">
+        <div class="">
+          <img src="images/img01.png" style="width:2.5rem;height:2.5rem;display: block;" alt="">
+        </div>
+        <div class="co-f1 co-mg-l06">
+          <p class="co-cl-7">1 - 预约评估</p>
+          <p class="co-cl-3 co-fs-01 co-pd-tb04">专业二手车评估师，上门免费评估，给出两个价格，仅供参考</p>
+          <p><img src="images/deal.png" style="width:10rem;height:6rem;display: block;" /></p>
+        </div>
+      </div>
+      <div class="co-flex co-mg-t1 co-pd-lr06">
+        <div class="">
+          <img src="images/img02.png" style="width:2.5rem;height:2.5rem;display: block;" alt="">
+        </div>
+        <div class="co-f1 co-mg-l06">
+          <p class="co-cl-7">2 - 交易模式</p>
+          <p class="co-cl-3 co-fs-01 co-pd-tb04">专业二手车评估师，上门免费评估，给出两个价格，仅供参考</p>
+          <p><img src="images/second.png" style="width:6rem;height:6rem;display: block;" /></p>
+        </div>
+      </div>
+      <div class="co-flex co-mg-t1 co-pd-lr06">
+        <div class="">
+          <img src="images/img03.png" style="width:2.5rem;height:2.5rem;display: block;" alt="">
+        </div>
+        <div class="co-f1 co-mg-l06">
+          <p class="co-cl-7">3 - 成功售出</p>
+          <p class="co-cl-3 co-fs-01 co-pd-tb04">买卖双方直接对接，不赚取中间差价，只收取2%的服务费，全网最低</p>
+          <p><img src="images/sell02.png" style="width:10rem;height:6rem;display: block;" /></p>
+        </div>
+      </div>
+      <div class="co-flex co-mg-t1 co-pd-lr06">
+        <div class="">
+          <img src="images/img04.png" style="width:2.5rem;height:2.5rem;display: block;" alt="">
+        </div>
+        <div class="co-f1 co-mg-l06">
+          <p class="co-cl-7">4 - 无忧售后</p>
+          <p class="co-cl-3 co-fs-01 co-pd-tb04">本公司为5年以内的车辆，提供2年或6万公里的质保，让买卖双方皆无后顾之忧</p>
+          <p><img src="images/phone.png" style="width:5rem;height:12rem;display: block;" /></p>
+        </div>
+      </div>
+  </div>
+</body>
+<script src="../public/js/vue.js"></script>
+<script src="../public/js/index.js"></script>
+<script src="../public/js/corAPI.js"></script>
+<script>
+  corJS.ready(function(){
+    corNative.setBounceEnabled(1);   
+  })
+  var vm = new Vue({
+    el:"#app",
+    data:{
+    },
+    methods:{
+    },
+    created:function(){
+    },
+    mounted:function(){
+    }
+  })
+</script>
+</html>
