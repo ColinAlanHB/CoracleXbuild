@@ -9,7 +9,7 @@
   "name": "coracle-tool",
   "host": "http://172.16.23.86:8088",
   "main": "./lib/coracle-tool",
-  "version": "1.98.0",
+  "version": "1.99.0",
   "description": "A short description of your package ",
   "keywords": [],
   "repository": "https://github.com/CoracleMobi/coracle-tool.git",
