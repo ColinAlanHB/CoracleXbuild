@@ -6,13 +6,13 @@
       }
     }
   },
-  "name": "coracle-tool",
+  "name": "Coracle_Xbuild",
   "host": "http://172.16.23.86:8088",
   "main": "./lib/coracle-tool",
-  "version": "1.99.0",
+  "version": "1.0.0",
   "description": "A short description of your package ",
   "keywords": [],
-  "repository": "https://github.com/CoracleMobi/coracle-tool.git",
+  "repository": "https://github.com/ColinAlanHB/CoracleXbuild",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
