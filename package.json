@@ -6,7 +6,7 @@
       }
     }
   },
-  "name": "Coracle_Xbuild",
+  "name": "coracle-build",
   "host": "http://172.16.23.86:8088",
   "main": "./lib/coracle-tool",
   "version": "1.1.0",
