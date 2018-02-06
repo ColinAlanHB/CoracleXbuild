@@ -7,7 +7,7 @@
     }
   },
   "name": "coracle-build",
-  "host": "http://172.16.23.86:1999",
+  "host": "http://172.16.23.86:8077",
   "main": "./lib/coracle-tool",
   "version": "1.4.0",
   "description": "A short description of your package ",
