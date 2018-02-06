@@ -33,6 +33,10 @@
                        ]
 
           }
+      ],
+      ".tree-view .file .name":[
+        {"type": "separator"},
+        {"label": "实时预览", "command": "coracle:realTimeLook" }
       ]
   },
   "menu": [
