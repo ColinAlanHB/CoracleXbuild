@@ -9,7 +9,7 @@
   "name": "coracle-build",
   "host": "http://d.coracle.com",
   "main": "./lib/coracle-tool",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "A short description of your package ",
   "keywords": [],
   "repository": "https://github.com/ColinAlanHB/CoracleXbuild",
