@@ -9,7 +9,7 @@
   "name": "coracle-build",
   "host": "http://d.coracle.com",
   "main": "./lib/coracle-tool",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "description": "A short description of your package ",
   "keywords": [],
   "repository": "https://github.com/ColinAlanHB/CoracleXbuild",
@@ -18,7 +18,6 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "apicloud-tools-core": "^0.1.0",
     "atom-notify": "^1.1.0",
     "etch": "^0.12.7",
     "fs-plus": "^3.0.1",

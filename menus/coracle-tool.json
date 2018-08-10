@@ -2,6 +2,13 @@
   "context-menu":{
     ".directory":
       [
+          { "type": "separator"},
+          { "label": "本地调试CoUI", "command": "coracle:runDev"},
+          { "label": "编译CoUI正式包", "command": "coracle:runDist"},
+          { "label": "编译CoUI测试包", "command": "coracle:runBuild"},
+          { "label": "新建CoUI功能模板", "command": "coracle:buildCoUIModule"},
+          { "label": "新建CoUI页面模板", "command": "coracle:buildCoUIPage"},
+          { "type": "separator"},
           { "label": "WiFi 增量同步", "command": "coracle:syncWifi"},
           { "label": "WiFi 全量同步", "command": "coracle:syncAllWifi"},
           { "label": "查看 WiFi 真机同步 IP 和端口", "command": "coracle:wifiInfo"},
@@ -46,14 +53,20 @@
      "submenu":[{
        "label":"coracle",
        "submenu": [
-
+          { "type": "separator"},
+          { "label": "本地调试CoUI", "command": "coracle:runDev"},
+          { "label": "编译CoUI正式包", "command": "coracle:runDist"},
+          { "label": "编译CoUI测试包", "command": "coracle:runBuild"},
+          { "label": "新建CoUI功能模板", "command": "coracle:buildCoUIModule"},
+          { "label": "新建CoUI页面模板", "command": "coracle:buildCoUIPage"},
+          { "type": "separator"},
          { "label": "新建项目(ctrl-n)", "command": "coracle:createProject"},
          { "label": "云编译", "command": "coracle:cloudBuild"},
          { "label": "云编译自定义 Runner", "command": "coracle:cloudBuildRunner"},
          { "label": "插件管理", "command": "coracle:moduleManage"},
          { "label": "欢迎页", "command": "coracle:welcomeorlogin"},
          { "label": "注销/登录", "command": "coracle:exitorlogin"},
-
+         { "type": "separator"},
          {
             "label": "代码管理",
              "submenu": [
