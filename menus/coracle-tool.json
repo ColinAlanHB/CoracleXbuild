@@ -3,7 +3,10 @@
     ".directory":
       [
           { "type": "separator"},
+          { "label": "打开命令行工具", "command": "platformio-ide-terminal:toggle"},
+          { "type": "separator"},
           { "label": "本地调试CoUI", "command": "coracle:runDev"},
+          { "label": "停止本地调试", "command": "coracle:stopDev"},
           { "label": "编译CoUI正式包", "command": "coracle:runDist"},
           { "label": "编译CoUI测试包", "command": "coracle:runBuild"},
           { "label": "新建CoUI功能模板", "command": "coracle:buildCoUIModule"},
@@ -55,6 +58,7 @@
        "submenu": [
           { "type": "separator"},
           { "label": "本地调试CoUI", "command": "coracle:runDev"},
+          { "label": "停止本地调试", "command": "coracle:stopDev"},
           { "label": "编译CoUI正式包", "command": "coracle:runDist"},
           { "label": "编译CoUI测试包", "command": "coracle:runBuild"},
           { "label": "新建CoUI功能模板", "command": "coracle:buildCoUIModule"},
