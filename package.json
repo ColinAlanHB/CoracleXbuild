@@ -24,6 +24,8 @@
     "promisificator": "^4.0.0",
     "react": "^16.1.1",
     "ws": "^3.3.2",
-    "download": "7.1.0"
+    "download": "7.1.0",
+    "text-encoding":"0.6.4",
+    "respawn":"2.5.0"
   }
 }
