@@ -2,8 +2,9 @@
   "context-menu":{
     ".directory":
       [
-          { "type": "separator"},
           { "label": "打开命令行工具", "command": "platformio-ide-terminal:toggle"},
+          { "type": "separator"},
+          { "label": "发布轻应用", "command": "coracle:publishLightApp"},
           { "type": "separator"},
           { "label": "本地调试CoUI", "command": "coracle:runDev"},
           { "label": "停止本地调试", "command": "coracle:stopDev"},
@@ -11,13 +12,14 @@
           { "label": "编译CoUI测试包", "command": "coracle:runBuild"},
           { "label": "新建CoUI功能模板", "command": "coracle:buildCoUIModule"},
           { "label": "新建CoUI页面模板", "command": "coracle:buildCoUIPage"},
-          { "type": "separator"},
+          { "type": "separator"}, 
           { "label": "WiFi 增量同步", "command": "coracle:syncWifi"},
           { "label": "WiFi 全量同步", "command": "coracle:syncAllWifi"},
           { "label": "查看 WiFi 真机同步 IP 和端口", "command": "coracle:wifiInfo"},
           { "label": "插件管理", "command": "coracle:moduleManage"},
           { "label": "云编译", "command": "coracle:cloudBuild"},
           { "label": "云编译自定义 Runner", "command": "coracle:cloudBuildRunner"},
+          { "type": "separator"},
           {
              "label": "代码管理",
               "submenu": [
@@ -57,13 +59,15 @@
        "label":"coracle",
        "submenu": [
           { "type": "separator"},
+          { "label": "发布轻应用", "command": "coracle:publishLightApp"},
+          { "type": "separator"},
           { "label": "本地调试CoUI", "command": "coracle:runDev"},
           { "label": "停止本地调试", "command": "coracle:stopDev"},
           { "label": "编译CoUI正式包", "command": "coracle:runDist"},
           { "label": "编译CoUI测试包", "command": "coracle:runBuild"},
           { "label": "新建CoUI功能模板", "command": "coracle:buildCoUIModule"},
           { "label": "新建CoUI页面模板", "command": "coracle:buildCoUIPage"},
-          { "type": "separator"},
+         { "type": "separator"},
          { "label": "新建项目(ctrl-n)", "command": "coracle:createProject"},
          { "label": "云编译", "command": "coracle:cloudBuild"},
          { "label": "云编译自定义 Runner", "command": "coracle:cloudBuildRunner"},
