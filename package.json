@@ -9,7 +9,7 @@
   "name": "coracle-build",
   "host": "http://d.coracle.com",
   "main": "./lib/coracle-tool",
-  "version": "1.24.0",
+  "version": "1.27.0",
   "description": "A short description of your package ",
   "keywords": [],
   "repository": "https://github.com/ColinAlanHB/CoracleXbuild",
@@ -25,7 +25,7 @@
     "react": "^16.1.1",
     "ws": "^3.3.2",
     "download": "7.1.0",
-    "text-encoding":"0.6.4",
-    "respawn":"2.5.0"
+    "text-encoding": "0.6.4",
+    "respawn": "2.5.0"
   }
 }
