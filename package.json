@@ -26,6 +26,7 @@
     "ws": "^3.3.2",
     "download": "7.1.0",
     "text-encoding": "0.6.4",
-    "respawn": "2.5.0"
+    "respawn": "2.5.0",
+    "qr-image":  "3.2.0"
   }
 }
