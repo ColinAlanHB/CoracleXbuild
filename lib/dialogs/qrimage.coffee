@@ -53,7 +53,7 @@ class qrimage
     @button.style.setProperty('height', '45px')
     @button.style.backgroundColor ='#3dd18f'
 
-    @button.style.setProperty('padding', '10px 28px')
+    @button.style.setProperty('padding', '8px 26px')
     @button.style.setProperty('color', 'white')
     @button.style.setProperty('text-align', 'center')
     @button.style.setProperty('border', 'none')
